@@ -1,0 +1,141 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     17/Sep/2014  09:58:27 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\tunneling-s #
+#                    erver-cli.c                                              #
+#    Command line =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\tunneling-s #
+#                    erver-cli.c -D "GENERATED_TOKEN_HEADER=\"app/builder/Aur #
+#                    ora_dimmer/Aurora_dimmer_tokens.h\"" -D                  #
+#                    "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_ #
+#                    dimmer.h\"" -D APP_BTL -D "BOARD_HEADER=\"app/builder/Au #
+#                    rora_dimmer/Aurora_dimmer_board_1.h\"" -D                #
+#                    "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\""  #
+#                    -D CORTEXM3 -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357    #
+#                    -D PHY_EM3XX -D "APPLICATION_TOKEN_HEADER=\"app/framewor #
+#                    k/util/tokens.h\"" -D "CONFIGURATION_HEADER=\"app/framew #
+#                    ork/util/config.h\"" -D "ATTRIBUTE_STORAGE_CONFIGURATION #
+#                    =\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_conf #
+#                    ig.h\"" -D "__SOURCEFILE__=\"tunneling-server-cli.c\""   #
+#                    -lC C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em #
+#                    35x\build\Aurora_dimmer\ --diag_suppress Pa050 -o        #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --debug --endian=little             #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files (x86)\IAR Systems\Embedded Workbench               #
+#                    6.4\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\ -I         #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\ -I                            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\ -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\app\framework\include #
+#                    \ -I C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\e #
+#                    m35x\app\builder\Aurora_dimmer\..\..\..\ -I              #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\stack\ -I             #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\ -I               #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\..\ -Ohz          #
+#                    --use_c++_inline                                         #
+#    List file    =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\tunneling-server-cli.lst             #
+#    Object file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\tunneling-server-cli.o               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\tunneling-server-cli.c
+      1          // *******************************************************************
+      2          // * tunneling-server-cli.c
+      3          // *
+      4          // *
+      5          // * Copyright 2011 by Ember Corporation. All rights reserved.              *80*
+      6          // *******************************************************************
+      7          
+      8          #include "app/framework/include/af.h"
+      9          #include "app/util/serial/command-interpreter2.h"
+     10          #include "tunneling-server.h"
+     11          
+     12          
+     13          void emAfPluginTunnelingServerCliTransfer(void);
+     14          
+     15          #if !defined(EMBER_AF_GENERATE_CLI)
+     16          
+     17          void emAfPluginTunnelingServerCliPrint(void);
+     18          
+     19          EmberCommandEntry emberAfPluginTunnelingServerCommands[] = {
+     20            emberCommandEntryAction("transfer", emAfPluginTunnelingServerCliTransfer,                                      "vb",
+     21                                    "Transfer data through the tunnel"),
+     22            emberCommandEntryAction("busy",     emberAfPluginTunnelingServerToggleBusyCommand, "",
+     23                                    "Toggly the busy status of the tunnel"),
+     24            emberCommandEntryAction("print",    emAfPluginTunnelingServerCliPrint,                "",
+     25                                    "Print the list of tunnels"),
+     26            emberCommandEntryTerminator(),
+     27          };
+     28          
+     29          #endif // EMBER_AF_GENERATE_CLI
+     30          
+     31          // plugin tunneling-server transfer <tunnel id:2> <data>
+
+   \                                 In section .text, align 2, keep-with-next
+     32          void emAfPluginTunnelingServerCliTransfer(void)
+     33          {
+   \                     emAfPluginTunnelingServerCliTransfer:
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB0C0             SUB      SP,SP,#+256
+     34            int16u tunnelId = (int16u)emberUnsignedCommandArgument(0);
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x.... 0x....      BL       emberUnsignedCommandArgument
+   \   0000000A   0x4604             MOV      R4,R0
+     35            int8u data[255];
+     36            int16u dataLen = emberCopyStringArgument(1, data, sizeof(data), FALSE);
+   \   0000000C   0x2300             MOVS     R3,#+0
+   \   0000000E   0x22FF             MOVS     R2,#+255
+   \   00000010   0xA900             ADD      R1,SP,#+0
+   \   00000012   0x2001             MOVS     R0,#+1
+   \   00000014   0x.... 0x....      BL       emberCopyStringArgument
+     37            EmberAfStatus status = emberAfPluginTunnelingServerTransferData(tunnelId,
+     38                                                                            data,
+     39                                                                            dataLen);
+   \   00000018   0x4602             MOV      R2,R0
+   \   0000001A   0xA900             ADD      R1,SP,#+0
+   \   0000001C   0xB2A0             UXTH     R0,R4
+   \   0000001E   0x.... 0x....      BL       emberAfPluginTunnelingServerTransferData
+     40            emberAfTunnelingClusterPrintln("%p 0x%x", "transfer", status);
+     41          }
+   \   00000022   0xB040             ADD      SP,SP,#+256
+   \   00000024   0xBD10             POP      {R4,PC}          ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      264  emAfPluginTunnelingServerCliTransfer
+             264 -> emberAfPluginTunnelingServerTransferData
+             264 -> emberCopyStringArgument
+             264 -> emberUnsignedCommandArgument
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      38  emAfPluginTunnelingServerCliTransfer
+
+ 
+ 38 bytes in section .text
+ 
+ 38 bytes of CODE memory
+
+Errors: none
+Warnings: none

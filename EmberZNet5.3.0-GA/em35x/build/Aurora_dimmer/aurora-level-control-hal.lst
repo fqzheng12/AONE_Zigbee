@@ -1,0 +1,168 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:41
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-level-control\aurora-level-control-hal.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-level-control\aurora-level-control-hal.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-level-control-hal.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-level-control\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-level-control-hal.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-level-control-hal.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-level-control\aurora-level-control-hal.c
+      1          #include "app/framework/include/af.h"
+      2          #include "aurora-level-control-hal.h"
+      3          
+      4          /** @brief Get the mode from the tokens
+      5           *
+      6           * read the tokens to find the mode
+      7           *
+      8           */
+
+   \                                 In section .text, align 2, keep-with-next
+      9          int8u getAuroraDimmerMode(void)
+     10          {
+   \                     getAuroraDimmerMode: (+1)
+   \   00000000   0xB5E0             PUSH     {R5-R7,LR}
+     11              int8u manufacturingToken[8];
+     12              int8u mode;
+     13              
+     14              halCommonGetToken(&mode, TOKEN_VIRTUAL_DIP_SWITCH);
+   \   00000002   0x2301             MOVS     R3,#+1
+   \   00000004   0x227F             MOVS     R2,#+127
+   \   00000006   0x211B             MOVS     R1,#+27
+   \   00000008   0xA800             ADD      R0,SP,#+0
+   \   0000000A   0x.... 0x....      BL       halInternalGetTokenData
+     15              if (mode == AURORA_MODE_INVALID) 
+   \   0000000E   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \   00000012   0x28FF             CMP      R0,#+255
+   \   00000014   0xD10F             BNE.N    ??getAuroraDimmerMode_0
+     16              {
+     17                  halCommonGetToken(manufacturingToken, TOKEN_MFG_EZSP_STORAGE);
+   \   00000016   0x....             LDR.N    R0,??DataTable0
+   \   00000018   0x8801             LDRH     R1,[R0, #+0]
+   \   0000001A   0x2308             MOVS     R3,#+8
+   \   0000001C   0x227F             MOVS     R2,#+127
+   \   0000001E   0xA801             ADD      R0,SP,#+4
+   \   00000020   0x.... 0x....      BL       halInternalGetTokenData
+     18                  mode = manufacturingToken[0];
+   \   00000024   0xF89D 0x0004      LDRB     R0,[SP, #+4]
+   \   00000028   0xF88D 0x0000      STRB     R0,[SP, #+0]
+     19                  if (mode == AURORA_MODE_INVALID) 
+   \   0000002C   0x28FF             CMP      R0,#+255
+   \   0000002E   0xBF04             ITT      EQ 
+   \   00000030   0x2003             MOVEQ    R0,#+3
+   \   00000032   0xF88D 0x0000      STRBEQ   R0,[SP, #+0]
+     20                  {
+     21                      mode = AURORA_MODE_PLC;
+     22                  }
+     23              }    
+     24              
+     25              return mode;
+   \                     ??getAuroraDimmerMode_0: (+1)
+   \   00000036   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \   0000003A   0xBD0E             POP      {R1-R3,PC}       ;; return
+     26          }
+     27          
+     28          /** @brief Set the mode
+     29           *
+     30           * Set the mode token
+     31           *
+     32           */
+
+   \                                 In section .text, align 2, keep-with-next
+     33          int8u setAuroraDimmerMode(int8u mode)
+     34          {
+   \                     setAuroraDimmerMode: (+1)
+   \   00000000   0xB501             PUSH     {R0,LR}
+     35              halCommonSetToken(TOKEN_VIRTUAL_DIP_SWITCH, &mode);
+   \   00000002   0x2301             MOVS     R3,#+1
+   \   00000004   0xAA00             ADD      R2,SP,#+0
+   \   00000006   0x217F             MOVS     R1,#+127
+   \   00000008   0x201B             MOVS     R0,#+27
+   \   0000000A   0x.... 0x....      BL       halInternalSetTokenData
+     36              
+     37              return 0;
+   \   0000000E   0x2000             MOVS     R0,#+0
+   \   00000010   0xBD02             POP      {R1,PC}          ;; return
+     38          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x........         DC32     TOKEN_MFG_EZSP_STORAGE
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   getAuroraDimmerMode
+        16   -> halInternalGetTokenData
+       8   setAuroraDimmerMode
+         8   -> halInternalSetTokenData
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+      60  getAuroraDimmerMode
+      18  setAuroraDimmerMode
+
+ 
+ 82 bytes in section .text
+ 
+ 82 bytes of CODE memory
+
+Errors: none
+Warnings: none

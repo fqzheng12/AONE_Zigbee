@@ -1,0 +1,146 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     09/Sep/2014  09:59:38 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\identify-feedback\identify-feedback #
+#                    .c                                                       #
+#    Command line =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\identify-feedback\identify-feedback #
+#                    .c -D "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimme #
+#                    r/Aurora_dimmer_tokens.h\"" -D                           #
+#                    "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_ #
+#                    dimmer.h\"" -D APP_BTL -D "BOARD_HEADER=\"app/builder/Au #
+#                    rora_dimmer/Aurora_dimmer_board_1.h\"" -D                #
+#                    "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\""  #
+#                    -D CORTEXM3 -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357    #
+#                    -D PHY_EM3XX -D "APPLICATION_TOKEN_HEADER=\"app/framewor #
+#                    k/util/tokens.h\"" -D "CONFIGURATION_HEADER=\"app/framew #
+#                    ork/util/config.h\"" -D "ATTRIBUTE_STORAGE_CONFIGURATION #
+#                    =\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_conf #
+#                    ig.h\"" -D "__SOURCEFILE__=\"identify-feedback.c\"" -lC  #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --diag_suppress Pa050 -o            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --debug --endian=little             #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files (x86)\IAR Systems\Embedded Workbench               #
+#                    6.4\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\identify-feedback\ -I               #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\ -I                            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\ -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\app\framework\include #
+#                    \ -I C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\e #
+#                    m35x\app\builder\Aurora_dimmer\..\..\..\ -I              #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\stack\ -I             #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\ -I               #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\..\ -Ohz          #
+#                    --use_c++_inline                                         #
+#    List file    =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\identify-feedback.lst                #
+#    Object file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\identify-feedback.o                  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\app\framework\plugin\identify-feedback\identify-feedback.c
+      1          // *******************************************************************
+      2          // * identify-feedback.c
+      3          // *
+      4          // *
+      5          // * Copyright 2012 by Ember Corporation. All rights reserved.              *80*
+      6          // *******************************************************************
+      7          
+      8          // this file contains all the common includes for clusters in the util
+      9          #include "app/framework/include/af.h"
+     10          
+     11          #include "app/framework/util/common.h"
+     12          #if !defined(EZSP_HOST)
+     13          #include "hal/hal.h"
+     14          #endif // !defined(EZSP_HOST)
+     15          
+     16          static boolean identifyTable[EMBER_AF_IDENTIFY_CLUSTER_SERVER_ENDPOINT_COUNT];
+     17          
+     18          EmberEventControl emberAfPluginIdentifyFeedbackProvideFeedbackEventControl;
+     19          
+     20          void emberAfPluginIdentifyFeedbackProvideFeedbackEventHandler(void);
+     21          
+     22          void emberAfPluginIdentifyFeedbackProvideFeedbackEventHandler(void)
+     23          {
+     24          #if !defined(EZSP_HOST)
+     25          #ifdef EMBER_AF_PLUGIN_IDENTIFY_FEEDBACK_LED_FEEDBACK
+     26            halToggleLed(BOARDLED0);
+     27            halToggleLed(BOARDLED1);
+     28            halToggleLed(BOARDLED2);
+                                ^
+Error[Pe020]: identifier "BOARDLED2" is undefined
+     29            halToggleLed(BOARDLED3);
+                                ^
+Error[Pe020]: identifier "BOARDLED3" is undefined
+     30          #endif // EMBER_AF_PLUGIN_IDENTIFY_FEEDBACK_LED_FEEDBACK
+     31          
+     32          #ifdef EMBER_AF_PLUGIN_IDENTIFY_FEEDBACK_BUZZER_FEEDBACK
+     33            halStackIndicatePresence();
+     34          #endif // EMBER_AF_PLUGIN_IDENTIFY_FEEDBACK_BUZZER_FEEDBACK
+     35          #endif
+     36          
+     37            emberEventControlSetDelayMS(emberAfPluginIdentifyFeedbackProvideFeedbackEventControl,
+     38                                        MILLISECOND_TICKS_PER_SECOND);
+     39          }
+     40          
+     41          void emberAfPluginIdentifyStartFeedbackCallback(int8u endpoint,
+     42                                                          int16u identifyTime)
+     43          {
+     44            int8u ep = emberAfFindClusterServerEndpointIndex(endpoint, ZCL_IDENTIFY_CLUSTER_ID);
+     45          
+     46            if(ep == 0xFF) {
+     47              emberAfIdentifyClusterPrintln("ERR: invalid endpoint supplied for identification.");
+     48              return;
+     49            }
+     50          
+     51            emberAfIdentifyClusterPrintln("Starting identifying on endpoint 0x%x, identify time is %d sec", 
+     52                                          endpoint, 
+     53                                          identifyTime);
+     54          
+     55            identifyTable[ep] = TRUE;
+     56            emberEventControlSetDelayMS(emberAfPluginIdentifyFeedbackProvideFeedbackEventControl,
+     57                                        MILLISECOND_TICKS_PER_SECOND);
+     58          }
+     59          
+     60          void emberAfPluginIdentifyStopFeedbackCallback(int8u endpoint)
+     61          {
+     62            int8u ep = emberAfFindClusterServerEndpointIndex(endpoint, ZCL_IDENTIFY_CLUSTER_ID);
+     63            int8u i;
+     64          
+     65            if(ep == 0xFF) {
+     66              emberAfIdentifyClusterPrintln("ERR: invalid endpoint supplied for identification.");
+     67              return;
+     68            }
+     69          
+     70            emberAfIdentifyClusterPrintln("Stopping identifying on endpoint 0x%x", endpoint);
+     71          
+     72            identifyTable[ep] = FALSE;
+     73          
+     74            for(i = 0; i < EMBER_AF_IDENTIFY_CLUSTER_SERVER_ENDPOINT_COUNT; i++) {
+     75              if(identifyTable[i]) {
+     76                return;
+     77              }
+     78            }
+     79          
+     80            emberAfIdentifyClusterPrintln("No endpoints identifying; stopping identification feedback.");
+     81            emberEventControlSetInactive(emberAfPluginIdentifyFeedbackProvideFeedbackEventControl);
+     82          }
+
+Errors: 2
+Warnings: none

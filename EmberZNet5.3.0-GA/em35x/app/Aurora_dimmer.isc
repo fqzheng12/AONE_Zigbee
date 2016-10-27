@@ -1,0 +1,811 @@
+#ISD App Configuration:3.1
+# ISD version: 1.0.0.201606231656-435
+#  Identified of a stack descriptor used for this configuration. This should not
+#  be changed manually, unless you really know what you are doing.
+ConfiguratorID:EmberZNet5.35.3-EM35X
+
+#  Output directory which is used as a root for all generated files. The actual
+#  files relative to that directory are defined by individual file name.
+GenerationDirectory:PATH(ABSOLUTE):C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x
+
+#  Unique identifier for this device. This string should be in a form of a C
+#  identifier, as it will be used in both generated variable, macros, as well as
+#  file names. You should generally not use characters which are not valid
+#  characters in a C identifier here.
+DeviceName:Aurora_dimmer
+
+#  Type of the endpoint. Each endpoint implement one endpoint type. There can be
+#  one or more endpoint types, regardless of number of actual endpoints.
+EndpointType:Primary,258
+
+#  The ZCL device that this particular endpoint is implementing.
+DeviceType:Primary,HA-colordimmablelight
+
+#  Type of the endpoint. Each endpoint implement one endpoint type. There can be
+#  one or more endpoint types, regardless of number of actual endpoints.
+EndpointType:Tunnelling,-1
+
+#  The ZCL device that this particular endpoint is implementing.
+DeviceType:Tunnelling,zcustom
+
+#  Overrides a particular client configuration. This happens when you have
+#  chosen to include/exclude a client cluster that is optional. Contains
+#  'clusterId', 'exclude/include' and the endpoint type name.
+OverrideClient:0,exclude,Tunnelling
+
+OverrideClient:1,exclude,Tunnelling
+
+OverrideClient:2,exclude,Tunnelling
+
+OverrideClient:3,include,Tunnelling
+
+OverrideClient:4,exclude,Tunnelling
+
+OverrideClient:5,exclude,Tunnelling
+
+OverrideClient:6,exclude,Tunnelling
+
+OverrideClient:7,exclude,Tunnelling
+
+OverrideClient:8,exclude,Tunnelling
+
+OverrideClient:9,exclude,Tunnelling
+
+OverrideClient:a,exclude,Tunnelling
+
+OverrideClient:b,exclude,Tunnelling
+
+OverrideClient:f,exclude,Tunnelling
+
+OverrideClient:15,exclude,Tunnelling
+
+OverrideClient:16,exclude,Tunnelling
+
+OverrideClient:19,exclude,Tunnelling
+
+OverrideClient:1a,exclude,Tunnelling
+
+OverrideClient:1b,exclude,Tunnelling
+
+OverrideClient:20,exclude,Tunnelling
+
+OverrideClient:100,exclude,Tunnelling
+
+OverrideClient:101,exclude,Tunnelling
+
+OverrideClient:102,exclude,Tunnelling
+
+OverrideClient:200,exclude,Tunnelling
+
+OverrideClient:201,exclude,Tunnelling
+
+OverrideClient:202,exclude,Tunnelling
+
+OverrideClient:203,exclude,Tunnelling
+
+OverrideClient:204,exclude,Tunnelling
+
+OverrideClient:300,exclude,Tunnelling
+
+OverrideClient:301,exclude,Tunnelling
+
+OverrideClient:400,exclude,Tunnelling
+
+OverrideClient:401,exclude,Tunnelling
+
+OverrideClient:402,exclude,Tunnelling
+
+OverrideClient:403,exclude,Tunnelling
+
+OverrideClient:404,exclude,Tunnelling
+
+OverrideClient:405,exclude,Tunnelling
+
+OverrideClient:406,exclude,Tunnelling
+
+OverrideClient:500,exclude,Tunnelling
+
+OverrideClient:501,exclude,Tunnelling
+
+OverrideClient:502,exclude,Tunnelling
+
+OverrideClient:600,exclude,Tunnelling
+
+OverrideClient:601,exclude,Tunnelling
+
+OverrideClient:614,exclude,Tunnelling
+
+OverrideClient:615,exclude,Tunnelling
+
+OverrideClient:700,exclude,Tunnelling
+
+OverrideClient:701,exclude,Tunnelling
+
+OverrideClient:702,exclude,Tunnelling
+
+OverrideClient:703,exclude,Tunnelling
+
+OverrideClient:704,exclude,Tunnelling
+
+OverrideClient:705,exclude,Tunnelling
+
+OverrideClient:706,exclude,Tunnelling
+
+OverrideClient:707,exclude,Tunnelling
+
+OverrideClient:708,exclude,Tunnelling
+
+OverrideClient:709,exclude,Tunnelling
+
+OverrideClient:70a,exclude,Tunnelling
+
+OverrideClient:800,exclude,Tunnelling
+
+OverrideClient:900,exclude,Tunnelling
+
+OverrideClient:901,exclude,Tunnelling
+
+OverrideClient:902,exclude,Tunnelling
+
+OverrideClient:903,exclude,Tunnelling
+
+OverrideClient:904,exclude,Tunnelling
+
+OverrideClient:905,exclude,Tunnelling
+
+OverrideClient:a01,exclude,Tunnelling
+
+OverrideClient:a02,exclude,Tunnelling
+
+OverrideClient:b00,exclude,Tunnelling
+
+OverrideClient:b01,exclude,Tunnelling
+
+OverrideClient:b02,exclude,Tunnelling
+
+OverrideClient:b03,exclude,Tunnelling
+
+OverrideClient:b04,exclude,Tunnelling
+
+OverrideClient:b05,exclude,Tunnelling
+
+OverrideClient:1000,exclude,Tunnelling
+
+OverrideClient:fc00,exclude,Tunnelling
+
+#  Overrides a particular server configuration. This happens when you have
+#  chosen to include/exclude a server cluster that is optional. Contains
+#  'clusterId', 'exclude/include' and the endpoint type name.
+OverrideServer:0,include,Tunnelling
+
+OverrideServer:1,exclude,Tunnelling
+
+OverrideServer:2,exclude,Tunnelling
+
+OverrideServer:3,include,Tunnelling
+
+OverrideServer:4,exclude,Tunnelling
+
+OverrideServer:5,exclude,Tunnelling
+
+OverrideServer:6,exclude,Tunnelling
+
+OverrideServer:7,exclude,Tunnelling
+
+OverrideServer:8,exclude,Tunnelling
+
+OverrideServer:9,exclude,Tunnelling
+
+OverrideServer:a,exclude,Tunnelling
+
+OverrideServer:b,exclude,Tunnelling
+
+OverrideServer:f,exclude,Tunnelling
+
+OverrideServer:15,exclude,Tunnelling
+
+OverrideServer:16,exclude,Tunnelling
+
+OverrideServer:19,exclude,Tunnelling
+
+OverrideServer:1a,exclude,Tunnelling
+
+OverrideServer:1b,exclude,Tunnelling
+
+OverrideServer:20,exclude,Tunnelling
+
+OverrideServer:100,exclude,Tunnelling
+
+OverrideServer:101,exclude,Tunnelling
+
+OverrideServer:102,exclude,Tunnelling
+
+OverrideServer:200,exclude,Tunnelling
+
+OverrideServer:201,exclude,Tunnelling
+
+OverrideServer:202,exclude,Tunnelling
+
+OverrideServer:203,exclude,Tunnelling
+
+OverrideServer:204,exclude,Tunnelling
+
+OverrideServer:300,exclude,Tunnelling
+
+OverrideServer:301,exclude,Tunnelling
+
+OverrideServer:400,exclude,Tunnelling
+
+OverrideServer:401,exclude,Tunnelling
+
+OverrideServer:402,exclude,Tunnelling
+
+OverrideServer:403,exclude,Tunnelling
+
+OverrideServer:404,exclude,Tunnelling
+
+OverrideServer:405,exclude,Tunnelling
+
+OverrideServer:406,exclude,Tunnelling
+
+OverrideServer:500,exclude,Tunnelling
+
+OverrideServer:501,exclude,Tunnelling
+
+OverrideServer:502,exclude,Tunnelling
+
+OverrideServer:600,include,Tunnelling
+
+OverrideServer:601,exclude,Tunnelling
+
+OverrideServer:614,exclude,Tunnelling
+
+OverrideServer:615,exclude,Tunnelling
+
+OverrideServer:700,exclude,Tunnelling
+
+OverrideServer:701,exclude,Tunnelling
+
+OverrideServer:702,exclude,Tunnelling
+
+OverrideServer:703,exclude,Tunnelling
+
+OverrideServer:704,include,Tunnelling
+
+OverrideServer:705,exclude,Tunnelling
+
+OverrideServer:706,exclude,Tunnelling
+
+OverrideServer:707,exclude,Tunnelling
+
+OverrideServer:708,exclude,Tunnelling
+
+OverrideServer:709,exclude,Tunnelling
+
+OverrideServer:70a,exclude,Tunnelling
+
+OverrideServer:800,exclude,Tunnelling
+
+OverrideServer:900,exclude,Tunnelling
+
+OverrideServer:901,exclude,Tunnelling
+
+OverrideServer:902,exclude,Tunnelling
+
+OverrideServer:903,exclude,Tunnelling
+
+OverrideServer:904,exclude,Tunnelling
+
+OverrideServer:905,exclude,Tunnelling
+
+OverrideServer:a01,exclude,Tunnelling
+
+OverrideServer:a02,exclude,Tunnelling
+
+OverrideServer:b00,exclude,Tunnelling
+
+OverrideServer:b01,exclude,Tunnelling
+
+OverrideServer:b02,exclude,Tunnelling
+
+OverrideServer:b03,exclude,Tunnelling
+
+OverrideServer:b04,exclude,Tunnelling
+
+OverrideServer:b05,exclude,Tunnelling
+
+OverrideServer:1000,exclude,Tunnelling
+
+OverrideServer:fc00,exclude,Tunnelling
+
+#  Type of the endpoint. Each endpoint implement one endpoint type. There can be
+#  one or more endpoint types, regardless of number of actual endpoints.
+EndpointType:OTA,7
+
+#  The ZCL device that this particular endpoint is implementing.
+DeviceType:OTA,HA-combinedinterface
+
+#  Overrides a particular client configuration. This happens when you have
+#  chosen to include/exclude a client cluster that is optional. Contains
+#  'clusterId', 'exclude/include' and the endpoint type name.
+OverrideClient:19,include,OTA
+
+#  ZigBee PRO network configuration.  Each endpoint belongs to a single network
+#  configuration.  There can be one or more network configurations.
+ZigbeeProNetwork:*Primary,ZA_COORDINATOR,HA
+
+#  A list of optional attributes that are included in this configuration. Format
+#  is a list of "clusterId,attributeId,<server|client>,manufacturerCode"
+#  entries, separated by semicolon.
+OptionalAttributes:768,7,server,0:0,4,server,0:0,5,server,0:768,0,server,0:768,1,server,0:0,1,server,0:8,16,server,0
+
+#  User defined default values for attributes.
+AttributeDefaults:0,4,server,0,Aurora:0,5,server,0,Dimmer:8,0,server,0,0xFF:0,1,server,0,0x0e
+
+#  Lists the channels that this application will be configured to use.
+Channels:11
+
+#  Definitions of individual endpoints. For each endpoint the endpoint number
+#  (1-254) is listed, as well as the endpoint type that this endpoint will
+#  serve.
+ConfiguredEndpoints:*1&-1&-1&0&Primary&Primary,2&260&6&0&Tunnelling&Primary,3&-1&-1&0&OTA&Primary
+
+#  A single specification version for each profile defining the max version of
+#  the spec supported by this configuration.
+SpecVersions:
+
+#  In case of a network coprocessor, this lists a host processor used.
+Host:unknown
+
+#  Ember network processor targeted for this application.
+Platform:em357
+
+#  Enable callbacks.
+Callbacks:emberAfColorControlClusterMoveToColorCallback,emberAfColorControlClusterMoveColorCallback,emberAfColorControlClusterStepColorCallback,emberAfColorControlClusterMoveToColorTemperatureCallback,emberAfGenericTunnelClusterMatchProtocolAddressCallback,emberAfOtaBootloadClusterImageBlockResponseCallback,emberAfOtaBootloadClusterUpgradeEndResponseCallback,emberAfOtaBootloadClusterQueryNextImageResponseCallback,emberAfMainStartCallback,emberAfMainTickCallback,emberAfStackStatusCallback,emberAfPluginNetworkFindFinishedCallback,emberAfOtaBootloadClusterImageNotifyCallback,emberAfMainInitCallback,
+
+#  If bindings are enabled then this is the maximum number of supported
+#  bindings.
+NumberOfBindings:8
+
+#  The size of the stack address table which will be used by the stack to
+#  maintain IEEE to ZigBee short id mappings.
+AddressTableSize:2
+
+#  The size of the portion of the address table used by the trust center as an
+#  address cache. The total size of the address table will be equal to this
+#  value plus the size of the address table set in the AddressTableSize.
+TrustCenterCacheSize:2
+
+#  Manufacturing code user in reporting.
+ManufacturingCode:4112
+
+#  Maximum number of supported reported attributes.
+ReportTableSize:5
+
+#  The mode of the link key handling on a trust center.
+LinkKeyMode:2
+
+#  If not using multiple endpoint support, this value contains the default
+#  endpoint. With multiple endpoint support, this number is ignored.
+Endpoint:10
+
+#  Version of this device.
+DeviceVersion:0
+
+#  Master endpoint which contains global information.
+DefaultDestinationEndpoint:10
+
+#  Profile Id used for the application.
+ProfileId:-1
+
+#  Device Id used for the application.
+DeviceId:-1
+
+#  The largest size for a fragment buffer.
+FragmentationMaxSize:255
+
+#  Size of the table for source routing.
+SourceRouteTableSize:7
+
+#  Default response policy.
+DefaultResponsePolicy:0
+
+#  The level of debugging supported.
+DebugLevel:1
+
+#  Configuration of command-line interface.
+CLIMode:-1
+
+#  Configuration of heartbeat.
+HeartbeatLed:0
+
+#  If this option is set to true, standard reporting is enabled.
+EnableStandardReporting:false
+
+#  If the device needs to perform inter-PAN sends, then this option should be
+#  enabled.
+EnableInterPanSend:false
+
+#  If the device needs to perform inter-PAN receives, then this option should be
+#  enabled.
+EnableInterPanReceive:false
+
+#  Enable serial commands for ZDO.
+EnableZdoSerialCommands:false
+
+#  Enable this option if you wish to enable device bindings.
+EnableBindings:true
+
+#  Turn this option on, if end-device binding is enabled.
+EnableEndDeviceBind:false
+
+#  Enables the statistics receiving.
+EnableReceiveStatistics:false
+
+#  If true, then command discovery commands are supported.
+SupportCommandDiscovery:true
+
+#  Selects whether application will use the ECC 163k1 library.
+UseEcc163k1:false
+
+#  Selects whether application will use the ECC 283k1 library.
+UseEcc283k1:false
+
+#  Enable preconfigured keys for security.
+PreconfiguredKeyEnabled:false
+
+#  Enable network key.
+NetworkKeyEnabled:false
+
+#  If this option is turned on, then appBuilder will automatically generate the
+#  files, immediately upon saving the ISC file.
+AutoGenerate:false
+
+#  Enable key switching.
+EnableKeySwitch:false
+
+#  Use this setting to turn on fragmentation.
+FragmentationEnable:false
+
+#  Enables concentrator support
+EnableConcentrator:true
+
+#  If true, then this concentrator is low ram, otherwise high ram
+LowRamConcentrator:true
+
+#  If this option is set to true, then MFG_INSTALL_CODE token is used for
+#  setting the security install code.
+UseSeInstallCodes:false
+
+#  If this option is turned on, then the code will enable the checking of the
+#  attributes.
+EnableAttributeRangeChecking:false
+
+#  Enable application handling of supported ZigBee Device Object messages.
+ReceiveSupportedZdoRequests:false
+
+#  Enable application handling of unsupported ZigBee Device Object messages.
+HandleUnsupportedZdoRequests:false
+
+#  Enable application handling of ZigBee Device Object requests related to
+#  endpoints.
+HandleEndpointZdoRequests:false
+
+#  Enable application handling of ZigBee Device Object requests related to
+#  bindings.
+HandleBindingZdoRequests:false
+
+#  Use token for TX power mode.
+TxPowerModeUseToken:true
+
+#  Enable boost power mode.
+BoostMode:false
+
+#  Enable the alternate transmitter output.
+AlternatePowerMode:false
+
+#  Use legacy CLI instead of generated CLI.
+LegacyCli:false
+
+#  Add Custom CLI sub-menu
+AddCustomCli:false
+
+#  Include command and argument descriptions in the embedded code.
+IncludeCommandDescriptions:false
+
+#  If set, then project-specific callbacks file will be generated.
+GenerateCallbacksFile:true
+
+#  The manufacturer code for this app defaults to 0.
+ManufacturerCodeDefaultIsZero:true
+
+#  Actual preconfigured key, if it is enabled.
+PreconfiguredKey:56777777777777777777777777777777
+
+#  Actual network key.
+NetworkKey:12333333333333333333333333333333
+
+#  Actual second network key.
+NetworkKey2:ABCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+
+# Setup configurations
+{setupId:additionalFiles
+}
+{setupId:boardHeader
+em357=CUSTOM,,PATH(STACK_RELATIVE):../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h,100101001001000101010101100110010001100101000001000100001001100110011000100101000100000110001000
+}
+{setupId:bootloader
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+compile,COLOR_CONTROL_CLUSTER
+compile,DEBUG
+compile,LEVEL_CONTROL_CLUSTER
+compile,ON_OFF_CLUSTER
+compile,OTA_BOOTLOAD_CLUSTER
+compile,TUNNELING_CLUSTER
+enable,COLOR_CONTROL_CLUSTER
+enable,DEBUG
+enable,LEVEL_CONTROL_CLUSTER
+enable,ON_OFF_CLUSTER
+enable,OTA_BOOTLOAD_CLUSTER
+enable,TUNNELING_CLUSTER
+}
+{setupId:halOptions
+}
+{setupId:information
+}
+{setupId:macros
+HOST_SERIAL_PORT=1
+HOST_BAUD_RATE=BAUD_115200
+}
+{setupId:rf4ce
+nodeCapabilities=0
+vendorId=65521
+vendorString=
+userString=
+deviceTypes=[254]
+profileIds=[0]
+power=3
+}
+{setupId:rf4ceMso
+}
+{setupId:rf4ceZrc
+}
+{setupId:serial
+em357=*0,true,*,*,*,*,*
+}
+{setupId:token
+PATH(GEN_RELATIVE):app/builder/Aurora_dimmer/Aurora_dimmer_tokens_1.h
+}
+#  The name of the set of Command Line Interface (CLI) commands that are
+#  compiled into the application by default.
+CliCommandSet:None
+
+#  These are the various Command Line Interface (CLI) commands that can be
+#  included, or excluded (if they are included by default), in the application.
+#  Plugin configuration
+appPlugin:address-table,true
+
+appPlugin:aurora-button-joining,true
+
+appPlugin:aurora-colour-control,true
+
+appPlugin:aurora-host-protocol,true
+
+appPlugin:aurora-level-control,true
+
+appPlugin:aurora-on-off,true
+
+appPlugin:aurora-ota-client,true
+
+appPlugin:aurora-ota-client-policy,true
+
+appPlugin:aurora-pwm,true
+
+appPlugin:aurora-tunneling-server,true
+
+appPlugin:basic,false
+
+appPlugin:button-joining,false
+
+appPlugin:color-control,false
+
+appPlugin:concentrator,true
+
+appPlugin:counters,true
+
+appPlugin:device-management-server,false
+
+appPlugin:diagnostic-server,false
+
+appPlugin:door-lock-server,false
+
+appPlugin:drlc,false
+
+appPlugin:drlc-server,false
+
+appPlugin:eeprom,true
+
+appPlugin:end-device-support,false
+
+appPlugin:esi-management,false
+
+appPlugin:ezmode-commissioning,true
+
+appPlugin:fragmentation,false
+
+appPlugin:gateway,false
+
+appPlugin:general-response-commands,false
+
+appPlugin:groups-client,false
+
+appPlugin:groups-server,true
+
+appPlugin:hc-11073-tunnel,false
+
+appPlugin:ias-zone-client,false
+
+appPlugin:ias-zone-server,false
+
+appPlugin:identify,true
+
+appPlugin:identify-feedback,false
+
+appPlugin:idle-sleep,true
+
+appPlugin:interpan,false
+
+appPlugin:key-establishment,false
+
+appPlugin:level-control,false
+
+appPlugin:messaging-client,false
+
+appPlugin:messaging-server,false
+
+appPlugin:meter-mirror,false
+
+appPlugin:meter-snapshot-server,false
+
+appPlugin:meter-snapshot-storage,false
+
+appPlugin:mn-price-passthrough,false
+
+appPlugin:network-find,true
+
+appPlugin:on-off,false
+
+appPlugin:ota-bootload,true
+
+appPlugin:ota-client,false
+
+appPlugin:ota-client-policy,false
+
+appPlugin:ota-common,true
+
+appPlugin:ota-server,false
+
+appPlugin:ota-server-policy,false
+
+appPlugin:ota-storage-common,true
+
+appPlugin:ota-storage-posix-filesystem,false
+
+appPlugin:ota-storage-simple,true
+
+appPlugin:ota-storage-simple-eeprom,true
+
+appPlugin:ota-storage-simple-ram,false
+
+appPlugin:partner-link-key-exchange,false
+
+appPlugin:poll-control-client,false
+
+appPlugin:poll-control-server,false
+
+appPlugin:price-client,false
+
+appPlugin:price-server,false
+
+appPlugin:reporting,false
+
+appPlugin:scenes,true
+
+appPlugin:scenes-client,false
+
+appPlugin:simple-clock,false
+
+appPlugin:simple-metering-client,false
+
+appPlugin:simple-metering-server,false
+
+appPlugin:smart-energy-registration,false
+
+appPlugin:stack-diagnostics,false
+
+appPlugin:standalone-bootloader-client,false
+
+appPlugin:standalone-bootloader-common,false
+
+appPlugin:standalone-bootloader-server,false
+
+appPlugin:test-harness,false
+
+appPlugin:time-server,false
+
+appPlugin:tou-calendar-client,false
+
+appPlugin:tou-calendar-common,false
+
+appPlugin:tou-calendar-server,false
+
+appPlugin:trust-center-backup,false
+
+appPlugin:trust-center-keepalive,false
+
+appPlugin:trust-center-nwk-key-update-broadcast,false
+
+appPlugin:trust-center-nwk-key-update-periodic,false
+
+appPlugin:trust-center-nwk-key-update-unicast,false
+
+appPlugin:tunneling-client,false
+
+appPlugin:tunneling-server,false
+
+appPlugin:xmodem-sender,false
+
+appPlugin:zll-commissioning,false
+
+appPlugin:zll-identify-server,false
+
+appPlugin:zll-level-control-server,false
+
+appPlugin:zll-on-off-server,false
+
+appPlugin:zll-scenes-client,false
+
+appPlugin:zll-scenes-server,false
+
+appPlugin:zll-utility-client,false
+
+appPlugin:zll-utility-server,false
+
+#  Plugin specific options
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_BUTTON_JOINING_EZ_MODE,TRUE
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_BUTTON_JOINING_BUTTON_PORT,PB6_BIT
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_BUTTON_JOINING_LED_PORT1,PB3_BIT
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_BUTTON_JOINING_LED_PORT2,PB4_BIT
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_NETWORK_FIND_CHANNEL_MASK,0x07FFF800UL
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_OTA_CLIENT_AUTO_START,FALSE
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_OTA_CLIENT_RUN_UPGRADE_REQUEST_DELAY_MINUTES,1
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_IMAGE_TYPE_ID2,0x5678
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT,FALSE
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_EBL_VERIFICATION,TRUE
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_DELETE_FAILED_DOWNLOADS,TRUE
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_NETWORK_FIND_RADIO_TX_POWER,8
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION1,2
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_INCLUDE_HARDWARE_VERSION,true
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END,524288
+
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2,21
+

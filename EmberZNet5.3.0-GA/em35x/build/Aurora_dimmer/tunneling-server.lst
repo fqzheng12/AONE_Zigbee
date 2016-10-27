@@ -1,0 +1,527 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     17/Sep/2014  09:58:28 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\tunneling-s #
+#                    erver.c                                                  #
+#    Command line =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\tunneling-s #
+#                    erver.c -D "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_ #
+#                    dimmer/Aurora_dimmer_tokens.h\"" -D                      #
+#                    "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_ #
+#                    dimmer.h\"" -D APP_BTL -D "BOARD_HEADER=\"app/builder/Au #
+#                    rora_dimmer/Aurora_dimmer_board_1.h\"" -D                #
+#                    "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\""  #
+#                    -D CORTEXM3 -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357    #
+#                    -D PHY_EM3XX -D "APPLICATION_TOKEN_HEADER=\"app/framewor #
+#                    k/util/tokens.h\"" -D "CONFIGURATION_HEADER=\"app/framew #
+#                    ork/util/config.h\"" -D "ATTRIBUTE_STORAGE_CONFIGURATION #
+#                    =\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_conf #
+#                    ig.h\"" -D "__SOURCEFILE__=\"tunneling-server.c\"" -lC   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --diag_suppress Pa050 -o            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --debug --endian=little             #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files (x86)\IAR Systems\Embedded Workbench               #
+#                    6.4\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\aurora-tunneling-server\ -I         #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\ -I                            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\ -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\app\framework\include #
+#                    \ -I C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\e #
+#                    m35x\app\builder\Aurora_dimmer\..\..\..\ -I              #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\stack\ -I             #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\ -I               #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\..\ -Ohz          #
+#                    --use_c++_inline                                         #
+#    List file    =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\tunneling-server.lst                 #
+#    Object file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\tunneling-server.o                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\tunneling-server.c
+      1          // *******************************************************************
+      2          // * tunneling-server.c
+      3          // *
+      4          // *
+      5          // * Copyright 2010 by Ember Corporation. All rights reserved.              *80*
+      6          // *******************************************************************
+      7          
+      8          #include "../../include/af.h"
+      9          #include "../../util/common.h"
+     10          #include "tunneling-server.h"
+     11          
+     12          #define UNUSED_ENDPOINT_ID 0xFF
+     13          
+     14          // If addressIndex is EMBER_NULL_ADDRESS_TABLE_INDEX and clientEndpoint is
+     15          // UNUSED_ENDPOINT_ID, then the entry is unused and available for use by a new
+     16          // tunnel.  Occasionally, clientEndpoint will be UNUSED_ENDPOINT_ID, but
+     17          // addressIndex will contain a valid index.  This happens after a tunnel is
+     18          // removed but before the address table entry has been cleaned up.  There is a
+     19          // delay between closure and cleanup to allow the stack to continue using the
+     20          // address table entry to send messages to the client.
+     21          typedef struct {
+     22            int8u   addressIndex;
+     23            int8u   clientEndpoint;
+     24            int8u   serverEndpoint;
+     25            int8u   protocolId;
+     26            int16u  manufacturerCode;
+     27            boolean flowControlSupport;
+     28            int32u  lastActive;
+     29          } EmAfTunnelingServerTunnel;
+     30          
+     31          // this tells you both if the test protocol IS SUPPORTED and if
+     32          // the current protocol requested IS the test protocol
+     33          #ifdef EMBER_AF_PLUGIN_TUNNELING_SERVER_TEST_PROTOCOL_SUPPORT
+     34            #define emAfIsTestProtocol(protocolId, manufacturerCode) \
+     35              ((protocolId) == EMBER_ZCL_TUNNELING_PROTOCOL_ID_TEST  \
+     36               && (manufacturerCode) == ZCL_TUNNELING_CLUSTER_UNUSED_MANUFACTURER_CODE)
+     37            #define emAfTunnelIsTestProtocol(tunnel) \
+     38              (emAfIsTestProtocol((tunnel)->protocolId, (tunnel)->manufacturerCode))
+     39          #else
+     40            #define emAfIsTestProtocol(protocolId, manufacturerCode) (FALSE)
+     41            #define emAfTunnelIsTestProtocol(tunnel) (FALSE)
+     42          #endif
+     43          
+     44          // global for keeping track of test-harness behavior "busy status"
+     45          static boolean emberAfPluginTunnelingServerBusyStatus = FALSE;
+     46          
+     47          static EmAfTunnelingServerTunnel tunnels[EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT];
+                                                          ^
+Error[Pe020]: identifier "EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT" is
+          undefined
+     48          
+     49          static EmberAfStatus serverFindTunnel(int16u tunnelId,
+     50                                                int8u addressIndex,
+     51                                                int8u clientEndpoint,
+     52                                                int8u serverEndpoint,
+     53                                                EmAfTunnelingServerTunnel **tunnel);
+     54          static void closeInactiveTunnels(int8u endpoint);
+     55          
+     56          void emberAfTunnelingClusterServerInitCallback(int8u endpoint)
+     57          {
+     58            EmberAfStatus status;
+     59            int16u closeTunnelTimeout = EMBER_AF_PLUGIN_TUNNELING_SERVER_CLOSE_TUNNEL_TIMEOUT;
+                                               ^
+Error[Pe020]: identifier
+          "EMBER_AF_PLUGIN_TUNNELING_SERVER_CLOSE_TUNNEL_TIMEOUT" is undefined
+
+    EmberAfStatus status;
+                  ^
+"C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\tunneling-server.c",58  Warning[Pe550]: 
+          variable "status" was set but never used
+     60            int8u i;
+     61          
+     62            for (i = 0; i < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT; i++) {
+     63              tunnels[i].addressIndex = EMBER_NULL_ADDRESS_TABLE_INDEX;
+     64              tunnels[i].clientEndpoint = UNUSED_ENDPOINT_ID;
+     65            }
+     66          
+     67            status = emberAfWriteServerAttribute(endpoint,
+     68                                                 ZCL_TUNNELING_CLUSTER_ID,
+     69                                                 ZCL_CLOSE_TUNNEL_TIMEOUT_ATTRIBUTE_ID,
+     70                                                 (int8u *)&closeTunnelTimeout,
+     71                                                 ZCL_INT16U_ATTRIBUTE_TYPE);
+     72          #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_TUNNELING_CLUSTER)
+     73            if (status != EMBER_ZCL_STATUS_SUCCESS) {
+     74              emberAfTunnelingClusterPrintln("ERR: writing close tunnel timeout 0x%x",
+     75                                             status);
+     76            }
+     77          #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_TUNNELING_CLUSTER)
+     78          }
+     79          
+     80          void emberAfTunnelingClusterServerTickCallback(int8u endpoint)
+     81          {
+     82            closeInactiveTunnels(endpoint);
+     83          }
+     84          
+     85          void emberAfTunnelingClusterServerAttributeChangedCallback(int8u endpoint,
+     86                                                                     EmberAfAttributeId attributeId)
+     87          {
+     88            if (attributeId == ZCL_CLOSE_TUNNEL_TIMEOUT_ATTRIBUTE_ID) {
+     89              closeInactiveTunnels(endpoint);
+     90            }
+     91          }
+     92          
+     93          boolean emberAfTunnelingClusterRequestTunnelCallback(int8u protocolId,
+     94                                                               int16u manufacturerCode,
+     95                                                               int8u flowControlSupport,
+     96                                                               int16u maximumIncomingTransferSize)
+     97          {
+     98            int16u tunnelId = ZCL_TUNNELING_CLUSTER_INVALID_TUNNEL_ID;
+     99            EmberAfTunnelingTunnelStatus status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_NO_MORE_TUNNEL_IDS;
+    100          
+    101            emberAfTunnelingClusterPrintln("RX: RequestTunnel 0x%x, 0x%2x, 0x%x, 0x%2x",
+    102                                           protocolId,
+    103                                           manufacturerCode,
+    104                                           flowControlSupport,
+    105                                           maximumIncomingTransferSize);
+    106          
+    107            if (!emAfIsTestProtocol(protocolId, manufacturerCode)
+    108                && !emberAfPluginTunnelingServerIsProtocolSupportedCallback(protocolId,
+                           ^
+Warning[Pe223]: function
+          "emberAfPluginTunnelingServerIsProtocolSupportedCallback" declared
+          implicitly
+    109                                                                            manufacturerCode)) {
+    110              status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_PROTOCOL_NOT_SUPPORTED;
+    111            } else if (flowControlSupport) {
+    112              // TODO: Implement support for flow control.
+    113              status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_FLOW_CONTROL_NOT_SUPPORTED;
+    114            } else if (emberAfPluginTunnelingServerBusyStatus) {
+    115              status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_BUSY;
+    116            } else {
+    117              int8u i;
+    118              for (i = 0; i < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT; i++) {
+    119                if (tunnels[i].addressIndex == EMBER_NULL_ADDRESS_TABLE_INDEX
+    120                    && tunnels[i].clientEndpoint == UNUSED_ENDPOINT_ID) {
+    121                  EmberEUI64 eui64;
+    122                  EmberNodeId client = emberAfCurrentCommand()->source;
+    123                  status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_BUSY;
+    124                  if (emberLookupEui64ByNodeId(client, eui64) == EMBER_SUCCESS) {
+    125                    tunnels[i].addressIndex = emberAfAddAddressTableEntry(eui64, client);
+    126                    if (tunnels[i].addressIndex != EMBER_NULL_ADDRESS_TABLE_INDEX) {
+    127                      tunnelId = i;
+    128                      tunnels[i].clientEndpoint = emberAfCurrentCommand()->apsFrame->sourceEndpoint;
+    129                      tunnels[i].serverEndpoint = emberAfCurrentCommand()->apsFrame->destinationEndpoint;
+    130                      tunnels[i].protocolId = protocolId;
+    131                      tunnels[i].manufacturerCode = manufacturerCode;
+    132                      tunnels[i].flowControlSupport = flowControlSupport;
+    133                      tunnels[i].lastActive = emberAfGetCurrentTime();
+    134                      status = EMBER_ZCL_TUNNELING_TUNNEL_STATUS_SUCCESS;
+    135                      // This will reschedule the tick that will timeout tunnels.
+    136                      closeInactiveTunnels(emberAfCurrentCommand()->apsFrame->destinationEndpoint);
+    137                    } else {
+    138                      emberAfTunnelingClusterPrintln("ERR: Could not create address"
+    139                                                     " table entry for node 0x%2x",
+    140                                                     client);
+    141                    }
+    142                  } else {
+    143                    emberAfTunnelingClusterPrintln("ERR: EUI64 for node 0x%2x"
+    144                                                   " is unknown",
+    145                                                   client);
+    146                  }
+    147                  break;
+    148                }
+    149              }
+    150            }
+    151          
+    152            if (status == EMBER_ZCL_TUNNELING_TUNNEL_STATUS_SUCCESS) {
+    153              emberAfPluginTunnelingServerTunnelOpenedCallback(tunnelId,
+                     ^
+Warning[Pe223]: function "emberAfPluginTunnelingServerTunnelOpenedCallback"
+          declared implicitly
+    154                                                               protocolId,
+    155                                                               manufacturerCode,
+    156                                                               flowControlSupport,
+    157                                                               maximumIncomingTransferSize);
+    158            }
+    159          
+    160            emberAfFillCommandTunnelingClusterRequestTunnelResponse(tunnelId,
+    161                                                                    status,
+    162                                                                    EMBER_AF_PLUGIN_TUNNELING_SERVER_MAXIMUM_INCOMING_TRANSFER_SIZE);
+                                                                           ^
+Error[Pe020]: identifier
+          "EMBER_AF_PLUGIN_TUNNELING_SERVER_MAXIMUM_INCOMING_TRANSFER_SIZE" is
+          undefined
+    163            emberAfGetCommandApsFrame()->options |= EMBER_APS_OPTION_SOURCE_EUI64;
+    164            emberAfSendResponse();
+    165            return TRUE;
+    166          }
+    167          
+    168          boolean emberAfTunnelingClusterCloseTunnelCallback(int16u tunnelId)
+    169          {
+    170            EmAfTunnelingServerTunnel *tunnel;
+    171            EmberAfStatus status;
+    172          
+    173            emberAfTunnelingClusterPrintln("RX: CloseTunnel 0x%2x", tunnelId);
+    174          
+    175            status = serverFindTunnel(tunnelId,
+    176                                      emberAfGetAddressIndex(),
+    177                                      emberAfCurrentCommand()->apsFrame->sourceEndpoint,
+    178                                      emberAfCurrentCommand()->apsFrame->destinationEndpoint,
+    179                                      &tunnel);
+    180            if (status == EMBER_ZCL_STATUS_SUCCESS) {
+    181              // Mark the entry as unused and schedule a tick to clean up the address
+    182              // table entry.  The delay before cleaning up the address table is to give
+    183              // the stack some time to continue using it for sending the response to the
+    184              // server.
+    185              tunnel->clientEndpoint = UNUSED_ENDPOINT_ID;
+    186              emberAfScheduleServerTick(emberAfCurrentCommand()->apsFrame->destinationEndpoint,
+    187                                        ZCL_TUNNELING_CLUSTER_ID,
+    188                                        MILLISECOND_TICKS_PER_SECOND);
+    189              emberAfPluginTunnelingServerTunnelClosedCallback(tunnelId,
+                     ^
+Warning[Pe223]: function "emberAfPluginTunnelingServerTunnelClosedCallback"
+          declared implicitly
+    190                                                               CLOSE_INITIATED_BY_CLIENT);
+    191            }
+    192          
+    193            emberAfSendImmediateDefaultResponse(status);
+    194            return TRUE;
+    195          }
+    196          
+    197          boolean emberAfTunnelingClusterTransferDataClientToServerCallback(int16u tunnelId,
+    198                                                                            int8u* data)
+    199          {
+    200            EmAfTunnelingServerTunnel *tunnel;
+    201            EmberAfStatus status;
+    202            int16u dataLen = (emberAfCurrentCommand()->bufLen
+    203                              - (emberAfCurrentCommand()->payloadStartIndex
+    204                                 + sizeof(tunnelId)));
+    205            EmberAfTunnelingTransferDataStatus tunnelError = EMBER_ZCL_TUNNELING_TRANSFER_DATA_STATUS_DATA_OVERFLOW;
+    206          
+    207            emberAfTunnelingClusterPrint("RX: TransferData 0x%2x, [", tunnelId);
+    208            emberAfTunnelingClusterPrintBuffer(data, dataLen, FALSE);
+    209            emberAfTunnelingClusterPrintln("]");
+    210          
+    211            status = serverFindTunnel(tunnelId,
+    212                                      emberAfGetAddressIndex(),
+    213                                      emberAfCurrentCommand()->apsFrame->sourceEndpoint,
+    214                                      emberAfCurrentCommand()->apsFrame->destinationEndpoint,
+    215                                      &tunnel);
+    216            if (status == EMBER_ZCL_STATUS_SUCCESS) {
+    217              if (dataLen <= EMBER_AF_PLUGIN_TUNNELING_SERVER_MAXIMUM_INCOMING_TRANSFER_SIZE) {
+                                    ^
+Error[Pe020]: identifier
+          "EMBER_AF_PLUGIN_TUNNELING_SERVER_MAXIMUM_INCOMING_TRANSFER_SIZE" is
+          undefined
+    218                tunnel->lastActive = emberAfGetCurrentTime();
+    219          
+    220                // If this is the test protocol (and the option for test protocol support
+    221                // is enabled), just turn the data around without notifying the
+    222                // application.  Otherwise, everything goes to the application via a
+    223                // callback.
+    224                if (emAfTunnelIsTestProtocol(tunnel)) {
+    225                  emberAfPluginTunnelingServerTransferData(tunnelId, data, dataLen);
+    226                } else {
+    227                  emberAfPluginTunnelingServerDataReceivedCallback(tunnelId, data, dataLen);
+                         ^
+Warning[Pe223]: function "emberAfPluginTunnelingServerDataReceivedCallback"
+          declared implicitly
+    228                }
+    229                emberAfSendImmediateDefaultResponse(status);
+    230                return TRUE;
+    231              }
+    232              // else
+    233              //  tunnelError code already set (overflow)
+    234          
+    235            } else {
+    236              tunnelError = (status == EMBER_ZCL_STATUS_NOT_AUTHORIZED
+    237                             ? EMBER_ZCL_TUNNELING_TRANSFER_DATA_STATUS_WRONG_DEVICE
+    238                             : EMBER_ZCL_TUNNELING_TRANSFER_DATA_STATUS_NO_SUCH_TUNNEL);
+    239            }
+    240          
+    241            // Error
+    242            emberAfFillCommandTunnelingClusterTransferDataErrorServerToClient(tunnelId,
+    243                                                                              tunnelError);
+    244            emberAfGetCommandApsFrame()->options |= EMBER_APS_OPTION_SOURCE_EUI64;
+    245            emberAfSendResponse();
+    246            return TRUE;
+    247          }
+    248          
+    249          boolean emberAfTunnelingClusterTransferDataErrorClientToServerCallback(int16u tunnelId,
+    250                                                                                 int8u transferDataStatus)
+    251          {
+    252            EmAfTunnelingServerTunnel *tunnel;
+    253            EmberAfStatus status;
+    254          
+    255            emberAfTunnelingClusterPrintln("RX: TransferDataError 0x%2x, 0x%x",
+    256                                           tunnelId,
+    257                                           transferDataStatus);
+    258          
+    259            status = serverFindTunnel(tunnelId,
+    260                                      emberAfGetAddressIndex(),
+    261                                      emberAfCurrentCommand()->apsFrame->sourceEndpoint,
+    262                                      emberAfCurrentCommand()->apsFrame->destinationEndpoint,
+    263                                      &tunnel);
+    264            if (status == EMBER_ZCL_STATUS_SUCCESS) {
+    265              emberAfPluginTunnelingServerDataErrorCallback(tunnelId,
+                     ^
+Warning[Pe223]: function "emberAfPluginTunnelingServerDataErrorCallback"
+          declared implicitly
+    266                                                            (EmberAfTunnelingTransferDataStatus)transferDataStatus);
+    267            }
+    268          
+    269            emberAfSendImmediateDefaultResponse(status);
+    270            return TRUE;
+    271          }
+    272          
+    273          EmberAfStatus emberAfPluginTunnelingServerTransferData(int16u tunnelId,
+    274                                                                 int8u *data,
+    275                                                                 int16u dataLen)
+    276          {
+    277            if (tunnelId < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT
+    278                && tunnels[tunnelId].clientEndpoint != UNUSED_ENDPOINT_ID) {
+    279              EmberStatus status;
+    280              emberAfFillCommandTunnelingClusterTransferDataServerToClient(tunnelId,
+    281                                                                           data,
+    282                                                                           dataLen);
+    283              emberAfSetCommandEndpoints(tunnels[tunnelId].serverEndpoint,
+    284                                         tunnels[tunnelId].clientEndpoint);
+    285              emberAfGetCommandApsFrame()->options |= EMBER_APS_OPTION_SOURCE_EUI64;
+    286              status = emberAfSendCommandUnicast(EMBER_OUTGOING_VIA_ADDRESS_TABLE,
+    287                                                 tunnels[tunnelId].addressIndex);
+    288              tunnels[tunnelId].lastActive = emberAfGetCurrentTime();
+    289              return (status == EMBER_SUCCESS
+    290                      ? EMBER_ZCL_STATUS_SUCCESS
+    291                      : EMBER_ZCL_STATUS_FAILURE);
+    292            }
+    293            return EMBER_ZCL_STATUS_NOT_FOUND;
+    294          }
+    295          
+    296          static EmberAfStatus serverFindTunnel(int16u tunnelId,
+    297                                                int8u addressIndex,
+    298                                                int8u clientEndpoint,
+    299                                                int8u serverEndpoint,
+    300                                                EmAfTunnelingServerTunnel **tunnel)
+    301          {
+    302            if (tunnelId < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT
+    303                && tunnels[tunnelId].clientEndpoint != UNUSED_ENDPOINT_ID) {
+    304              if (tunnels[tunnelId].addressIndex == addressIndex
+    305                  && tunnels[tunnelId].clientEndpoint == clientEndpoint
+    306                  && tunnels[tunnelId].serverEndpoint == serverEndpoint) {
+    307                *tunnel = &tunnels[tunnelId];
+    308                return EMBER_ZCL_STATUS_SUCCESS;
+    309              } else {
+    310                return EMBER_ZCL_STATUS_NOT_AUTHORIZED;
+    311              }
+    312            }
+    313            return EMBER_ZCL_STATUS_NOT_FOUND;
+    314          }
+    315          
+    316          static void closeInactiveTunnels(int8u endpoint)
+    317          {
+    318            EmberAfStatus status;
+    319            int32u currentTime = emberAfGetCurrentTime();
+    320            int32u delay = MAX_INT32U_VALUE;
+    321            int16u closeTunnelTimeout;
+    322            int8u i;
+    323          
+    324            status = emberAfReadServerAttribute(endpoint,
+    325                                                ZCL_TUNNELING_CLUSTER_ID,
+    326                                                ZCL_CLOSE_TUNNEL_TIMEOUT_ATTRIBUTE_ID,
+    327                                                (int8u *)&closeTunnelTimeout,
+    328                                                sizeof(closeTunnelTimeout));
+    329            if (status != EMBER_ZCL_STATUS_SUCCESS) {
+    330              emberAfTunnelingClusterPrintln("ERR: reading close tunnel timeout 0x%x",
+    331                                             status);
+    332              return;
+    333            }
+    334          
+    335            // Every time the tick fires, we search the table for inactive tunnels that
+    336            // should be closed and unused entries that still have an address table
+    337            // index.  The unused tunnels have been closed, but the address table entry
+    338            // was not immediately removed so the stack could continue using it.  By this
+    339            // point, we've given the stack a fair shot to use it, so now remove the
+    340            // address table entry.  While looking through the tunnels, the time to next
+    341            // tick is calculated based on how recently the tunnels were used or by the
+    342            // need to clean up newly unused tunnels.
+    343            for (i = 0; i < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT; i++) {
+    344              if (tunnels[i].serverEndpoint == endpoint) {
+    345                if (tunnels[i].clientEndpoint != UNUSED_ENDPOINT_ID) {
+    346                  int32u elapsed = currentTime - tunnels[i].lastActive;
+    347                  if (closeTunnelTimeout <= elapsed) {
+    348                    // If we are closing an inactive tunnel and will not send a closure
+    349                    // notification, we can immediately remove the address table entry
+    350                    // for the client because it will no longer be used.  Otherwise, we
+    351                    // need to schedule a tick to clean up the address table entry so we
+    352                    // give the stack a chance to continue using it for sending the
+    353                    // notification.
+    354          #ifdef EMBER_AF_PLUGIN_TUNNELING_SERVER_CLOSURE_NOTIFICATION_SUPPORT
+    355                    emberAfFillCommandTunnelingClusterTunnelClosureNotification(i);
+    356                    emberAfSetCommandEndpoints(tunnels[i].serverEndpoint,
+    357                                               tunnels[i].clientEndpoint);
+    358                    emberAfGetCommandApsFrame()->options |= EMBER_APS_OPTION_SOURCE_EUI64;
+    359                    emberAfSendCommandUnicast(EMBER_OUTGOING_VIA_ADDRESS_TABLE,
+    360                                              tunnels[i].addressIndex);
+    361                    delay = 1;
+    362          #else
+    363                    emberAfRemoveAddressTableEntry(tunnels[i].addressIndex);
+    364                    tunnels[i].addressIndex = EMBER_NULL_ADDRESS_TABLE_INDEX;
+    365          #endif
+    366                    tunnels[i].clientEndpoint = UNUSED_ENDPOINT_ID;
+    367                    emberAfPluginTunnelingServerTunnelClosedCallback(i,
+                           ^
+Warning[Pe223]: function "emberAfPluginTunnelingServerTunnelClosedCallback"
+          declared implicitly
+    368                                                                     CLOSE_INITIATED_BY_SERVER);
+    369                  } else {
+    370                    int32u remaining = closeTunnelTimeout - elapsed;
+    371                    if (remaining < delay) {
+    372                      delay = remaining;
+    373                    }
+    374                  }
+    375                } else if (tunnels[i].addressIndex != EMBER_NULL_ADDRESS_TABLE_INDEX) {
+    376                  emberAfRemoveAddressTableEntry(tunnels[i].addressIndex);
+    377                  tunnels[i].addressIndex = EMBER_NULL_ADDRESS_TABLE_INDEX;
+    378                }
+    379              }
+    380            }
+    381          
+    382            if (delay != MAX_INT32U_VALUE) {
+    383              emberAfScheduleServerTick(endpoint,
+    384                                        ZCL_TUNNELING_CLUSTER_ID,
+    385                                        delay * MILLISECOND_TICKS_PER_SECOND);
+    386            }
+    387          }
+    388          
+    389          void emberAfPluginTunnelingServerToggleBusyCommand(void)
+    390          {
+    391            emberAfTunnelingClusterPrintln("");
+    392            if (emberAfPluginTunnelingServerBusyStatus) {
+    393              emberAfPluginTunnelingServerBusyStatus = FALSE;
+    394              emberAfTunnelingClusterPrintln("  NOTE: current status is NOT BUSY (tunneling works)");
+    395            } else {
+    396              emberAfPluginTunnelingServerBusyStatus = TRUE;
+    397              emberAfTunnelingClusterPrintln("  NOTE: current status is BUSY (tunneling won't work)");
+    398            }
+    399            emberAfTunnelingClusterPrintln("");
+    400            emberAfTunnelingClusterFlush();
+    401          }
+    402          
+    403          void emAfPluginTunnelingServerCliPrint(void)
+    404          {
+    405            int32u currentTime = emberAfGetCurrentTime();
+    406            int8u i;
+    407            emberAfTunnelingClusterPrintln("");
+    408            emberAfTunnelingClusterPrintln("#   client              cep  sep  tid    pid  mfg    age");
+    409            emberAfTunnelingClusterFlush();
+    410            for (i = 0; i < EMBER_AF_PLUGIN_TUNNELING_SERVER_TUNNEL_LIMIT; i++) {
+    411              emberAfTunnelingClusterPrint("%x: ", i);
+    412              if (tunnels[i].clientEndpoint != UNUSED_ENDPOINT_ID) {
+    413                EmberEUI64 eui64;
+    414                emberGetAddressTableRemoteEui64(tunnels[i].addressIndex, eui64);
+    415                emberAfTunnelingClusterDebugExec(emberAfPrintBigEndianEui64(eui64));
+    416                emberAfTunnelingClusterPrint(" 0x%x 0x%x 0x%2x",
+    417                                             tunnels[i].clientEndpoint,
+    418                                             tunnels[i].serverEndpoint,
+    419                                             i);
+    420                emberAfTunnelingClusterFlush();
+    421                emberAfTunnelingClusterPrint(" 0x%x 0x%2x 0x%4x",
+    422                                             tunnels[i].protocolId,
+    423                                             tunnels[i].manufacturerCode,
+    424                                             currentTime - tunnels[i].lastActive);
+    425                emberAfTunnelingClusterFlush();
+    426              }
+    427              emberAfTunnelingClusterPrintln("");
+    428            }
+    429          }
+
+Errors: 4
+Warnings: 7

@@ -1,0 +1,306 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:36
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-button-joining\aurora-button-joining-hal.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-button-joining\aurora-button-joining-hal.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-button-joining-hal.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-button-joining\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-button-joining-hal.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-button-joining-hal.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-button-joining\aurora-button-joining-hal.c
+      1          #include "app/framework/include/af.h"
+      2          #include "app/framework/util/af-event.h"
+      3          #include "aurora-button-joining-hal.h"
+      4          
+
+   \                                 In section .bss, align 1
+   \   00000000                      DS8 1
+      5          static boolean buttonState = FALSE;
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void emberAfPluginAuroraButtonJoiningButtonIoInit(void)
+      8          {
+   \                     emberAfPluginAuroraButtonJoiningButtonIoInit: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      9              emberAfDebugPrintln("Initialise button IO");
+   \   00000002   0x.... 0x....      ADR.W    R1,?_0
+   \   00000006   0x2002             MOVS     R0,#+2
+   \   00000008   0x.... 0x....      BL       emberAfPrintln
+     10              
+     11              //start from a fresh state just in case
+     12              BUTTON_INTCFG = 0;              //disable BUTTON triggering
+   \   0000000C   0x....             LDR.N    R0,??DataTable5  ;; 0x4000a814
+     13              INT_CFGCLR = BUTTON_INT_EN_BIT; //clear BUTTON top level int enable
+   \   0000000E   0x....             LDR.N    R2,??DataTable5_1  ;; 0xe000e180
+     14              INT_GPIOFLAG = BUTTON_FLAG_BIT; //clear stale BUTTON interrupt
+     15              INT_MISS = BUTTON_MISS_BIT;     //clear stale missed BUTTON interrupt
+     16              
+     17              //configure BUTTON interrupt
+     18              if (BUTTON_IRQ_SEL != 0)
+     19              {
+     20                  GPIO_IRQCSEL = BUTTON_IRQ_SEL;                              //point IRQ at the desired pin
+   \   00000010   0x....             LDR.N    R3,??DataTable5_2  ;; 0x4000bc14
+   \   00000012   0x2100             MOVS     R1,#+0
+   \   00000014   0x6541             STR      R1,[R0, #+84]
+   \   00000016   0xF44F 0x4180      MOV      R1,#+16384
+   \   0000001A   0x6011             STR      R1,[R2, #+0]
+   \   0000001C   0x2204             MOVS     R2,#+4
+   \   0000001E   0x6002             STR      R2,[R0, #+0]
+   \   00000020   0x60C1             STR      R1,[R0, #+12]
+   \   00000022   0x2211             MOVS     R2,#+17
+   \   00000024   0x601A             STR      R2,[R3, #+0]
+     21              }
+     22              BUTTON_INTCFG = (GPIOINTMOD_BOTH_EDGES << GPIO_INTMOD_BIT);  
+   \   00000026   0x2260             MOVS     R2,#+96
+   \   00000028   0x6542             STR      R2,[R0, #+84]
+     23              
+     24              INT_CFGSET = BUTTON_INT_EN_BIT;
+   \   0000002A   0x....             LDR.N    R0,??DataTable5_3  ;; 0xe000e100
+   \   0000002C   0x6001             STR      R1,[R0, #+0]
+     25              
+     26              buttonConfigureInput();
+   \   0000002E   0xE8BD 0x4001      POP      {R0,LR}
+   \   00000032                      REQUIRE buttonConfigureInput
+   \   00000032                      ;; // Fall through to label buttonConfigureInput
+     27          }
+     28          
+
+   \                                 In section .text, align 2, keep-with-next
+     29          void buttonConfigureInput(void)
+     30          {
+     31              // configure BUTTON input
+     32              BUTTON_GPIO_CFG &= ~(BUTTON_CFG_MASK);
+   \                     buttonConfigureInput: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable5_4  ;; 0x4000b800
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0xF021 0x01F0      BIC      R1,R1,#0xF0
+   \   00000008   0x6001             STR      R1,[R0, #+0]
+     33              BUTTON_GPIO_CFG |= BUTTON_CFG_INPUT;
+   \   0000000A   0x6801             LDR      R1,[R0, #+0]
+   \   0000000C   0xF041 0x0180      ORR      R1,R1,#0x80
+   \   00000010   0x6001             STR      R1,[R0, #+0]
+     34              BUTTON_OUT |= BUTTON_PULL_UP;
+   \   00000012   0x68C1             LDR      R1,[R0, #+12]
+   \   00000014   0xF041 0x0102      ORR      R1,R1,#0x2
+   \   00000018   0x60C1             STR      R1,[R0, #+12]
+     35          }
+   \   0000001A   0x4770             BX       LR               ;; return
+     36          
+
+   \                                 In section .text, align 2, keep-with-next
+     37          void BUTTON_ISR(void)
+     38          {
+     39              // Acknowledge the interrupt
+     40              INT_MISS = BUTTON_MISS_BIT;
+   \                     halIrqCIsr: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable5  ;; 0x4000a814
+   \   00000002   0xF44F 0x4180      MOV      R1,#+16384
+   \   00000006   0x60C1             STR      R1,[R0, #+12]
+     41              INT_GPIOFLAG = BUTTON_FLAG_BIT;
+   \   00000008   0x2104             MOVS     R1,#+4
+   \   0000000A   0x6001             STR      R1,[R0, #+0]
+     42          
+     43              buttonState = buttonGetState();
+   \   0000000C   0x....             LDR.N    R0,??DataTable5_5  ;; 0x4000b808
+   \   0000000E   0x6800             LDR      R0,[R0, #+0]
+     44              
+     45              emberAfPluginAuroraButtonJoiningButtonPress(buttonState);
+   \   00000010   0x0840             LSRS     R0,R0,#+1
+   \   00000012   0xF000 0x0001      AND      R0,R0,#0x1
+   \   00000016   0xF080 0x0001      EOR      R0,R0,#0x1
+   \   0000001A   0x.... 0x....      B.W      emberAfPluginAuroraButtonJoiningButtonPress
+     46          }
+     47          
+
+   \                                 In section .text, align 2, keep-with-next
+     48          boolean buttonGetState(void)
+     49          {
+     50              return (BUTTON_IN & BUTTON_PIN) ? BUTTON_RELEASED : BUTTON_PRESSED;
+   \                     buttonGetState: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable5_5  ;; 0x4000b808
+   \   00000002   0x6800             LDR      R0,[R0, #+0]
+   \   00000004   0x0840             LSRS     R0,R0,#+1
+   \   00000006   0xF000 0x0001      AND      R0,R0,#0x1
+   \   0000000A   0xF080 0x0001      EOR      R0,R0,#0x1
+   \   0000000E   0x4770             BX       LR               ;; return
+     51          }
+     52          
+
+   \                                 In section .text, align 2, keep-with-next
+     53          void disableButtonInterrpt(void)
+     54          {
+     55              BUTTON_INTCFG = 0;              //disable BUTTON triggering
+   \                     disableButtonInterrpt: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable5  ;; 0x4000a814
+     56              INT_CFGCLR = BUTTON_INT_EN_BIT; //clear BUTTON top level int enable
+   \   00000002   0x....             LDR.N    R2,??DataTable5_1  ;; 0xe000e180
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6541             STR      R1,[R0, #+84]
+   \   00000008   0xF44F 0x4180      MOV      R1,#+16384
+   \   0000000C   0x6011             STR      R1,[R2, #+0]
+     57              INT_GPIOFLAG = BUTTON_FLAG_BIT; //clear stale BUTTON interrupt
+   \   0000000E   0x2204             MOVS     R2,#+4
+   \   00000010   0x6002             STR      R2,[R0, #+0]
+     58              INT_MISS = BUTTON_MISS_BIT;     //clear stale missed BUTTON interrupt
+   \   00000012   0x60C1             STR      R1,[R0, #+12]
+     59          }
+   \   00000014   0x4770             BX       LR               ;; return
+     60          
+
+   \                                 In section .text, align 2, keep-with-next
+     61          void enableButtonInterrpt(void)
+     62          {
+     63              //configure BUTTON interrupt
+     64              BUTTON_INTCFG = (GPIOINTMOD_BOTH_EDGES << GPIO_INTMOD_BIT);  
+   \                     enableButtonInterrpt: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable5_6  ;; 0x4000a868
+   \   00000002   0x2060             MOVS     R0,#+96
+   \   00000004   0x6008             STR      R0,[R1, #+0]
+     65              INT_CFGSET = BUTTON_INT_EN_BIT; // Set BUTTON top level int enable
+   \   00000006   0xF44F 0x4080      MOV      R0,#+16384
+   \   0000000A   0x....             LDR.N    R1,??DataTable5_3  ;; 0xe000e100
+   \   0000000C   0x6008             STR      R0,[R1, #+0]
+     66          }
+   \   0000000E   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   0x4000A814         DC32     0x4000a814
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   0xE000E180         DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \   00000000   0x4000BC14         DC32     0x4000bc14
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_3:
+   \   00000000   0xE000E100         DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_4:
+   \   00000000   0x4000B800         DC32     0x4000b800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_5:
+   \   00000000   0x4000B808         DC32     0x4000b808
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_6:
+   \   00000000   0x4000A868         DC32     0x4000a868
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x49 0x6E          DC8 "Initialise button IO"
+   \              0x69 0x74    
+   \              0x69 0x61    
+   \              0x6C 0x69    
+   \              0x73 0x65    
+   \              0x20 0x62    
+   \              0x75 0x74    
+   \              0x74 0x6F    
+   \              0x6E 0x20    
+   \              0x49 0x4F    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   buttonConfigureInput
+       0   buttonGetState
+       0   disableButtonInterrpt
+       8   emberAfPluginAuroraButtonJoiningButtonIoInit
+         0   -> buttonConfigureInput
+         8   -> emberAfPrintln
+       0   enableButtonInterrpt
+       0   halIrqCIsr
+         0   -> emberAfPluginAuroraButtonJoiningButtonPress
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable5
+       4  ??DataTable5_1
+       4  ??DataTable5_2
+       4  ??DataTable5_3
+       4  ??DataTable5_4
+       4  ??DataTable5_5
+       4  ??DataTable5_6
+      24  ?_0
+      28  buttonConfigureInput
+      16  buttonGetState
+       1  buttonState
+      22  disableButtonInterrpt
+      50  emberAfPluginAuroraButtonJoiningButtonIoInit
+      16  enableButtonInterrpt
+      30  halIrqCIsr
+
+ 
+   1 byte  in section .bss
+ 214 bytes in section .text
+ 
+ 214 bytes of CODE memory
+   1 byte  of DATA memory
+
+Errors: none
+Warnings: none

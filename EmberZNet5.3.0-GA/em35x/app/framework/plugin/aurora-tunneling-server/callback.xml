@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<callback prefix="emberAf" postfix="Callback">
+  <function id="TUNNELING_SERVER_DATA_ERROR" name="Data Error" returnType="void">
+    <description> 
+      This function is called by the Tunneling server plugin whenever a data error occurs on a tunnel.  Errors occur if a device attempts to send data on tunnel that is no longer active or if the tunneling does not belong to the device.
+    </description>
+    <arg name="tunnelId"           type="int16u"                             description="The identifier of the tunnel on which this data error occurred." />
+    <arg name="transferDataStatus" type="EmberAfTunnelingTransferDataStatus" description="The error that occurred." />
+    <codeForStub />
+  </function>  
+</callback>

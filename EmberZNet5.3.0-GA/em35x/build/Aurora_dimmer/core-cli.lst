@@ -1,0 +1,811 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:55
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\cli\core-cli.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\cli\core-cli.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"core-cli.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\cli\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\core-cli.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\core-cli.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\cli\core-cli.c
+      1          // *****************************************************************************
+      2          // * core-cli.c
+      3          // *
+      4          // * Core CLI commands used by all applications regardless of profile.
+      5          // *
+      6          // * Copyright 2010 by Ember Corporation. All rights reserved.              *80*
+      7          // *****************************************************************************
+      8          
+      9          // common include file
+     10          #include "app/framework/util/common.h"
+     11          #include "app/framework/util/af-main.h"
+     12          
+     13          #include "app/util/serial/command-interpreter2.h"
+     14          #include "stack/include/library.h"
+     15          #include "app/framework/security/af-security.h"
+     16          
+     17          #if !defined(EZSP_HOST)
+     18            #include "stack/include/cbke-crypto-engine.h"  // emberGetCertificate()
+     19          #endif
+     20          
+     21          #include "app/framework/cli/core-cli.h"
+     22          #include "app/framework/cli/custom-cli.h"
+     23          #include "app/framework/cli/network-cli.h"
+     24          #include "app/framework/cli/plugin-cli.h"
+     25          #include "app/framework/cli/security-cli.h"
+     26          #include "app/framework/cli/zdo-cli.h"
+     27          #include "app/framework/cli/option-cli.h"
+     28          #include "app/framework/plugin/test-harness/test-harness-cli.h"
+     29          #if defined(EMBER_AF_PLUGIN_COUNTERS)
+     30            #include "app/framework/plugin/counters/counters-cli.h"
+     31            #include "app/framework/plugin/counters/counters.h"
+     32          #endif
+     33          
+     34          #include "app/framework/util/af-event.h"
+     35          
+     36          #include "app/framework/plugin/gateway/gateway-support-cli.h"
+     37          
+     38          #include "app/util/common/library.h"
+     39          
+     40          #if !defined(XAP2B)
+     41            #define PRINT_FULL_COUNTER_NAMES
+     42          #endif
+     43          
+     44          //------------------------------------------------------------------------------
+     45          
+
+   \                                 In section .text, align 2, keep-with-next
+     46          void emberCommandActionHandler(const CommandAction action)
+     47          {
+   \                     emberCommandActionHandler: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x4604             MOV      R4,R0
+     48            emberAfPushNetworkIndex(emAfCliNetworkIndex);
+   \   00000004   0x....             LDR.N    R0,??DataTable0
+   \   00000006   0x7800             LDRB     R0,[R0, #+0]
+   \   00000008   0x.... 0x....      BL       emberAfPushNetworkIndex
+     49            (*action)();
+   \   0000000C   0x47A0             BLX      R4
+     50            emberAfPopNetworkIndex();
+   \   0000000E   0xE8BD 0x4010      POP      {R4,LR}
+   \   00000012   0x.... 0x....      B.W      emberAfPopNetworkIndex
+     51          
+     52          #if defined(EMBER_QA)
+     53            emberSerialPrintfLine(APP_SERIAL, "CLI Finished");
+     54          #endif
+     55          }
+     56          
+     57          extern EmberCommandEntry cbkeCommands[];
+     58          
+     59          #if !defined(ZA_CLI_MINIMAL) && !defined(ZA_CLI_FULL) && !defined(EMBER_AF_GENERATE_CLI)
+     60            // Define this to satisfy external references.
+     61            EmberCommandEntry emberCommandTable[] = { { NULL } };
+     62          #endif
+     63          
+     64          #if defined(ZA_CLI_MINIMAL) || defined(ZA_CLI_FULL)
+     65          
+     66          void printMfgString(void)
+     67          {
+     68            int8u mfgString[MFG_STRING_MAX_LENGTH + 1];
+     69            emberAfFormatMfgString(mfgString);
+     70            
+     71            // Note:  We use '%s' here because this is a RAM string.  Normally
+     72            // most strings are literals or constants in flash and use '%p'.
+     73            emberAfAppPrintln("MFG String: %s", mfgString);
+     74          }
+     75          
+     76          static void printPacketBuffers(void)
+     77          {
+     78            emberAfAppPrintln("Buffs: %d / %d",
+     79                              emAfGetPacketBufferFreeCount(),
+     80                              emAfGetPacketBufferTotalCount());
+     81          }
+     82          
+     83          boolean printSmartEnergySecurityInfo(void)
+     84          {
+     85          #ifdef EMBER_AF_HAS_SECURITY_PROFILE_SE
+     86            boolean securityGood = TRUE;
+     87            emberAfAppPrint("SE Security Info [");
+     88            {
+     89              // for SE security, print the state of ECC, CBKE, and the programmed Cert
+     90              EmberCertificateData cert;
+     91              EmberStatus status = emberGetCertificate(&cert);
+     92          
+     93              // check the status of the ECC library
+     94              if (emberGetLibraryStatus(EMBER_ECC_LIBRARY_ID)
+     95                  & EMBER_LIBRARY_PRESENT_MASK) {
+     96                emberAfAppPrint("Real163k1ECC ");
+     97              } else {
+     98                emberAfAppPrint("No163k1ECC ");
+     99                securityGood = FALSE;
+    100              }
+    101          
+    102              // status of EMBER_LIBRARY_NOT_PRESENT means the CBKE is not present
+    103              // in the image.  We don't know anything about the certificate.
+    104              if (status == EMBER_LIBRARY_NOT_PRESENT) {
+    105                emberAfAppPrint("No163k1Cbke UnknownCert ");
+    106                securityGood = FALSE;
+    107              } else {
+    108                emberAfAppPrint("Real163k1Cbke ");
+    109          
+    110                // status of EMBER_SUCCESS means the cert is ok
+    111                if (status == EMBER_SUCCESS) {
+    112                  emberAfAppPrint("GoodCert");
+    113                }
+    114                // status of EMBER_ERR_FATAL means the cert failed
+    115                else if (status == EMBER_ERR_FATAL) {
+    116                  emberAfAppPrint("BadCert");
+    117                  securityGood = FALSE;
+    118                }
+    119              }
+    120              emberAfAppPrintln("]");
+    121          
+    122            }
+    123            emberAfAppFlush();
+    124            return securityGood;
+    125          #else
+    126            return FALSE;
+    127          #endif
+    128          }
+    129          
+    130          boolean printSmartEnergySecurityInfo283k1(void)
+    131          {
+    132          #ifdef EMBER_AF_HAS_SECURITY_PROFILE_SE
+    133            boolean securityGood = TRUE;
+    134            emberAfAppPrint("SE Security 283k1 Info [");
+    135            {
+    136              // for SE security, print the state of ECC, CBKE, and the programmed Cert
+    137              EmberCertificate283k1Data cert;
+    138              // This is a temporary step until the EZSP frames are added
+    139              // for the 283k CBKE library
+    140              EmberStatus status = EMBER_LIBRARY_NOT_PRESENT;
+    141              status = emberGetCertificate283k1(&cert);
+    142              // check the status of the ECC library
+    143              if (emberGetLibraryStatus(EMBER_ECC_LIBRARY_283K1_ID)
+    144                  & EMBER_LIBRARY_PRESENT_MASK) {
+    145                emberAfAppPrint("Real283k1ECC ");
+    146              } else {
+    147                emberAfAppPrint("No283k1ECC ");
+    148                securityGood = FALSE;
+    149              }
+    150          
+    151              // status of EMBER_LIBRARY_NOT_PRESENT means the CBKE is not present
+    152              // in the image.  We don't know anything about the certificate.
+    153              if (status == EMBER_LIBRARY_NOT_PRESENT) {
+    154                emberAfAppPrint("No283k1Cbke UnknownCert");
+    155                securityGood = FALSE;
+    156              } else {
+    157                emberAfAppPrint("Real283k1Cbke ");
+    158          
+    159                // status of EMBER_SUCCESS means the cert is ok
+    160                if (status == EMBER_SUCCESS) {
+    161                  emberAfAppPrint("GoodCert");
+    162                }
+    163                // status of EMBER_ERR_FATAL means the cert failed
+    164                else if (status == EMBER_ERR_FATAL) {
+    165                  emberAfAppPrint("BadCert");
+    166                  securityGood = FALSE;
+    167                }
+    168              }
+    169              emberAfAppPrintln("]");
+    170            }
+    171            emberAfAppFlush();
+    172            return securityGood;
+    173          #else
+    174            return FALSE;
+    175          #endif
+    176          }
+    177          
+    178          void emAfCliInfoCommand(void)
+    179          {
+    180            EmberNodeType nodeTypeResult = 0xFF;
+    181            int8u commandLength;
+    182            EmberEUI64 myEui64;
+    183            EmberNetworkParameters networkParams;
+    184            emberStringCommandArgument(-1, &commandLength);
+    185            printMfgString();
+    186            emberAfAppPrintln("AppBuilder MFG Code: 0x%2X", EMBER_AF_MANUFACTURER_CODE);
+    187            emberAfGetEui64(myEui64);
+    188            emberAfGetNetworkParameters(&nodeTypeResult, &networkParams);
+    189            emberAfAppPrint("node [");
+    190            emberAfAppDebugExec(emberAfPrintBigEndianEui64(myEui64));
+    191            emberAfAppFlush();
+    192            emberAfAppPrintln("] chan [%d] pwr [%d]",
+    193                              networkParams.radioChannel,
+    194                              networkParams.radioTxPower);
+    195            emberAfAppPrint("panID [0x%2x] nodeID [0x%2x] ",
+    196                           networkParams.panId,
+    197                           emberAfGetNodeId());
+    198            emberAfAppFlush();
+    199            emberAfAppPrint("xpan [0x");
+    200            emberAfAppDebugExec(emberAfPrintBigEndianEui64(networkParams.extendedPanId));
+    201            emberAfAppPrintln("]");
+    202            emberAfAppFlush();
+    203          
+    204            emAfCliVersionCommand();
+    205            emberAfAppFlush();
+    206          
+    207            emberAfAppPrint("nodeType [");
+    208            if (nodeTypeResult != 0xFF) {
+    209              emberAfAppPrint("0x%x", nodeTypeResult);
+    210            } else {
+    211              emberAfAppPrint("unknown");
+    212            }
+    213            emberAfAppPrintln("]");
+    214            emberAfAppFlush();
+    215          
+    216            emberAfAppPrint("%p level [%x]", "Security", emberAfGetSecurityLevel());
+    217          
+    218            printSmartEnergySecurityInfo();
+    219            printSmartEnergySecurityInfo283k1();
+    220          
+    221            emberAfAppPrint("network state [%x] ", emberNetworkState());
+    222            printPacketBuffers();
+    223            emberAfAppFlush();
+    224          
+    225            // print the endpoint information
+    226            {
+    227              int8u i, j;
+    228              emberAfAppPrintln("Ep cnt: %d", emberAfEndpointCount());
+    229              // loop for each endpoint
+    230              for (i = 0; i < emberAfEndpointCount(); i++) {
+    231                EmberAfEndpointType *et = emAfEndpoints[i].endpointType;
+    232                emberAfAppPrint("ep %d [endpoint %p, device %p] ",
+    233                                emberAfEndpointFromIndex(i),
+    234                                (emberAfEndpointIndexIsEnabled(i)
+    235                                 ? "enabled"
+    236                                 : "disabled"),
+    237                                emberAfIsDeviceEnabled(emberAfEndpointFromIndex(i))
+    238                                ? "enabled" 
+    239                                : "disabled");
+    240                emberAfAppPrintln("nwk [%d] profile [0x%2x] devId [0x%2x] ver [0x%x]",
+    241                                  emberAfNetworkIndexFromEndpointIndex(i),
+    242                                  emberAfProfileIdFromIndex(i),
+    243                                  emberAfDeviceIdFromIndex(i),
+    244                                  emberAfDeviceVersionFromIndex(i));    
+    245                // loop for the clusters within the endpoint
+    246                for (j = 0; j < et->clusterCount; j++) {
+    247                  EmberAfCluster *zc = &(et->cluster[j]);
+    248                  emberAfAppPrint("    %p cluster: 0x%2x ", 
+    249                                 (emberAfClusterIsClient(zc)
+    250                                  ? "out(client)"
+    251                                  : "in (server)" ),
+    252                                 zc->clusterId);
+    253                  emberAfAppDebugExec(emberAfDecodeAndPrintCluster(zc->clusterId));
+    254                  emberAfAppPrintln("");
+    255                  emberAfAppFlush();
+    256                }
+    257                emberAfAppFlush();
+    258              }
+    259            }
+    260          
+    261            {
+    262              PGM_P names[] = {
+    263                EMBER_AF_GENERATED_NETWORK_STRINGS
+    264              };
+    265              int8u i;
+    266              emberAfAppPrintln("Nwk cnt: %d", EMBER_SUPPORTED_NETWORKS);
+    267              for (i = 0; i < EMBER_SUPPORTED_NETWORKS; i++) {
+    268                emberAfAppPrintln("nwk %d [%p]", i, names[i]);
+    269                switch (emAfNetworks[i].type) {
+    270                case EM_AF_NETWORK_TYPE_ZIGBEE_PRO:
+    271                  emberAfAppPrintln("  nodeType [0x%x]", emAfNetworks[i].variant.pro.nodeType);
+    272                  emberAfAppPrintln("  securityProfile [0x%x]", emAfNetworks[i].variant.pro.securityProfile);
+    273                  break;
+    274                case EM_AF_NETWORK_TYPE_ZIGBEE_RF4CE:
+    275                  emberAfAppPrintln("  nodeType [0x%x]", emAfNetworks[i].variant.rf4ce.nodeType);
+    276                  break;
+    277                }
+    278              }
+    279            }
+    280          }
+    281          #endif
+    282          
+    283          #if defined(ZA_CLI_MINIMAL) || defined(ZA_CLI_FULL)
+    284          
+    285          //------------------------------------------------------------------------------
+    286          // "debugprint" commands.
+    287          
+    288          #ifdef ZA_CLI_FULL
+    289          
+    290          void printOnCommand(void)
+    291          {
+    292            int16u area = (int16u)emberUnsignedCommandArgument(0);
+    293            emberAfPrintOn(area);
+    294          }
+    295          
+    296          void printOffCommand(void)
+    297          {
+    298            int16u area = (int16u)emberUnsignedCommandArgument(0);
+    299            emberAfPrintOff(area);
+    300          }
+    301          
+    302          #ifndef EMBER_AF_GENERATE_CLI
+    303          
+    304          static PGM_P debugPrintOnOffCommandArguments[] = {
+    305            "Number of the specified print area.",
+    306            NULL,
+    307          };
+    308          
+    309          static EmberCommandEntry debugPrintCommands[] = {
+    310            emberCommandEntryAction("status", 
+    311                                    emberAfPrintStatus,
+    312                                    "",
+    313                                    "Print the status of all the debug print areas."),
+    314            emberCommandEntryAction("all_on",
+    315                                    emberAfPrintAllOn, 
+    316                                    "",
+    317                                    "Turn all debug print areas on."),
+    318          
+    319            emberCommandEntryAction("all_off",
+    320                                    emberAfPrintAllOff, 
+    321                                    "",
+    322                                    "Turn all debug print areas off."),
+    323          
+    324            emberCommandEntryActionWithDetails("on",
+    325                                               printOnCommand, 
+    326                                               "v",
+    327                                               "Turn on the printing for the specified area.",
+    328                                               debugPrintOnOffCommandArguments),
+    329          
+    330            emberCommandEntryActionWithDetails("off",
+    331                                               printOffCommand, 
+    332                                               "v",
+    333                                               "Turn off the printing for the specified area.",
+    334                                               debugPrintOnOffCommandArguments),
+    335            emberCommandEntryTerminator(),
+    336          };
+    337          #endif // EMBER_AF_GENERATE_CLI
+    338          
+    339          #endif
+    340          
+    341          //------------------------------------------------------------------------------
+    342          // Miscellaneous commands.
+    343          
+    344          void helpCommand(void)
+    345          {
+    346          
+    347          #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_APP)
+    348            EmberCommandEntry *commandFinger = emberCommandTable;
+    349            for (; commandFinger->name != NULL; commandFinger++) {
+    350              emberAfAppPrintln("%p", commandFinger->name);
+    351              emberAfAppFlush();
+    352            }
+    353          #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_APP)
+    354          }
+    355          
+    356          void resetCommand(void)
+    357          {
+    358            halReboot();
+    359          }
+    360          
+    361          void echoCommand(void)
+    362          {
+    363            int8u echoOn = (int8u)emberUnsignedCommandArgument(0);
+    364            if ( echoOn ) {
+    365              emberCommandInterpreterEchoOn();
+    366            } else {
+    367              emberCommandInterpreterEchoOff();
+    368            }
+    369          }
+    370          
+    371          void printEvents(void)
+    372          {
+    373            int8u i = 0;
+    374            int32u nowMS32 = halCommonGetInt32uMillisecondTick();
+    375            while (emAfEvents[i].control != NULL) {
+    376              emberAfCorePrint("%p  : ", emAfEventStrings[i]);
+    377              if (emAfEvents[i].control->status == EMBER_EVENT_INACTIVE) {
+    378                emberAfCorePrintln("inactive");
+    379              } else {
+    380                emberAfCorePrintln("%l ms", emAfEvents[i].control->timeToExecute - nowMS32);
+    381              }
+    382              i++;
+    383            }
+    384          }
+    385          
+    386          //------------------------------------------------------------------------------
+    387          // "endpoint" commands
+    388          
+    389          void endpointPrint(void)
+    390          {
+    391            int8u endpoint = (int8u)emberUnsignedCommandArgument(0);
+    392            int8u i;
+    393            for (i = 0; i < emberAfEndpointCount(); i++) {
+    394              emberAfCorePrint("EP %d: %p ", 
+    395                               emAfEndpoints[i].endpoint,
+    396                               (emberAfEndpointIndexIsEnabled(i)
+    397                                ? "Enabled"
+    398                                : "Disabled"));
+    399              emAfPrintEzspEndpointFlags(emAfEndpoints[i].endpoint);
+    400              emberAfCorePrintln("");
+    401            }
+    402          }
+    403          
+    404          void enableDisableEndpoint(void)
+    405          {
+    406            int8u endpoint = (int8u)emberUnsignedCommandArgument(0);
+    407            boolean enable = (emberCurrentCommand->name[0] == 'e'
+    408                              ? TRUE
+    409                              : FALSE);
+    410            if (!emberAfEndpointEnableDisable(endpoint, 
+    411                                              enable)) {
+    412              emberAfCorePrintln("Error:  Unknown endpoint.");
+    413            }
+    414          }
+    415          
+    416          #ifndef EMBER_AF_GENERATE_CLI
+    417          static EmberCommandEntry endpointCommands[] = {
+    418            emberCommandEntryAction("print",  endpointPrint, "",
+    419                                    "Print the status of all the endpoints."),
+    420            emberCommandEntryAction("enable", enableDisableEndpoint, "u",
+    421                                    "Enables the endpoint for processing ZCL messages."),
+    422            emberCommandEntryAction("disable", enableDisableEndpoint, "u",
+    423                                    "Disable the endpoint from processing ZCL messages."),
+    424            
+    425            emberCommandEntryTerminator(),
+    426          };
+    427          
+    428          //------------------------------------------------------------------------------
+    429          // Commands
+    430          
+    431          static PGM_P readCommandArguments[] = {
+    432            "Endpoint",
+    433            "Cluster ID",
+    434            "Attribute ID",
+    435            "Server Attribute (boolean)",
+    436            NULL,
+    437          };
+    438          
+    439          static PGM_P timeSyncCommandArguments[] = {
+    440            "Node ID",
+    441            "source endpoint",
+    442            "dest endpoint",
+    443            NULL,
+    444          };
+    445          
+    446          static PGM_P writeCommandArguments[] = {
+    447            "Endpoint",
+    448            "Cluster ID",
+    449            "Attribute ID",
+    450            "Server Attribute (boolean)",
+    451            "Data Bytes",
+    452            NULL,
+    453          };
+    454          
+    455          static PGM_P bindSendCommandArguments[] = {
+    456            "Source Endpoint",
+    457            NULL,
+    458          };
+    459          
+    460          static PGM_P rawCommandArguments[] = {
+    461            "Cluster ID",
+    462            "Data Bytes",
+    463            NULL,
+    464          };
+    465          
+    466          static PGM_P sendCommandArguments[] = {
+    467            "Node ID",
+    468            "Source Endpoint",
+    469            "Dest Endpoint",
+    470            NULL,
+    471          };
+    472          
+    473          static PGM_P sendMulticastCommandArguments[] = {
+    474            "Broadcast address",
+    475            "Group Address",
+    476            "Source Endpoint",
+    477            NULL,
+    478          };
+    479          
+    480          EmberCommandEntry emberCommandTable[] = {
+    481          
+    482          #ifdef ZA_CLI_FULL
+    483          
+    484              #if (defined(ZCL_USING_KEY_ESTABLISHMENT_CLUSTER_CLIENT) \
+    485                   && defined(ZCL_USING_KEY_ESTABLISHMENT_CLUSTER_SERVER))
+    486                emberCommandEntrySubMenu("cbke",
+    487                                         emberAfPluginKeyEstablishmentCommands, 
+    488                                         "Commands to initiate CBKE"),
+    489              #endif
+    490          
+    491              #ifdef EMBER_AF_PRINT_ENABLE
+    492                emberCommandEntrySubMenu("print",      printCommands, ""),
+    493                emberCommandEntrySubMenu("debugprint", debugPrintCommands, ""),
+    494              #endif
+    495          
+    496              #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_APP)
+    497                emberCommandEntryAction("version",
+    498                                        emAfCliVersionCommand, 
+    499                                        "",
+    500                                        "Print the version number of the ZNet software."),
+    501          
+    502                LIBRARY_COMMANDS       // Defined in app/util/common/library.h
+    503              #endif
+    504          
+    505              emberCommandEntrySubMenu("cha",      
+    506                                       changeKeyCommands,
+    507                                       "Commands to change the default NWK or Link Key"),
+    508              emberCommandEntrySubMenu("interpan",
+    509                                       interpanCommands,
+    510                                       "Commands to send interpan ZCL messages."),
+    511              emberCommandEntrySubMenu("option",
+    512                                       emAfOptionCommands,
+    513                                       "Commands to change the application options"),
+    514          
+    515              emberCommandEntryActionWithDetails("read",
+    516                                                 emAfCliReadCommand, 
+    517                                                 "uvvu",
+    518                                                 "Construct a read attributes command to be sent.",
+    519                                                 readCommandArguments),
+    520          
+    521              emberCommandEntryActionWithDetails("time",
+    522                                                 emAfCliTimesyncCommand,           
+    523                                                 "vuu",
+    524                                                 "Send a read attribute for the current time",
+    525                                                 timeSyncCommandArguments),
+    526          
+    527              emberCommandEntryActionWithDetails("write",            
+    528                                                 emAfCliWriteCommand,              
+    529                                                 "uvvuub",
+    530                                                 "Construct a write attributes command to send.",
+    531                                                 writeCommandArguments),
+    532          
+    533              emberCommandEntrySubMenu("zcl",
+    534                                       zclCommands,
+    535                                       "Commands for constructing ZCL cluster commands."),
+    536          
+    537          #endif // ZA_CLI_FULL
+    538          
+    539            emberCommandEntryActionWithDetails("bsend",
+    540                                               emAfCliBsendCommand,              
+    541                                               "u",
+    542                                               "Send using a binding.",
+    543                                               bindSendCommandArguments),
+    544          
+    545            emberCommandEntrySubMenu("keys",
+    546                                     keysCommands,
+    547                                     "Commands to print or set the security keys"),
+    548          
+    549            emberCommandEntrySubMenu("network",
+    550                                     networkCommands,
+    551                                     "Commands to form or join a network."),
+    552          
+    553            emberCommandEntryActionWithDetails("raw",
+    554                                               emAfCliRawCommand,                
+    555                                               "vb",
+    556                                               "Create a manually formatted message.",
+    557                                               rawCommandArguments),
+    558          
+    559            emberCommandEntryActionWithDetails("send",
+    560                                               emAfCliSendCommand,               
+    561                                               "vuu",
+    562                                               "Send the previously constructed command via unicast.",
+    563                                               sendCommandArguments),
+    564          
+    565            emberCommandEntryActionWithDetails("send_multicast",
+    566                                               emAfCliSendCommand,               
+    567                                               "vu",
+    568                                               "Send the previously constructed command via multicast.",
+    569                                               sendMulticastCommandArguments),
+    570          
+    571            emberCommandEntrySubMenu("security", emAfSecurityCommands, 
+    572                                     "Commands for setting/getting security parameters."),
+    573          #if defined(EMBER_AF_PLUGIN_COUNTERS)
+    574            emberCommandEntryAction("cnt_print",     emberAfPluginCountersPrintCommand,    "", \
+    575                                    "Print all stack counters"),                  \
+    576            emberCommandEntryAction("cnt_clear",     emberAfPluginCountersClear,    "" ,\
+    577                                    "Clear all stack counters"),\
+    578            emberCommandEntryAction("cnt_threshold_print",emberAfPluginCountersPrintThresholdsCommand,"",\
+    579                                    "Print all stack counter thresholds"),\
+    580            emberCommandEntryAction("set_counter_threshold", emberAfPluginCountersSetThresholdCommand, "uu",\
+    581                                    "Set Counter Threshold"), \
+    582            emberCommandEntryAction("reset_counter_thresholds", emberAfPluginCountersResetThresholds, "",\
+    583                                    "Reset_counter_thresholds"),
+    584          #endif
+    585          
+    586          #if defined(EMBER_AF_PLUGIN_COUNTERS_COUNTERSOTA)
+    587            emberCommandEntryAction("cnt_req",       sendCountersRequestCommand,  "vu" , \
+    588                                    "Request stack counters from remote device"),
+    589          #endif
+    590          
+    591            emberCommandEntryAction("help",     helpCommand, "",
+    592                                    "Print the list of commands."),
+    593            emberCommandEntryAction("reset", resetCommand, "",
+    594                                    "Perform a software reset of the device."),
+    595            emberCommandEntryAction("echo",  echoCommand, "u",
+    596                                    "Turn on/off command interpreter echoing."),
+    597            emberCommandEntryAction("events",  printEvents, "",
+    598                                    "Print the list of timer events."),
+    599            emberCommandEntrySubMenu("endpoint", endpointCommands,
+    600                                     "Commands to manipulate the endpoints."),
+    601            
+    602          #ifndef EMBER_AF_CLI_DISABLE_INFO
+    603            emberCommandEntryAction("info", emAfCliInfoCommand, "", \
+    604                                    "Print infomation about the network state, clusters, and endpoints"),
+    605          #endif
+    606            
+    607            EMBER_AF_PLUGIN_COMMANDS
+    608            ZDO_COMMANDS
+    609            CUSTOM_COMMANDS
+    610            TEST_HARNESS_CLI_COMMANDS
+    611            EMBER_AF_PLUGIN_GATEWAY_COMMANDS
+    612          
+    613            emberCommandEntryTerminator(),
+    614          };
+    615          
+    616          #endif // EMBER_AF_GENERATE_CLI
+    617          
+    618          #else 
+    619          // Stubs
+
+   \                                 In section .text, align 2, keep-with-next
+    620          void enableDisableEndpoint(void)
+    621          {
+    622          }
+   \                     enableDisableEndpoint: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    623          
+
+   \                                 In section .text, align 2, keep-with-next
+    624          void endpointPrint(void)
+    625          {
+    626          }
+   \                     endpointPrint: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    627          
+
+   \                                 In section .text, align 2, keep-with-next
+    628          void printOffCommand(void)
+    629          {
+    630          }
+   \                     printOffCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    631          
+
+   \                                 In section .text, align 2, keep-with-next
+    632          void printOnCommand(void)
+    633          {
+    634          }
+   \                     printOnCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    635          
+
+   \                                 In section .text, align 2, keep-with-next
+    636          void echoCommand(void)
+    637          {
+    638          }
+   \                     echoCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    639          
+
+   \                                 In section .text, align 2, keep-with-next
+    640          void emAfCliCountersCommand(void)
+    641          {
+    642          }
+   \                     emAfCliCountersCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    643          
+
+   \                                 In section .text, align 2, keep-with-next
+    644          void emAfCliInfoCommand(void)
+    645          {
+    646          }
+   \                     emAfCliInfoCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    647          
+
+   \                                 In section .text, align 2, keep-with-next
+    648          void helpCommand(void)
+    649          {
+    650          }
+   \                     helpCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    651          
+
+   \                                 In section .text, align 2, keep-with-next
+    652          void resetCommand(void)
+    653          {
+    654          }
+   \                     resetCommand: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x........         DC32     emAfCliNetworkIndex
+    655          #endif // defined(ZA_CLI_MINIMAL) || defined(ZA_CLI_FULL)
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   echoCommand
+       0   emAfCliCountersCommand
+       0   emAfCliInfoCommand
+       8   emberCommandActionHandler
+         8   -- Indirect call
+         0   -> emberAfPopNetworkIndex
+         8   -> emberAfPushNetworkIndex
+       0   enableDisableEndpoint
+       0   endpointPrint
+       0   helpCommand
+       0   printOffCommand
+       0   printOnCommand
+       0   resetCommand
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+       2  echoCommand
+       2  emAfCliCountersCommand
+       2  emAfCliInfoCommand
+      22  emberCommandActionHandler
+       2  enableDisableEndpoint
+       2  endpointPrint
+       2  helpCommand
+       2  printOffCommand
+       2  printOnCommand
+       2  resetCommand
+
+ 
+ 44 bytes in section .text
+ 
+ 44 bytes of CODE memory
+
+Errors: none
+Warnings: none

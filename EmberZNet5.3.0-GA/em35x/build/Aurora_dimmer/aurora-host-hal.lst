@@ -1,0 +1,699 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:40
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-host-protocol\aurora-host-hal.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-host-protocol\aurora-host-hal.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-host-hal.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-host-protocol\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-host-hal.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-host-hal.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-host-protocol\aurora-host-hal.c
+      1          #include "app/framework/include/af.h"
+      2          
+      3          #include <string.h>
+      4          #include "aurora-host-hal.h"
+      5          #include "aurora-host-protocol.h"
+      6          #include "aurora-host-bootload.h"
+      7          
+      8          void auroraHostHalStartTimeoutTimer(void);
+      9          
+
+   \                                 In section .bss, align 4
+     10          EmberEventControl emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl;
+   \                     emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl:
+   \   00000000                      DS8 8
+     11          void emberAfPluginAuroraHostProtocolBootloadTimeoutEventHandler(void);
+
+   \                                 In section .bss, align 4
+     12          EmberEventControl emberAfPluginAuroraHostProtocolResetEventControl;
+   \                     emberAfPluginAuroraHostProtocolResetEventControl:
+   \   00000000                      DS8 8
+     13          void emberAfPluginAuroraHostProtocolResetEventHandler(void);
+
+   \                                 In section .bss, align 4
+     14          EmberEventControl emberAfPluginAuroraHostProtocolBootloadEventControl;
+   \                     emberAfPluginAuroraHostProtocolBootloadEventControl:
+   \   00000000                      DS8 8
+     15          void emberAfPluginAuroraHostProtocolBootloadEventHandler(void);
+     16          
+
+   \                                 In section .bss, align 4
+     17          static int8u receivedData[RECEIVE_DATA_BUFFER_SIZE];
+   \                     receivedData:
+   \   00000000                      DS8 128
+
+   \                                 In section .bss, align 1
+     18          static int8u receiveReadIndex = 0;
+   \                     receiveReadIndex:
+   \   00000000                      DS8 1
+   \   00000001                      DS8 1
+     19          static int8u receiveWriteIndex = 0;
+     20          
+
+   \                                 In section .text, align 2, keep-with-next
+     21          void emberAfPluginAuroraHostProtocolResetEventHandler(void)
+     22          {
+     23              //resetInactive();
+     24              //emberEventControlSetDelayMS(emberAfPluginAuroraHostProtocolBootloadEventControl, MILLISECOND_TICKS_PER_SECOND);
+     25          }
+   \                     emberAfPluginAuroraHostProtocolResetEventHandler: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     26              
+
+   \                                 In section .text, align 2, keep-with-next
+     27          void emberAfPluginAuroraHostHalResetPin(boolean state)
+     28          {
+     29              // This is the wrong way due to an inverting circuit on Azoteq's hardware
+     30              if (state == FALSE) halClearLed(STM32_RESET);
+   \                     emberAfPluginAuroraHostHalResetPin: (+1)
+   \   00000000   0x2800             CMP      R0,#+0
+   \   00000002   0xBF04             ITT      EQ 
+   \   00000004   0x2004             MOVEQ    R0,#+4
+   \   00000006   0x.... 0x....      BEQ.W    halClearLed
+     31              else halSetLed(STM32_RESET);
+   \   0000000A   0x2004             MOVS     R0,#+4
+   \   0000000C   0x.... 0x....      B.W      halSetLed
+     32          }
+     33          
+
+   \                                 In section .text, align 2, keep-with-next
+     34          void emberAfPluginAuroraHostHalBootloadPin(boolean state)
+     35          {
+     36              if (state == TRUE) halClearLed(STM32_BOOT0);
+   \                     emberAfPluginAuroraHostHalBootloadPin: (+1)
+   \   00000000   0x2801             CMP      R0,#+1
+   \   00000002   0xBF04             ITT      EQ 
+   \   00000004   0x2008             MOVEQ    R0,#+8
+   \   00000006   0x.... 0x....      BEQ.W    halClearLed
+     37              else halSetLed(STM32_BOOT0);
+   \   0000000A   0x2008             MOVS     R0,#+8
+   \   0000000C   0x.... 0x....      B.W      halSetLed
+     38          }
+     39          
+
+   \                                 In section .text, align 2, keep-with-next
+     40          void emberAfPluginAuroraHostHalSerialInitHostBootload(void)
+     41          {
+     42              emberSerialInit(HOST_SERIAL_PORT, HOST_BAUD_RATE, PARITY_EVEN, 1);
+   \                     emberAfPluginAuroraHostHalSerialInitHostBootload: (+1)
+   \   00000000   0x2301             MOVS     R3,#+1
+   \   00000002   0x2202             MOVS     R2,#+2
+   \   00000004   0x....             B.N      ?Subroutine0
+     43          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0: (+1)
+   \   00000000   0x210F             MOVS     R1,#+15
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x.... 0x....      B.W      emberSerialInit
+     44          
+
+   \                                 In section .text, align 2, keep-with-next
+     45          void emberAfPluginAuroraHostHalSerialInitHostPlc(void)
+     46          {
+     47              emberSerialInit(HOST_SERIAL_PORT, HOST_BAUD_RATE, PARITY_NONE, 1);
+   \                     emberAfPluginAuroraHostHalSerialInitHostPlc: (+1)
+   \   00000000   0x2301             MOVS     R3,#+1
+   \   00000002   0x2200             MOVS     R2,#+0
+   \   00000004                      REQUIRE ?Subroutine0
+   \   00000004                      ;; // Fall through to label ?Subroutine0
+     48          }
+     49          
+
+   \                                 In section .text, align 2, keep-with-next
+     50          void emberAfPluginAuroraHostHalPlcSendCommand(int8u *command, int8u length)
+     51          {
+   \                     emberAfPluginAuroraHostHalPlcSendCommand: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x4604             MOV      R4,R0
+   \   00000004   0x460D             MOV      R5,R1
+     52              emberAfDebugPrint("\r\nPLC Send Cmd ");    
+   \   00000006   0x.... 0x....      ADR.W    R1,?_0
+   \   0000000A   0x2002             MOVS     R0,#+2
+   \   0000000C   0x.... 0x....      BL       emberAfPrint
+     53              debugBuffer(command, length);
+   \   00000010   0x4629             MOV      R1,R5
+   \   00000012   0x4620             MOV      R0,R4
+   \   00000014   0x.... 0x....      BL       debugBuffer
+     54              emberSerialWriteData(HOST_SERIAL_PORT, command, length); 
+   \   00000018   0x462A             MOV      R2,R5
+   \   0000001A   0x4621             MOV      R1,R4
+   \   0000001C   0xE8BD 0x4038      POP      {R3-R5,LR}
+   \   00000020   0x2001             MOVS     R0,#+1
+   \   00000022   0x.... 0x....      B.W      emberSerialWriteData
+     55              auroraHostHalStartTimeoutTimer();
+     56          }
+     57          
+
+   \                                 In section .text, align 2, keep-with-next
+     58          EmberStatus emberAfPluginAuroraHostHalPlcReadBytes(void)
+     59          {
+   \                     emberAfPluginAuroraHostHalPlcReadBytes: (+1)
+   \   00000000   0xB51F             PUSH     {R0-R4,LR}
+     60              EmberStatus status = EMBER_SERIAL_RX_EMPTY;
+     61              int16u bytesAvailable = 0;
+     62              int16u bytesRead = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x2426             MOVS     R4,#+38
+   \   00000006   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+     63              int8u command[10];
+     64              int8u bytes = 10;
+   \   0000000A   0xE00B             B.N      ??emberAfPluginAuroraHostHalPlcReadBytes_0
+     65              
+     66              // Check for data available to read
+     67              while (bytesAvailable = emberSerialReadAvailable(HOST_SERIAL_PORT)) 
+     68              {
+     69                  // Read the data 
+     70                  status = emberSerialReadData(HOST_SERIAL_PORT, command, (bytesAvailable <= bytes) ? bytesAvailable : bytes, &bytesRead);
+   \                     ??emberAfPluginAuroraHostHalPlcReadBytes_1: (+1)
+   \   0000000C   0xAB00             ADD      R3,SP,#+0
+   \   0000000E   0xA901             ADD      R1,SP,#+4
+   \   00000010   0x2001             MOVS     R0,#+1
+   \   00000012   0x.... 0x....      BL       emberSerialReadData
+     71                  receiveWriteBuffer(command, bytesRead);
+   \   00000016   0xF8BD 0x1000      LDRH     R1,[SP, #+0]
+   \   0000001A   0x4604             MOV      R4,R0
+   \   0000001C   0xB2C9             UXTB     R1,R1
+   \   0000001E   0xA801             ADD      R0,SP,#+4
+   \   00000020   0x.... 0x....      BL       receiveWriteBuffer
+   \                     ??emberAfPluginAuroraHostHalPlcReadBytes_0: (+1)
+   \   00000024   0x2001             MOVS     R0,#+1
+   \   00000026   0x.... 0x....      BL       emberSerialReadAvailable
+   \   0000002A   0x0002             MOVS     R2,R0
+   \   0000002C   0xD003             BEQ.N    ??emberAfPluginAuroraHostHalPlcReadBytes_2
+   \   0000002E   0x2A0B             CMP      R2,#+11
+   \   00000030   0xBFA8             IT       GE 
+   \   00000032   0x220A             MOVGE    R2,#+10
+   \   00000034   0xE7EA             B.N      ??emberAfPluginAuroraHostHalPlcReadBytes_1
+     72              }
+     73          
+     74              return status;
+   \                     ??emberAfPluginAuroraHostHalPlcReadBytes_2: (+1)
+   \   00000036   0x4620             MOV      R0,R4
+   \   00000038   0xB004             ADD      SP,SP,#+16
+   \   0000003A   0xBD10             POP      {R4,PC}          ;; return
+     75          }
+     76          
+
+   \                                 In section .text, align 2, keep-with-next
+     77          int16u emberAfPluginAuroraHostHalPlcBytesAvailable(void)
+     78          {
+     79              return (receiveWriteIndex - receiveReadIndex) & RECEIVE_DATA_BUFFER_SIZE;
+   \                     emberAfPluginAuroraHostHalPlcBytesAvailable: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable11
+   \   00000002   0x7841             LDRB     R1,[R0, #+1]
+   \   00000004   0x7800             LDRB     R0,[R0, #+0]
+   \   00000006   0x1A08             SUBS     R0,R1,R0
+   \   00000008   0xF000 0x007F      AND      R0,R0,#0x7F
+   \   0000000C   0x4770             BX       LR               ;; return
+     80          }
+     81          
+
+   \                                 In section .text, align 2, keep-with-next
+     82          boolean emberAfPluginAuroraHostHalGetResponse(void *buffer, int16u *length)
+     83          {
+   \                     emberAfPluginAuroraHostHalGetResponse: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x460C             MOV      R4,R1
+     84              int8u bytesToRead;
+     85              
+     86              bytesToRead = *length;
+   \   00000004   0x8825             LDRH     R5,[R4, #+0]
+     87              *length = receiveReadBuffer(buffer, bytesToRead);
+   \   00000006   0xB2E9             UXTB     R1,R5
+   \   00000008   0x.... 0x....      BL       receiveReadBuffer
+     88              
+     89              if (*length == bytesToRead) 
+   \   0000000C   0xB2ED             UXTB     R5,R5
+   \   0000000E   0x42A8             CMP      R0,R5
+   \   00000010   0x8020             STRH     R0,[R4, #+0]
+   \   00000012   0xD101             BNE.N    ??emberAfPluginAuroraHostHalGetResponse_0
+     90              {
+     91                  return TRUE;
+   \   00000014   0x2001             MOVS     R0,#+1
+   \   00000016   0xBD32             POP      {R1,R4,R5,PC}
+     92              } 
+     93              else 
+     94              {
+     95                  return FALSE;
+   \                     ??emberAfPluginAuroraHostHalGetResponse_0: (+1)
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+     96              }
+     97          }
+     98          
+
+   \                                 In section .text, align 2, keep-with-next
+     99          void auroraHostHalStartTimeoutTimer(void)
+    100          {
+    101              //emberEventControlSetDelayMS(emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl, MILLISECOND_TICKS_PER_SECOND);
+    102          }
+   \                     auroraHostHalStartTimeoutTimer: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+    103          
+
+   \                                 In section .text, align 2, keep-with-next
+    104          void emberAfPluginAuroraHostProtocolBootloadTimeoutEventHandler(void)
+    105          {
+    106              emberEventControlSetInactive(emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl);
+   \                     emberAfPluginAuroraHostProtocolBootloadTimeoutEventHandler: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable11_1
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x7008             STRB     R0,[R1, #+0]
+    107              //setHostBootloadHalState(STM32_BOOTLOAD_STATE_IDLE);    
+    108              emberAfDebugPrint("\r\nTimeout waiting for Host Bootloader. Resetting state machine");    
+   \   00000006   0x2002             MOVS     R0,#+2
+   \   00000008   0x.... 0x....      ADR.W    R1,?_1
+   \   0000000C   0x.... 0x....      B.W      emberAfPrint
+    109          }
+    110          
+
+   \                                 In section .text, align 2, keep-with-next
+    111          void emberAfPluginAuroraHostProtocolTimeoutCancel(void)
+    112          {
+    113              emberEventControlSetInactive(emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl);
+   \                     emberAfPluginAuroraHostProtocolTimeoutCancel: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable11_1
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x7008             STRB     R0,[R1, #+0]
+    114              
+    115              emberAfDebugPrint("\r\nCancel bootload timeout");    
+   \   00000006   0x2002             MOVS     R0,#+2
+   \   00000008   0x.... 0x....      ADR.W    R1,?_2
+   \   0000000C   0x.... 0x....      B.W      emberAfPrint
+    116          }
+    117          
+
+   \                                 In section .text, align 2, keep-with-next
+    118          void receiveWriteBuffer(int8u *data, int8u length)
+    119          {
+   \                     receiveWriteBuffer: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+    120              int8u index;
+    121          
+    122              for (index = 0; index < length; index++) 
+   \   00000002   0x....             LDR.N    R3,??DataTable11
+   \   00000004   0x....             LDR.N    R5,??DataTable11_2
+   \   00000006   0x785C             LDRB     R4,[R3, #+1]
+   \   00000008   0x2200             MOVS     R2,#+0
+   \   0000000A   0xE005             B.N      ??receiveWriteBuffer_0
+    123              {
+    124                  receivedData[receiveWriteIndex] = data[index];
+   \                     ??receiveWriteBuffer_1: (+1)
+   \   0000000C   0x5C16             LDRB     R6,[R2, R0]
+   \   0000000E   0x5566             STRB     R6,[R4, R5]
+    125                  receiveWriteIndex = (receiveWriteIndex + 1) & RECEIVE_DATA_BUFFER_SIZE;
+   \   00000010   0x1C64             ADDS     R4,R4,#+1
+   \   00000012   0xF004 0x047F      AND      R4,R4,#0x7F
+    126              }    
+   \   00000016   0x1C52             ADDS     R2,R2,#+1
+   \                     ??receiveWriteBuffer_0: (+1)
+   \   00000018   0xB2D2             UXTB     R2,R2
+   \   0000001A   0x428A             CMP      R2,R1
+   \   0000001C   0xD3F6             BCC.N    ??receiveWriteBuffer_1
+   \   0000001E   0x705C             STRB     R4,[R3, #+1]
+    127          }
+   \   00000020   0xBD70             POP      {R4-R6,PC}       ;; return
+    128          
+
+   \                                 In section .text, align 2, keep-with-next
+    129          int8u receiveReadBuffer(int8u *data, int8u length)
+    130          {
+   \                     receiveReadBuffer: (+1)
+   \   00000000   0xB5F0             PUSH     {R4-R7,LR}
+    131              int8u index;
+    132          
+    133              if (receiveReadIndex == receiveWriteIndex) 
+   \   00000002   0x....             LDR.N    R3,??DataTable11
+   \   00000004   0x785C             LDRB     R4,[R3, #+1]
+   \   00000006   0x781D             LDRB     R5,[R3, #+0]
+   \   00000008   0x42A5             CMP      R5,R4
+   \   0000000A   0xD101             BNE.N    ??receiveReadBuffer_0
+    134              { 
+    135                  return 0;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xBDF0             POP      {R4-R7,PC}
+    136              } 
+    137              else 
+    138              {
+    139                  for (index = 0; (index < length) && (receiveReadIndex != receiveWriteIndex); index++) 
+   \                     ??receiveReadBuffer_0: (+1)
+   \   00000010   0x2200             MOVS     R2,#+0
+   \   00000012   0x....             LDR.N    R6,??DataTable11_2
+   \   00000014   0xE005             B.N      ??receiveReadBuffer_1
+    140                  {
+    141                      data[index] = receivedData[receiveReadIndex];
+   \                     ??receiveReadBuffer_2: (+1)
+   \   00000016   0x5DAF             LDRB     R7,[R5, R6]
+   \   00000018   0x5417             STRB     R7,[R2, R0]
+    142                      receiveReadIndex = (receiveReadIndex + 1) & RECEIVE_DATA_BUFFER_SIZE;
+   \   0000001A   0x1C6D             ADDS     R5,R5,#+1
+   \   0000001C   0xF005 0x057F      AND      R5,R5,#0x7F
+    143                  }
+   \   00000020   0x1C52             ADDS     R2,R2,#+1
+   \                     ??receiveReadBuffer_1: (+1)
+   \   00000022   0xB2D2             UXTB     R2,R2
+   \   00000024   0x428A             CMP      R2,R1
+   \   00000026   0xD201             BCS.N    ??receiveReadBuffer_3
+   \   00000028   0x42A5             CMP      R5,R4
+   \   0000002A   0xD1F4             BNE.N    ??receiveReadBuffer_2
+   \                     ??receiveReadBuffer_3: (+1)
+   \   0000002C   0x701D             STRB     R5,[R3, #+0]
+    144              }
+    145              
+    146              //emberAfDebugPrint("Receive Read (%d) (%d)\r\n", receiveReadIndex, (receiveReadIndex + 1) & RECEIVE_DATA_BUFFER_SIZE);    
+    147              //debugBuffer(data, length);
+    148              return index;
+   \   0000002E   0x4610             MOV      R0,R2
+   \   00000030   0xBDF0             POP      {R4-R7,PC}       ;; return
+    149          }
+    150          
+
+   \                                 In section .text, align 2, keep-with-next
+    151          int8u peekReadBuffer(int8u *data, int8u length)
+    152          {
+   \                     peekReadBuffer: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+    153              int8u index;
+    154              int8u localReceiveReadIndex = receiveReadIndex;
+   \   00000002   0x....             LDR.N    R2,??DataTable11
+   \   00000004   0x7813             LDRB     R3,[R2, #+0]
+    155              int8u localReceiveWriteIndex = receiveWriteIndex;
+   \   00000006   0x7854             LDRB     R4,[R2, #+1]
+    156              
+    157              if (localReceiveReadIndex == localReceiveWriteIndex) 
+   \   00000008   0x42A3             CMP      R3,R4
+   \   0000000A   0xD101             BNE.N    ??peekReadBuffer_0
+    158              { 
+    159                  return 0;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xBD70             POP      {R4-R6,PC}
+    160              } 
+    161              else 
+    162              {
+    163                  for (index = 0; (index < length) && (localReceiveReadIndex != localReceiveWriteIndex); index++) 
+   \                     ??peekReadBuffer_0: (+1)
+   \   00000010   0x2200             MOVS     R2,#+0
+   \   00000012   0x....             LDR.N    R5,??DataTable11_2
+   \   00000014   0xE005             B.N      ??peekReadBuffer_1
+    164                  {
+    165                      data[index] = receivedData[localReceiveReadIndex];
+   \                     ??peekReadBuffer_2: (+1)
+   \   00000016   0x5D5E             LDRB     R6,[R3, R5]
+   \   00000018   0x5416             STRB     R6,[R2, R0]
+    166                      localReceiveReadIndex = (localReceiveReadIndex + 1) & RECEIVE_DATA_BUFFER_SIZE;
+   \   0000001A   0x1C5B             ADDS     R3,R3,#+1
+   \   0000001C   0xF003 0x037F      AND      R3,R3,#0x7F
+    167                  }
+   \   00000020   0x1C52             ADDS     R2,R2,#+1
+   \                     ??peekReadBuffer_1: (+1)
+   \   00000022   0xB2D2             UXTB     R2,R2
+   \   00000024   0x428A             CMP      R2,R1
+   \   00000026   0xD201             BCS.N    ??peekReadBuffer_3
+   \   00000028   0x42A3             CMP      R3,R4
+   \   0000002A   0xD1F4             BNE.N    ??peekReadBuffer_2
+    168              }
+    169          
+    170          //    emberAfDebugPrint("Receive peek (%d) (%d)\r\n", localReceiveReadIndex, (localReceiveReadIndex + 1) & RECEIVE_DATA_BUFFER_SIZE);    
+    171          //    debugBuffer(data, length);
+    172              return index;
+   \                     ??peekReadBuffer_3: (+1)
+   \   0000002C   0x4610             MOV      R0,R2
+   \   0000002E   0xBD70             POP      {R4-R6,PC}       ;; return
+    173          }
+    174          
+
+   \                                 In section .text, align 2, keep-with-next
+    175          void setReceiveBufferIndexValues(int8u readIdx, int8u writeIdx)
+    176          {
+    177              // Access fn.
+    178            
+    179              receiveReadIndex = readIdx;
+   \                     setReceiveBufferIndexValues: (+1)
+   \   00000000   0x....             LDR.N    R2,??DataTable11
+   \   00000002   0x7010             STRB     R0,[R2, #+0]
+    180              receiveWriteIndex = writeIdx;
+   \   00000004   0x7051             STRB     R1,[R2, #+1]
+    181          }
+   \   00000006   0x4770             BX       LR               ;; return
+    182          
+
+   \                                 In section .text, align 2, keep-with-next
+    183          void copyToReceiveBuffer(int8u* src, int8u length)
+    184          {
+    185              // Copies data block to start of received data buffer.
+    186              memcpy(receivedData, src, length);                  
+   \                     copyToReceiveBuffer: (+1)
+   \   00000000   0x460A             MOV      R2,R1
+   \   00000002   0x4601             MOV      R1,R0
+   \   00000004   0x....             LDR.N    R0,??DataTable11_2
+   \   00000006   0x.... 0x....      B.W      __aeabi_memcpy
+    187          }
+    188          
+
+   \                                 In section .text, align 2, keep-with-next
+    189          void clearReceiveBuffer(void)
+    190          {
+   \                     clearReceiveBuffer: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    191              // Clears received data buffer.
+    192              memset(receivedData, 0x00, sizeof(receivedData));
+   \   00000002   0x217F             MOVS     R1,#+127
+   \   00000004   0x....             LDR.N    R0,??DataTable11_2
+   \   00000006   0x.... 0x....      BL       __aeabi_memclr4
+    193                     
+    194              // Reset indexes.
+    195              receiveReadIndex = 0;
+   \   0000000A   0x....             LDR.N    R0,??DataTable11
+   \   0000000C   0x2100             MOVS     R1,#+0
+   \   0000000E   0x7001             STRB     R1,[R0, #+0]
+    196              receiveWriteIndex = 0;
+   \   00000010   0x7041             STRB     R1,[R0, #+1]
+    197          }
+   \   00000012   0xBD01             POP      {R0,PC}          ;; return
+    198          
+
+   \                                 In section .text, align 2, keep-with-next
+    199          void emberAfPluginAuroraHostProtocolBootloadEventHandler(void)
+    200          {
+    201          
+    202          }
+   \                     emberAfPluginAuroraHostProtocolBootloadEventHandler: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11:
+   \   00000000   0x........         DC32     receiveReadIndex
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11_1:
+   \   00000000   0x........         DC32     emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11_2:
+   \   00000000   0x........         DC32     receivedData
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x0D 0x0A          DC8 "\015\012PLC Send Cmd "
+   \              0x50 0x4C    
+   \              0x43 0x20    
+   \              0x53 0x65    
+   \              0x6E 0x64    
+   \              0x20 0x43    
+   \              0x6D 0x64    
+   \              0x20 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_1:
+   \   00000000   0x0D 0x0A          DC8 0DH, 0AH, 54H, 69H, 6DH, 65H, 6FH, 75H
+   \              0x54 0x69    
+   \              0x6D 0x65    
+   \              0x6F 0x75    
+   \   00000008   0x74 0x20          DC8 74H, 20H, 77H, 61H, 69H, 74H, 69H, 6EH
+   \              0x77 0x61    
+   \              0x69 0x74    
+   \              0x69 0x6E    
+   \   00000010   0x67 0x20          DC8 67H, 20H, 66H, 6FH, 72H, 20H, 48H, 6FH
+   \              0x66 0x6F    
+   \              0x72 0x20    
+   \              0x48 0x6F    
+   \   00000018   0x73 0x74          DC8 73H, 74H, 20H, 42H, 6FH, 6FH, 74H, 6CH
+   \              0x20 0x42    
+   \              0x6F 0x6F    
+   \              0x74 0x6C    
+   \   00000020   0x6F 0x61          DC8 6FH, 61H, 64H, 65H, 72H, 2EH, 20H, 52H
+   \              0x64 0x65    
+   \              0x72 0x2E    
+   \              0x20 0x52    
+   \   00000028   0x65 0x73          DC8 65H, 73H, 65H, 74H, 74H, 69H, 6EH, 67H
+   \              0x65 0x74    
+   \              0x74 0x69    
+   \              0x6E 0x67    
+   \   00000030   0x20 0x73          DC8 20H, 73H, 74H, 61H, 74H, 65H, 20H, 6DH
+   \              0x74 0x61    
+   \              0x74 0x65    
+   \              0x20 0x6D    
+   \   00000038   0x61 0x63          DC8 61H, 63H, 68H, 69H, 6EH, 65H, 0
+   \              0x68 0x69    
+   \              0x6E 0x65    
+   \              0x00         
+   \   0000003F   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_2:
+   \   00000000   0x0D 0x0A          DC8 "\015\012Cancel bootload timeout"
+   \              0x43 0x61    
+   \              0x6E 0x63    
+   \              0x65 0x6C    
+   \              0x20 0x62    
+   \              0x6F 0x6F    
+   \              0x74 0x6C    
+   \              0x6F 0x61    
+   \              0x64 0x20    
+   \              0x74 0x69    
+   \              0x6D 0x65    
+   \              0x6F 0x75    
+   \              0x74 0x00    
+   \   0000001A   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   auroraHostHalStartTimeoutTimer
+       8   clearReceiveBuffer
+         8   -> __aeabi_memclr4
+       0   copyToReceiveBuffer
+         0   -> __aeabi_memcpy
+       0   emberAfPluginAuroraHostHalBootloadPin
+         0   -> halClearLed
+         0   -> halSetLed
+      16   emberAfPluginAuroraHostHalGetResponse
+        16   -> receiveReadBuffer
+       0   emberAfPluginAuroraHostHalPlcBytesAvailable
+      24   emberAfPluginAuroraHostHalPlcReadBytes
+        24   -> emberSerialReadAvailable
+        24   -> emberSerialReadData
+        24   -> receiveWriteBuffer
+      16   emberAfPluginAuroraHostHalPlcSendCommand
+        16   -> debugBuffer
+        16   -> emberAfPrint
+         0   -> emberSerialWriteData
+       0   emberAfPluginAuroraHostHalResetPin
+         0   -> halClearLed
+         0   -> halSetLed
+       0   emberAfPluginAuroraHostHalSerialInitHostBootload
+         0   -> emberSerialInit
+       0   emberAfPluginAuroraHostHalSerialInitHostPlc
+         0   -> emberSerialInit
+       0   emberAfPluginAuroraHostProtocolBootloadEventHandler
+       0   emberAfPluginAuroraHostProtocolBootloadTimeoutEventHandler
+         0   -> emberAfPrint
+       0   emberAfPluginAuroraHostProtocolResetEventHandler
+       0   emberAfPluginAuroraHostProtocolTimeoutCancel
+         0   -> emberAfPrint
+      16   peekReadBuffer
+      20   receiveReadBuffer
+      16   receiveWriteBuffer
+       0   setReceiveBufferIndexValues
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable11
+       4  ??DataTable11_1
+       4  ??DataTable11_2
+       8  ?Subroutine0
+      16  ?_0
+      64  ?_1
+      28  ?_2
+       2  auroraHostHalStartTimeoutTimer
+      20  clearReceiveBuffer
+      10  copyToReceiveBuffer
+      16  emberAfPluginAuroraHostHalBootloadPin
+      28  emberAfPluginAuroraHostHalGetResponse
+      14  emberAfPluginAuroraHostHalPlcBytesAvailable
+      60  emberAfPluginAuroraHostHalPlcReadBytes
+      38  emberAfPluginAuroraHostHalPlcSendCommand
+      16  emberAfPluginAuroraHostHalResetPin
+       6  emberAfPluginAuroraHostHalSerialInitHostBootload
+       4  emberAfPluginAuroraHostHalSerialInitHostPlc
+       8  emberAfPluginAuroraHostProtocolBootloadEventControl
+       2  emberAfPluginAuroraHostProtocolBootloadEventHandler
+       8  emberAfPluginAuroraHostProtocolBootloadTimeoutEventControl
+      16  emberAfPluginAuroraHostProtocolBootloadTimeoutEventHandler
+       8  emberAfPluginAuroraHostProtocolResetEventControl
+       2  emberAfPluginAuroraHostProtocolResetEventHandler
+      16  emberAfPluginAuroraHostProtocolTimeoutCancel
+      48  peekReadBuffer
+      50  receiveReadBuffer
+       2  receiveReadIndex
+          receiveWriteIndex
+      34  receiveWriteBuffer
+     128  receivedData
+       8  setReceiveBufferIndexValues
+
+ 
+ 154 bytes in section .bss
+ 518 bytes in section .text
+ 
+ 518 bytes of CODE memory
+ 154 bytes of DATA memory
+
+Errors: none
+Warnings: none

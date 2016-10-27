@@ -1,0 +1,157 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:25:02
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\groups-server\groups-server-cli.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\groups-server\groups-server-cli.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"groups-server-cli.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\groups-server\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\groups-server-cli.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\groups-server-cli.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\groups-server\groups-server-cli.c
+      1          // *******************************************************************
+      2          // * groups-server-cli.c
+      3          // *
+      4          // *
+      5          // * Copyright 2012 by Ember Corporation. All rights reserved.              *80*
+      6          // *******************************************************************
+      7          
+      8          #include "app/framework/include/af.h"
+      9          #include "app/util/serial/command-interpreter2.h"
+     10          
+     11          void emAfGroupsServerCliPrint(void);
+     12          
+     13          #if !defined(EMBER_AF_GENERATE_CLI)
+     14          EmberCommandEntry emberAfPluginGroupsServerCommands[] = {
+     15            emberCommandEntryAction("print",  emAfGroupsServerCliPrint, "", "Print the state of the groups table."),
+     16            emberCommandEntryTerminator(),
+     17          };
+     18          #endif // EMBER_AF_GENERATE_CLI
+     19          
+     20          // plugin groups-server print
+
+   \                                 In section .text, align 2, keep-with-next
+     21          void emAfGroupsServerCliPrint(void) 
+     22          {
+   \                     emAfGroupsServerCliPrint: (+1)
+   \   00000000   0xB530             PUSH     {R4,R5,LR}
+   \   00000002   0xB085             SUB      SP,SP,#+20
+     23            int8u i;
+     24            for (i = 0; i < EMBER_BINDING_TABLE_SIZE; i++) {
+   \   00000004   0x2400             MOVS     R4,#+0
+   \   00000006   0x.... 0x....      ADR.W    R5,?_0
+     25              EmberBindingTableEntry entry;
+     26              emberGetBinding(i, &entry);
+   \                     ??emAfGroupsServerCliPrint_0: (+1)
+   \   0000000A   0xA900             ADD      R1,SP,#+0
+   \   0000000C   0x4620             MOV      R0,R4
+   \   0000000E   0x.... 0x....      BL       emberGetBinding
+     27              if (entry.type == EMBER_MULTICAST_BINDING) {
+   \   00000012   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \   00000016   0x2803             CMP      R0,#+3
+   \   00000018   0xD10B             BNE.N    ??emAfGroupsServerCliPrint_1
+     28                emberAfCorePrintln("ep[%x] id[%2x]", entry.local, 
+     29                                   HIGH_LOW_TO_INT(entry.identifier[1], entry.identifier[0]));
+   \   0000001A   0xF89D 0x0006      LDRB     R0,[SP, #+6]
+   \   0000001E   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \   00000022   0xF89D 0x2001      LDRB     R2,[SP, #+1]
+   \   00000026   0xEB01 0x2300      ADD      R3,R1,R0, LSL #+8
+   \   0000002A   0x4629             MOV      R1,R5
+   \   0000002C   0x2001             MOVS     R0,#+1
+   \   0000002E   0x.... 0x....      BL       emberAfPrintln
+     30              }
+     31            }
+   \                     ??emAfGroupsServerCliPrint_1: (+1)
+   \   00000032   0x1C64             ADDS     R4,R4,#+1
+   \   00000034   0x2C08             CMP      R4,#+8
+   \   00000036   0xDBE8             BLT.N    ??emAfGroupsServerCliPrint_0
+     32          }
+   \   00000038   0xB005             ADD      SP,SP,#+20
+   \   0000003A   0xBD30             POP      {R4,R5,PC}       ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x65 0x70          DC8 "ep[%x] id[%2x]"
+   \              0x5B 0x25    
+   \              0x78 0x5D    
+   \              0x20 0x69    
+   \              0x64 0x5B    
+   \              0x25 0x32    
+   \              0x78 0x5D    
+   \              0x00         
+   \   0000000F   0x00               DC8 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   emAfGroupsServerCliPrint
+        32   -> emberAfPrintln
+        32   -> emberGetBinding
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ?_0
+      60  emAfGroupsServerCliPrint
+
+ 
+ 76 bytes in section .text
+ 
+ 76 bytes of CODE memory
+
+Errors: none
+Warnings: none

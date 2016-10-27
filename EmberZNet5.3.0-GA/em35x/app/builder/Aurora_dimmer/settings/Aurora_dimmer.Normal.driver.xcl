@@ -1,0 +1,35 @@
+ -B 
+
+"--endian=little" 
+
+"--cpu=Cortex-M3" 
+
+"--jlink_exec_command" 
+
+"SetSysPowerDownOnIdle = 50; SetDbgPowerDownOnClose = 1" 
+
+"--fpu=None" 
+
+"-p" 
+
+"C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/em35x/em357/regs.ddf" 
+
+"--drv_attach_to_program" 
+
+"--semihosting=none" 
+
+"--drv_communication=USB0" 
+
+"--drv_interface_speed=1000" 
+
+"--jlink_reset_strategy=0,0" 
+
+"--drv_interface=SWD" 
+
+"--drv_catch_exceptions=0x000" 
+
+"--drv_swo_clock_setup=72000000,0,2000000" 
+
+
+
+

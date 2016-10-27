@@ -1,0 +1,301 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:46
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm-hal.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm-hal.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-pwm-hal.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-pwm-hal.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-pwm-hal.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm-hal.c
+      1          #include "app/framework/include/af.h"
+      2          #include "app/framework/include/af-types.h"
+      3          #include "aurora-pwm.h"
+      4          #include "aurora-pwm-hal.h"
+      5          
+      6          #define PWM_MODE                0x00006060
+      7          #define PWM_OUTPUT_ENABLE       0x00001111
+      8          #define PWM_PSC_VALUE           6
+      9          #define PWM_ARR_VALUE           375
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void emberAfPluginAuroraPwmInitialiseIo(void)
+     12          {
+     13          
+     14              PWM_RG_GPIO_CFG &= ~(PWM_RED_CFG_MASK);
+   \                     emberAfPluginAuroraPwmInitialiseIo: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable4  ;; 0x4000b004
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0xF421 0x6170      BIC      R1,R1,#0xF00
+   \   00000008   0x6001             STR      R1,[R0, #+0]
+     15              PWM_RG_GPIO_CFG &= ~(PWM_GREEN_CFG_MASK);
+   \   0000000A   0x6801             LDR      R1,[R0, #+0]
+   \   0000000C   0xF421 0x4170      BIC      R1,R1,#0xF000
+   \   00000010   0x6001             STR      R1,[R0, #+0]
+     16          
+     17              PWM_BW_GPIO_CFG &= ~(PWM_BLUE_CFG_MASK);
+   \   00000012   0x....             LDR.N    R1,??DataTable4_1  ;; 0x4000b404
+   \   00000014   0x680A             LDR      R2,[R1, #+0]
+   \   00000016   0xF422 0x6270      BIC      R2,R2,#0xF00
+   \   0000001A   0x600A             STR      R2,[R1, #+0]
+     18              PWM_BW_GPIO_CFG &= ~(PWM_WHITE_CFG_MASK);
+   \   0000001C   0x680A             LDR      R2,[R1, #+0]
+   \   0000001E   0xF422 0x4270      BIC      R2,R2,#0xF000
+   \   00000022   0x600A             STR      R2,[R1, #+0]
+     19          
+     20              PWM_RG_GPIO_CFG |= PWM_RED_CFG_OUTPUT;
+   \   00000024   0x6802             LDR      R2,[R0, #+0]
+   \   00000026   0xF442 0x6210      ORR      R2,R2,#0x900
+   \   0000002A   0x6002             STR      R2,[R0, #+0]
+     21              PWM_RG_GPIO_CFG |= PWM_GREEN_CFG_OUTPUT;
+   \   0000002C   0x6802             LDR      R2,[R0, #+0]
+   \   0000002E   0xF442 0x4210      ORR      R2,R2,#0x9000
+   \   00000032   0x6002             STR      R2,[R0, #+0]
+     22              
+     23              PWM_BW_GPIO_CFG |= PWM_BLUE_CFG_OUTPUT;
+   \   00000034   0x6808             LDR      R0,[R1, #+0]
+   \   00000036   0xF440 0x6010      ORR      R0,R0,#0x900
+   \   0000003A   0x6008             STR      R0,[R1, #+0]
+     24              PWM_BW_GPIO_CFG |= PWM_WHITE_CFG_OUTPUT;
+   \   0000003C   0x6808             LDR      R0,[R1, #+0]
+   \   0000003E   0xF440 0x4010      ORR      R0,R0,#0x9000
+   \   00000042   0x6008             STR      R0,[R1, #+0]
+     25          }
+   \   00000044   0x4770             BX       LR               ;; return
+     26          
+
+   \                                 In section .text, align 2, keep-with-next
+     27          void emberAfPluginAuroraPwmInitializeTimer(void)
+     28          {
+   \                     emberAfPluginAuroraPwmInitializeTimer: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     29              emberAfPluginAuroraPwmInitialiseIo();
+   \   00000002   0x.... 0x....      BL       emberAfPluginAuroraPwmInitialiseIo
+     30              
+     31              TIM1_SMCR = 0;         // Disable slave mode
+   \   00000006   0x....             LDR.N    R0,??DataTable4_2  ;; 0x4000e000
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+     32              
+     33              TIM1_CCMR1 = PWM_MODE;
+   \   0000000C   0xF246 0x0160      MOVW     R1,#+24672
+   \   00000010   0x6181             STR      R1,[R0, #+24]
+     34              TIM1_CCMR2 = PWM_MODE;
+   \   00000012   0x61C1             STR      R1,[R0, #+28]
+     35              
+     36              TIM1_CCER = PWM_OUTPUT_ENABLE;
+   \   00000014   0xF241 0x1111      MOVW     R1,#+4369
+   \   00000018   0x6201             STR      R1,[R0, #+32]
+     37          
+     38              TIM1_CCR1 = 0;
+   \   0000001A   0x2100             MOVS     R1,#+0
+   \   0000001C   0x6341             STR      R1,[R0, #+52]
+     39              TIM1_CCR2 = 0;
+   \   0000001E   0x6381             STR      R1,[R0, #+56]
+     40              TIM1_CCR3 = 0;
+   \   00000020   0x63C1             STR      R1,[R0, #+60]
+     41              TIM1_CCR4 = 0;
+   \   00000022   0x6401             STR      R1,[R0, #+64]
+     42              
+     43              TIM1_PSC = PWM_PSC_VALUE;
+   \   00000024   0x2106             MOVS     R1,#+6
+   \   00000026   0x6281             STR      R1,[R0, #+40]
+     44              TIM1_ARR = PWM_ARR_VALUE;
+   \   00000028   0xF240 0x1177      MOVW     R1,#+375
+   \   0000002C   0x62C1             STR      R1,[R0, #+44]
+     45              
+     46              TIM1_CR1 = TIM_ARBE | TIM_CEN;       // Initialise the control register
+   \   0000002E   0x2181             MOVS     R1,#+129
+   \   00000030   0x6001             STR      R1,[R0, #+0]
+     47              TIM1_EGR = TIM_UG;
+   \   00000032   0x2101             MOVS     R1,#+1
+   \   00000034   0x6141             STR      R1,[R0, #+20]
+     48          }
+   \   00000036   0xBD01             POP      {R0,PC}          ;; return
+     49          
+
+   \                                 In section .text, align 2, keep-with-next
+     50          void pwmTimerEnable(void)
+     51          {
+     52              TIM1_CR1 |= TIM_CEN;
+   \                     pwmTimerEnable: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable4_2  ;; 0x4000e000
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0xF041 0x0101      ORR      R1,R1,#0x1
+   \   00000008   0x6001             STR      R1,[R0, #+0]
+     53          }
+   \   0000000A   0x4770             BX       LR               ;; return
+     54          
+
+   \                                 In section .text, align 2, keep-with-next
+     55          void pwmTimerDisable(void)
+     56          {
+     57              TIM1_CR1 &= ~(TIM_CEN);
+   \                     pwmTimerDisable: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable4_2  ;; 0x4000e000
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0x0849             LSRS     R1,R1,#+1
+   \   00000006   0x0049             LSLS     R1,R1,#+1
+   \   00000008   0x6001             STR      R1,[R0, #+0]
+     58          }
+   \   0000000A   0x4770             BX       LR               ;; return
+     59          
+
+   \                                 In section .text, align 2, keep-with-next
+     60          void pwmSetDutyCycle(int8u output, int8u percentage)
+     61          {
+     62              int32u ccrValue;
+     63              
+     64              ccrValue = (percentage * PWM_ARR_VALUE) / 100;
+   \                     pwmSetDutyCycle: (+1)
+   \   00000000   0xF240 0x1277      MOVW     R2,#+375
+   \   00000004   0x4351             MULS     R1,R2,R1
+   \   00000006   0x2264             MOVS     R2,#+100
+   \   00000008   0xFB91 0xF1F2      SDIV     R1,R1,R2
+     65              
+     66              switch (output) 
+   \   0000000C   0x2801             CMP      R0,#+1
+   \   0000000E   0x....             LDR.N    R2,??DataTable4_3  ;; 0x4000e034
+   \   00000010   0xD009             BEQ.N    ??pwmSetDutyCycle_0
+   \   00000012   0xD30B             BCC.N    ??pwmSetDutyCycle_1
+   \   00000014   0x2803             CMP      R0,#+3
+   \   00000016   0xD004             BEQ.N    ??pwmSetDutyCycle_2
+   \   00000018   0xD307             BCC.N    ??pwmSetDutyCycle_3
+   \   0000001A   0x2804             CMP      R0,#+4
+   \   0000001C   0xD106             BNE.N    ??pwmSetDutyCycle_1
+     67              {
+     68                  case PWM_OUTPUT_RED:
+     69                      TIM1_CCR4 = ccrValue;
+   \   0000001E   0x60D1             STR      R1,[R2, #+12]
+     70                      break;    
+   \   00000020   0x4770             BX       LR
+     71                      
+     72                  case PWM_OUTPUT_GREEN:
+     73                      TIM1_CCR3 = ccrValue;
+   \                     ??pwmSetDutyCycle_2: (+1)
+   \   00000022   0x6091             STR      R1,[R2, #+8]
+     74                      break;        
+   \   00000024   0x4770             BX       LR
+     75                      
+     76                  case PWM_OUTPUT_BLUE:
+     77                      TIM1_CCR1 = ccrValue;
+   \                     ??pwmSetDutyCycle_0: (+1)
+   \   00000026   0x6011             STR      R1,[R2, #+0]
+     78                      break;
+   \   00000028   0x4770             BX       LR
+     79                      
+     80                  case PWM_OUTPUT_WHITE:
+     81                      TIM1_CCR2 = ccrValue;
+   \                     ??pwmSetDutyCycle_3: (+1)
+   \   0000002A   0x6051             STR      R1,[R2, #+4]
+     82                      break;
+     83                  
+     84              }
+     85          }
+   \                     ??pwmSetDutyCycle_1: (+1)
+   \   0000002C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   0x4000B004         DC32     0x4000b004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_1:
+   \   00000000   0x4000B404         DC32     0x4000b404
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_2:
+   \   00000000   0x4000E000         DC32     0x4000e000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_3:
+   \   00000000   0x4000E034         DC32     0x4000e034
+     86          
+     87          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   emberAfPluginAuroraPwmInitialiseIo
+       8   emberAfPluginAuroraPwmInitializeTimer
+         8   -> emberAfPluginAuroraPwmInitialiseIo
+       0   pwmSetDutyCycle
+       0   pwmTimerDisable
+       0   pwmTimerEnable
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_2
+       4  ??DataTable4_3
+      70  emberAfPluginAuroraPwmInitialiseIo
+      56  emberAfPluginAuroraPwmInitializeTimer
+      46  pwmSetDutyCycle
+      12  pwmTimerDisable
+      12  pwmTimerEnable
+
+ 
+ 212 bytes in section .text
+ 
+ 212 bytes of CODE memory
+
+Errors: none
+Warnings: none

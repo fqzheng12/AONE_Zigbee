@@ -1,0 +1,7 @@
+v18
+
+Changes:
+When you press the button it tells you that it is version 18
+Commented out from Line 814 in aurora-ota-client per Gary's instruction
+Added line 839 in aurora-ota-client to delete eeprom
+Added line 183 in aurora-ota-client to reduce upgrade delay to 1 second

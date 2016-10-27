@@ -1,0 +1,1401 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:25:14
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"ota-storage-eeprom.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-eeprom.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-eeprom.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom.c
+      1          // *****************************************************************************
+      2          // * ota-storage-eeprom-driver.c
+      3          // *
+      4          // * This is an integration of the simple OTA storage driver with the low-level
+      5          // * EEPROM driver.
+      6          // * 
+      7          // * Copyright 2010 by Ember Corporation. All rights reserved.              *80*
+      8          // *****************************************************************************
+      9          
+     10          #include "app/framework/include/af.h"
+     11          #include "app/framework/plugin/ota-common/ota.h"
+     12          #include "app/framework/plugin/ota-storage-common/ota-storage.h"
+     13          #include "app/framework/plugin/eeprom/eeprom.h"
+     14          
+     15          //#define DEBUG_PRINT
+     16          #define OTA_STORAGE_EEPROM_INTERNAL_HEADER
+     17          #include "ota-storage-eeprom.h"
+     18          #undef OTA_STORAGE_EEPROM_INTERNAL_HEADER
+     19          
+     20          #if defined(EMBER_TEST)
+     21          #include "hal/micro/unix/simulation/fake-eeprom.h"
+     22          #endif
+     23          
+     24          //------------------------------------------------------------------------------
+     25          // Globals
+     26          
+     27          #if defined(EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT)
+     28            #define COMPILED_FOR_READ_MODIFY_WRITE TRUE
+     29          #else
+     30            #define COMPILED_FOR_READ_MODIFY_WRITE FALSE
+     31          #endif
+     32          
+     33          // For debugging only
+     34          #define DATA_SIZE 48
+     35          
+     36          // Only needed for Page-erase-required flash parts.
+
+   \                                 In section .bss, align 4
+     37          EmberEventControl emberAfPluginOtaStorageSimpleEepromPageEraseEventControl;
+   \                     emberAfPluginOtaStorageSimpleEepromPageEraseEventControl:
+   \   00000000                      DS8 8
+     38          
+     39          #define OTA_EEPROM_SIZE                                       \
+     40            (EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END      \
+     41             - EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_START)
+     42          
+     43          
+     44          #if !defined(EMBER_AF_GENERATE_CLI)
+     45          
+     46          #if !defined(EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT)
+     47          void emAfOtaWipeStorageDevice(void);
+     48          #endif
+     49          
+     50          EmberCommandEntry emberAfPluginOtaStorageSimpleEepromCommands[] = {
+     51          #if !defined(EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT)
+     52            emberCommandEntryActionWithDetails("wipe", emAfOtaWipeStorageDevice, "", "Wipes all data in the storage device.", NULL),
+     53          #endif
+     54            emberCommandEntryTerminator()
+     55          };
+     56          
+     57          #endif  // !EMBER_AF_GENERATE_CLI
+     58          
+     59          #if defined(EZSP_HOST) \
+     60           || defined(EMBER_AF_PLUGIN_TELEGESIS_OTA_STORAGE_SIMPLE_EEPROM_ENABLE_SOC_APP_BOOTLOADER_COMPATIBILITY_MODE)
+     61            #define eepromInit() halEepromInit()
+     62          #else // EM35x SOC with 4.3 bootloader or later
+     63            #define eepromInit() halAppBootloaderInit()
+     64          #endif
+     65          
+     66          
+     67          //------------------------------------------------------------------------------
+     68          
+     69          #if defined(DEBUG_PRINT)
+     70            static void printImageInfoStartData(void);
+     71            static void printDataBlock(const int8u* block);
+     72          #else
+     73            #define printImageInfoStartData()
+     74            #define printDataBlock(x)
+     75          #endif
+     76          
+     77          //------------------------------------------------------------------------------
+     78          
+     79          #if defined(EMBER_TEST)
+     80          
+     81          void emAfSetupFakeEepromForSimulation(void)
+     82          {
+     83            setupFakeEeprom(OTA_EEPROM_SIZE,
+     84                            EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_START,    // offset
+     85                            2048,                                                       // page size
+     86                            emberAfPluginEepromInfo()->pageEraseMs,                              
+     87                            (COMPILED_FOR_READ_MODIFY_WRITE == FALSE),
+     88                            2);  // word size
+     89            emAfPluginEepromFakeEepromCallback();
+     90          }
+     91          
+     92          #endif
+     93          
+
+   \                                 In section .text, align 2, keep-with-next
+     94          int32u emAfOtaStorageReadInt32uFromEeprom(int32u realOffset)
+     95          {
+   \                     emAfOtaStorageReadInt32uFromEeprom: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     96            int8u value[4];
+     97            emberAfPluginEepromRead(realOffset, value, 4);
+   \   00000002   0x2204             MOVS     R2,#+4
+   \   00000004   0xA900             ADD      R1,SP,#+0
+   \   00000006   0x.... 0x....      BL       emberAfPluginEepromRead
+     98            return (value[0]
+     99                    + ((int32u)value[1] << 8)
+    100                    + ((int32u)value[2] << 16)
+    101                    + ((int32u)value[3] << 24));
+   \   0000000A   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \   0000000E   0xF89D 0x1001      LDRB     R1,[SP, #+1]
+   \   00000012   0xEB00 0x2001      ADD      R0,R0,R1, LSL #+8
+   \   00000016   0xF89D 0x1002      LDRB     R1,[SP, #+2]
+   \   0000001A   0xEB00 0x4001      ADD      R0,R0,R1, LSL #+16
+   \   0000001E   0xF89D 0x1003      LDRB     R1,[SP, #+3]
+   \   00000022   0xEB00 0x6001      ADD      R0,R0,R1, LSL #+24
+   \   00000026   0xBD02             POP      {R1,PC}          ;; return
+    102          }
+    103          
+
+   \                                 In section .text, align 2, keep-with-next
+    104          void emAfOtaStorageWriteInt32uToEeprom(int32u value, int32u realOffset)
+    105          {
+   \                     emAfOtaStorageWriteInt32uToEeprom: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x4605             MOV      R5,R0
+   \   00000004   0x460C             MOV      R4,R1
+    106            int32u oldValue = emAfOtaStorageReadInt32uFromEeprom(realOffset);
+    107            if (oldValue != value) {
+   \   00000006   0x4620             MOV      R0,R4
+   \   00000008   0x.... 0x....      BL       emAfOtaStorageReadInt32uFromEeprom
+   \   0000000C   0x42A8             CMP      R0,R5
+   \   0000000E   0xD00F             BEQ.N    ??emAfOtaStorageWriteInt32uToEeprom_0
+    108              int8u data[4];
+    109              data[0] = value;
+    110              data[1] = (int8u)(value >> 8);
+   \   00000010   0x0A28             LSRS     R0,R5,#+8
+   \   00000012   0xF88D 0x0001      STRB     R0,[SP, #+1]
+   \   00000016   0xF88D 0x5000      STRB     R5,[SP, #+0]
+    111              data[2] = (int8u)(value >> 16);
+   \   0000001A   0x0C28             LSRS     R0,R5,#+16
+   \   0000001C   0xF88D 0x0002      STRB     R0,[SP, #+2]
+    112              data[3] = (int8u)(value >> 24);
+    113          
+    114              emberAfPluginEepromWrite(realOffset, data, 4);
+   \   00000020   0x2204             MOVS     R2,#+4
+   \   00000022   0x0E28             LSRS     R0,R5,#+24
+   \   00000024   0xF88D 0x0003      STRB     R0,[SP, #+3]
+   \   00000028   0xA900             ADD      R1,SP,#+0
+   \   0000002A   0x4620             MOV      R0,R4
+   \   0000002C   0x.... 0x....      BL       emberAfPluginEepromWrite
+    115            }
+    116          }
+   \                     ??emAfOtaStorageWriteInt32uToEeprom_0: (+1)
+   \   00000030   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+    117          
+    118          #if defined (SOC_BOOTLOADING_SUPPORT)
+    119          
+
+   \                                 In section .text, align 2, keep-with-next
+    120          int32u emAfGetEblStartOffset(void)
+    121          {
+    122            return emAfOtaStorageReadInt32uFromEeprom(IMAGE_INFO_START + EBL_START_OFFSET_INDEX);
+   \                     emAfGetEblStartOffset: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable23  ;; 0x7fc0a
+   \   00000002   0x....             B.N      emAfOtaStorageReadInt32uFromEeprom
+    123          }
+    124          
+    125          static void setEblStartOffset(int32u eblStart)
+    126          {
+    127            debugPrint("Writing EBL start offset of 0x%4X to EEPROM offset 0x%4X",
+    128                       eblStart,
+    129                       IMAGE_INFO_START + EBL_START_OFFSET_INDEX);
+    130            debugFlush();
+    131            emAfOtaStorageWriteInt32uToEeprom(eblStart, IMAGE_INFO_START + EBL_START_OFFSET_INDEX);
+    132          
+    133            #if defined(DEBUG_PRINT)
+    134            {
+    135              int32u offset = emAfGetEblStartOffset();
+    136              debugPrint("EBL Start Offset: 0x%4X", offset);
+    137            }
+    138            #endif
+    139          }
+    140          #endif // SOC_BOOTLOADING_SUPPORT
+    141          
+
+   \                                 In section .text, align 2, keep-with-next
+    142          boolean emberAfOtaStorageDriverInitCallback(void)  //GB
+    143          {   
+   \                     emberAfOtaStorageDriverInitCallback: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    144              if (isEepromAvailable()) 
+   \   00000002   0x.... 0x....      BL       isEepromAvailable
+   \   00000006   0xB180             CBZ.N    R0,??emberAfOtaStorageDriverInitCallback_0
+    145              {
+    146                  // Older drivers do not have an EEPROM info structure that we can reference
+    147                  // so we must just assume they are okay.  
+    148                  if (emberAfPluginEepromInfo() != NULL) 
+   \   00000008   0x.... 0x....      BL       emberAfPluginEepromInfo
+   \   0000000C   0xB150             CBZ.N    R0,??emberAfOtaStorageDriverInitCallback_1
+    149                  {
+    150                      assert(emberAfPluginEepromInfo()->partSize >= OTA_EEPROM_SIZE);
+   \   0000000E   0x.... 0x....      BL       emberAfPluginEepromInfo
+   \   00000012   0x68C0             LDR      R0,[R0, #+12]
+   \   00000014   0xF5B0 0x2F00      CMP      R0,#+524288
+   \   00000018   0xD204             BCS.N    ??emberAfOtaStorageDriverInitCallback_1
+   \   0000001A   0x2196             MOVS     R1,#+150
+   \   0000001C   0x.... 0x....      ADR.W    R0,?_0
+   \   00000020   0x.... 0x....      BL       halInternalAssertFailed
+    151                  }
+    152                  emAfOtaStorageEepromInit();
+   \                     ??emberAfOtaStorageDriverInitCallback_1: (+1)
+   \   00000024   0x.... 0x....      BL       emAfOtaStorageEepromInit
+    153          
+    154                  return TRUE;
+   \   00000028   0x2001             MOVS     R0,#+1
+    155              }     
+    156              
+    157              return FALSE;    
+   \                     ??emberAfOtaStorageDriverInitCallback_0: (+1)
+   \   0000002A   0xBD02             POP      {R1,PC}          ;; return
+    158          }
+    159          
+    160          // Returns true if the operation crosses the break in the OTA image
+    161          // due to Layout 2.  Otherwise returns FALSE.  Modifies
+    162          // the OTA offset and turns it into the real EEPROM offset.
+    163          // This will be based on the start offset of the EEPROM (since the user
+    164          // may have allocated a subset of the EEPROM for OTA and not positioned
+    165          // the OTA data at offset 0), and after the image info meta-data.
+
+   \                                 In section .text, align 2, keep-with-next
+    166          boolean emAfOtaStorageDriverGetRealOffset(int32u* offset, 
+    167                                                    int32u* length)
+    168          {
+   \                     emAfOtaStorageDriverGetRealOffset: (+1)
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+   \   00000002   0x4604             MOV      R4,R0
+   \   00000004   0x460D             MOV      R5,R1
+    169            boolean spansBreak = FALSE;
+    170            int32u realOffset = IMAGE_INFO_START + OTA_HEADER_INDEX + *offset;
+   \   00000006   0x6820             LDR      R0,[R4, #+0]
+   \   00000008   0x....             LDR.N    R1,??DataTable23_1  ;; 0x7fe0e
+   \   0000000A   0x180F             ADDS     R7,R1,R0
+    171          
+    172          #if defined(SOC_BOOTLOADING_SUPPORT)
+    173            int32u eblOffset = emAfGetEblStartOffset();
+   \   0000000C   0x....             LDR.N    R0,??DataTable23  ;; 0x7fc0a
+   \   0000000E   0x.... 0x....      BL       emAfOtaStorageReadInt32uFromEeprom
+    174          
+    175            if (*offset < eblOffset) {
+   \   00000012   0x6821             LDR      R1,[R4, #+0]
+   \   00000014   0x2600             MOVS     R6,#+0
+   \   00000016   0x4281             CMP      R1,R0
+   \   00000018   0xD207             BCS.N    ??emAfOtaStorageDriverGetRealOffset_0
+    176              // Layout 2, before the break in the OTA image, but spans the break.
+    177              if ((*offset + *length) > eblOffset) {
+   \   0000001A   0x682A             LDR      R2,[R5, #+0]
+   \   0000001C   0x1852             ADDS     R2,R2,R1
+   \   0000001E   0x4290             CMP      R0,R2
+   \   00000020   0xD204             BCS.N    ??emAfOtaStorageDriverGetRealOffset_1
+    178                spansBreak = TRUE;
+    179                *length = eblOffset - *offset;
+   \   00000022   0x1A40             SUBS     R0,R0,R1
+   \   00000024   0x2601             MOVS     R6,#+1
+   \   00000026   0x6028             STR      R0,[R5, #+0]
+   \   00000028   0xE000             B.N      ??emAfOtaStorageDriverGetRealOffset_1
+    180              } // Else
+    181                //   Data before the break in the OTA image, but doesn't span the break.
+    182            } else {
+    183              // Layout 2 starting after the break in the image
+    184              realOffset = EEPROM_START + *offset - eblOffset;
+   \                     ??emAfOtaStorageDriverGetRealOffset_0: (+1)
+   \   0000002A   0x1A0F             SUBS     R7,R1,R0
+    185            }
+    186          #else
+    187            // Layout 1.  Do nothing more than what we have done already.
+    188          #endif
+    189          
+    190            *offset = realOffset;
+   \                     ??emAfOtaStorageDriverGetRealOffset_1: (+1)
+   \   0000002C   0x6027             STR      R7,[R4, #+0]
+    191            return spansBreak;
+   \   0000002E   0x4630             MOV      R0,R6
+   \   00000030   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    192          }
+    193          
+    194          
+    195          // This ugly code must handle the worst case scenario
+    196          // where we are trying to read/write a block of data
+    197          // in Layout 2 which spans the break in the OTA image.
+    198          // In that case we must perform 2 read/write operations
+    199          // to make it work.
+    200          
+
+   \                                 In section .text, align 2, keep-with-next
+    201          static boolean readWritePrimitive(boolean read,
+    202                                            const int8u* writeData,
+    203                                            int32u offset,
+    204                                            int32u length,
+    205                                            int8u* readData)
+    206          {
+   \                     readWritePrimitive: (+1)
+   \   00000000   0xE92D 0x43F0      PUSH     {R4-R9,LR}
+   \   00000004   0xB083             SUB      SP,SP,#+12
+   \   00000006   0x4604             MOV      R4,R0
+   \   00000008   0x4688             MOV      R8,R1
+   \   0000000A   0x461E             MOV      R6,R3
+    207            int8u count = 1;
+    208            int8u i;
+    209            int32u realLength = length;
+    210            int32u realOffset = offset;
+   \   0000000C   0x9201             STR      R2,[SP, #+4]
+   \   0000000E   0x9600             STR      R6,[SP, #+0]
+    211          
+    212            debugPrint("readWritePrimitive(): OTA offset 0x%4X, length %l", offset, length);
+    213            
+    214            boolean spansBreak = emAfOtaStorageDriverGetRealOffset(&realOffset, &realLength);
+    215            if (spansBreak) {
+   \   00000010   0xA900             ADD      R1,SP,#+0
+   \   00000012   0xA801             ADD      R0,SP,#+4
+   \   00000014   0x.... 0x....      BL       emAfOtaStorageDriverGetRealOffset
+   \   00000018   0x2701             MOVS     R7,#+1
+   \   0000001A   0xB100             CBZ.N    R0,??readWritePrimitive_0
+    216              count = 2;
+   \   0000001C   0x2702             MOVS     R7,#+2
+    217            }
+    218          
+    219            // Because the EEPROM code only handles the length as a 16-bit number,
+    220            // we catch that error case.
+    221            if (length > 65535) {
+   \                     ??readWritePrimitive_0: (+1)
+   \   0000001E   0xF5B6 0x3F80      CMP      R6,#+65536
+   \   00000022   0xD217             BCS.N    ??readWritePrimitive_1
+    222              return FALSE;
+    223            }
+    224           
+    225            for (i = 0; i < count; i++) {
+   \   00000024   0xF8DD 0x9028      LDR      R9,[SP, #+40]
+   \   00000028   0x2500             MOVS     R5,#+0
+   \   0000002A   0xE002             B.N      ??readWritePrimitive_2
+    226              int8u status;
+    227          
+    228              debugFlush();
+    229              debugPrint("%p realOffset: 0x%4X, realLength: %l", 
+    230                         (read ? "read" : "write"),
+    231                         realOffset, 
+    232                         realLength);
+    233              debugFlush();
+    234          
+    235              if (read) {
+    236                status = emberAfPluginEepromRead(realOffset, readData, (int16u)realLength);
+    237              } else {
+    238                status = emberAfPluginEepromWrite(realOffset, writeData, (int16u)realLength);
+    239              }
+    240          
+    241              if (status != EEPROM_SUCCESS) {
+    242                return FALSE;
+    243              }
+    244          
+    245              if (count > 1) {
+    246                // Layout 2 only, and spans the break
+    247                realOffset = EEPROM_START;
+    248                if (read) {
+    249                  readData += realLength;
+    250                } else {
+    251                  writeData += realLength;
+    252                }
+    253                realLength = length - realLength;
+   \                     ??readWritePrimitive_3: (+1)
+   \   0000002C   0x1A30             SUBS     R0,R6,R0
+   \   0000002E   0x9000             STR      R0,[SP, #+0]
+   \                     ??readWritePrimitive_4: (+1)
+   \   00000030   0x1C6D             ADDS     R5,R5,#+1
+   \                     ??readWritePrimitive_2: (+1)
+   \   00000032   0xB2ED             UXTB     R5,R5
+   \   00000034   0x42BD             CMP      R5,R7
+   \   00000036   0xD218             BCS.N    ??readWritePrimitive_5
+   \   00000038   0x9A00             LDR      R2,[SP, #+0]
+   \   0000003A   0x2C00             CMP      R4,#+0
+   \   0000003C   0xB292             UXTH     R2,R2
+   \   0000003E   0xD004             BEQ.N    ??readWritePrimitive_6
+   \   00000040   0x9801             LDR      R0,[SP, #+4]
+   \   00000042   0x4649             MOV      R1,R9
+   \   00000044   0x.... 0x....      BL       emberAfPluginEepromRead
+   \   00000048   0xE003             B.N      ??readWritePrimitive_7
+   \                     ??readWritePrimitive_6: (+1)
+   \   0000004A   0x9801             LDR      R0,[SP, #+4]
+   \   0000004C   0x4641             MOV      R1,R8
+   \   0000004E   0x.... 0x....      BL       emberAfPluginEepromWrite
+   \                     ??readWritePrimitive_7: (+1)
+   \   00000052   0xB108             CBZ.N    R0,??readWritePrimitive_8
+   \                     ??readWritePrimitive_1: (+1)
+   \   00000054   0x2000             MOVS     R0,#+0
+   \   00000056   0xE009             B.N      ??readWritePrimitive_9
+   \                     ??readWritePrimitive_8: (+1)
+   \   00000058   0x2F02             CMP      R7,#+2
+   \   0000005A   0xDBE9             BLT.N    ??readWritePrimitive_4
+   \   0000005C   0x9001             STR      R0,[SP, #+4]
+   \   0000005E   0x2C00             CMP      R4,#+0
+   \   00000060   0x9800             LDR      R0,[SP, #+0]
+   \   00000062   0xBF14             ITE      NE 
+   \   00000064   0x4481             ADDNE    R9,R0,R9
+   \   00000066   0x4480             ADDEQ    R8,R0,R8
+   \   00000068   0xE7E0             B.N      ??readWritePrimitive_3
+    254              }
+    255            }
+    256            return TRUE;
+   \                     ??readWritePrimitive_5: (+1)
+   \   0000006A   0x2001             MOVS     R0,#+1
+   \                     ??readWritePrimitive_9: (+1)
+   \   0000006C   0xE8BD 0x83FE      POP      {R1-R9,PC}       ;; return
+    257          }
+    258          
+    259          // NOTE:  The magic number here is the "Ember" magic number.
+    260          //   It is not the same as the OTA file magic number.
+    261          //   It is used solely to verify the validity of the 
+    262          //   meta-data stored ahead of the OTA file.
+
+   \                                 In section .text, align 2, keep-with-next
+    263          boolean emAfOtaStorageCheckDownloadMetaData(void)
+    264          {
+   \                     emAfOtaStorageCheckDownloadMetaData: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+    265            int8u magicNumberExpected[] = { MAGIC_NUMBER , VERSION_NUMBER };
+   \   00000002   0x.... 0x....      ADR.W    R1,?_1
+   \   00000006   0xB086             SUB      SP,SP,#+24
+   \   00000008   0xC91C             LDM      R1!,{R2-R4}
+   \   0000000A   0xA803             ADD      R0,SP,#+12
+    266            int8u magicNumberActual[MAGIC_NUMBER_SIZE + VERSION_NUMBER_SIZE];
+    267          
+    268            emberAfPluginEepromRead(IMAGE_INFO_START + MAGIC_NUMBER_OFFSET,
+    269                           magicNumberActual,
+    270                           MAGIC_NUMBER_SIZE + VERSION_NUMBER_SIZE);
+   \   0000000C   0x.... 0x....      BL       ?Subroutine1
+   \                     ??CrossCallReturnLabel_9: (+1)
+   \   00000010   0x.... 0x....      BL       emberAfPluginEepromRead
+    271            if (0 != MEMCOMPARE(magicNumberExpected, 
+    272                                magicNumberActual, 
+    273                                MAGIC_NUMBER_SIZE + VERSION_NUMBER_SIZE)) {
+   \   00000014   0x220A             MOVS     R2,#+10
+   \   00000016   0xA900             ADD      R1,SP,#+0
+   \   00000018   0xA803             ADD      R0,SP,#+12
+   \   0000001A   0x.... 0x....      BL       halCommonMemCompare
+   \   0000001E   0x1E40             SUBS     R0,R0,#+1
+   \   00000020   0x4180             SBCS     R0,R0,R0
+   \   00000022   0x0FC0             LSRS     R0,R0,#+31
+    274              debugPrint("Magic Number or version for download meta-data is invalid");
+    275              debugFlush();
+    276              return FALSE;
+    277            }
+    278          
+    279            return TRUE;
+   \   00000024   0xB006             ADD      SP,SP,#+24
+   \   00000026   0xBD10             POP      {R4,PC}          ;; return
+    280          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1: (+1)
+   \   00000000   0xA900             ADD      R1,SP,#+0
+   \   00000002   0xC01C             STM      R0!,{R2-R4}
+   \   00000004   0x220A             MOVS     R2,#+10
+   \   00000006   0x....             LDR.N    R0,??DataTable23_2  ;; 0x7fc00
+   \   00000008   0x4770             BX       LR
+    281          
+    282          // NOTE:  The magic number referenced here is the "Ember" Magic number.
+    283          // See comment above "emAfOtaStorageCheckDownloadMetaData()".
+
+   \                                 In section .text, align 2, keep-with-next
+    284          void emAfOtaStorageWriteDownloadMetaData(void)
+    285          {
+   \                     emAfOtaStorageWriteDownloadMetaData: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+    286            int8u magicNumber[] = { MAGIC_NUMBER , VERSION_NUMBER };
+   \   00000002   0x.... 0x....      ADR.W    R1,?_2
+   \   00000006   0xB084             SUB      SP,SP,#+16
+   \   00000008   0xC91C             LDM      R1!,{R2-R4}
+   \   0000000A   0xA800             ADD      R0,SP,#+0
+    287            debugPrint("Writing download meta-data (magic number and version)");
+    288            debugFlush();
+    289            emberAfPluginEepromWrite(IMAGE_INFO_START + MAGIC_NUMBER_OFFSET,
+    290                            magicNumber,
+    291                            MAGIC_NUMBER_SIZE + VERSION_NUMBER_SIZE);
+   \   0000000C   0x.... 0x....      BL       ?Subroutine1
+   \                     ??CrossCallReturnLabel_10: (+1)
+   \   00000010   0x.... 0x....      BL       emberAfPluginEepromWrite
+    292          }
+   \   00000014   0xBD1F             POP      {R0-R4,PC}       ;; return
+    293          
+
+   \                                 In section .text, align 2, keep-with-next
+    294          boolean emberAfOtaStorageDriverReadCallback(int32u offset, 
+    295                                                      int32u length,
+    296                                                      int8u* returnData)
+    297          {
+   \                     emberAfOtaStorageDriverReadCallback: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    298            return readWritePrimitive(TRUE,   // read?
+    299                                      NULL,   // writeData pointer
+    300                                      offset,
+    301                                      length,
+    302                                      returnData);
+   \   00000002   0x9200             STR      R2,[SP, #+0]
+   \   00000004   0x460B             MOV      R3,R1
+   \   00000006   0x4602             MOV      R2,R0
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x2001             MOVS     R0,#+1
+   \   0000000C   0x.... 0x....      BL       readWritePrimitive
+   \   00000010   0xBD02             POP      {R1,PC}          ;; return
+    303          }
+    304          
+    305          static boolean socBootloaderSupportWriteHandler(const int8u* dataToWrite,
+    306                                                          int32u offset, 
+    307                                                          int32u length)
+    308          {
+    309          #if defined(SOC_BOOTLOADING_SUPPORT)
+    310            int16u headerLength;
+    311            debugPrint("socBootloaderSupportWriteHandler()");
+    312            if (offset == 0) {
+    313              if (length < (HEADER_LENGTH_OFFSET + HEADER_LENGTH_FIELD_LENGTH)) {
+    314                // The expectation is that the first write of download data has at least
+    315                // the header length in it.  Otherwise we can't determine where the EBL
+    316                // starting point is.
+    317                debugPrint("Write to offset 0 is too short!  Must be at least %d bytes",
+    318                           HEADER_LENGTH_OFFSET + HEADER_LENGTH_FIELD_LENGTH);
+    319                return FALSE;
+    320              }
+    321              headerLength = ((dataToWrite[HEADER_LENGTH_OFFSET]
+    322                               + (dataToWrite[HEADER_LENGTH_OFFSET+1] << 8))
+    323                              + TAG_OVERHEAD); 
+    324              setEblStartOffset(headerLength);
+    325            }
+    326          #endif // defined(SOC_BOOTLOADING_SUPPORT)
+    327          
+    328            return TRUE;
+    329          }
+    330          
+
+   \                                 In section .text, align 2, keep-with-next
+    331          boolean emberAfOtaStorageDriverWriteCallback(const int8u* dataToWrite,
+    332                                                       int32u offset, 
+    333                                                       int32u length)
+    334          {
+   \                     emberAfOtaStorageDriverWriteCallback: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x000D             MOVS     R5,R1
+   \   00000004   0xB082             SUB      SP,SP,#+8
+   \   00000006   0x4604             MOV      R4,R0
+   \   00000008   0x4616             MOV      R6,R2
+    335            if (!socBootloaderSupportWriteHandler(dataToWrite,
+    336                                                  offset,
+    337                                                  length)) {
+   \   0000000A   0xD10C             BNE.N    ??emberAfOtaStorageDriverWriteCallback_0
+   \   0000000C   0x2E08             CMP      R6,#+8
+   \   0000000E   0xD201             BCS.N    ??emberAfOtaStorageDriverWriteCallback_1
+    338              return FALSE;
+   \   00000010   0x2000             MOVS     R0,#+0
+   \   00000012   0xBD76             POP      {R1,R2,R4-R6,PC}
+    339            }
+   \                     ??emberAfOtaStorageDriverWriteCallback_1: (+1)
+   \   00000014   0x79A0             LDRB     R0,[R4, #+6]
+   \   00000016   0x79E2             LDRB     R2,[R4, #+7]
+   \   00000018   0x....             LDR.N    R1,??DataTable23  ;; 0x7fc0a
+   \   0000001A   0xEB00 0x2002      ADD      R0,R0,R2, LSL #+8
+   \   0000001E   0x1D80             ADDS     R0,R0,#+6
+   \   00000020   0xB280             UXTH     R0,R0
+   \   00000022   0x.... 0x....      BL       emAfOtaStorageWriteInt32uToEeprom
+    340          
+    341            if (readWritePrimitive(FALSE,        // read?
+    342                                   dataToWrite,
+    343                                   offset,
+    344                                   length,
+    345                                   NULL)) {      // readData pointer
+   \                     ??emberAfOtaStorageDriverWriteCallback_0: (+1)
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x9000             STR      R0,[SP, #+0]
+   \   0000002A   0x4633             MOV      R3,R6
+   \   0000002C   0x462A             MOV      R2,R5
+   \   0000002E   0x4621             MOV      R1,R4
+   \   00000030   0x.... 0x....      BL       readWritePrimitive
+   \   00000034   0xB120             CBZ.N    R0,??emberAfOtaStorageDriverWriteCallback_2
+    346              emAfStorageEepromUpdateDownloadOffset(offset + length,
+    347                                                    FALSE);  // final offset?
+   \   00000036   0x2100             MOVS     R1,#+0
+   \   00000038   0x1970             ADDS     R0,R6,R5
+   \   0000003A   0x.... 0x....      BL       emAfStorageEepromUpdateDownloadOffset
+    348              return TRUE;
+   \   0000003E   0x2001             MOVS     R0,#+1
+    349            }
+    350            return FALSE;
+   \                     ??emberAfOtaStorageDriverWriteCallback_2: (+1)
+   \   00000040   0xBD76             POP      {R1,R2,R4-R6,PC}  ;; return
+    351          }
+    352          
+
+   \                                 In section .text, align 2, keep-with-next
+    353          void emberAfOtaStorageDriverDownloadFinishCallback(int32u finalOffset)
+    354          {
+   \                     emberAfOtaStorageDriverDownloadFinishCallback: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    355            debugPrint("Noting final download offset 0x%4X", finalOffset);
+    356            emAfStorageEepromUpdateDownloadOffset(finalOffset, 
+    357                                                  TRUE);  // final offset?
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0x.... 0x....      BL       emAfStorageEepromUpdateDownloadOffset
+    358            emberAfPluginEepromFlushSavedPartialWrites();
+   \   00000008   0xE8BD 0x4001      POP      {R0,LR}
+   \   0000000C   0x.... 0x....      B.W      emberAfPluginEepromFlushSavedPartialWrites
+    359            return;
+    360          }
+    361          
+
+   \                                 In section .text, align 2, keep-with-next
+    362          int32u emberAfOtaStorageDriverMaxDownloadSizeCallback(void)
+    363          {
+    364            return (OTA_EEPROM_SIZE - MAX_IMAGE_INFO_AND_OTA_HEADER_SIZE);
+   \                     emberAfOtaStorageDriverMaxDownloadSizeCallback: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable23_2  ;; 0x7fc00
+   \   00000002   0x4770             BX       LR               ;; return
+    365          }
+    366          
+
+   \                                 In section .text, align 2, keep-with-next
+    367          void emAfOtaStorageDriverInfoPrint(void)
+    368          {
+   \                     emAfOtaStorageDriverInfoPrint: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+    369            extern void emAfEepromInfoCommand(void);
+    370            
+    371            int32u downloadOffset = emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback();
+   \   00000002   0x.... 0x....      BL       emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback
+   \   00000006   0x4604             MOV      R4,R0
+    372          
+    373            otaPrintln("Storage Driver:            OTA Simple Storage EEPROM Plugin");
+   \   00000008   0x.... 0x....      ADR.W    R1,?_3
+   \   0000000C   0x2040             MOVS     R0,#+64
+   \   0000000E   0x.... 0x....      BL       emberAfPrintln
+    374            otaPrintFlush();
+    375            otaPrintln("Read Modify Write Support: " READ_MODIFY_WRITE_SUPPORT_TEXT);
+   \   00000012   0x.... 0x....      ADR.W    R1,?_4
+   \   00000016   0x2040             MOVS     R0,#+64
+   \   00000018   0x.... 0x....      BL       emberAfPrintln
+    376            otaPrintFlush();
+    377            otaPrintln("SOC Bootloading Support:   " SOC_BOOTLOADING_SUPPORT_TEXT);
+   \   0000001C   0x.... 0x....      ADR.W    R1,?_5
+   \   00000020   0x2040             MOVS     R0,#+64
+   \   00000022   0x.... 0x....      BL       emberAfPrintln
+    378            otaPrintFlush();
+    379            otaPrintln("Current Download Offset:   0x%4X", downloadOffset);
+   \   00000026   0x4622             MOV      R2,R4
+   \   00000028   0x.... 0x....      ADR.W    R1,?_6
+   \   0000002C   0x....             LDR.N    R4,??DataTable23  ;; 0x7fc0a
+   \   0000002E   0x.... 0x....      BL       ?Subroutine0
+    380          
+    381          #if defined(SOC_BOOTLOADING_SUPPORT)
+    382            otaPrintFlush();
+    383            otaPrintln("EBL Start Offset:          0x%4X", emAfGetEblStartOffset());
+   \                     ??CrossCallReturnLabel_8: (+1)
+   \   00000032   0x4620             MOV      R0,R4
+   \   00000034   0x.... 0x....      BL       emAfOtaStorageReadInt32uFromEeprom
+   \   00000038   0x4602             MOV      R2,R0
+   \   0000003A   0x.... 0x....      ADR.W    R1,?_7
+   \   0000003E   0x.... 0x....      BL       ?Subroutine0
+    384            otaPrintFlush();
+    385          #endif
+    386          
+    387            otaPrintln("EEPROM Start:              0x%4X", EEPROM_START);
+   \                     ??CrossCallReturnLabel_7: (+1)
+   \   00000042   0x2200             MOVS     R2,#+0
+   \   00000044   0x.... 0x....      ADR.W    R1,?_8
+   \   00000048   0x.... 0x....      BL       ?Subroutine0
+    388            otaPrintFlush();
+    389            otaPrintln("EEPROM End:                0x%4X", EEPROM_END);
+   \                     ??CrossCallReturnLabel_6: (+1)
+   \   0000004C   0xF44F 0x2200      MOV      R2,#+524288
+   \   00000050   0x.... 0x....      ADR.W    R1,?_9
+   \   00000054   0x.... 0x....      BL       ?Subroutine0
+    390            otaPrintFlush();
+    391            otaPrintln("Image Info Start:          0x%4X", IMAGE_INFO_START);
+   \                     ??CrossCallReturnLabel_5: (+1)
+   \   00000058   0x....             LDR.N    R2,??DataTable23_2  ;; 0x7fc00
+   \   0000005A   0x.... 0x....      ADR.W    R1,?_10
+   \   0000005E   0x.... 0x....      BL       ?Subroutine0
+    392            otaPrintFlush();
+    393            otaPrintln("Save Rate (bytes)          0x%4X", SAVE_RATE);
+   \                     ??CrossCallReturnLabel_4: (+1)
+   \   00000062   0xF44F 0x6280      MOV      R2,#+1024
+   \   00000066   0x.... 0x....      ADR.W    R1,?_11
+   \   0000006A   0x.... 0x....      BL       ?Subroutine0
+    394            otaPrintFlush();
+    395            otaPrintln("Offset of download offset  0x%4X", IMAGE_INFO_START + SAVED_DOWNLOAD_OFFSET_INDEX);
+   \                     ??CrossCallReturnLabel_3: (+1)
+   \   0000006E   0x....             LDR.N    R2,??DataTable23_3  ;; 0x7fc0e
+   \   00000070   0x.... 0x....      ADR.W    R1,?_12
+   \   00000074   0x.... 0x....      BL       ?Subroutine0
+    396            otaPrintFlush();
+    397            otaPrintln("Offset of EBL offset:      0x%4X", IMAGE_INFO_START + EBL_START_OFFSET_INDEX);
+   \                     ??CrossCallReturnLabel_2: (+1)
+   \   00000078   0x4622             MOV      R2,R4
+   \   0000007A   0x.... 0x....      ADR.W    R1,?_13
+   \   0000007E   0x.... 0x....      BL       ?Subroutine0
+    398            otaPrintFlush();
+    399            otaPrintln("Offset of image start:     0x%4X", IMAGE_INFO_START + OTA_HEADER_INDEX);
+   \                     ??CrossCallReturnLabel_1: (+1)
+   \   00000082   0x....             LDR.N    R2,??DataTable23_1  ;; 0x7fe0e
+   \   00000084   0x.... 0x....      ADR.W    R1,?_14
+   \   00000088   0x.... 0x....      BL       ?Subroutine0
+    400            otaPrintFlush();
+    401          
+    402          #if defined(DEBUG_PRINT)
+    403            {
+    404              int8u data[DATA_SIZE];
+    405          
+    406              otaPrintln("\nData at EEPROM Start");
+    407              emberAfPluginEepromRead(EEPROM_START, data, DATA_SIZE);
+    408              emberAfPrintCert(data);  // certs are 48 bytes long
+    409              otaPrintFlush();
+    410            }
+    411            printImageInfoStartData();
+    412          
+    413          #endif
+    414          
+    415            emAfEepromInfoCommand();
+   \                     ??CrossCallReturnLabel_0: (+1)
+   \   0000008C   0xE8BD 0x4010      POP      {R4,LR}
+   \   00000090   0x.... 0x....      B.W      emAfEepromInfoCommand
+    416          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0: (+1)
+   \   00000000   0x2040             MOVS     R0,#+64
+   \   00000002   0x.... 0x....      B.W      emberAfPrintln
+    417          
+    418          #if defined(DEBUG_PRINT)
+    419          
+    420          static void printImageInfoStartData(void)
+    421          {
+    422            int8u data[DATA_SIZE];
+    423            int8u i;
+    424            int32u maxSize = (MAX_IMAGE_INFO_AND_OTA_HEADER_SIZE < 128
+    425              ? MAX_IMAGE_INFO_AND_OTA_HEADER_SIZE
+    426              : 128);
+    427            otaPrintln("\nData at Image Info Start");
+    428            otaPrintFlush();
+    429          
+    430            for (i = 0; i < maxSize; i+= DATA_SIZE) {
+    431              otaPrintln("Read Offset: 0x%4X", (IMAGE_INFO_START + i));
+    432              emberAfPluginEepromRead((IMAGE_INFO_START + i), data, DATA_SIZE);
+    433              emberAfPrintCert(data);  // certs are 48 bytes long
+    434              otaPrintFlush();
+    435            }
+    436          }
+    437          
+    438          static void printDataBlock(const int8u* block)
+    439          {
+    440            int8u i;
+    441            for (i = 0; i < DATA_SIZE; i+= 8) {
+    442              otaPrintFlush();
+    443              otaPrintln("%X %X %X %X %X %X %X %X",
+    444                         block[i],
+    445                         block[i+1],
+    446                         block[i+2],
+    447                         block[i+3],
+    448                         block[i+4],
+    449                         block[i+5],
+    450                         block[i+6],
+    451                         block[i+7]);
+    452              otaPrintFlush();
+    453            }
+    454          }
+    455          
+    456          void emberAfPluginEepromTest(void)
+    457          {
+    458            int8u data[DATA_SIZE];
+    459            int8u i;
+    460            int32u addressOffset = 0;
+    461            int8u value;
+    462            int8u length = 4;
+    463            
+    464            for (i = 0; i < 2; i++) {
+    465              int32u address = addressOffset + (i * DATA_SIZE);
+    466              value = 0x09 + i;
+    467              MEMSET(data, value, DATA_SIZE);
+    468              otaPrintln("Writing value 0x%X to address 0x%4X", value, address);
+    469              emberAfPluginEepromWrite(address, data, DATA_SIZE);
+    470              MEMSET(data, 0, DATA_SIZE);
+    471              emberAfPluginEepromRead(address, data, DATA_SIZE);
+    472              printDataBlock(data);
+    473              otaPrintln("");
+    474              addressOffset += 240;  // this is less than the ATMEL part's page
+    475                                     // size (256) which means read/write operations
+    476                                     // will span two pages
+    477            }
+    478          
+    479            addressOffset = 0;
+    480            value = 0x02;
+    481            otaPrintln("Re-writing value 0x%X of length %d to address 0x%4X",
+    482                       value,
+    483                       length,
+    484                       addressOffset);
+    485            MEMSET(data, value, DATA_SIZE);
+    486            emberAfPluginEepromWrite(addressOffset, data, length);
+    487            MEMSET(data, 0, DATA_SIZE);
+    488            emberAfPluginEepromRead(addressOffset, data, DATA_SIZE);
+    489            printDataBlock(data);
+    490            otaPrintln("");
+    491            //  writeInt32uToEeprom(value, addressOffset);
+    492          }
+    493          
+    494          #endif // if defined(DEBUG_PRINT)
+    495          
+    496          //GB
+
+   \                                 In section .text, align 2, keep-with-next
+    497          boolean isEepromAvailable(void) 
+    498          {
+   \                     isEepromAvailable: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+    499              static boolean eepromAvailable = FALSE;
+    500              static boolean initialised = FALSE;
+    501          
+    502              if (!initialised) 
+   \   00000002   0x....             LDR.N    R4,??DataTable23_4
+   \   00000004   0x7860             LDRB     R0,[R4, #+1]
+   \   00000006   0xB990             CBNZ.N   R0,??isEepromAvailable_0
+    503              {
+    504                  if (eepromInit() == EEPROM_SUCCESS) 
+   \   00000008   0x.... 0x....      BL       halAppBootloaderInit
+   \   0000000C   0xB930             CBNZ.N   R0,??isEepromAvailable_1
+    505                  {
+    506                      emberAfDebugPrintln("isEepromAvailable: Eeprom available");
+   \   0000000E   0x.... 0x....      ADR.W    R1,?_15
+   \   00000012   0x2002             MOVS     R0,#+2
+   \   00000014   0x.... 0x....      BL       emberAfPrintln
+    507                      eepromAvailable = TRUE;
+   \   00000018   0x2001             MOVS     R0,#+1
+   \   0000001A   0xE005             B.N      ??isEepromAvailable_2
+    508                  } 
+    509                  else 
+    510                  {
+    511                      emberAfDebugPrintln("isEepromAvailable: Eeprom not available");
+   \                     ??isEepromAvailable_1: (+1)
+   \   0000001C   0x.... 0x....      ADR.W    R1,?_16
+   \   00000020   0x2002             MOVS     R0,#+2
+   \   00000022   0x.... 0x....      BL       emberAfPrintln
+    512                      eepromAvailable = FALSE;
+   \   00000026   0x2000             MOVS     R0,#+0
+   \                     ??isEepromAvailable_2: (+1)
+   \   00000028   0x7020             STRB     R0,[R4, #+0]
+    513                  }
+    514              
+    515                  initialised = TRUE;
+   \   0000002A   0x2001             MOVS     R0,#+1
+   \   0000002C   0x7060             STRB     R0,[R4, #+1]
+    516              }
+    517            
+    518              return eepromAvailable;
+   \                     ??isEepromAvailable_0: (+1)
+   \   0000002E   0x7820             LDRB     R0,[R4, #+0]
+   \   00000030   0xBD10             POP      {R4,PC}          ;; return
+    519          }
+
+   \                                 In section .bss, align 1
+   \                     ??eepromAvailable:
+   \   00000000                      DS8 1
+   \   00000001                      DS8 1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable23:
+   \   00000000   0x0007FC0A         DC32     0x7fc0a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable23_1:
+   \   00000000   0x0007FE0E         DC32     0x7fe0e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable23_2:
+   \   00000000   0x0007FC00         DC32     0x7fc00
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable23_3:
+   \   00000000   0x0007FC0E         DC32     0x7fc0e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable23_4:
+   \   00000000   0x........         DC32     ??eepromAvailable
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x6F 0x74          DC8 "ota-storage-eeprom.c"
+   \              0x61 0x2D    
+   \              0x73 0x74    
+   \              0x6F 0x72    
+   \              0x61 0x67    
+   \              0x65 0x2D    
+   \              0x65 0x65    
+   \              0x70 0x72    
+   \              0x6F 0x6D    
+   \              0x2E 0x63    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_1:
+   \   00000000   0x01 0x09          DC8 1, 9, 5, 1, 0, 2, 0, 0, 0, 2, 0, 0
+   \              0x05 0x01    
+   \              0x00 0x02    
+   \              0x00 0x00    
+   \              0x00 0x02    
+   \              0x00 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_2:
+   \   00000000   0x01 0x09          DC8 1, 9, 5, 1, 0, 2, 0, 0, 0, 2, 0, 0
+   \              0x05 0x01    
+   \              0x00 0x02    
+   \              0x00 0x00    
+   \              0x00 0x02    
+   \              0x00 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_3:
+   \   00000000   0x53 0x74          DC8 53H, 74H, 6FH, 72H, 61H, 67H, 65H, 20H
+   \              0x6F 0x72    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \   00000008   0x44 0x72          DC8 44H, 72H, 69H, 76H, 65H, 72H, 3AH, 20H
+   \              0x69 0x76    
+   \              0x65 0x72    
+   \              0x3A 0x20    
+   \   00000010   0x20 0x20          DC8 20H, 20H, 20H, 20H, 20H, 20H, 20H, 20H
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \   00000018   0x20 0x20          DC8 20H, 20H, 20H, 4FH, 54H, 41H, 20H, 53H
+   \              0x20 0x4F    
+   \              0x54 0x41    
+   \              0x20 0x53    
+   \   00000020   0x69 0x6D          DC8 69H, 6DH, 70H, 6CH, 65H, 20H, 53H, 74H
+   \              0x70 0x6C    
+   \              0x65 0x20    
+   \              0x53 0x74    
+   \   00000028   0x6F 0x72          DC8 6FH, 72H, 61H, 67H, 65H, 20H, 45H, 45H
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x45 0x45    
+   \   00000030   0x50 0x52          DC8 50H, 52H, 4FH, 4DH, 20H, 50H, 6CH, 75H
+   \              0x4F 0x4D    
+   \              0x20 0x50    
+   \              0x6C 0x75    
+   \   00000038   0x67 0x69          DC8 67H, 69H, 6EH, 0
+   \              0x6E 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_4:
+   \   00000000   0x52 0x65          DC8 "Read Modify Write Support: no"
+   \              0x61 0x64    
+   \              0x20 0x4D    
+   \              0x6F 0x64    
+   \              0x69 0x66    
+   \              0x79 0x20    
+   \              0x57 0x72    
+   \              0x69 0x74    
+   \              0x65 0x20    
+   \              0x53 0x75    
+   \              0x70 0x70    
+   \              0x6F 0x72    
+   \              0x74 0x3A    
+   \              0x20 0x6E    
+   \              0x6F 0x00    
+   \   0000001E   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_5:
+   \   00000000   0x53 0x4F          DC8 "SOC Bootloading Support:   yes"
+   \              0x43 0x20    
+   \              0x42 0x6F    
+   \              0x6F 0x74    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x53 0x75    
+   \              0x70 0x70    
+   \              0x6F 0x72    
+   \              0x74 0x3A    
+   \              0x20 0x20    
+   \              0x20 0x79    
+   \              0x65 0x73    
+   \              0x00         
+   \   0000001F   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_6:
+   \   00000000   0x43 0x75          DC8 "Current Download Offset:   0x%4X"
+   \              0x72 0x72    
+   \              0x65 0x6E    
+   \              0x74 0x20    
+   \              0x44 0x6F    
+   \              0x77 0x6E    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x4F    
+   \              0x66 0x66    
+   \              0x73 0x65    
+   \              0x74 0x3A    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_7:
+   \   00000000   0x45 0x42          DC8 "EBL Start Offset:          0x%4X"
+   \              0x4C 0x20    
+   \              0x53 0x74    
+   \              0x61 0x72    
+   \              0x74 0x20    
+   \              0x4F 0x66    
+   \              0x66 0x73    
+   \              0x65 0x74    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_8:
+   \   00000000   0x45 0x45          DC8 "EEPROM Start:              0x%4X"
+   \              0x50 0x52    
+   \              0x4F 0x4D    
+   \              0x20 0x53    
+   \              0x74 0x61    
+   \              0x72 0x74    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_9:
+   \   00000000   0x45 0x45          DC8 "EEPROM End:                0x%4X"
+   \              0x50 0x52    
+   \              0x4F 0x4D    
+   \              0x20 0x45    
+   \              0x6E 0x64    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_10:
+   \   00000000   0x49 0x6D          DC8 "Image Info Start:          0x%4X"
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x49 0x6E    
+   \              0x66 0x6F    
+   \              0x20 0x53    
+   \              0x74 0x61    
+   \              0x72 0x74    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_11:
+   \   00000000   0x53 0x61          DC8 "Save Rate (bytes)          0x%4X"
+   \              0x76 0x65    
+   \              0x20 0x52    
+   \              0x61 0x74    
+   \              0x65 0x20    
+   \              0x28 0x62    
+   \              0x79 0x74    
+   \              0x65 0x73    
+   \              0x29 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_12:
+   \   00000000   0x4F 0x66          DC8 "Offset of download offset  0x%4X"
+   \              0x66 0x73    
+   \              0x65 0x74    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x64 0x6F    
+   \              0x77 0x6E    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x6F    
+   \              0x66 0x66    
+   \              0x73 0x65    
+   \              0x74 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_13:
+   \   00000000   0x4F 0x66          DC8 "Offset of EBL offset:      0x%4X"
+   \              0x66 0x73    
+   \              0x65 0x74    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x45 0x42    
+   \              0x4C 0x20    
+   \              0x6F 0x66    
+   \              0x66 0x73    
+   \              0x65 0x74    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_14:
+   \   00000000   0x4F 0x66          DC8 "Offset of image start:     0x%4X"
+   \              0x66 0x73    
+   \              0x65 0x74    
+   \              0x20 0x6F    
+   \              0x66 0x20    
+   \              0x69 0x6D    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x73 0x74    
+   \              0x61 0x72    
+   \              0x74 0x3A    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x34 0x58    
+   \              0x00         
+   \   00000021   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_15:
+   \   00000000   0x69 0x73          DC8 "isEepromAvailable: Eeprom available"
+   \              0x45 0x65    
+   \              0x70 0x72    
+   \              0x6F 0x6D    
+   \              0x41 0x76    
+   \              0x61 0x69    
+   \              0x6C 0x61    
+   \              0x62 0x6C    
+   \              0x65 0x3A    
+   \              0x20 0x45    
+   \              0x65 0x70    
+   \              0x72 0x6F    
+   \              0x6D 0x20    
+   \              0x61 0x76    
+   \              0x61 0x69    
+   \              0x6C 0x61    
+   \              0x62 0x6C    
+   \              0x65 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_16:
+   \   00000000   0x69 0x73          DC8 "isEepromAvailable: Eeprom not available"
+   \              0x45 0x65    
+   \              0x70 0x72    
+   \              0x6F 0x6D    
+   \              0x41 0x76    
+   \              0x61 0x69    
+   \              0x6C 0x61    
+   \              0x62 0x6C    
+   \              0x65 0x3A    
+   \              0x20 0x45    
+   \              0x65 0x70    
+   \              0x72 0x6F    
+   \              0x6D 0x20    
+   \              0x6E 0x6F    
+   \              0x74 0x20    
+   \              0x61 0x76    
+   \              0x61 0x69    
+   \              0x6C 0x61    
+   \              0x62 0x6C    
+   \              0x65 0x00    
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   emAfGetEblStartOffset
+         0   -> emAfOtaStorageReadInt32uFromEeprom
+      32   emAfOtaStorageCheckDownloadMetaData
+        32   -> emberAfPluginEepromRead
+        32   -> halCommonMemCompare
+      24   emAfOtaStorageDriverGetRealOffset
+        24   -> emAfOtaStorageReadInt32uFromEeprom
+       8   emAfOtaStorageDriverInfoPrint
+         0   -> emAfEepromInfoCommand
+         8   -> emAfOtaStorageReadInt32uFromEeprom
+         8   -> emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback
+         8   -> emberAfPrintln
+       8   emAfOtaStorageReadInt32uFromEeprom
+         8   -> emberAfPluginEepromRead
+      24   emAfOtaStorageWriteDownloadMetaData
+        24   -> emberAfPluginEepromWrite
+      16   emAfOtaStorageWriteInt32uToEeprom
+        16   -> emAfOtaStorageReadInt32uFromEeprom
+        16   -> emberAfPluginEepromWrite
+       8   emberAfOtaStorageDriverDownloadFinishCallback
+         8   -> emAfStorageEepromUpdateDownloadOffset
+         0   -> emberAfPluginEepromFlushSavedPartialWrites
+       8   emberAfOtaStorageDriverInitCallback
+         8   -> emAfOtaStorageEepromInit
+         8   -> emberAfPluginEepromInfo
+         8   -> halInternalAssertFailed
+         8   -> isEepromAvailable
+       0   emberAfOtaStorageDriverMaxDownloadSizeCallback
+       8   emberAfOtaStorageDriverReadCallback
+         8   -> readWritePrimitive
+      24   emberAfOtaStorageDriverWriteCallback
+        24   -> emAfOtaStorageWriteInt32uToEeprom
+        24   -> emAfStorageEepromUpdateDownloadOffset
+        24   -> readWritePrimitive
+       8   isEepromAvailable
+         8   -> emberAfPrintln
+         8   -> halAppBootloaderInit
+      40   readWritePrimitive
+        40   -> emAfOtaStorageDriverGetRealOffset
+        40   -> emberAfPluginEepromRead
+        40   -> emberAfPluginEepromWrite
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable23
+       4  ??DataTable23_1
+       4  ??DataTable23_2
+       4  ??DataTable23_3
+       4  ??DataTable23_4
+       6  ?Subroutine0
+      10  ?Subroutine1
+      24  ?_0
+      12  ?_1
+      36  ?_10
+      36  ?_11
+      36  ?_12
+      36  ?_13
+      36  ?_14
+      36  ?_15
+      40  ?_16
+      12  ?_2
+      60  ?_3
+      32  ?_4
+      32  ?_5
+      36  ?_6
+      36  ?_7
+      36  ?_8
+      36  ?_9
+       2  eepromAvailable
+          initialised
+       4  emAfGetEblStartOffset
+      40  emAfOtaStorageCheckDownloadMetaData
+      50  emAfOtaStorageDriverGetRealOffset
+     148  emAfOtaStorageDriverInfoPrint
+      40  emAfOtaStorageReadInt32uFromEeprom
+      22  emAfOtaStorageWriteDownloadMetaData
+      50  emAfOtaStorageWriteInt32uToEeprom
+      16  emberAfOtaStorageDriverDownloadFinishCallback
+      44  emberAfOtaStorageDriverInitCallback
+       4  emberAfOtaStorageDriverMaxDownloadSizeCallback
+      18  emberAfOtaStorageDriverReadCallback
+      66  emberAfOtaStorageDriverWriteCallback
+       8  emberAfPluginOtaStorageSimpleEepromPageEraseEventControl
+      50  isEepromAvailable
+     112  readWritePrimitive
+
+ 
+    10 bytes in section .bss
+ 1 272 bytes in section .text
+ 
+ 1 272 bytes of CODE memory
+    10 bytes of DATA memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,5 @@
++-1000 pairing tolerance
+524288 memory offset in OTA Storage End Offset in OTA Simple Storage EEPROM Driver
+onoff Transition time enabled
+reporting enabled
+transTimeMS typo

@@ -1,0 +1,411 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:25:11
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-common\ota-common.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-common\ota-common.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"ota-common.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-common\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-common.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-common.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-common\ota-common.c
+      1          // *******************************************************************
+      2          // * ota-comman.c
+      3          // *
+      4          // * Zigbee Over-the-air bootload cluster for upgrading firmware and 
+      5          // * downloading specific file.  These routines are command to the client
+      6          // * and server.
+      7          // * 
+      8          // * Copyright 2009 by Ember Corporation. All rights reserved.              *80*
+      9          // *******************************************************************
+     10          
+     11          // this file contains all the common includes for clusters in the util
+     12          #include "app/framework/util/common.h"
+     13          #include "app/framework/util/attribute-storage.h"
+     14          #include "enums.h"
+     15          
+     16          // clusters specific header
+     17          #include "ota.h"
+     18          
+     19          #include "app/framework/plugin/ota-storage-common/ota-storage.h"
+     20          
+     21          // This relates all OTA command IDs in app/framework/gen/command-id.h
+     22          // to minimum message lengths (does not include EMBER_AF_ZCL_OVERHEAD)
+
+   \                                 In section .rodata, align 4, keep-with-next
+     23          PGM int8u emAfOtaMinMessageLengths[] = {
+   \                     emAfOtaMinMessageLengths:
+   \   00000000   0x02 0x08          DC8 2, 8, 1, 13, 13, 1, 1, 1, 5, 18, 11, 0
+   \              0x01 0x0D    
+   \              0x0D 0x01    
+   \              0x01 0x01    
+   \              0x05 0x12    
+   \              0x0B 0x00    
+     24            2,      // Image Notify
+     25            8,      // Query Next Image Request
+     26            1,      // Query Next Image Response
+     27            13,     // Image Block Request
+     28            13,     // Image Page Request
+     29            1,      // Image Block Response (abort is shortest)
+     30            1,      // Upgrade End Request
+     31            1,      // Upgrade End Response
+     32            5,      // Run Upgrade Request
+     33            18,     // Query Specific File Request
+     34            11,     // Query Specific File Response
+     35          };
+     36          
+
+   \                                 In section .text, align 2, keep-with-next
+     37          EmberAfOtaImageId emAfOtaCreateEmberAfOtaImageIdStruct(int16u manufacturerId,
+     38                                                   int16u imageType,
+     39                                                   int32u fileVersion)
+     40          {
+   \                     emAfOtaCreateEmberAfOtaImageIdStruct: (+1)
+   \   00000000   0xB51F             PUSH     {R0-R4,LR}
+     41            EmberAfOtaImageId id;
+     42            id.manufacturerId = manufacturerId;
+   \   00000002   0xF8AD 0x1000      STRH     R1,[SP, #+0]
+     43            id.imageTypeId = imageType;
+   \   00000006   0xF8AD 0x2002      STRH     R2,[SP, #+2]
+   \   0000000A   0x4604             MOV      R4,R0
+     44            id.firmwareVersion = fileVersion;
+   \   0000000C   0x9301             STR      R3,[SP, #+4]
+     45            MEMSET(id.deviceSpecificFileEui64, 0, EUI64_SIZE);
+   \   0000000E   0x2208             MOVS     R2,#+8
+   \   00000010   0x2100             MOVS     R1,#+0
+   \   00000012   0xA802             ADD      R0,SP,#+8
+   \   00000014   0x.... 0x....      BL       halCommonMemSet
+     46            return id;
+   \   00000018   0x4620             MOV      R0,R4
+   \   0000001A   0xA900             ADD      R1,SP,#+0
+   \   0000001C   0x2210             MOVS     R2,#+16
+   \   0000001E   0x.... 0x....      BL       __aeabi_memcpy4
+   \   00000022   0xB004             ADD      SP,SP,#+16
+   \   00000024   0xBD10             POP      {R4,PC}          ;; return
+     47          }
+     48          
+     49          // This assumes the message has already been validated for its length
+
+   \                                 In section .text, align 2, keep-with-next
+     50          int8u emAfOtaParseImageIdFromMessage(EmberAfOtaImageId* returnId, 
+     51                                               const int8u* buffer, 
+     52                                               int8u length)
+     53          {
+   \                     emAfOtaParseImageIdFromMessage: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x4604             MOV      R4,R0
+   \   00000004   0x460D             MOV      R5,R1
+   \   00000006   0x4616             MOV      R6,R2
+     54            returnId->manufacturerId  = emberAfGetInt16u(buffer, 0, length);
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x4628             MOV      R0,R5
+   \   0000000C   0x.... 0x....      BL       emberAfGetInt16u
+   \   00000010   0x8020             STRH     R0,[R4, #+0]
+     55            returnId->imageTypeId     = emberAfGetInt16u(buffer, 2, length);
+   \   00000012   0x4632             MOV      R2,R6
+   \   00000014   0x2102             MOVS     R1,#+2
+   \   00000016   0x4628             MOV      R0,R5
+   \   00000018   0x.... 0x....      BL       emberAfGetInt16u
+   \   0000001C   0x8060             STRH     R0,[R4, #+2]
+     56            returnId->firmwareVersion = emberAfGetInt32u(buffer, 4, length);
+   \   0000001E   0x4632             MOV      R2,R6
+   \   00000020   0x2104             MOVS     R1,#+4
+   \   00000022   0x4628             MOV      R0,R5
+   \   00000024   0x.... 0x....      BL       emberAfGetInt32u
+   \   00000028   0x6060             STR      R0,[R4, #+4]
+     57            MEMSET(returnId->deviceSpecificFileEui64, 0, EUI64_SIZE);
+   \   0000002A   0x2208             MOVS     R2,#+8
+   \   0000002C   0x2100             MOVS     R1,#+0
+   \   0000002E   0xF104 0x0008      ADD      R0,R4,#+8
+   \   00000032   0x.... 0x....      BL       halCommonMemSet
+     58            return 8;
+   \   00000036   0x2008             MOVS     R0,#+8
+   \   00000038   0xBD70             POP      {R4-R6,PC}       ;; return
+     59          }
+     60          
+     61          
+     62          #if defined(EMBER_AF_PRINT_CORE)
+     63          
+     64          // 32-bit math may be expensive and is only needed for printing
+     65          // purposes.  So this functionality should be conditionally compiled in.
+     66          
+     67          // The 'currentOffset' and 'endOffset' parameters are relative to the static 
+     68          // variable 'startingOffset'.  It is expected the 'startingOffset' is set by a 
+     69          // previous call that did nothing but pass in the 'offsetStart' value
+     70          // (other parameters are ignored in that case).
+
+   \                                 In section .text, align 2, keep-with-next
+     71          static int8u printPercentage(PGM_P prefixString,
+     72                                      int8u updateFrequency,
+     73                                      int32u offsetStart,
+     74                                      int32u currentOffset,
+     75                                      int32u endOffset)
+     76          {
+   \                     printPercentage: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x4605             MOV      R5,R0
+     77            static int8u percentageComplete = 0;
+     78            static int8u oldPercentageComplete = 255; // invalid value
+     79            static int32u startingOffset = 0;
+     80            static int32u imageSize = 0;
+     81          
+     82            if (offsetStart > 0 || endOffset > 0) {
+   \   00000004   0x9804             LDR      R0,[SP, #+16]
+   \   00000006   0x....             LDR.N    R4,??DataTable2
+   \   00000008   0x460E             MOV      R6,R1
+   \   0000000A   0xEA50 0x0102      ORRS     R1,R0,R2
+   \   0000000E   0xD006             BEQ.N    ??printPercentage_0
+     83              oldPercentageComplete = 255;
+     84              startingOffset = offsetStart;
+     85              imageSize = endOffset - startingOffset;
+   \   00000010   0x1A80             SUBS     R0,R0,R2
+   \   00000012   0x60A0             STR      R0,[R4, #+8]
+   \   00000014   0x21FF             MOVS     R1,#+255
+   \   00000016   0x7061             STRB     R1,[R4, #+1]
+   \   00000018   0x6062             STR      R2,[R4, #+4]
+     86              return 0;
+   \   0000001A   0x2000             MOVS     R0,#+0
+   \   0000001C   0xBD70             POP      {R4-R6,PC}
+     87            }
+     88            // The rest of this code should NOT use 'offsetStart', but 'startingOffset'.
+     89          
+     90            currentOffset -= startingOffset;
+     91          
+     92            percentageComplete = emAfCalculatePercentage(currentOffset, imageSize);
+   \                     ??printPercentage_0: (+1)
+   \   0000001E   0x6860             LDR      R0,[R4, #+4]
+   \   00000020   0x68A1             LDR      R1,[R4, #+8]
+   \   00000022   0x1A18             SUBS     R0,R3,R0
+   \   00000024   0x.... 0x....      BL       emAfCalculatePercentage
+   \   00000028   0x7861             LDRB     R1,[R4, #+1]
+   \   0000002A   0x7020             STRB     R0,[R4, #+0]
+   \   0000002C   0x29FF             CMP      R1,#+255
+   \   0000002E   0x4603             MOV      R3,R0
+   \   00000030   0xD004             BEQ.N    ??printPercentage_1
+   \   00000032   0x42B0             CMP      R0,R6
+   \   00000034   0xD30A             BCC.N    ??printPercentage_2
+   \   00000036   0x1870             ADDS     R0,R6,R1
+   \   00000038   0x4283             CMP      R3,R0
+   \   0000003A   0xDB07             BLT.N    ??printPercentage_2
+     93          
+     94            if (oldPercentageComplete == 255
+     95                || (percentageComplete >= updateFrequency
+     96                    && (percentageComplete >= 
+     97                        (oldPercentageComplete + updateFrequency)))) {
+     98              emberAfCorePrintln("%p: %d%% complete", prefixString, percentageComplete);
+   \                     ??printPercentage_1: (+1)
+   \   0000003C   0x462A             MOV      R2,R5
+   \   0000003E   0x.... 0x....      ADR.W    R1,?_0
+   \   00000042   0x2001             MOVS     R0,#+1
+   \   00000044   0x.... 0x....      BL       emberAfPrintln
+     99              oldPercentageComplete = percentageComplete;
+   \   00000048   0x7820             LDRB     R0,[R4, #+0]
+   \   0000004A   0x7060             STRB     R0,[R4, #+1]
+    100            }
+    101            return percentageComplete;
+   \                     ??printPercentage_2: (+1)
+   \   0000004C   0x7820             LDRB     R0,[R4, #+0]
+   \   0000004E   0xBD70             POP      {R4-R6,PC}       ;; return
+    102          }
+
+   \                                 In section .data, align 4
+   \                     ??percentageComplete:
+   \   00000000   0x00               DC8 0
+   \   00000001   0xFF               DC8 255
+   \   00000002   0x00 0x00          DC8 0, 0
+   \   00000004   0x00000000         DC32 0
+   \   00000008   0x00000000         DC32 0
+    103          
+
+   \                                 In section .text, align 2, keep-with-next
+    104          void emAfPrintPercentageSetStartAndEnd(int32u startingOffset, int32u endOffset)
+    105          {
+   \                     emAfPrintPercentageSetStartAndEnd: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    106            printPercentage(NULL,           // prefix string (ignored)
+    107                            0,              // update frequency (ignored)
+    108                            startingOffset,
+    109                            0,              // current offset (ignored)
+    110                            endOffset);     
+   \   00000002   0x9100             STR      R1,[SP, #+0]
+   \   00000004   0x4602             MOV      R2,R0
+   \   00000006   0x2100             MOVS     R1,#+0
+   \   00000008   0x2300             MOVS     R3,#+0
+   \   0000000A   0x4608             MOV      R0,R1
+   \   0000000C   0x.... 0x....      BL       printPercentage
+    111          }
+   \   00000010   0xBD01             POP      {R0,PC}          ;; return
+    112          
+
+   \                                 In section .text, align 2, keep-with-next
+    113          int8u emAfPrintPercentageUpdate(PGM_P prefixString, 
+    114                                          int8u updateFrequency, 
+    115                                          int32u currentOffset)
+    116          {
+   \                     emAfPrintPercentageUpdate: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    117            return printPercentage(prefixString,
+    118                                   updateFrequency,
+    119                                   0,               // offset start (ignored)
+    120                                   currentOffset,
+    121                                   0);              // offset end (ignored)
+   \   00000002   0x2300             MOVS     R3,#+0
+   \   00000004   0x9300             STR      R3,[SP, #+0]
+   \   00000006   0x4613             MOV      R3,R2
+   \   00000008   0x2200             MOVS     R2,#+0
+   \   0000000A   0x.... 0x....      BL       printPercentage
+   \   0000000E   0xBD02             POP      {R1,PC}          ;; return
+    122          }
+    123          
+
+   \                                 In section .text, align 2, keep-with-next
+    124          int8u emAfCalculatePercentage(int32u currentOffset, int32u imageSize)
+    125          {
+    126            int8u percentage = 0;
+    127            if (imageSize == 0) {
+   \                     emAfCalculatePercentage: (+1)
+   \   00000000   0xB909             CBNZ.N   R1,??emAfCalculatePercentage_0
+    128              return 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x4770             BX       LR
+    129            }
+    130          
+    131            if (currentOffset >= imageSize) {
+   \                     ??emAfCalculatePercentage_0: (+1)
+   \   00000006   0x4288             CMP      R0,R1
+   \   00000008   0xBF2F             ITEEE    CS 
+   \   0000000A   0x2064             MOVCS    R0,#+100
+   \   0000000C   0x2264             MOVCC    R2,#+100
+   \   0000000E   0x4350             MULCC    R0,R2,R0
+   \   00000010   0xFBB0 0xF0F1      UDIVCC   R0,R0,R1
+    132              percentage = 100;
+    133            } else {
+    134              percentage = (currentOffset * 100) / imageSize;
+    135            }
+    136            return percentage;
+   \   00000014   0xB2C0             UXTB     R0,R0
+   \   00000016   0x4770             BX       LR               ;; return
+    137          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     ??percentageComplete
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x25 0x70          DC8 "%p: %d%% complete"
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x25 0x25    
+   \              0x20 0x63    
+   \              0x6F 0x6D    
+   \              0x70 0x6C    
+   \              0x65 0x74    
+   \              0x65 0x00    
+   \   00000012   0x00 0x00          DC8 0, 0
+    138          
+    139          #endif // defined EMBER_AF_CORE_PRINT_ENABLED
+    140          
+    141          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   emAfCalculatePercentage
+      24   emAfOtaCreateEmberAfOtaImageIdStruct
+        24   -> __aeabi_memcpy4
+        24   -> halCommonMemSet
+      16   emAfOtaParseImageIdFromMessage
+        16   -> emberAfGetInt16u
+        16   -> emberAfGetInt32u
+        16   -> halCommonMemSet
+       8   emAfPrintPercentageSetStartAndEnd
+         8   -> printPercentage
+       8   emAfPrintPercentageUpdate
+         8   -> printPercentage
+      16   printPercentage
+        16   -> emAfCalculatePercentage
+        16   -> emberAfPrintln
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+      20  ?_0
+      24  emAfCalculatePercentage
+      38  emAfOtaCreateEmberAfOtaImageIdStruct
+      12  emAfOtaMinMessageLengths
+      58  emAfOtaParseImageIdFromMessage
+      18  emAfPrintPercentageSetStartAndEnd
+      16  emAfPrintPercentageUpdate
+      12  percentageComplete
+          oldPercentageComplete
+          startingOffset
+          imageSize
+      80  printPercentage
+
+ 
+  12 bytes in section .data
+  12 bytes in section .rodata
+ 258 bytes in section .text
+ 
+ 258 bytes of CODE  memory
+  12 bytes of CONST memory
+  12 bytes of DATA  memory
+
+Errors: none
+Warnings: none

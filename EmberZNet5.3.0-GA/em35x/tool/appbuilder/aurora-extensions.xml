@@ -1,0 +1,24 @@
+
+<configurator>
+  <domain name="Ember" />
+  <!-- Use manufacturerCode to indicate that this is a manufacturer specific
+       cluster. -->
+      
+  
+  <clusterExtension code="0x0000"> 
+    <command source="client" code="0x00" 
+        name="SendTransparentCommand" optional="true" manufacturerCode="0x1010">
+        <description>Sends transparent command to the end device.             
+        </description>
+        <arg name="payload" type="INT8U" array="true" />
+    </command>
+    <command source="server" code="0x00" 
+        name="SendTransparentCommandResponse" optional="true" manufacturerCode="0x1010">
+        <description>This is the response to the SendTransparentCommand. (Or may be sent Unsolicited to COO).
+        </description>
+        <arg name="payload" type="INT8U" array="true" />
+    </command>
+  </clusterExtension>
+  
+  
+  </configurator>

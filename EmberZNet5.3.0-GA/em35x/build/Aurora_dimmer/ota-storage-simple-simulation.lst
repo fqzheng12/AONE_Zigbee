@@ -1,0 +1,255 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:25:14
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple\ota-storage-simple-simulation.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple\ota-storage-simple-simulation.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"ota-storage-simple-simulation.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-simple-simulation.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-simple-simulation.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple\ota-storage-simple-simulation.c
+      1          // *****************************************************************************
+      2          // * ota-storage-simple-simulation.c
+      3          // *
+      4          // * This code will load a file from disk into the 'Simple Storage' plugin.
+      5          // * 
+      6          // * Copyright 2012 by Ember Corporation. All rights reserved.              *80*
+      7          // *****************************************************************************
+      8          
+      9          #include "app/framework/include/af.h"
+     10          #include "app/framework/plugin/ota-common/ota.h"
+     11          
+     12          #if defined(EMBER_TEST)
+     13          
+     14          #include "app/util/serial/command-interpreter2.h"
+     15          
+     16          #include <errno.h>
+     17          #include <sys/types.h>
+     18          #include <sys/stat.h>
+     19          #include <unistd.h>
+     20          
+     21          //------------------------------------------------------------------------------
+     22          // Globals
+     23          
+     24          #define MAX_READ_SIZE 512
+     25          #define MAX_PATH_SIZE 512
+     26          
+     27          //------------------------------------------------------------------------------
+     28          // Forward Declarations
+     29          
+     30          //------------------------------------------------------------------------------
+     31          
+     32          static boolean loadFileIntoOtaStorage(const char* file)
+     33          {
+     34            FILE* fh = fopen(file, "rb");
+     35            char cwd[MAX_PATH_SIZE];
+     36              
+     37            assert(NULL != getcwd(cwd, MAX_PATH_SIZE));
+     38          
+     39            emberAfOtaBootloadClusterFlush();
+     40            otaPrintln("Current directory: '%s'", cwd);
+     41            emberAfOtaBootloadClusterFlush();
+     42          
+     43            if (fh == NULL) {
+     44              otaPrintln("Failed to open file: %p",
+     45                         strerror(errno));
+     46              return FALSE;
+     47            }
+     48          
+     49            struct stat buffer;
+     50            if (0 != stat(file, &buffer)) {
+     51              otaPrintln("Failed to stat() file: %p",
+     52                         strerror(errno));
+     53              return FALSE;
+     54            }
+     55          
+     56            EmberAfOtaStorageStatus status = emberAfOtaStorageClearTempDataCallback();
+     57            if (status != EMBER_AF_OTA_STORAGE_SUCCESS) {
+     58              otaPrintln("Failed to delete existing OTA file.");
+     59              return FALSE;
+     60            }
+     61            
+     62            off_t offset = 0;
+     63            while (offset < buffer.st_size) {
+     64              int8u data[MAX_READ_SIZE];
+     65              off_t readSize = (buffer.st_size - offset > MAX_READ_SIZE
+     66                                ? MAX_READ_SIZE
+     67                                : buffer.st_size - offset);
+     68              size_t readAmount = fread(data, 1, readSize, fh);
+     69              if (readAmount != readSize) {
+     70                otaPrintln("Failed to read %d bytes from file at offset 0x%4X",
+     71                           readSize,
+     72                           offset);
+     73                status = EMBER_AF_OTA_STORAGE_ERROR;
+     74                goto loadStorageDone;
+     75              }
+     76          
+     77              status = emberAfOtaStorageWriteTempDataCallback(offset,
+     78                                                              readAmount,
+     79                                                              data);
+     80              if (status != EMBER_AF_OTA_STORAGE_SUCCESS) {
+     81                otaPrintln("Failed to load data into temp storage.");
+     82                goto loadStorageDone;
+     83              }
+     84          
+     85              offset += readAmount;
+     86            }
+     87          
+     88            status = emberAfOtaStorageFinishDownloadCallback(offset);
+     89          
+     90            if (status == EMBER_AF_OTA_STORAGE_SUCCESS) {
+     91              int32u totalSize;
+     92              int32u offset;
+     93              EmberAfOtaImageId id;
+     94              status = emberAfOtaStorageCheckTempDataCallback(&offset,
+     95                                                              &totalSize,
+     96                                                              &id);
+     97          
+     98              if (status != EMBER_AF_OTA_STORAGE_SUCCESS) {
+     99                otaPrintln("Failed to validate OTA file.");
+    100                goto loadStorageDone;
+    101              }
+    102          
+    103              otaPrintln("Loaded image successfully.");
+    104            }
+    105          
+    106           loadStorageDone:
+    107            fclose(fh);
+    108            return status;
+    109          }
+    110          
+    111          #endif // EMBER_TEST
+    112          
+    113          // TODO: this should be gated once we set up a gating mechanism for the 
+    114          // generated CLI
+
+   \                                 In section .text, align 2, keep-with-next
+    115          void emAfOtaLoadFileCommand(void)
+    116          {
+   \                     emAfOtaLoadFileCommand: (+1)
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB0BF             SUB      SP,SP,#+252
+    117            char filename[250];
+    118            int8u length = emberCopyStringArgument(0,
+    119                                                   filename,
+                                                          ^
+Warning[Pe167]: argument of type "char *" is incompatible with parameter of
+          type "unsigned char *"
+    120                                                   250,
+    121                                                   FALSE);
+    122            filename[length] = '\0';
+   \   00000004   0x2300             MOVS     R3,#+0
+   \   00000006   0x22FA             MOVS     R2,#+250
+   \   00000008   0xA900             ADD      R1,SP,#+0
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \   0000000C   0x.... 0x....      BL       emberCopyStringArgument
+   \   00000010   0xA900             ADD      R1,SP,#+0
+   \   00000012   0x2200             MOVS     R2,#+0
+   \   00000014   0x5442             STRB     R2,[R0, R1]
+    123            otaPrintln("Loading from file: '%s'", filename);
+   \   00000016   0x2040             MOVS     R0,#+64
+   \   00000018   0xAA00             ADD      R2,SP,#+0
+   \   0000001A   0x.... 0x....      ADR.W    R1,?_0
+   \   0000001E   0x.... 0x....      BL       emberAfPrintln
+    124            loadFileIntoOtaStorage(filename);  
+                   ^
+Warning[Pe223]: function "loadFileIntoOtaStorage" declared implicitly
+   \   00000022   0xA800             ADD      R0,SP,#+0
+   \   00000024   0x.... 0x....      BL       loadFileIntoOtaStorage
+    125          }
+   \   00000028   0xB03F             ADD      SP,SP,#+252
+   \   0000002A   0xBD00             POP      {PC}             ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x4C 0x6F          DC8 "Loading from file: '%s'"
+   \              0x61 0x64    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x66 0x72    
+   \              0x6F 0x6D    
+   \              0x20 0x66    
+   \              0x69 0x6C    
+   \              0x65 0x3A    
+   \              0x20 0x27    
+   \              0x25 0x73    
+   \              0x27 0x00    
+    126          
+    127          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+     256   emAfOtaLoadFileCommand
+       256   -> emberAfPrintln
+       256   -> emberCopyStringArgument
+       256   -> loadFileIntoOtaStorage
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      24  ?_0
+      44  emAfOtaLoadFileCommand
+
+ 
+ 68 bytes in section .text
+ 
+ 68 bytes of CODE memory
+
+Errors: none
+Warnings: 2

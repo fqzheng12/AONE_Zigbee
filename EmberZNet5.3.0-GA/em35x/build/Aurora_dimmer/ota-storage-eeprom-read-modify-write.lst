@@ -1,0 +1,180 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:25:13
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-read-modify-write.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-read-modify-write.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"ota-storage-eeprom-read-modify-write.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-eeprom-read-modify-write.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\ota-storage-eeprom-read-modify-write.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-read-modify-write.c
+      1          // *****************************************************************************
+      2          // * ota-storage-eeprom-driver-read-modify-write.c
+      3          // *
+      4          // * This code is intended for EEPROM devices that support read-modify-write
+      5          // * of arbitrary page sizes, and across page boundaries.
+      6          // * 
+      7          // * Copyright 2012 by Ember Corporation. All rights reserved.              *80*
+      8          // *****************************************************************************
+      9          
+     10          #include "app/framework/include/af.h"
+     11          #include "app/framework/plugin/ota-common/ota.h"
+     12          #include "app/framework/plugin/ota-storage-common/ota-storage.h"
+     13          #include "app/framework/plugin/eeprom/eeprom.h"
+     14          
+     15          #define OTA_STORAGE_EEPROM_INTERNAL_HEADER
+     16          #include "ota-storage-eeprom.h"
+     17          #undef OTA_STORAGE_EEPROM_INTERNAL_HEADER
+     18          
+     19          #if defined(EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT)
+     20          
+     21          //------------------------------------------------------------------------------
+     22          // Globals
+     23          
+     24          //------------------------------------------------------------------------------
+     25          
+     26          int32u emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback(void)
+     27          {
+     28            int32u offset;
+     29          
+     30            if (!emAfOtaStorageCheckDownloadMetaData()) {
+     31              return 0;
+     32            }
+     33          
+     34            offset = emAfOtaStorageReadInt32uFromEeprom(IMAGE_INFO_START
+     35                                                        + SAVED_DOWNLOAD_OFFSET_INDEX);
+     36            if (offset == 0xFFFFFFFFL) {
+     37              return 0;
+     38            }
+     39            return offset;
+     40          }
+     41          
+     42          void emAfStorageEepromUpdateDownloadOffset(int32u offset, boolean finalOffset)
+     43          {
+     44            int32u oldDownloadOffset = 
+     45              emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback();
+     46          
+     47            if (finalOffset
+     48                || offset == 0
+     49                || (offset > SAVE_RATE
+     50                    && (oldDownloadOffset + SAVE_RATE) <= offset)) {
+     51              // The actual offset we are writing TO is the second parameter.
+     52              // The data we are writing (first param) also happens to be an offset but
+     53              // is not a location for the write operation in this context.
+     54              debugFlush();
+     55              debugPrint("Recording download offset: 0x%4X", offset);
+     56              debugFlush();
+     57          
+     58              emAfOtaStorageWriteInt32uToEeprom(offset, IMAGE_INFO_START + SAVED_DOWNLOAD_OFFSET_INDEX);
+     59              //printImageInfoStartData();
+     60            }
+     61          }
+     62          
+     63          EmberAfOtaStorageStatus emberAfOtaStorageDriverInvalidateImageCallback(void)
+     64          {
+     65            int8u zeroMagicNumber[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+     66          
+     67            if (!emAfOtaStorageCheckDownloadMetaData()) {
+     68              emAfOtaStorageWriteDownloadMetaData();
+     69            }
+     70            
+     71            // Wipe out the magic number in the OTA file and the Header length field.
+     72            // EEPROM driver requires a write of at least 8 bytes in length.
+     73            if (!emberAfOtaStorageDriverWriteCallback(zeroMagicNumber, 
+     74                                                      0,      // offset
+     75                                                      sizeof(zeroMagicNumber))){    // length
+     76              return EMBER_AF_OTA_STORAGE_ERROR;
+     77            }
+     78          
+     79            // Set the offset to 0 to indicate on reboot that there is no previous image
+     80            // to resume downloading.
+     81            emberAfOtaStorageDriverDownloadFinishCallback(0);
+     82          
+     83            return EMBER_AF_OTA_STORAGE_SUCCESS;
+     84          }
+     85          
+     86          void emberAfPluginOtaStorageSimpleEepromPageEraseEventHandler(void)
+     87          {
+     88            // This event should never fire.
+     89          }
+     90          
+     91          void emAfOtaStorageEepromInit(void)
+     92          {
+     93            // Older drivers do not have an EEPROM info structure that we can reference
+     94            // so we must just assume they are okay.  
+     95            if (emberAfPluginEepromInfo() != NULL) {
+     96              // OTA code must match the capabilities of the part.  This code
+     97              // assumes that a page erase prior to writing data is NOT required.
+     98              assert((emberAfPluginEepromInfo()->capabilitiesMask
+     99                      & EEPROM_CAPABILITIES_PAGE_ERASE_REQD)
+    100                     == 0);
+    101            }
+    102          }
+    103          
+    104          EmberAfOtaStorageStatus emberAfOtaStorageDriverPrepareToResumeDownloadCallback(void)
+    105          {
+    106            return EMBER_AF_OTA_STORAGE_SUCCESS;
+    107          }
+    108          
+    109          #endif // #if defined(EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT)
+
+
+ 
+
+ 
+
+
+Errors: none
+Warnings: none

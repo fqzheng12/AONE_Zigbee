@@ -1,0 +1,538 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:50
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\button.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\button.c" -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"button.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\button.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\button.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\button.c
+      1          /** @file hal/micro/cortexm3/button.c
+      2           *  @brief  Sample API functions for operating buttons (external interrupts).
+      3           *  Please see the board header file for the definition of the BUTTON*
+      4           *  instances used below.  The BUTTON* defines used here are designed to make
+      5           *  this library generic such that only the board header needs to be modified
+      6           *  to change which GPIO the buttons are on.
+      7           * 
+      8           * <!-- Author(s): Brooks Barrett -->
+      9           * <!-- Copyright 2007 by Ember Corporation. All rights reserved.       *80*-->   
+     10           */
+     11          
+     12          #include PLATFORM_HEADER
+     13          #include "stack/include/ember.h"
+     14          #include "hal/hal.h"
+     15          #include "app/util/serial/serial.h"
+     16          
+     17          // This state is kept track of so the IRQ ISRs knows when to notify buttonIsrs.
+     18          #ifdef BUTTON0
+
+   \                                 In section .bss, align 1
+     19          int8u button0State;
+   \                     button0State:
+   \   00000000                      DS8 1
+     20          #endif
+     21          
+     22          #ifdef BUTTON1
+     23          int8u button1State;
+     24          #endif
+     25          
+     26          #ifdef BUTTON2
+     27          int8u button2State;
+     28          #endif
+     29          
+     30          #ifdef BUTTON3
+     31          int8u button3State;
+     32          #endif
+     33          
+
+   \                                 In section .text, align 2, keep-with-next
+     34          void halInternalInitButton(void)
+     35          {
+   \                     halInternalInitButton: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     36          #ifdef BUTTON0
+     37            //start from a fresh state just in case
+     38            BUTTON0_INTCFG = 0;              //disable BUTTON0 triggering
+   \   00000002   0x....             LDR.N    R0,??DataTable3  ;; 0x4000a814
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6501             STR      R1,[R0, #+80]
+     39            INT_CFGCLR = BUTTON0_INT_EN_BIT; //clear BUTTON0 top level int enable
+   \   00000008   0xF44F 0x5400      MOV      R4,#+8192
+   \   0000000C   0x....             LDR.N    R1,??DataTable3_1  ;; 0xe000e180
+   \   0000000E   0x600C             STR      R4,[R1, #+0]
+     40            INT_GPIOFLAG = BUTTON0_FLAG_BIT; //clear stale BUTTON0 interrupt
+   \   00000010   0x2102             MOVS     R1,#+2
+   \   00000012   0x6001             STR      R1,[R0, #+0]
+     41            INT_MISS = BUTTON0_MISS_BIT;     //clear stale missed BUTTON0 interrupt
+   \   00000014   0x60C4             STR      R4,[R0, #+12]
+     42            //configure BUTTON0
+     43            BUTTON0_SEL();                             //point IRQ at the desired pin
+     44            BUTTON0_INTCFG  = (0 << GPIO_INTFILT_BIT); //no filter
+   \   00000016   0x2100             MOVS     R1,#+0
+   \   00000018   0x6501             STR      R1,[R0, #+80]
+     45            BUTTON0_INTCFG |= (3 << GPIO_INTMOD_BIT);  //3 = both edges
+   \   0000001A   0x6D01             LDR      R1,[R0, #+80]
+   \   0000001C   0xF041 0x0160      ORR      R1,R1,#0x60
+   \   00000020   0x6501             STR      R1,[R0, #+80]
+     46            button0State = halButtonPinState(BUTTON0);
+   \   00000022   0x200E             MOVS     R0,#+14
+   \   00000024   0x.... 0x....      BL       halButtonPinState
+   \   00000028   0x....             LDR.N    R1,??DataTable3_2
+   \   0000002A   0x7008             STRB     R0,[R1, #+0]
+     47          #endif
+     48          
+     49          #ifdef BUTTON1
+     50            //start from a fresh state just in case
+     51            BUTTON1_INTCFG = 0;              //disable BUTTON1 triggering
+     52            INT_CFGCLR = BUTTON1_INT_EN_BIT; //clear BUTTON1 top level int enable
+     53            INT_GPIOFLAG = BUTTON1_FLAG_BIT; //clear stale BUTTON1 interrupt
+     54            INT_MISS = BUTTON1_MISS_BIT;     //clear stale missed BUTTON1 interrupt
+     55            //configure BUTTON1
+     56            BUTTON1_SEL();                             //point IRQ at the desired pin
+     57            BUTTON1_INTCFG  = (0 << GPIO_INTFILT_BIT); //no filter
+     58            BUTTON1_INTCFG |= (3 << GPIO_INTMOD_BIT);  //3 = both edges
+     59            button1State = halButtonPinState(BUTTON1);
+     60          #endif
+     61          
+     62          #ifdef BUTTON2
+     63            //start from a fresh state just in case
+     64            BUTTON2_INTCFG = 0;              //disable BUTTON2 triggering
+     65            INT_CFGCLR = BUTTON2_INT_EN_BIT; //clear BUTTON2 top level int enable
+     66            INT_GPIOFLAG = BUTTON2_FLAG_BIT; //clear stale BUTTON2 interrupt
+     67            INT_MISS = BUTTON2_MISS_BIT;     //clear stale missed BUTTON2 interrupt
+     68            //configure BUTTON2
+     69            BUTTON2_SEL();                             //point IRQ at the desired pin
+     70            BUTTON2_INTCFG  = (0 << GPIO_INTFILT_BIT); //no filter
+     71            BUTTON2_INTCFG |= (3 << GPIO_INTMOD_BIT);  //3 = both edges
+     72            button2State = halButtonPinState(BUTTON2);
+     73          #endif
+     74          
+     75          #ifdef BUTTON3
+     76            //start from a fresh state just in case
+     77            BUTTON3_INTCFG = 0;              //disable BUTTON3 triggering
+     78            INT_CFGCLR = BUTTON3_INT_EN_BIT; //clear BUTTON3 top level int enable
+     79            INT_GPIOFLAG = BUTTON3_FLAG_BIT; //clear stale BUTTON3 interrupt
+     80            INT_MISS = BUTTON3_MISS_BIT;     //clear stale missed BUTTON3 interrupt
+     81            //configure BUTTON3
+     82            BUTTON3_SEL();                             //point IRQ at the desired pin
+     83            BUTTON3_INTCFG  = (0 << GPIO_INTFILT_BIT); //no filter
+     84            BUTTON3_INTCFG |= (3 << GPIO_INTMOD_BIT);  //3 = both edges
+     85            button3State = halButtonPinState(BUTTON3);
+     86          #endif
+     87            
+     88          #ifdef BUTTON0
+     89            INT_CFGSET = BUTTON0_INT_EN_BIT; //set top level interrupt enable
+   \   0000002C   0x....             LDR.N    R0,??DataTable3_3  ;; 0xe000e100
+   \   0000002E   0x6004             STR      R4,[R0, #+0]
+     90          #endif
+     91          
+     92          #ifdef BUTTON1
+     93            INT_CFGSET = BUTTON1_INT_EN_BIT; //set top level interrupt enable
+     94          #endif
+     95            
+     96          #ifdef BUTTON2
+     97            INT_CFGSET = BUTTON2_INT_EN_BIT; //set top level interrupt enable
+     98          #endif
+     99            
+    100          #ifdef BUTTON3
+    101            INT_CFGSET = BUTTON3_INT_EN_BIT; //set top level interrupt enable
+    102          #endif
+    103          }
+   \   00000030   0xBD10             POP      {R4,PC}          ;; return
+    104          
+
+   \                                 In section .text, align 2, keep-with-next
+    105          int8u halButtonState(int8u button)
+    106          {
+    107            // Note: this returns the "soft" state rather than reading the port
+    108            //  so it jives with the interrupts and their callbacks
+    109            switch(button) {
+   \                     halButtonState: (+1)
+   \   00000000   0x280E             CMP      R0,#+14
+   \   00000002   0xD102             BNE.N    ??halButtonState_0
+    110          #ifdef BUTTON0
+    111              case BUTTON0:
+    112                return button0State;
+   \   00000004   0x....             LDR.N    R0,??DataTable3_2
+   \   00000006   0x7800             LDRB     R0,[R0, #+0]
+   \   00000008   0x4770             BX       LR
+    113          #endif
+    114          #ifdef BUTTON1
+    115              case BUTTON1:
+    116                return button1State;
+    117          #endif
+    118          #ifdef BUTTON2
+    119              case BUTTON2:
+    120                return button2State;
+    121          #endif
+    122          #ifdef BUTTON3
+    123              case BUTTON3:
+    124                return button3State;
+    125          #endif
+    126              default:
+    127                return BUTTON_RELEASED;
+   \                     ??halButtonState_0: (+1)
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \   0000000C   0x4770             BX       LR               ;; return
+    128            }
+    129          }
+    130          
+
+   \                                 In section .text, align 2, keep-with-next
+    131          int8u halButtonPinState(int8u button)
+    132          {
+    133            // Note: this returns the current state of the button's pin.  It may not
+    134            // jive with the interrupts and their callbacks, but it is useful for
+    135            // checking the state of the button on startup.
+    136            switch(button) {
+   \                     halButtonPinState: (+1)
+   \   00000000   0x280E             CMP      R0,#+14
+   \   00000002   0xD107             BNE.N    ??halButtonPinState_0
+    137          #ifdef BUTTON0
+    138              case BUTTON0:
+    139                return (BUTTON0_IN & BIT(BUTTON0&7)) ? BUTTON_RELEASED : BUTTON_PRESSED;
+   \   00000004   0x....             LDR.N    R0,??DataTable3_4  ;; 0x4000b408
+   \   00000006   0x6800             LDR      R0,[R0, #+0]
+   \   00000008   0x0980             LSRS     R0,R0,#+6
+   \   0000000A   0xF000 0x0001      AND      R0,R0,#0x1
+   \   0000000E   0xF080 0x0001      EOR      R0,R0,#0x1
+   \   00000012   0x4770             BX       LR
+    140          #endif
+    141          #ifdef BUTTON1
+    142              case BUTTON1:
+    143                return (BUTTON1_IN & BIT(BUTTON1&7)) ? BUTTON_RELEASED : BUTTON_PRESSED;
+    144          #endif
+    145          #ifdef BUTTON2
+    146              case BUTTON2:
+    147                return (BUTTON2_IN & BIT(BUTTON2&7)) ? BUTTON_RELEASED : BUTTON_PRESSED;
+    148          #endif
+    149          #ifdef BUTTON3
+    150              case BUTTON3:
+    151                return (BUTTON3_IN & BIT(BUTTON3&7)) ? BUTTON_RELEASED : BUTTON_PRESSED;
+    152          #endif
+    153              default:
+    154                return BUTTON_RELEASED;
+   \                     ??halButtonPinState_0: (+1)
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x4770             BX       LR               ;; return
+    155            }
+    156          }
+    157          
+    158          
+    159          //DEBOUNCE operation is based upon the theory that when multiple reads in a row
+    160          //return the same value, we have passed any debounce created by the mechanical
+    161          //action of a button.  The define "DEBOUNCE" says how many reads in a row
+    162          //should return the same value.  The value '5', below, is the recommended value
+    163          //since this should require the signal to have stabalized for approximately
+    164          //100us which should be much longer than any debounce action.
+    165          //Uncomment the following line to enable software debounce operation:
+    166          //#define DEBOUNCE 5
+    167          
+    168          //Typically, software debounce is disabled by defaulting to a value of '0'
+    169          //which will cause the preprocessor to strip out the debounce code and save
+    170          //flash space.
+    171          #ifndef DEBOUNCE
+    172          #define DEBOUNCE 0
+    173          #endif//DEBOUNCE
+    174          
+    175          
+    176          #ifdef BUTTON0
+
+   \                                 In section .text, align 2, keep-with-next
+    177          void BUTTON0_ISR(void)
+    178          {
+   \                     halIrqBIsr: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+    179            int8u buttonStateNow;
+    180            #if (DEBOUNCE > 0)
+    181              int8u buttonStatePrev;
+    182              int32u debounce;
+    183            #endif //(DEBOUNCE > 0)
+    184          
+    185            //clear int before read to avoid potential of missing interrupt
+    186            INT_MISS = BUTTON0_MISS_BIT;     //clear missed BUTTON0 interrupt flag
+   \   00000002   0x....             LDR.N    R0,??DataTable3  ;; 0x4000a814
+    187            INT_GPIOFLAG = BUTTON0_FLAG_BIT; //clear top level BUTTON0 interrupt flag
+    188            
+    189            buttonStateNow = halButtonPinState(BUTTON0);
+   \   00000004   0x....             LDR.N    R4,??DataTable3_2
+   \   00000006   0xF44F 0x5100      MOV      R1,#+8192
+   \   0000000A   0x60C1             STR      R1,[R0, #+12]
+   \   0000000C   0x2102             MOVS     R1,#+2
+   \   0000000E   0x6001             STR      R1,[R0, #+0]
+   \   00000010   0x200E             MOVS     R0,#+14
+   \   00000012   0x.... 0x....      BL       halButtonPinState
+    190            #if (DEBOUNCE > 0)
+    191              //read button until get "DEBOUNCE" number of consistent readings
+    192              for( debounce = 0;
+    193                   debounce < DEBOUNCE;
+    194                   debounce = (buttonStateNow == buttonStatePrev) ? debounce + 1 : 0 ) {
+    195                buttonStatePrev = buttonStateNow;
+    196                //clear int before read to avoid potential of missing interrupt
+    197                INT_GPIOFLAG = BUTTON0_FLAG_BIT; //clear top level BUTTON0 interrupt flag
+    198                buttonStateNow = halButtonPinState(BUTTON0);
+    199              }
+    200            #endif //(DEBOUNCE > 0)
+    201            if(button0State != buttonStateNow) { //state changed, notify app
+   \   00000016   0x7822             LDRB     R2,[R4, #+0]
+   \   00000018   0x4601             MOV      R1,R0
+   \   0000001A   0x428A             CMP      R2,R1
+   \   0000001C   0xBF18             IT       NE 
+   \   0000001E   0x7021             STRBNE   R1,[R4, #+0]
+    202              button0State = buttonStateNow;
+    203              halButtonIsr(BUTTON0,  button0State);
+   \   00000020   0xD10D             BNE.N    ??halIrqBIsr_0
+    204            } else {  //state unchanged, then notify app of a double-transition
+    205              button0State = !button0State; //invert temporarily for calling Isr
+   \   00000022   0x1E50             SUBS     R0,R2,#+1
+   \   00000024   0x4180             SBCS     R0,R0,R0
+   \   00000026   0x0FC0             LSRS     R0,R0,#+31
+   \   00000028   0x7020             STRB     R0,[R4, #+0]
+    206              halButtonIsr(BUTTON0, button0State);
+   \   0000002A   0x200E             MOVS     R0,#+14
+   \   0000002C   0x7821             LDRB     R1,[R4, #+0]
+   \   0000002E   0x.... 0x....      BL       halButtonIsr
+    207              button0State = !button0State; //and put it back to current state
+   \   00000032   0x7821             LDRB     R1,[R4, #+0]
+   \   00000034   0x1E48             SUBS     R0,R1,#+1
+   \   00000036   0x4180             SBCS     R0,R0,R0
+   \   00000038   0x0FC0             LSRS     R0,R0,#+31
+   \   0000003A   0x7020             STRB     R0,[R4, #+0]
+    208              halButtonIsr(BUTTON0, button0State);
+   \   0000003C   0x7821             LDRB     R1,[R4, #+0]
+   \                     ??halIrqBIsr_0: (+1)
+   \   0000003E   0xE8BD 0x4010      POP      {R4,LR}
+   \   00000042   0x200E             MOVS     R0,#+14
+   \   00000044   0x.... 0x....      B.W      halButtonIsr
+    209            }
+    210            
+    211          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   0x4000A814         DC32     0x4000a814
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \   00000000   0xE000E180         DC32     0xe000e180
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \   00000000   0x........         DC32     button0State
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \   00000000   0xE000E100         DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \   00000000   0x4000B408         DC32     0x4000b408
+    212          #endif
+    213          
+    214          #ifdef BUTTON1
+    215          void BUTTON1_ISR(void)
+    216          {
+    217            int8u buttonStateNow;
+    218            #if (DEBOUNCE > 0)
+    219              int8u buttonStatePrev;
+    220              int32u debounce;
+    221            #endif //(DEBOUNCE > 0)
+    222            
+    223            //clear int before read to avoid potential of missing interrupt
+    224            INT_MISS = BUTTON1_MISS_BIT;     //clear missed BUTTON1 interrupt flag
+    225            INT_GPIOFLAG = BUTTON1_FLAG_BIT; //clear top level BUTTON1 interrupt flag
+    226            
+    227            buttonStateNow = halButtonPinState(BUTTON1);
+    228            #if (DEBOUNCE > 0)
+    229              //read button until get "DEBOUNCE" number of consistent readings
+    230              for( debounce = 0;
+    231                   debounce < DEBOUNCE;
+    232                   debounce = (buttonStateNow == buttonStatePrev) ? debounce + 1 : 0 ) {
+    233                buttonStatePrev = buttonStateNow;
+    234                //clear int before read to avoid potential of missing interrupt
+    235                INT_GPIOFLAG = BUTTON1_FLAG_BIT; //clear top level BUTTON1 interrupt flag
+    236                buttonStateNow = halButtonPinState(BUTTON1);
+    237              }
+    238            #endif //(DEBOUNCE > 0)
+    239            if(button1State != buttonStateNow) { //state changed, notify app
+    240              button1State = buttonStateNow;
+    241              halButtonIsr(BUTTON1,  button1State);
+    242            } else {  //state unchanged, then notify app of a double-transition
+    243              button1State = !button1State; //invert temporarily for calling Isr
+    244              halButtonIsr(BUTTON1, button1State);
+    245              button1State = !button1State; //and put it back to current state
+    246              halButtonIsr(BUTTON1, button1State);
+    247            }
+    248          }
+    249          #endif
+    250          
+    251          #ifdef BUTTON2
+    252          void BUTTON2_ISR(void)
+    253          {
+    254            int8u buttonStateNow;
+    255            #if (DEBOUNCE > 0)
+    256              int8u buttonStatePrev;
+    257              int32u debounce;
+    258            #endif //(DEBOUNCE > 0)
+    259          
+    260            //clear int before read to avoid potential of missing interrupt
+    261            INT_MISS = BUTTON2_MISS_BIT;     //clear missed BUTTON2 interrupt flag
+    262            INT_GPIOFLAG = BUTTON2_FLAG_BIT; //clear top level BUTTON2 interrupt flag
+    263            
+    264            buttonStateNow = halButtonPinState(BUTTON2);
+    265            #if (DEBOUNCE > 0)
+    266              //read button until get "DEBOUNCE" number of consistent readings
+    267              for( debounce = 0;
+    268                   debounce < DEBOUNCE;
+    269                   debounce = (buttonStateNow == buttonStatePrev) ? debounce + 1 : 0 ) {
+    270                buttonStatePrev = buttonStateNow;
+    271                //clear int before read to avoid potential of missing interrupt
+    272                INT_GPIOFLAG = BUTTON2_FLAG_BIT; //clear top level BUTTON2 interrupt flag
+    273                buttonStateNow = halButtonPinState(BUTTON2);
+    274              }
+    275            #endif //(DEBOUNCE > 0)
+    276            if(button2State != buttonStateNow) { //state changed, notify app
+    277              button2State = buttonStateNow;
+    278              halButtonIsr(BUTTON2,  button2State);
+    279            } else {  //state unchanged, then notify app of a double-transition
+    280              button2State = !button2State; //invert temporarily for calling Isr
+    281              halButtonIsr(BUTTON2, button2State);
+    282              button2State = !button2State; //and put it back to current state
+    283              halButtonIsr(BUTTON2, button2State);
+    284            }
+    285            
+    286          }
+    287          #endif
+    288          
+    289          #ifdef BUTTON3
+    290          void BUTTON3_ISR(void)
+    291          {
+    292            int8u buttonStateNow;
+    293            #if (DEBOUNCE > 0)
+    294              int8u buttonStatePrev;
+    295              int32u debounce;
+    296            #endif //(DEBOUNCE > 0)
+    297          
+    298            //clear int before read to avoid potential of missing interrupt
+    299            INT_MISS = BUTTON3_MISS_BIT;     //clear missed BUTTON3 interrupt flag
+    300            INT_GPIOFLAG = BUTTON3_FLAG_BIT; //clear top level BUTTON3 interrupt flag
+    301            
+    302            buttonStateNow = halButtonPinState(BUTTON3);
+    303            #if (DEBOUNCE > 0)
+    304              //read button until get "DEBOUNCE" number of consistent readings
+    305              for( debounce = 0;
+    306                   debounce < DEBOUNCE;
+    307                   debounce = (buttonStateNow == buttonStatePrev) ? debounce + 1 : 0 ) {
+    308                buttonStatePrev = buttonStateNow;
+    309                //clear int before read to avoid potential of missing interrupt
+    310                INT_GPIOFLAG = BUTTON3_FLAG_BIT; //clear top level BUTTON3 interrupt flag
+    311                buttonStateNow = halButtonPinState(BUTTON3);
+    312              }
+    313            #endif //(DEBOUNCE > 0)
+    314            if(button3State != buttonStateNow) { //state changed, notify app
+    315              button3State = buttonStateNow;
+    316              halButtonIsr(BUTTON3,  button3State);
+    317            } else {  //state unchanged, then notify app of a double-transition
+    318              button3State = !button3State; //invert temporarily for calling Isr
+    319              halButtonIsr(BUTTON3, button3State);
+    320              button3State = !button3State; //and put it back to current state
+    321              halButtonIsr(BUTTON3, button3State);
+    322            }
+    323            
+    324          }
+    325          #endif
+    326          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   halButtonPinState
+       0   halButtonState
+       8   halInternalInitButton
+         8   -> halButtonPinState
+       8   halIrqBIsr
+         0   -> halButtonIsr
+         8   -> halButtonIsr
+         8   -> halButtonPinState
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_2
+       4  ??DataTable3_3
+       4  ??DataTable3_4
+       1  button0State
+      24  halButtonPinState
+      14  halButtonState
+      50  halInternalInitButton
+      72  halIrqBIsr
+
+ 
+   1 byte  in section .bss
+ 180 bytes in section .text
+ 
+ 180 bytes of CODE memory
+   1 byte  of DATA memory
+
+Errors: none
+Warnings: none

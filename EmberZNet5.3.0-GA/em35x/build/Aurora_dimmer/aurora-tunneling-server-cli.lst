@@ -1,0 +1,171 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:48
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\aurora-tunneling-server-cli.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\aurora-tunneling-server-cli.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-tunneling-server-cli.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-tunneling-server-cli.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-tunneling-server-cli.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-tunneling-server\aurora-tunneling-server-cli.c
+      1          // *******************************************************************
+      2          // * tunneling-server-cli.c
+      3          // *
+      4          // *
+      5          // * Copyright 2011 by Ember Corporation. All rights reserved.              *80*
+      6          // *******************************************************************
+      7          
+      8          #include "app/framework/include/af.h"
+      9          #include "app/util/serial/command-interpreter2.h"
+     10          #include "aurora-tunneling-server.h"
+     11          
+     12          
+     13          void emAfPluginTunnelingServerCliTransfer(void);
+     14          
+     15          #if !defined(EMBER_AF_GENERATE_CLI)
+     16          
+     17          void emAfPluginTunnelingServerCliPrint(void);
+     18          
+     19          EmberCommandEntry emberAfPluginTunnelingServerCommands[] = {
+     20            emberCommandEntryAction("transfer", emAfPluginTunnelingServerCliTransfer,                                      "vb",
+     21                                    "Transfer data through the tunnel"),
+     22            emberCommandEntryAction("busy",     emberAfPluginTunnelingServerToggleBusyCommand, "",
+     23                                    "Toggly the busy status of the tunnel"),
+     24            emberCommandEntryAction("print",    emAfPluginTunnelingServerCliPrint,                "",
+     25                                    "Print the list of tunnels"),
+     26            emberCommandEntryTerminator(),
+     27          };
+     28          
+     29          #endif // EMBER_AF_GENERATE_CLI
+     30          
+     31          // plugin tunneling-server transfer <tunnel id:2> <data>
+
+   \                                 In section .text, align 2, keep-with-next
+     32          void emAfPluginTunnelingServerCliTransfer(void)
+     33          {
+   \                     emAfPluginTunnelingServerCliTransfer: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB0C0             SUB      SP,SP,#+256
+     34            int16u tunnelId = (int16u)emberUnsignedCommandArgument(0);
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x.... 0x....      BL       emberUnsignedCommandArgument
+   \   0000000A   0x4604             MOV      R4,R0
+     35            int8u data[255];
+     36            int16u dataLen = emberCopyStringArgument(1, data, sizeof(data), FALSE);
+   \   0000000C   0x2300             MOVS     R3,#+0
+   \   0000000E   0x22FF             MOVS     R2,#+255
+   \   00000010   0xA900             ADD      R1,SP,#+0
+   \   00000012   0x2001             MOVS     R0,#+1
+   \   00000014   0x.... 0x....      BL       emberCopyStringArgument
+     37            EmberAfStatus status = emberAfPluginTunnelingServerTransferData(tunnelId,
+     38                                                                            data,
+     39                                                                            dataLen);
+   \   00000018   0x4602             MOV      R2,R0
+   \   0000001A   0xA900             ADD      R1,SP,#+0
+   \   0000001C   0xB2A0             UXTH     R0,R4
+   \   0000001E   0x.... 0x....      BL       emberAfPluginTunnelingServerTransferData
+   \   00000022   0x4603             MOV      R3,R0
+     40            emberAfTunnelingClusterPrintln("%p 0x%x", "transfer", status);
+   \   00000024   0x.... 0x....      ADR.W    R2,?_1
+   \   00000028   0x.... 0x....      ADR.W    R1,?_0
+   \   0000002C   0xF240 0x1001      MOVW     R0,#+257
+   \   00000030   0x.... 0x....      BL       emberAfPrintln
+     41          }
+   \   00000034   0xB040             ADD      SP,SP,#+256
+   \   00000036   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x25 0x70          DC8 "%p 0x%x"
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x78 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_1:
+   \   00000000   0x74 0x72          DC8 "transfer"
+   \              0x61 0x6E    
+   \              0x73 0x66    
+   \              0x65 0x72    
+   \              0x00         
+   \   00000009   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+     264   emAfPluginTunnelingServerCliTransfer
+       264   -> emberAfPluginTunnelingServerTransferData
+       264   -> emberAfPrintln
+       264   -> emberCopyStringArgument
+       264   -> emberUnsignedCommandArgument
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  ?_0
+      12  ?_1
+      56  emAfPluginTunnelingServerCliTransfer
+
+ 
+ 76 bytes in section .text
+ 
+ 76 bytes of CODE memory
+
+Errors: none
+Warnings: none

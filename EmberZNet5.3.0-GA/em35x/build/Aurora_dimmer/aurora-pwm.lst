@@ -1,0 +1,242 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:47
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-pwm.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-pwm.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-pwm.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-pwm\aurora-pwm.c
+      1          #include "app/framework/include/af.h"
+      2          #include "app/framework/include/af-types.h"
+      3          #include "aurora-pwm.h"
+      4          #include "aurora-pwm-hal.h"
+      5          #include "../aurora-level-control/aurora-level-control-hal.h"
+      6          
+      7          #define DUTY_CYCLE_PERCENT(value) (int8u)(((int16u)value * 100) / 255)
+      8          
+
+   \                                 In section .bss, align 1
+      9          static boolean pwmEnable = FALSE;   // Store pwm On/Off enable state.
+   \                     pwmEnable:
+   \   00000000                      DS8 1
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void emberAfPluginAuroraPwmSetDutyCycle(t_RGB *rgb) 
+     12          {
+   \                     emberAfPluginAuroraPwmSetDutyCycle: (+1)
+   \   00000000   0xB530             PUSH     {R4,R5,LR}
+   \   00000002   0xB083             SUB      SP,SP,#+12
+   \   00000004   0x4604             MOV      R4,R0
+     13              // Sets the RGBW pwm duty cycle values to the hw pwm pins.
+     14            
+     15              if (getAuroraDimmerMode() != AURORA_MODE_RGBW)
+   \   00000006   0x.... 0x....      BL       getAuroraDimmerMode
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD13B             BNE.N    ??emberAfPluginAuroraPwmSetDutyCycle_0
+     16              {
+     17                  return;
+     18              }
+     19                  
+     20              // If pwmEnable flag is false 0% duty cycle is set on all pwm pins.  
+     21              if (!pwmEnable)
+   \   0000000E   0x....             LDR.N    R0,??DataTable2
+   \   00000010   0x7800             LDRB     R0,[R0, #+0]
+   \   00000012   0xB918             CBNZ.N   R0,??emberAfPluginAuroraPwmSetDutyCycle_1
+     22              {
+     23                  rgb->R = 0;
+   \   00000014   0x7020             STRB     R0,[R4, #+0]
+     24                  rgb->G = 0;
+   \   00000016   0x7060             STRB     R0,[R4, #+1]
+     25                  rgb->B = 0;
+   \   00000018   0x70A0             STRB     R0,[R4, #+2]
+     26                  rgb->W = 0;        
+   \   0000001A   0x70E0             STRB     R0,[R4, #+3]
+     27              }
+     28            
+     29              pwmSetDutyCycle(PWM_OUTPUT_RED, DUTY_CYCLE_PERCENT(rgb->R));
+   \                     ??emberAfPluginAuroraPwmSetDutyCycle_1: (+1)
+   \   0000001C   0x2564             MOVS     R5,#+100
+   \   0000001E   0x7820             LDRB     R0,[R4, #+0]
+   \   00000020   0x.... 0x....      BL       ?Subroutine0
+   \                     ??CrossCallReturnLabel_0: (+1)
+   \   00000024   0x2004             MOVS     R0,#+4
+   \   00000026   0x.... 0x....      BL       pwmSetDutyCycle
+     30              pwmSetDutyCycle(PWM_OUTPUT_GREEN, DUTY_CYCLE_PERCENT(rgb->G));
+   \   0000002A   0x7860             LDRB     R0,[R4, #+1]
+   \   0000002C   0x.... 0x....      BL       ?Subroutine0
+   \                     ??CrossCallReturnLabel_1: (+1)
+   \   00000030   0x2003             MOVS     R0,#+3
+   \   00000032   0x.... 0x....      BL       pwmSetDutyCycle
+     31              pwmSetDutyCycle(PWM_OUTPUT_BLUE, DUTY_CYCLE_PERCENT(rgb->B));    
+   \   00000036   0x78A0             LDRB     R0,[R4, #+2]
+   \   00000038   0x.... 0x....      BL       ?Subroutine0
+   \                     ??CrossCallReturnLabel_2: (+1)
+   \   0000003C   0x2001             MOVS     R0,#+1
+   \   0000003E   0x.... 0x....      BL       pwmSetDutyCycle
+     32              pwmSetDutyCycle(PWM_OUTPUT_WHITE, DUTY_CYCLE_PERCENT(rgb->W));    
+   \   00000042   0x78E0             LDRB     R0,[R4, #+3]
+   \   00000044   0x.... 0x....      BL       ?Subroutine0
+   \                     ??CrossCallReturnLabel_3: (+1)
+   \   00000048   0x2002             MOVS     R0,#+2
+   \   0000004A   0x.... 0x....      BL       pwmSetDutyCycle
+     33           
+     34              emberAfDebugPrintln("pwm RGBW%%: r=%d, g=%d, b=%d, w=%d\r\n", DUTY_CYCLE_PERCENT(rgb->R), DUTY_CYCLE_PERCENT(rgb->G), DUTY_CYCLE_PERCENT(rgb->B), DUTY_CYCLE_PERCENT(rgb->W));   
+   \   0000004E   0x78E0             LDRB     R0,[R4, #+3]
+   \   00000050   0x4368             MULS     R0,R5,R0
+   \   00000052   0x21FF             MOVS     R1,#+255
+   \   00000054   0xFB90 0xF0F1      SDIV     R0,R0,R1
+   \   00000058   0xB2C0             UXTB     R0,R0
+   \   0000005A   0x9001             STR      R0,[SP, #+4]
+   \   0000005C   0x78A0             LDRB     R0,[R4, #+2]
+   \   0000005E   0x4368             MULS     R0,R5,R0
+   \   00000060   0xFB90 0xF0F1      SDIV     R0,R0,R1
+   \   00000064   0xB2C0             UXTB     R0,R0
+   \   00000066   0x9000             STR      R0,[SP, #+0]
+   \   00000068   0x7860             LDRB     R0,[R4, #+1]
+   \   0000006A   0x4368             MULS     R0,R5,R0
+   \   0000006C   0xFB90 0xF3F1      SDIV     R3,R0,R1
+   \   00000070   0x7820             LDRB     R0,[R4, #+0]
+   \   00000072   0x4368             MULS     R0,R5,R0
+   \   00000074   0xFB90 0xF2F1      SDIV     R2,R0,R1
+   \   00000078   0xB2DB             UXTB     R3,R3
+   \   0000007A   0xB2D2             UXTB     R2,R2
+   \   0000007C   0x.... 0x....      ADR.W    R1,?_0
+   \   00000080   0x2002             MOVS     R0,#+2
+   \   00000082   0x.... 0x....      BL       emberAfPrintln
+     35          }
+   \                     ??emberAfPluginAuroraPwmSetDutyCycle_0: (+1)
+   \   00000086   0xBD37             POP      {R0-R2,R4,R5,PC}  ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0: (+1)
+   \   00000000   0x4368             MULS     R0,R5,R0
+   \   00000002   0x21FF             MOVS     R1,#+255
+   \   00000004   0xFB90 0xF1F1      SDIV     R1,R0,R1
+   \   00000008   0xB2C9             UXTB     R1,R1
+   \   0000000A   0x4770             BX       LR
+     36          
+
+   \                                 In section .text, align 2, keep-with-next
+     37          void emberAfPluginAuroraPwmEnable(boolean newState) 
+     38          {
+     39              pwmEnable = newState;    
+   \                     emberAfPluginAuroraPwmEnable: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable2
+   \   00000002   0x7008             STRB     R0,[R1, #+0]
+     40          }
+   \   00000004   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     pwmEnable
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x70 0x77          DC8 "pwm RGBW%%: r=%d, g=%d, b=%d, w=%d\015\012"
+   \              0x6D 0x20    
+   \              0x52 0x47    
+   \              0x42 0x57    
+   \              0x25 0x25    
+   \              0x3A 0x20    
+   \              0x72 0x3D    
+   \              0x25 0x64    
+   \              0x2C 0x20    
+   \              0x67 0x3D    
+   \              0x25 0x64    
+   \              0x2C 0x20    
+   \              0x62 0x3D    
+   \              0x25 0x64    
+   \              0x2C 0x20    
+   \              0x77 0x3D    
+   \              0x25 0x64    
+   \              0x0D 0x0A    
+   \              0x00         
+   \   00000025   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   emberAfPluginAuroraPwmEnable
+      24   emberAfPluginAuroraPwmSetDutyCycle
+        24   -> emberAfPrintln
+        24   -> getAuroraDimmerMode
+        24   -> pwmSetDutyCycle
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+      12  ?Subroutine0
+      40  ?_0
+       6  emberAfPluginAuroraPwmEnable
+     136  emberAfPluginAuroraPwmSetDutyCycle
+       1  pwmEnable
+
+ 
+   1 byte  in section .bss
+ 198 bytes in section .text
+ 
+ 198 bytes of CODE memory
+   1 byte  of DATA memory
+
+Errors: none
+Warnings: none

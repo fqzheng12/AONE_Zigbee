@@ -1,0 +1,517 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     10/Sep/2014  10:05:01 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\ota-storage-simple-ram\ota-storage- #
+#                    ram.c                                                    #
+#    Command line =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\ota-storage-simple-ram\ota-storage- #
+#                    ram.c -D "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_di #
+#                    mmer/Aurora_dimmer_tokens.h\"" -D                        #
+#                    "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_ #
+#                    dimmer.h\"" -D APP_BTL -D "BOARD_HEADER=\"app/builder/Au #
+#                    rora_dimmer/Aurora_dimmer_board_1.h\"" -D                #
+#                    "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\""  #
+#                    -D CORTEXM3 -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357    #
+#                    -D PHY_EM3XX -D "APPLICATION_TOKEN_HEADER=\"app/framewor #
+#                    k/util/tokens.h\"" -D "CONFIGURATION_HEADER=\"app/framew #
+#                    ork/util/config.h\"" -D "ATTRIBUTE_STORAGE_CONFIGURATION #
+#                    =\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_conf #
+#                    ig.h\"" -D "__SOURCEFILE__=\"ota-storage-ram.c\"" -lC    #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --diag_suppress Pa050 -o            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ --debug --endian=little             #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files (x86)\IAR Systems\Embedded Workbench               #
+#                    6.4\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\framework\plugin\ota-storage-simple-ram\ -I          #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\ -I                            #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\ -I                   #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\app\framework\include #
+#                    \ -I C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\e #
+#                    m35x\app\builder\Aurora_dimmer\..\..\..\ -I              #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\stack\ -I             #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\ -I               #
+#                    C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    app\builder\Aurora_dimmer\..\..\..\hal\..\ -Ohz          #
+#                    --use_c++_inline                                         #
+#    List file    =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ota-storage-ram.lst                  #
+#    Object file  =  C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\ #
+#                    build\Aurora_dimmer\ota-storage-ram.o                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Projects\Prj_Aurora\Firmware\EmberZNet5.3.0-GA\em35x\app\framework\plugin\ota-storage-simple-ram\ota-storage-ram.c
+      1          // *****************************************************************************
+      2          // * ota-storage-custom-sample.c
+      3          // *
+      4          // * Zigbee Over-the-air bootload cluster for upgrading firmware and 
+      5          // * downloading specific file.
+      6          // *
+      7          // * THIS IS A TEST IMPLEMENTATION.  It defines a single static, NULL, upgrade 
+      8          // * file that contains the upgrade information for a single manufacturer
+      9          // * and device ID.  The payload is a real OTA file but dummy data.
+     10          // *
+     11          // * This can serve as both the storage for the OTA client and the server.
+     12          // * The data is stored in RAM and thus is limited by the size of available
+     13          // * memory.
+     14          // * 
+     15          // * Copyright 2010 by Ember Corporation. All rights reserved.              *80*
+     16          // *****************************************************************************
+     17          
+     18          #include "app/framework/include/af.h"
+     19          #include "callback.h"
+     20          #include "app/framework/plugin/ota-common/ota.h"
+     21          #include "app/framework/plugin/ota-storage-common/ota-storage.h"
+     22          
+     23          #include "app/framework/util/util.h"
+     24          #include "app/framework/util/common.h"
+     25          
+     26          #include "ota-static-file-data.h"
+     27          
+     28          //------------------------------------------------------------------------------
+     29          // Globals
+     30          
+     31          // This is used to store both the static SERVER image, and to hold
+     32          // the temporary CLIENT image being downloaded.  It can't do both at the same
+     33          // time so a client download will wipe out the server image.
+
+   \                                 In section .data, align 4
+     34          static int8u storage[] = STATIC_IMAGE_DATA;
+   \                     storage:
+   \   00000000   0x1E 0xF1          DC8 30, 241, 238, 11, 0, 1, 56, 0, 0, 0, 2, 16, 120, 86, 5, 0, 0, 0, 2
+   \              0xEE 0x0B    
+   \              0x00 0x01    
+   \              0x38 0x00    
+   \              0x00 0x00    
+   \              0x02 0x10    
+   \              0x78 0x56    
+   \              0x05 0x00    
+   \              0x00 0x00    
+   \              0x02         
+   \   00000013   0x00 0x54          DC8 0, 84, 104, 101, 32, 108, 97, 116, 101, 115, 116, 32, 97, 110, 100
+   \              0x68 0x65    
+   \              0x20 0x6C    
+   \              0x61 0x74    
+   \              0x65 0x73    
+   \              0x74 0x20    
+   \              0x61 0x6E    
+   \              0x64         
+   \   00000022   0x20 0x67          DC8 32, 103, 114, 101, 97, 116, 101, 115, 116, 32, 117, 112, 103, 114
+   \              0x72 0x65    
+   \              0x61 0x74    
+   \              0x65 0x73    
+   \              0x74 0x20    
+   \              0x75 0x70    
+   \              0x67 0x72    
+   \   00000030   0x61 0x64          DC8 97, 100, 101, 46, 182, 0, 0, 0, 0, 240, 10, 0, 0, 0, 0, 1, 2, 3, 4
+   \              0x65 0x2E    
+   \              0xB6 0x00    
+   \              0x00 0x00    
+   \              0x00 0xF0    
+   \              0x0A 0x00    
+   \              0x00 0x00    
+   \              0x00 0x01    
+   \              0x02 0x03    
+   \              0x04         
+   \   00000043   0x05 0x06          DC8 5, 6, 7, 8, 9, 2, 0, 48, 0, 0, 0, 3, 7, 121, 41, 71, 179, 133, 10
+   \              0x07 0x08    
+   \              0x09 0x02    
+   \              0x00 0x30    
+   \              0x00 0x00    
+   \              0x00 0x03    
+   \              0x07 0x79    
+   \              0x29 0x47    
+   \              0xB3 0x85    
+   \              0x0A         
+   \   00000056   0x95 0x85          DC8 149, 133, 191, 142, 37, 193, 157, 142, 134, 120, 67, 79, 88, 54, 0
+   \              0xBF 0x8E    
+   \              0x25 0xC1    
+   \              0x9D 0x8E    
+   \              0x86 0x78    
+   \              0x43 0x4F    
+   \              0x58 0x36    
+   \              0x00         
+   \   00000065   0x0D 0x6F          DC8 13, 111, 0, 0, 25, 139, 54, 84, 69, 83, 84, 83, 69, 67, 65, 1, 9, 0
+   \              0x00 0x00    
+   \              0x19 0x8B    
+   \              0x36 0x54    
+   \              0x45 0x53    
+   \              0x54 0x53    
+   \              0x45 0x43    
+   \              0x41 0x01    
+   \              0x09 0x00    
+   \   00000077   0x00 0x00          DC8 0, 0, 0, 0, 0, 0, 0, 1, 0, 50, 0, 0, 0, 54, 139, 25, 0, 0, 111, 13
+   \              0x00 0x00    
+   \              0x00 0x00    
+   \              0x00 0x01    
+   \              0x00 0x32    
+   \              0x00 0x00    
+   \              0x00 0x36    
+   \              0x8B 0x19    
+   \              0x00 0x00    
+   \              0x6F 0x0D    
+   \   0000008B   0x00 0x01          DC8 0, 1, 194, 195, 28, 184, 196, 0, 100, 234, 187, 49, 137, 173, 137
+   \              0xC2 0xC3    
+   \              0x1C 0xB8    
+   \              0xC4 0x00    
+   \              0x64 0xEA    
+   \              0xBB 0x31    
+   \              0x89 0xAD    
+   \              0x89         
+   \   0000009A   0x69 0xEA          DC8 105, 234, 194, 88, 147, 24, 58, 2, 59, 210, 141, 95, 178, 19, 77
+   \              0xC2 0x58    
+   \              0x93 0x18    
+   \              0x3A 0x02    
+   \              0x3B 0xD2    
+   \              0x8D 0x5F    
+   \              0xB2 0x13    
+   \              0x4D         
+   \   000000A9   0x3E 0x07          DC8 62, 7, 185, 46, 6, 162, 88, 228, 120, 210, 12, 122, 204, 0, 0
+   \              0xB9 0x2E    
+   \              0x06 0xA2    
+   \              0x58 0xE4    
+   \              0x78 0xD2    
+   \              0x0C 0x7A    
+   \              0xCC 0x00    
+   \              0x00         
+     35          
+
+   \                                 In section .data, align 4
+     36          static int32u lastDownloadOffset = STATIC_IMAGE_DATA_SIZE;
+   \                     lastDownloadOffset:
+   \   00000000   0x000000B6         DC32 182
+     37          
+     38          //------------------------------------------------------------------------------
+     39          
+
+   \                                 In section .text, align 2, keep-with-next
+     40          boolean emberAfOtaStorageDriverInitCallback(void)
+     41          {
+     42            return TRUE;
+   \                     emberAfOtaStorageDriverInitCallback:
+   \   00000000   0x2001             MOVS     R0,#+1
+   \   00000002   0x4770             BX       LR               ;; return
+     43          }
+     44          
+
+   \                                 In section .text, align 2, keep-with-next
+     45          boolean emberAfOtaStorageDriverReadCallback(int32u offset, 
+     46                                                      int32u length,
+     47                                                      int8u* returnData)
+     48          {
+   \                     emberAfOtaStorageDriverReadCallback:
+   \   00000000   0xB580             PUSH     {R7,LR}
+   \   00000002   0x4613             MOV      R3,R2
+     49            if ((offset + length) > STATIC_IMAGE_DATA_SIZE) {
+   \   00000004   0x180A             ADDS     R2,R1,R0
+   \   00000006   0x2AB7             CMP      R2,#+183
+   \   00000008   0xD301             BCC.N    ??emberAfOtaStorageDriverReadCallback_0
+     50              return FALSE;
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \   0000000C   0xBD02             POP      {R1,PC}
+     51            }
+     52            
+     53            MEMCOPY(returnData, storage + offset, length);
+   \                     ??emberAfOtaStorageDriverReadCallback_0:
+   \   0000000E   0xB28A             UXTH     R2,R1
+   \   00000010   0x....             LDR.N    R1,??DataTable7
+   \   00000012   0x1841             ADDS     R1,R0,R1
+   \   00000014   0x4618             MOV      R0,R3
+   \   00000016   0x....             B.N      ?Subroutine0
+     54            return TRUE;
+     55          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0x.... 0x....      BL       halCommonMemCopy
+   \   00000004   0x2001             MOVS     R0,#+1
+   \   00000006   0xBD02             POP      {R1,PC}          ;; return
+     56          
+
+   \                                 In section .text, align 2, keep-with-next
+     57          boolean emberAfOtaStorageDriverWriteCallback(const int8u* dataToWrite,
+     58                                                       int32u offset, 
+     59                                                       int32u length)
+     60          {
+   \                     emberAfOtaStorageDriverWriteCallback:
+   \   00000000   0xB580             PUSH     {R7,LR}
+   \   00000002   0x460B             MOV      R3,R1
+     61            if ((offset + length) > STATIC_IMAGE_DATA_SIZE) {
+   \   00000004   0x18D1             ADDS     R1,R2,R3
+   \   00000006   0x29B7             CMP      R1,#+183
+   \   00000008   0xD301             BCC.N    ??emberAfOtaStorageDriverWriteCallback_0
+     62              return FALSE;
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \   0000000C   0xBD02             POP      {R1,PC}
+     63            }
+     64          
+     65            MEMCOPY(storage + offset, dataToWrite, length);
+   \                     ??emberAfOtaStorageDriverWriteCallback_0:
+   \   0000000E   0xB292             UXTH     R2,R2
+   \   00000010   0x4601             MOV      R1,R0
+   \   00000012   0x....             LDR.N    R0,??DataTable7
+   \   00000014   0x1818             ADDS     R0,R3,R0
+   \   00000016                      REQUIRE ?Subroutine0
+   \   00000016                      ;; // Fall through to label ?Subroutine0
+     66            return TRUE;
+     67          }
+     68          
+
+   \                                 In section .text, align 2, keep-with-next
+     69          int32u emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback(void)
+     70          {
+     71            return lastDownloadOffset;
+   \                     emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback:
+   \   00000000   0x....             LDR.N    R0,??DataTable7_1
+   \   00000002   0x6800             LDR      R0,[R0, #+0]
+   \   00000004   0x4770             BX       LR               ;; return
+     72          }
+     73          
+
+   \                                 In section .text, align 2, keep-with-next
+     74          void emberAfOtaStorageDriverDownloadFinishCallback(int32u finalOffset)
+     75          {
+     76            lastDownloadOffset = finalOffset;
+   \                     emberAfOtaStorageDriverDownloadFinishCallback:
+   \   00000000   0x....             LDR.N    R1,??DataTable7_1
+   \   00000002   0x6008             STR      R0,[R1, #+0]
+     77          }
+   \   00000004   0x4770             BX       LR               ;; return
+     78          
+
+   \                                 In section .text, align 2, keep-with-next
+     79          void emAfOtaStorageDriverCorruptImage(int16u index)
+     80          {
+     81            if (index < STATIC_IMAGE_DATA_SIZE) {
+   \                     emAfOtaStorageDriverCorruptImage:
+   \   00000000   0x28B6             CMP      R0,#+182
+   \   00000002   0xD203             BCS.N    ??emAfOtaStorageDriverCorruptImage_0
+     82              storage[index]++;
+   \   00000004   0x....             LDR.N    R1,??DataTable7
+   \   00000006   0x5C42             LDRB     R2,[R0, R1]
+   \   00000008   0x1C52             ADDS     R2,R2,#+1
+   \   0000000A   0x5442             STRB     R2,[R0, R1]
+     83            }
+     84          }
+   \                     ??emAfOtaStorageDriverCorruptImage_0:
+   \   0000000C   0x4770             BX       LR               ;; return
+     85          
+
+   \                                 In section .text, align 2, keep-with-next
+     86          int16u emAfOtaStorageDriveGetImageSize(void)
+     87          {
+     88            return STATIC_IMAGE_DATA_SIZE;
+   \                     emAfOtaStorageDriveGetImageSize:
+   \   00000000   0x20B6             MOVS     R0,#+182
+   \   00000002   0x4770             BX       LR               ;; return
+     89          }
+     90          
+
+   \                                 In section .text, align 2, keep-with-next
+     91          EmberAfOtaStorageStatus emberAfOtaStorageDriverInvalidateImageCallback(void)
+     92          {
+   \                     emberAfOtaStorageDriverInvalidateImageCallback:
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB083             SUB      SP,SP,#+12
+     93            int8u zeroMagicNumber[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+   \   00000004   0xA800             ADD      R0,SP,#+0
+   \   00000006   0x2100             MOVS     R1,#+0
+   \   00000008   0x2200             MOVS     R2,#+0
+   \   0000000A   0xC006             STM      R0!,{R1,R2}
+     94            // Wipe out the magic number in the file and the Header length field.
+     95            // EEPROM driver requires a write of at least 8 bytes in length.
+     96            if (!emberAfOtaStorageDriverWriteCallback(zeroMagicNumber, 
+     97                                                      0,      // offset
+     98                                                      sizeof(zeroMagicNumber))){    // length
+   \   0000000C   0x2208             MOVS     R2,#+8
+   \   0000000E   0xA800             ADD      R0,SP,#+0
+   \   00000010   0x.... 0x....      BL       emberAfOtaStorageDriverWriteCallback
+   \   00000014   0xB908             CBNZ.N   R0,??emberAfOtaStorageDriverInvalidateImageCallbac_0
+     99              return EMBER_AF_OTA_STORAGE_ERROR;
+   \   00000016   0x2001             MOVS     R0,#+1
+   \   00000018   0xBD0E             POP      {R1-R3,PC}
+    100            }
+    101          
+    102            // Set the offset to 0 to indicate on reboot that there is no previous image
+    103            // to resume downloading.
+    104            emberAfOtaStorageDriverDownloadFinishCallback(0);
+   \                     ??emberAfOtaStorageDriverInvalidateImageCallbac_0:
+   \   0000001A   0x....             LDR.N    R0,??DataTable7_1
+   \   0000001C   0x2100             MOVS     R1,#+0
+   \   0000001E   0x6001             STR      R1,[R0, #+0]
+    105          
+    106            return EMBER_AF_OTA_STORAGE_SUCCESS;
+   \   00000020   0x2000             MOVS     R0,#+0
+   \   00000022   0xBD0E             POP      {R1-R3,PC}       ;; return
+    107          }
+    108          
+
+   \                                 In section .text, align 2, keep-with-next
+    109          int32u emberAfOtaStorageDriverMaxDownloadSizeCallback(void)
+    110          {
+    111            return STATIC_IMAGE_DATA_SIZE;
+   \                     emberAfOtaStorageDriverMaxDownloadSizeCallback:
+   \   00000000   0x20B6             MOVS     R0,#+182
+   \   00000002   0x4770             BX       LR               ;; return
+    112          }
+    113          
+
+   \                                 In section .text, align 2, keep-with-next
+    114          void emAfOtaStorageDriverInfoPrint(void)
+    115          {
+   \                     emAfOtaStorageDriverInfoPrint:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    116            otaPrintln("Storage Driver:       OTA Simple Storage RAM");
+   \   00000002   0x.... 0x....      ADR.W    R1,`?<Constant "Storage Driver:      ...">`
+   \   00000006   0x2040             MOVS     R0,#+64
+   \   00000008   0x.... 0x....      BL       emberAfPrintln
+    117            otaPrintln("Data Size (bytes):    %d", STATIC_IMAGE_DATA_SIZE);
+   \   0000000C   0x22B6             MOVS     R2,#+182
+   \   0000000E   0x.... 0x....      ADR.W    R1,`?<Constant "Data Size (bytes):    %d">`
+   \   00000012   0x2040             MOVS     R0,#+64
+   \   00000014   0xE8BD 0x4008      POP      {R3,LR}
+   \   00000018   0x.... 0x....      B.W      emberAfPrintln
+    118          }
+    119          
+
+   \                                 In section .text, align 2, keep-with-next
+    120          EmberAfOtaStorageStatus emberAfOtaStorageDriverPrepareToResumeDownloadCallback(void)
+    121          {
+    122            return EMBER_AF_OTA_STORAGE_SUCCESS;
+   \                     emberAfOtaStorageDriverPrepareToResumeDownloadCallback:
+   \   00000000   0x2000             MOVS     R0,#+0
+   \   00000002   0x4770             BX       LR               ;; return
+    123          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7:
+   \   00000000   0x........         DC32     storage
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_1:
+   \   00000000   0x........         DC32     lastDownloadOffset
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Storage Driver:      ...">`:
+   \   00000000   0x53 0x74          DC8 "Storage Driver:       OTA Simple Storage RAM"
+   \              0x6F 0x72    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x44 0x72    
+   \              0x69 0x76    
+   \              0x65 0x72    
+   \              0x3A 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x4F 0x54    
+   \              0x41 0x20    
+   \              0x53 0x69    
+   \              0x6D 0x70    
+   \              0x6C 0x65    
+   \              0x20 0x53    
+   \              0x74 0x6F    
+   \              0x72 0x61    
+   \              0x67 0x65    
+   \              0x20 0x52    
+   \              0x41 0x4D    
+   \              0x00         
+   \   0000002D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Data Size (bytes):    %d">`:
+   \   00000000   0x44 0x61          DC8 "Data Size (bytes):    %d"
+   \              0x74 0x61    
+   \              0x20 0x53    
+   \              0x69 0x7A    
+   \              0x65 0x20    
+   \              0x28 0x62    
+   \              0x79 0x74    
+   \              0x65 0x73    
+   \              0x29 0x3A    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x25 0x64    
+   \              0x00         
+   \   00000019   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4, keep-with-next
+   \                     `?<Constant {0, 0, 0, 0, 0, 0, 0, 0}>`:
+   \   00000000   0x00 0x00          DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0x00 0x00    
+   \              0x00 0x00    
+   \              0x00 0x00    
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        0  emAfOtaStorageDriveGetImageSize
+        0  emAfOtaStorageDriverCorruptImage
+        8  emAfOtaStorageDriverInfoPrint
+              0 -> emberAfPrintln
+              8 -> emberAfPrintln
+        0  emberAfOtaStorageDriverDownloadFinishCallback
+        0  emberAfOtaStorageDriverInitCallback
+       16  emberAfOtaStorageDriverInvalidateImageCallback
+             16 -> emberAfOtaStorageDriverWriteCallback
+        0  emberAfOtaStorageDriverMaxDownloadSizeCallback
+        0  emberAfOtaStorageDriverPrepareToResumeDownloadCallback
+        8  emberAfOtaStorageDriverReadCallback
+              8 -> halCommonMemCopy
+        0  emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback
+        8  emberAfOtaStorageDriverWriteCallback
+              8 -> halCommonMemCopy
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      28  ?<Constant "Data Size (bytes):    %d">
+      48  ?<Constant "Storage Driver:      ...">
+       8  ?<Constant {0, 0, 0, 0, 0, 0, 0, 0}>
+       4  ??DataTable7
+       4  ??DataTable7_1
+       8  ?Subroutine0
+       4  emAfOtaStorageDriveGetImageSize
+      14  emAfOtaStorageDriverCorruptImage
+      28  emAfOtaStorageDriverInfoPrint
+       6  emberAfOtaStorageDriverDownloadFinishCallback
+       4  emberAfOtaStorageDriverInitCallback
+      36  emberAfOtaStorageDriverInvalidateImageCallback
+       4  emberAfOtaStorageDriverMaxDownloadSizeCallback
+       4  emberAfOtaStorageDriverPrepareToResumeDownloadCallback
+      24  emberAfOtaStorageDriverReadCallback
+       6  emberAfOtaStorageDriverRetrieveLastStoredOffsetCallback
+      22  emberAfOtaStorageDriverWriteCallback
+       4  lastDownloadOffset
+     184  storage
+
+ 
+ 188 bytes in section .data
+   8 bytes in section .rodata
+ 244 bytes in section .text
+ 
+ 244 bytes of CODE  memory
+   8 bytes of CONST memory
+ 188 bytes of DATA  memory
+
+Errors: none
+Warnings: none

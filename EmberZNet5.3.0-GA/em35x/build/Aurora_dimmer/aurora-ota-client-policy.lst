@@ -1,0 +1,694 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        27/Oct/2016  14:24:45
+# Copyright 1999-2015 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-ota-client-policy\aurora-ota-client-policy.c
+#    Command line =  
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-ota-client-policy\aurora-ota-client-policy.c"
+#        -D
+#        "GENERATED_TOKEN_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h\""
+#        -D "ZA_GENERATED_HEADER=\"app/builder/Aurora_dimmer/Aurora_dimmer.h\""
+#        -D APP_BTL -D
+#        "BOARD_HEADER=\"../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h\""
+#        -D "PLATFORM_HEADER=\"hal/micro/cortexm3/compiler/iar.h\"" -D CORTEXM3
+#        -D CORTEXM3_EMBER_MICRO -D CORTEXM3_EM357 -D PHY_EM3XX -D
+#        "APPLICATION_TOKEN_HEADER=\"app/framework/util/tokens.h\"" -D
+#        "CONFIGURATION_HEADER=\"app/framework/util/config.h\"" -D
+#        "ATTRIBUTE_STORAGE_CONFIGURATION=\"app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h\""
+#        -D "__SOURCEFILE__=\"aurora-ota-client-policy.c\"" -lC
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --diag_suppress Pa050 -o
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\"
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.2\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-ota-client-policy\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include\"
+#        -I "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\" -I
+#        "C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23
+#        Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\" -Ohz --use_c++_inline
+#    List file    =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-ota-client-policy.lst
+#    Object file  =  
+#        C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH
+#        ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\build\Aurora_dimmer\aurora-ota-client-policy.o
+#
+###############################################################################
+
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\aurora-ota-client-policy\aurora-ota-client-policy.c
+      1          // *****************************************************************************
+      2          // * ota-client-policy.c
+      3          // *
+      4          // * This file handle how the application can configure and interact with the OTA
+      5          // * cluster.
+      6          // * 
+      7          // * Copyright 2009 by Ember Corporation. All rights reserved.              *80*
+      8          // *****************************************************************************
+      9          
+     10          
+     11          #include "app/framework/include/af.h"
+     12          #include "callback.h"
+     13          #include "app/framework/plugin/ota-common/ota.h"
+     14          #include "app/framework/plugin/ota-storage-common/ota-storage.h"
+     15          #include "app/framework/util/util.h"
+     16          #include "app/framework/util/common.h"
+     17          #include "app/framework/plugin/aurora-host-protocol/aurora-host-bootload.h"
+     18          #include "aurora-ota-client-policy.h"
+     19          
+     20          #if defined(ZCL_USING_OTA_BOOTLOAD_CLUSTER_CLIENT)
+     21          
+     22          // Right now this sample policy only supports a single set of version 
+     23          // information for the device, which will be supplied to the OTA cluster in 
+     24          // order to query and download a new image when it is available.  This does not 
+     25          // support multiple products with multiple download images.
+     26          
+     27          #if defined(EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_INCLUDE_HARDWARE_VERSION)
+     28            #define HARDWARE_VERSION EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_HARDWARE_VERSION
+     29          #else
+     30            #define HARDWARE_VERSION EMBER_AF_INVALID_HARDWARE_VERSION
+     31          #endif
+     32          
+     33          //------------------------------------------------------------------------------
+     34          // Globals
+     35          
+     36          //------------------------------------------------------------------------------
+     37          
+
+   \                                 In section .text, align 2, keep-with-next
+     38          void emberAfOtaClientVersionInfoCallback(EmberAfOtaImageId* currentImageInfo,
+     39                                                   int16u* hardwareVersion)
+     40          {
+   \                     emberAfOtaClientVersionInfoCallback: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x460D             MOV      R5,R1
+   \   00000004   0x4604             MOV      R4,R0
+     41            // This callback is fired when a new query and download is initiated.
+     42            // The application will fill in the currentImageInfo with their manufacturer 
+     43            // ID, image type ID, and current software version number to use in that
+     44            // query. The deviceSpecificFileEui64 can be ignored.
+     45          
+     46            // It may be necessary to dynamically determine this data by talking to
+     47            // another device, as is the case with a host talking to an NCP device.
+     48          
+     49            // The OTA client plugin will cache the data returned by this callback
+     50            // and use it for the subsequent transaction, which could be a query
+     51            // or a query and download.  Therefore it is possible to instruct the 
+     52            // OTA client cluster code to query about multiple images by returning
+     53            // different values.
+     54          
+     55            MEMSET(currentImageInfo, 0, sizeof(EmberAfOtaImageId));
+   \   00000006   0x2210             MOVS     R2,#+16
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x.... 0x....      BL       halCommonMemSet
+     56            currentImageInfo->manufacturerId  = EMBER_AF_MANUFACTURER_CODE;
+   \   0000000E   0xF241 0x0010      MOVW     R0,#+4112
+   \   00000012   0x8020             STRH     R0,[R4, #+0]
+     57            currentImageInfo->imageTypeId     = EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_IMAGE_TYPE_ID2;
+   \   00000014   0xF245 0x6078      MOVW     R0,#+22136
+   \   00000018   0x8060             STRH     R0,[R4, #+2]
+     58            currentImageInfo->firmwareVersion = EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2;
+   \   0000001A   0x2014             MOVS     R0,#+20
+   \   0000001C   0x6060             STR      R0,[R4, #+4]
+     59          
+     60            if (hardwareVersion != NULL) {
+   \   0000001E   0xB115             CBZ.N    R5,??emberAfOtaClientVersionInfoCallback_0
+     61              *hardwareVersion = HARDWARE_VERSION;
+   \   00000020   0xF64F 0x70FF      MOVW     R0,#+65535
+   \   00000024   0x8028             STRH     R0,[R5, #+0]
+     62            }
+     63          }
+   \                     ??emberAfOtaClientVersionInfoCallback_0: (+1)
+   \   00000026   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     64          
+
+   \                                 In section .text, align 2, keep-with-next
+     65          EmberAfImageVerifyStatus emberAfOtaClientCustomVerifyCallback(boolean newVerification,
+     66                                                                        const EmberAfOtaImageId* id)
+     67          {
+   \                     emberAfOtaClientCustomVerifyCallback: (+1)
+   \   00000000   0xB530             PUSH     {R4,R5,LR}
+   \   00000002   0xB083             SUB      SP,SP,#+12
+   \   00000004   0x4604             MOV      R4,R0
+   \   00000006   0x460D             MOV      R5,R1
+     68            // Manufacturing specific checks can be made to the image in this function to
+     69            // determine if it is valid.  This function is called AFTER cryptographic 
+     70            // checks have passed.  If the cryptographic checks failed, this function will
+     71            // never be called.
+     72          
+     73            // The function shall return one of the following based on its own 
+     74            // verification process.
+     75            // 1) EMBER_AF_IMAGE_GOOD - the image has passed all checks
+     76            // 2) EMBER_AF_IMAGE_BAD  - the image is not valid 
+     77            // 3) EMBER_AF_IMAGE_VERIFY_IN_PROGRESS - the image is valid so far, but more
+     78            //      checks are needed.  This callback shall be re-executed later to 
+     79            //      continue verification.  This allows other code in the framework to run.
+     80          
+     81            // Note that EBL verification is an SoC-only feature.
+     82          
+     83          #if !defined(EZSP_HOST) && defined(EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_EBL_VERIFICATION)
+     84            int16u pages;
+     85          
+     86            // For sleepies, we must re-initalize the EEPROM / bootloader
+     87            // after each nap/hibernate.  This call will only re-initalize the EEPROM
+     88            // if that is the case.
+     89            emberAfEepromInitCallback();
+   \   00000008   0x.... 0x....      BL       emberAfEepromInitCallback
+     90          
+     91            if (newVerification) {
+   \   0000000C   0xB12C             CBZ.N    R4,??emberAfOtaClientCustomVerifyCallback_0
+     92              otaPrintln("Starting EBL verification");
+   \   0000000E   0x.... 0x....      ADR.W    R1,?_0
+   \   00000012   0x.... 0x....      BL       ?Subroutine0
+     93              halAppBootloaderImageIsValidReset();
+   \                     ??CrossCallReturnLabel_4: (+1)
+   \   00000016   0x.... 0x....      BL       halAppBootloaderImageIsValidReset
+     94            }
+     95            pages = halAppBootloaderImageIsValid();
+   \                     ??emberAfOtaClientCustomVerifyCallback_0: (+1)
+   \   0000001A   0x.... 0x....      BL       halAppBootloaderImageIsValid
+     96            if (pages == BL_IMAGE_IS_VALID_CONTINUE) {
+   \   0000001E   0xF64F 0x71FF      MOVW     R1,#+65535
+   \   00000022   0x4288             CMP      R0,R1
+   \   00000024   0xD101             BNE.N    ??emberAfOtaClientCustomVerifyCallback_1
+     97              return EMBER_AF_IMAGE_VERIFY_IN_PROGRESS;
+   \   00000026   0x2002             MOVS     R0,#+2
+   \   00000028   0xBD3E             POP      {R1-R5,PC}
+     98            } else if (pages == 0) {
+   \                     ??emberAfOtaClientCustomVerifyCallback_1: (+1)
+   \   0000002A   0xB968             CBNZ.N   R0,??emberAfOtaClientCustomVerifyCallback_2
+     99              otaPrintln("EBL failed verification.");
+   \   0000002C   0x.... 0x....      ADR.W    R1,?_1
+   \   00000030   0x.... 0x....      BL       ?Subroutine0
+    100              
+    101              // --- RN was here. Added a check to make sure STM32 OTA files are skipped
+    102              int32u offset;
+    103              int32u endOffset;
+    104              if (EMBER_AF_OTA_STORAGE_SUCCESS != emAfOtaStorageGetTagOffsetAndSize(id, OTA_TAG_AURORA_STM32_IMAGE, &offset, &endOffset))
+   \                     ??CrossCallReturnLabel_3: (+1)
+   \   00000034   0xAB00             ADD      R3,SP,#+0
+   \   00000036   0xAA01             ADD      R2,SP,#+4
+   \   00000038   0xF44F 0x4170      MOV      R1,#+61440
+   \   0000003C   0x4628             MOV      R0,R5
+   \   0000003E   0x.... 0x....      BL       emAfOtaStorageGetTagOffsetAndSize
+   \   00000042   0xB108             CBZ.N    R0,??emberAfOtaClientCustomVerifyCallback_2
+    105              {
+    106                return EMBER_AF_IMAGE_BAD;
+   \   00000044   0x2001             MOVS     R0,#+1
+   \   00000046   0xBD3E             POP      {R1-R5,PC}
+    107              }
+    108              // ---
+    109              
+    110            }
+    111            otaPrintln("EBL passed verification.");
+   \                     ??emberAfOtaClientCustomVerifyCallback_2: (+1)
+   \   00000048   0x.... 0x....      ADR.W    R1,?_2
+   \   0000004C   0x.... 0x....      BL       ?Subroutine0
+    112          #endif
+    113          
+    114            return EMBER_AF_IMAGE_GOOD;
+   \                     ??CrossCallReturnLabel_2: (+1)
+   \   00000050   0x2000             MOVS     R0,#+0
+   \   00000052   0xBD3E             POP      {R1-R5,PC}       ;; return
+    115          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0: (+1)
+   \   00000000   0x2040             MOVS     R0,#+64
+   \   00000002   0x.... 0x....      B.W      emberAfPrintln
+    116          
+
+   \                                 In section .text, align 2, keep-with-next
+    117          boolean emberAfOtaClientDownloadCompleteCallback(EmberAfOtaDownloadResult result,
+    118                                                           const EmberAfOtaImageId* id)
+    119          {
+   \                     emberAfOtaClientDownloadCompleteCallback: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    120            // At this point the image has been completely downloaded and cryptographic 
+    121            // checks (if applicable) have been performed.
+    122            // Manufacturer verification callback has also been called and passed.
+    123          
+    124            if (result != EMBER_AF_OTA_DOWNLOAD_AND_VERIFY_SUCCESS) {
+   \   00000004   0xD00E             BEQ.N    ??CrossCallReturnLabel_5
+    125              emberAfOtaBootloadClusterPrintln("Download failed.");
+   \   00000006   0x.... 0x....      ADR.W    R1,?_3
+   \   0000000A   0x.... 0x....      BL       ?Subroutine0
+    126              emAfOtaPrintAllImages();
+                     ^
+Warning[Pe223]: function "emAfOtaPrintAllImages" declared implicitly
+   \                     ??CrossCallReturnLabel_1: (+1)
+   \   0000000E   0x.... 0x....      BL       emAfOtaPrintAllImages
+    127              
+    128          #if defined(EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_DELETE_FAILED_DOWNLOADS)
+    129              if (result != EMBER_AF_OTA_ERASE_FAILED) {
+   \   00000012   0x2C05             CMP      R4,#+5
+   \   00000014   0xD006             BEQ.N    ??CrossCallReturnLabel_5
+    130                EmberAfOtaStorageStatus status = emberAfOtaStorageClearTempDataCallback();
+   \   00000016   0x.... 0x....      BL       emberAfOtaStorageClearTempDataCallback
+    131                emberAfOtaBootloadClusterPrintln("Deleting failed download, status: 0x%X",
+    132                                                 status);
+   \   0000001A   0x4602             MOV      R2,R0
+   \   0000001C   0x.... 0x....      ADR.W    R1,?_4
+   \   00000020   0x.... 0x....      BL       ??Subroutine1_0
+    133              }
+    134          #endif
+    135          
+    136              return TRUE;   // return value is ignored
+    137            }
+    138          
+    139            // If the client wants to abort for some reason then it can do so here
+    140            // and return FALSE.  Otherwise it should give the "go ahead" by returning
+    141            // TRUE.
+    142            
+    143            return TRUE;
+   \                     ??CrossCallReturnLabel_5: (+1)
+   \   00000024   0x2001             MOVS     R0,#+1
+   \   00000026   0xBD10             POP      {R4,PC}          ;; return
+    144          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1: (+1)
+   \   00000000   0x4629             MOV      R1,R5
+   \                     ??Subroutine1_0: (+1)
+   \   00000002   0x2040             MOVS     R0,#+64
+   \   00000004   0x.... 0x....      B.W      emberAfPrintln
+    145          
+
+   \                                 In section .text, align 2, keep-with-next
+    146          void emberAfOtaClientBootloadCallback(const EmberAfOtaImageId* id)
+    147          {
+   \                     emberAfOtaClientBootloadCallback: (+1)
+   \   00000000   0xB53E             PUSH     {R1-R5,LR}
+   \   00000002   0x4604             MOV      R4,R0
+    148              // OTA Server has told us to bootload.
+    149              // Any final preperation prior to the bootload should be done here.
+    150              // It is assumed that the device will reset in most all cases.
+    151          
+    152              int32u offset;
+    153              int32u endOffset;
+    154          
+    155          
+    156              if (EMBER_AF_OTA_STORAGE_SUCCESS != emAfOtaStorageGetTagOffsetAndSize(id,
+    157                                         OTA_TAG_AURORA_STM32_IMAGE,
+    158                                         &offset,
+    159                                         &endOffset)) {
+   \   00000004   0xAB01             ADD      R3,SP,#+4
+   \   00000006   0xAA02             ADD      R2,SP,#+8
+   \   00000008   0xF44F 0x4170      MOV      R1,#+61440
+   \   0000000C   0x.... 0x....      BL       emAfOtaStorageGetTagOffsetAndSize
+   \   00000010   0x.... 0x....      ADR.W    R5,?_5
+   \   00000014   0xB120             CBZ.N    R0,??emberAfOtaClientBootloadCallback_0
+    160                  emberAfCoreFlush();
+    161                  otaPrintln("Image does not contain an Upgrade Image Tag (0x%2X).  Skipping upgrade.", 
+    162                  OTA_TAG_AURORA_STM32_IMAGE);
+   \   00000016   0xF44F 0x4270      MOV      R2,#+61440
+   \   0000001A   0x.... 0x....      BL       ?Subroutine1
+    163              }
+   \                     ??CrossCallReturnLabel_7: (+1)
+   \   0000001E   0xE01A             B.N      ??emberAfOtaClientBootloadCallback_1
+    164          
+    165              else
+    166              {
+    167                  otaPrintln("Image contains an Upgrade Image Tag (0x%2X) (0x%4X) (0x%4X).", OTA_TAG_AURORA_STM32_IMAGE, offset, endOffset);
+   \                     ??emberAfOtaClientBootloadCallback_0: (+1)
+   \   00000020   0x9801             LDR      R0,[SP, #+4]
+   \   00000022   0x9B02             LDR      R3,[SP, #+8]
+   \   00000024   0x.... 0x....      ADR.W    R1,?_6
+   \   00000028   0x9000             STR      R0,[SP, #+0]
+   \   0000002A   0xF44F 0x4270      MOV      R2,#+61440
+   \   0000002E   0x2040             MOVS     R0,#+64
+   \   00000030   0x.... 0x....      BL       emberAfPrintln
+    168                  
+    169                  // --- RN was here. This is where the STM32 OTA is done
+    170                  if(emberAfPluginAuroraBootloadUpgrade(offset, endOffset))
+   \   00000034   0x9901             LDR      R1,[SP, #+4]
+   \   00000036   0x9802             LDR      R0,[SP, #+8]
+   \   00000038   0x.... 0x....      BL       emberAfPluginAuroraBootloadUpgrade
+   \   0000003C   0x2800             CMP      R0,#+0
+   \   0000003E   0xBF14             ITE      NE 
+   \   00000040   0x.... 0x....      ADRNE.W  R1,?_7
+   \   00000044   0x.... 0x....      ADREQ.W  R1,?_8
+    171                    emberAfDebugPrint("STM32 bootload successfully completed\r\n");
+    172          
+    173                  else 
+    174                    emberAfDebugPrint("STM32 bootload failed!\r\n");
+   \   00000048   0x2002             MOVS     R0,#+2
+   \   0000004A   0x.... 0x....      BL       emberAfPrint
+    175                  
+    176                  // Erase the EEPROM
+    177                  emberAfOtaStorageDriverInvalidateImageCallback();
+   \   0000004E   0x.... 0x....      BL       emberAfOtaStorageDriverInvalidateImageCallback
+    178                  
+    179                  // Reset all devices on the STM32 reset line
+    180                  STM32ToggleReset();
+   \   00000052   0x.... 0x....      BL       STM32ToggleReset
+    181              }
+    182              
+    183              
+    184              if (EMBER_AF_OTA_STORAGE_SUCCESS != emAfOtaStorageGetTagOffsetAndSize(id,
+    185                                         OTA_TAG_UPGRADE_IMAGE,
+    186                                         &offset,
+    187                                         &endOffset)) {
+   \                     ??emberAfOtaClientBootloadCallback_1: (+1)
+   \   00000056   0xAB01             ADD      R3,SP,#+4
+   \   00000058   0xAA02             ADD      R2,SP,#+8
+   \   0000005A   0x2100             MOVS     R1,#+0
+   \   0000005C   0x4620             MOV      R0,R4
+   \   0000005E   0x.... 0x....      BL       emAfOtaStorageGetTagOffsetAndSize
+   \   00000062   0xB118             CBZ.N    R0,??emberAfOtaClientBootloadCallback_2
+    188                  emberAfCoreFlush();
+    189                  otaPrintln("Image does not contain an Upgrade Image Tag (0x%2X).  Skipping upgrade.", 
+    190                  OTA_TAG_UPGRADE_IMAGE);
+   \   00000064   0x2200             MOVS     R2,#+0
+   \   00000066   0x.... 0x....      BL       ?Subroutine1
+    191                  return;
+   \                     ??CrossCallReturnLabel_6: (+1)
+   \   0000006A   0xBD37             POP      {R0-R2,R4,R5,PC}
+    192              }
+    193          
+    194              otaPrintln("Executing bootload callback.");
+   \                     ??emberAfOtaClientBootloadCallback_2: (+1)
+   \   0000006C   0x.... 0x....      ADR.W    R1,?_9
+   \   00000070   0x.... 0x....      BL       ?Subroutine0
+    195              emberSerialWaitSend(APP_SERIAL);
+   \                     ??CrossCallReturnLabel_0: (+1)
+   \   00000074   0x2000             MOVS     R0,#+0
+   \   00000076   0x.... 0x....      BL       emberSerialWaitSend
+    196          
+    197              // This routine will NOT return unless we failed to launch the bootloader.
+    198              emberAfOtaBootloadCallback(id, OTA_TAG_UPGRADE_IMAGE);
+   \   0000007A   0x2100             MOVS     R1,#+0
+   \   0000007C   0x4620             MOV      R0,R4
+   \   0000007E   0x.... 0x....      BL       emberAfOtaBootloadCallback
+    199          }
+   \   00000082   0xBD37             POP      {R0-R2,R4,R5,PC}  ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_0:
+   \   00000000   0x53 0x74          DC8 "Starting EBL verification"
+   \              0x61 0x72    
+   \              0x74 0x69    
+   \              0x6E 0x67    
+   \              0x20 0x45    
+   \              0x42 0x4C    
+   \              0x20 0x76    
+   \              0x65 0x72    
+   \              0x69 0x66    
+   \              0x69 0x63    
+   \              0x61 0x74    
+   \              0x69 0x6F    
+   \              0x6E 0x00    
+   \   0000001A   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_1:
+   \   00000000   0x45 0x42          DC8 "EBL failed verification."
+   \              0x4C 0x20    
+   \              0x66 0x61    
+   \              0x69 0x6C    
+   \              0x65 0x64    
+   \              0x20 0x76    
+   \              0x65 0x72    
+   \              0x69 0x66    
+   \              0x69 0x63    
+   \              0x61 0x74    
+   \              0x69 0x6F    
+   \              0x6E 0x2E    
+   \              0x00         
+   \   00000019   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_2:
+   \   00000000   0x45 0x42          DC8 "EBL passed verification."
+   \              0x4C 0x20    
+   \              0x70 0x61    
+   \              0x73 0x73    
+   \              0x65 0x64    
+   \              0x20 0x76    
+   \              0x65 0x72    
+   \              0x69 0x66    
+   \              0x69 0x63    
+   \              0x61 0x74    
+   \              0x69 0x6F    
+   \              0x6E 0x2E    
+   \              0x00         
+   \   00000019   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_3:
+   \   00000000   0x44 0x6F          DC8 "Download failed."
+   \              0x77 0x6E    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x66    
+   \              0x61 0x69    
+   \              0x6C 0x65    
+   \              0x64 0x2E    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_4:
+   \   00000000   0x44 0x65          DC8 "Deleting failed download, status: 0x%X"
+   \              0x6C 0x65    
+   \              0x74 0x69    
+   \              0x6E 0x67    
+   \              0x20 0x66    
+   \              0x61 0x69    
+   \              0x6C 0x65    
+   \              0x64 0x20    
+   \              0x64 0x6F    
+   \              0x77 0x6E    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x2C 0x20    
+   \              0x73 0x74    
+   \              0x61 0x74    
+   \              0x75 0x73    
+   \              0x3A 0x20    
+   \              0x30 0x78    
+   \              0x25 0x58    
+   \              0x00         
+   \   00000027   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_5:
+   \   00000000   0x49 0x6D          DC8 49H, 6DH, 61H, 67H, 65H, 20H, 64H, 6FH
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x64 0x6F    
+   \   00000008   0x65 0x73          DC8 65H, 73H, 20H, 6EH, 6FH, 74H, 20H, 63H
+   \              0x20 0x6E    
+   \              0x6F 0x74    
+   \              0x20 0x63    
+   \   00000010   0x6F 0x6E          DC8 6FH, 6EH, 74H, 61H, 69H, 6EH, 20H, 61H
+   \              0x74 0x61    
+   \              0x69 0x6E    
+   \              0x20 0x61    
+   \   00000018   0x6E 0x20          DC8 6EH, 20H, 55H, 70H, 67H, 72H, 61H, 64H
+   \              0x55 0x70    
+   \              0x67 0x72    
+   \              0x61 0x64    
+   \   00000020   0x65 0x20          DC8 65H, 20H, 49H, 6DH, 61H, 67H, 65H, 20H
+   \              0x49 0x6D    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \   00000028   0x54 0x61          DC8 54H, 61H, 67H, 20H, 28H, 30H, 78H, 25H
+   \              0x67 0x20    
+   \              0x28 0x30    
+   \              0x78 0x25    
+   \   00000030   0x32 0x58          DC8 32H, 58H, 29H, 2EH, 20H, 20H, 53H, 6BH
+   \              0x29 0x2E    
+   \              0x20 0x20    
+   \              0x53 0x6B    
+   \   00000038   0x69 0x70          DC8 69H, 70H, 70H, 69H, 6EH, 67H, 20H, 75H
+   \              0x70 0x69    
+   \              0x6E 0x67    
+   \              0x20 0x75    
+   \   00000040   0x70 0x67          DC8 70H, 67H, 72H, 61H, 64H, 65H, 2EH, 0
+   \              0x72 0x61    
+   \              0x64 0x65    
+   \              0x2E 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_6:
+   \   00000000   0x49 0x6D          DC8 49H, 6DH, 61H, 67H, 65H, 20H, 63H, 6FH
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \              0x63 0x6F    
+   \   00000008   0x6E 0x74          DC8 6EH, 74H, 61H, 69H, 6EH, 73H, 20H, 61H
+   \              0x61 0x69    
+   \              0x6E 0x73    
+   \              0x20 0x61    
+   \   00000010   0x6E 0x20          DC8 6EH, 20H, 55H, 70H, 67H, 72H, 61H, 64H
+   \              0x55 0x70    
+   \              0x67 0x72    
+   \              0x61 0x64    
+   \   00000018   0x65 0x20          DC8 65H, 20H, 49H, 6DH, 61H, 67H, 65H, 20H
+   \              0x49 0x6D    
+   \              0x61 0x67    
+   \              0x65 0x20    
+   \   00000020   0x54 0x61          DC8 54H, 61H, 67H, 20H, 28H, 30H, 78H, 25H
+   \              0x67 0x20    
+   \              0x28 0x30    
+   \              0x78 0x25    
+   \   00000028   0x32 0x58          DC8 32H, 58H, 29H, 20H, 28H, 30H, 78H, 25H
+   \              0x29 0x20    
+   \              0x28 0x30    
+   \              0x78 0x25    
+   \   00000030   0x34 0x58          DC8 34H, 58H, 29H, 20H, 28H, 30H, 78H, 25H
+   \              0x29 0x20    
+   \              0x28 0x30    
+   \              0x78 0x25    
+   \   00000038   0x34 0x58          DC8 34H, 58H, 29H, 2EH, 0
+   \              0x29 0x2E    
+   \              0x00         
+   \   0000003D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_7:
+   \   00000000   0x53 0x54          DC8 "STM32 bootload successfully completed\015\012"
+   \              0x4D 0x33    
+   \              0x32 0x20    
+   \              0x62 0x6F    
+   \              0x6F 0x74    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x73    
+   \              0x75 0x63    
+   \              0x63 0x65    
+   \              0x73 0x73    
+   \              0x66 0x75    
+   \              0x6C 0x6C    
+   \              0x79 0x20    
+   \              0x63 0x6F    
+   \              0x6D 0x70    
+   \              0x6C 0x65    
+   \              0x74 0x65    
+   \              0x64 0x0D    
+   \              0x0A 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_8:
+   \   00000000   0x53 0x54          DC8 "STM32 bootload failed!\015\012"
+   \              0x4D 0x33    
+   \              0x32 0x20    
+   \              0x62 0x6F    
+   \              0x6F 0x74    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x66    
+   \              0x61 0x69    
+   \              0x6C 0x65    
+   \              0x64 0x21    
+   \              0x0D 0x0A    
+   \              0x00         
+   \   00000019   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_9:
+   \   00000000   0x45 0x78          DC8 "Executing bootload callback."
+   \              0x65 0x63    
+   \              0x75 0x74    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x62 0x6F    
+   \              0x6F 0x74    
+   \              0x6C 0x6F    
+   \              0x61 0x64    
+   \              0x20 0x63    
+   \              0x61 0x6C    
+   \              0x6C 0x62    
+   \              0x61 0x63    
+   \              0x6B 0x2E    
+   \              0x00         
+   \   0000001D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+    200          
+    201          
+    202          #endif // defined(ZCL_USING_OTA_BOOTLOAD_CLUSTER_CLIENT)
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      24   emberAfOtaClientBootloadCallback
+        24   -> STM32ToggleReset
+        24   -> emAfOtaStorageGetTagOffsetAndSize
+        24   -> emberAfOtaBootloadCallback
+        24   -> emberAfOtaStorageDriverInvalidateImageCallback
+        24   -> emberAfPluginAuroraBootloadUpgrade
+        24   -> emberAfPrint
+        24   -> emberAfPrintln
+        24   -> emberSerialWaitSend
+      24   emberAfOtaClientCustomVerifyCallback
+        24   -> emAfOtaStorageGetTagOffsetAndSize
+        24   -> emberAfEepromInitCallback
+        24   -> emberAfPrintln
+        24   -> halAppBootloaderImageIsValid
+        24   -> halAppBootloaderImageIsValidReset
+       8   emberAfOtaClientDownloadCompleteCallback
+         8   -> emAfOtaPrintAllImages
+         8   -> emberAfOtaStorageClearTempDataCallback
+         8   -> emberAfPrintln
+      16   emberAfOtaClientVersionInfoCallback
+        16   -> halCommonMemSet
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ?Subroutine0
+       8  ?Subroutine1
+      28  ?_0
+      28  ?_1
+      28  ?_2
+      20  ?_3
+      40  ?_4
+      72  ?_5
+      64  ?_6
+      40  ?_7
+      28  ?_8
+      32  ?_9
+     132  emberAfOtaClientBootloadCallback
+      84  emberAfOtaClientCustomVerifyCallback
+      40  emberAfOtaClientDownloadCompleteCallback
+      40  emberAfOtaClientVersionInfoCallback
+
+ 
+ 690 bytes in section .text
+ 
+ 690 bytes of CODE memory
+
+Errors: none
+Warnings: 1
