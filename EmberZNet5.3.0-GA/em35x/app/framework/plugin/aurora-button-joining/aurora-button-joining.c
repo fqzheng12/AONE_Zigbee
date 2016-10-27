@@ -75,7 +75,7 @@ const t_ledSettings ledSettings[] = {
 #define MAX_LED_STATES          sizeof(ledSettings) / sizeof(t_ledSettings)
 
 static t_buttonSeqence buttonSequence[] = {
-  {1, {2000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningJoinNetwork},                         // Join ADDED FOR TEST
+  {1, {2000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningJoinNetwork},                         // Join ADDED FOR TEST and ADDED THIS TOO
   {5, {1000, 1000, 1000, 1000, 1000}, emberAfPluginAuroraButtonJoiningLeaveNetwork},            // Leave
   {2, {1000, 1000, 0, 0, 0}, emberAfPluginAuroraButtonJoiningPermitJoiningNetwork}              // Identify / Permit Joining
 };
