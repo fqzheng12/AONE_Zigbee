@@ -253,6 +253,10 @@ void emberAfMainInitCallback(void)
 void emberAfMainTickCallback(void)
 {
     int8u mode;
+    
+//emberAfDebugPrint("reached emberAfMainTickCallback line 253 Aurora_dimmer_callbacks \n"); //MN
+
+    
     emberAfPluginAuroraButtonJoiningUpdateStatusLed();
 
     // Read any data from the host
@@ -284,6 +288,10 @@ void emberAfMainTickCallback(void)
  */
 boolean emberAfStackStatusCallback(EmberStatus status)
 {
+  //MN
+    emberAfDebugPrintln("Reached emberAfStackStatusCallback line 285 Aurora_dimmer_callbacks");
+
+  
     switch(status) 
     {
         case EMBER_NETWORK_UP:
@@ -291,16 +299,28 @@ boolean emberAfStackStatusCallback(EmberStatus status)
             emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_CLEAR);
             emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_NETWORK_UNAVAILABLE, DEVICE_STATE_FLAGS_CLEAR); 
             
+              //MN
+    emberAfDebugPrintln("Reached emberAfStackStatusCallback line 294 Aurora_dimmer_callbacks");
+            
+            
             emberAfOtaClientStartCallback(); 
             //GB dont need this on linkup!   emberAfPluginAuroraPwmInitializeTimer();
             break;
 
         case EMBER_NETWORK_DOWN:
             emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR);
+            
+              //MN
+    emberAfDebugPrintln("Reached emberAfStackStatusCallback line 310 Aurora_dimmer_callbacks");
+            
             break;
 
         case EMBER_JOIN_FAILED:
             emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR); 
+            
+              //MN
+    emberAfDebugPrintln("Reached emberAfStackStatusCallback line 315 Aurora_dimmer_callbacks");
+            
             break;
 
         default:
@@ -320,9 +340,17 @@ boolean emberAfStackStatusCallback(EmberStatus status)
  */
 void emberAfPluginNetworkFindFinishedCallback(EmberStatus status)
 {
+  //MN
+  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 321 Aurora_dimmer_callbacks");
+  
     if (status != EMBER_SUCCESS) 
     {
         emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK , DEVICE_STATE_FLAGS_CLEAR);
+   
+  //MN
+  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 332 Aurora_dimmer_callbacks");
+
+  
     }
     
     emberAfPluginAuroraButtonJoiningClearJoiningFlag();
