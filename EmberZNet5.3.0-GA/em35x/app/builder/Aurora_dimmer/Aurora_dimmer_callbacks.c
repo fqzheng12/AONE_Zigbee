@@ -241,7 +241,11 @@ void emberAfMainInitCallback(void)
     emberAfPluginAuroraPwmInitializeTimer();  // Cant use pwm timer as this uses PB6.
 #endif
     
-    emberAfPluginAuroraColourControlInitColorSpaceConversion();      
+    emberAfPluginAuroraColourControlInitColorSpaceConversion();     
+    
+    //if the device is not paired to a network, it will enter pairing mode MN
+    //checkIfPaired();
+    
 }
 
 /** @brief Main Tick
@@ -258,6 +262,9 @@ void emberAfMainTickCallback(void)
 
     
     emberAfPluginAuroraButtonJoiningUpdateStatusLed();
+    
+    //if the device is not paired to a network, it will enter pairing mode MN
+    checkIfPaired();
 
     // Read any data from the host
     mode = getAuroraDimmerMode();
@@ -327,6 +334,8 @@ boolean emberAfStackStatusCallback(EmberStatus status)
           break;
     }
 
+    
+    
     return FALSE;
 }
 
@@ -341,19 +350,24 @@ boolean emberAfStackStatusCallback(EmberStatus status)
 void emberAfPluginNetworkFindFinishedCallback(EmberStatus status)
 {
   //MN
-  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 321 Aurora_dimmer_callbacks");
-  
+  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 341 Aurora_dimmer_callbacks");
+
     if (status != EMBER_SUCCESS) 
     {
-        emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK , DEVICE_STATE_FLAGS_CLEAR);
+        emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR);
    
   //MN
-  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 332 Aurora_dimmer_callbacks");
+  emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 351 Aurora_dimmer_callbacks");
+
+  //delay(1000); //wait 1 second before trying again
+  
+  //emberAfPluginAuroraButtonJoiningJoinNetwork(); //this will put AONE back into pairing mdoe if pairing wasn't successful
 
   
     }
-    
+
     emberAfPluginAuroraButtonJoiningClearJoiningFlag();
+
 }
 
 

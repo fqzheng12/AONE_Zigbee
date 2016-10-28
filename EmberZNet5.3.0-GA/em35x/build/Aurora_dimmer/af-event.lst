@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  13:32:23
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  19:51:20
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -115,40 +115,40 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   __interwork __softfp void emberAfIdentifyClusterServerTickCallbackWrapperFunction1(void)
    \                     emberAfIdentifyClusterServerTickCallbackWrapperFunction1: (+1)
    \   00000000   0x2201             MOVS     R2,#+1
-   \   00000002   0x....             LDR.N    R1,??DataTable34
-   \   00000004   0x....             LDR.N    R0,??DataTable34_1
+   \   00000002   0x....             LDR.N    R1,??DataTable35
+   \   00000004   0x....             LDR.N    R0,??DataTable35_1
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .text, align 2, keep-with-next
    \   __interwork __softfp void emberAfLevelControlClusterServerTickCallbackWrapperFunction1(void)
    \                     emberAfLevelControlClusterServerTickCallbackWrapperFunction1: (+1)
    \   00000000   0x2201             MOVS     R2,#+1
-   \   00000002   0x....             LDR.N    R1,??DataTable34_2
-   \   00000004   0x....             LDR.N    R0,??DataTable34_3
+   \   00000002   0x....             LDR.N    R1,??DataTable35_2
+   \   00000004   0x....             LDR.N    R0,??DataTable35_3
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .text, align 2, keep-with-next
    \   __interwork __softfp void emberAfIdentifyClusterServerTickCallbackWrapperFunction2(void)
    \                     emberAfIdentifyClusterServerTickCallbackWrapperFunction2: (+1)
    \   00000000   0x2202             MOVS     R2,#+2
-   \   00000002   0x....             LDR.N    R1,??DataTable34
-   \   00000004   0x....             LDR.N    R0,??DataTable34_4
+   \   00000002   0x....             LDR.N    R1,??DataTable35
+   \   00000004   0x....             LDR.N    R0,??DataTable35_4
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .text, align 2, keep-with-next
    \   __interwork __softfp void emberAfTunnelingClusterServerTickCallbackWrapperFunction2(void)
    \                     emberAfTunnelingClusterServerTickCallbackWrapperFunction2: (+1)
    \   00000000   0x2202             MOVS     R2,#+2
-   \   00000002   0x....             LDR.N    R1,??DataTable34_5
-   \   00000004   0x....             LDR.N    R0,??DataTable34_6
+   \   00000002   0x....             LDR.N    R1,??DataTable35_5
+   \   00000004   0x....             LDR.N    R0,??DataTable35_6
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .text, align 2, keep-with-next
    \   __interwork __softfp void emberAfIdentifyClusterServerTickCallbackWrapperFunction3(void)
    \                     emberAfIdentifyClusterServerTickCallbackWrapperFunction3: (+1)
    \   00000000   0x2203             MOVS     R2,#+3
-   \   00000002   0x....             LDR.N    R1,??DataTable34
-   \   00000004   0x....             LDR.N    R0,??DataTable34_7
+   \   00000002   0x....             LDR.N    R1,??DataTable35
+   \   00000004   0x....             LDR.N    R0,??DataTable35_7
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .text, align 2, keep-with-next
@@ -156,8 +156,8 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   __interwork __softfp void emberAfOtaBootloadClusterClientTickCallbackWrapperFunction3(void)
    \                     emberAfOtaBootloadClusterClientTickCallbackWrapperFunction3: (+1)
    \   00000000   0x2203             MOVS     R2,#+3
-   \   00000002   0x....             LDR.N    R1,??DataTable34_8
-   \   00000004   0x....             LDR.N    R0,??DataTable34_9
+   \   00000002   0x....             LDR.N    R1,??DataTable35_8
+   \   00000004   0x....             LDR.N    R0,??DataTable35_9
    \   00000006   0x....             B.N      clusterTickWrapper
 
    \                                 In section .bss, align 4
@@ -262,7 +262,8 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \              0x........   
    \              0x........   
    \              0x........   
-   \   00000060   0x........         DC32 ?_24
+   \   00000060   0x........         DC32 ?_24, ?_25
+   \              0x........   
      43            EM_AF_SERVICE_DISCOVERY_EVENT_STRINGS
      44          
      45          #ifdef EMBER_AF_GENERATED_EVENTS
@@ -329,7 +330,9 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   000000B8   0x........         DC32 emberAfPluginNetworkFindTickEventControl
    \   000000BC   0x........         DC32 emberAfPluginNetworkFindTickEventHandler
    \   000000C0   0x........         DC32 emberAfPluginOtaStorageSimpleEepromPageEraseEventControl
-   \   000000C4   0x........         DC32 emberAfPluginOtaStorageSimpleEepromPageEraseEventHandler, 0H, 0H
+   \   000000C4   0x........         DC32 emberAfPluginOtaStorageSimpleEepromPageEraseEventHandler
+   \   000000C8   0x........         DC32 emberAfPluginReportingTickEventControl
+   \   000000CC   0x........         DC32 emberAfPluginReportingTickEventHandler, 0H, 0H
    \              0x00000000   
    \              0x00000000   
      57            EM_AF_SERVICE_DISCOVERY_EVENTS
@@ -363,7 +366,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
      79            emAfTaskId = emberTaskInit(emAfEvents);
    \   00000008   0x.... 0x....      ADR.W    R0,emAfEvents
    \   0000000C   0x.... 0x....      BL       emberTaskInit
-   \   00000010   0x....             LDR.N    R1,??DataTable34_10
+   \   00000010   0x....             LDR.N    R1,??DataTable35_10
    \   00000012   0x7008             STRB     R0,[R1, #+0]
      80          }
    \   00000014   0xBD01             POP      {R0,PC}          ;; return
@@ -385,7 +388,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
      89              return;
      90            }
      91            emberRunTask(emAfTaskId);
-   \   0000000A   0x....             LDR.N    R0,??DataTable34_10
+   \   0000000A   0x....             LDR.N    R0,??DataTable35_10
    \   0000000C   0x7800             LDRB     R0,[R0, #+0]
    \   0000000E   0xE8BD 0x4002      POP      {R1,LR}
    \   00000012   0x.... 0x....      B.W      emberRunTask
@@ -405,7 +408,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
      99            int8u i;
     100            for (i = 0; i < emAfAppEventContextLength; i++) {
    \   00000002   0x2400             MOVS     R4,#+0
-   \   00000004   0x....             LDR.N    R5,??DataTable34_11
+   \   00000004   0x....             LDR.N    R5,??DataTable35_11
    \   00000006   0xE000             B.N      ??findEventContext_0
    \                     ??findEventContext_1: (+1)
    \   00000008   0x1C64             ADDS     R4,R4,#+1
@@ -819,51 +822,51 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
     293          }
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34:
+   \                     ??DataTable35:
    \   00000000   0x........         DC32     emberAfIdentifyClusterServerTickCallback
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_1:
+   \                     ??DataTable35_1:
    \   00000000   0x........         DC32     emberAfIdentifyClusterServerTickCallbackControl1
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_2:
+   \                     ??DataTable35_2:
    \   00000000   0x........         DC32     emberAfLevelControlClusterServerTickCallback
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_3:
+   \                     ??DataTable35_3:
    \   00000000   0x........         DC32     emberAfLevelControlClusterServerTickCallbackControl1
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_4:
+   \                     ??DataTable35_4:
    \   00000000   0x........         DC32     emberAfIdentifyClusterServerTickCallbackControl2
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_5:
+   \                     ??DataTable35_5:
    \   00000000   0x........         DC32     emberAfTunnelingClusterServerTickCallback
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_6:
+   \                     ??DataTable35_6:
    \   00000000   0x........         DC32     emberAfTunnelingClusterServerTickCallbackControl2
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_7:
+   \                     ??DataTable35_7:
    \   00000000   0x........         DC32     emberAfIdentifyClusterServerTickCallbackControl3
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_8:
+   \                     ??DataTable35_8:
    \   00000000   0x........         DC32     emberAfOtaBootloadClusterClientTickCallback
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_9:
+   \                     ??DataTable35_9:
    \   00000000   0x........         DC32     emberAfOtaBootloadClusterClientTickCallbackControl3
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_10:
+   \                     ??DataTable35_10:
    \   00000000   0x........         DC32     emAfTaskId
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable34_11:
+   \                     ??DataTable35_11:
    \   00000000   0x........         DC32     emAfAppEventContextLength
 
    \                                 In section .rodata, align 4, keep-with-next
@@ -1460,6 +1463,21 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \              0x65 0x00    
    \   00000032   0x00 0x00          DC8 0, 0
 
+   \                                 In section .rodata, align 4, keep-with-next
+   \                     ?_25:
+   \   00000000   0x52 0x65          DC8 "Reporting Plugin Tick"
+   \              0x70 0x6F    
+   \              0x72 0x74    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x50 0x6C    
+   \              0x75 0x67    
+   \              0x69 0x6E    
+   \              0x20 0x54    
+   \              0x69 0x63    
+   \              0x6B 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
    Maximum stack usage in bytes:
 
    .cstack Function
@@ -1523,18 +1541,18 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
 
    Bytes  Function/Label
    -----  --------------
-       4  ??DataTable34
-       4  ??DataTable34_1
-       4  ??DataTable34_10
-       4  ??DataTable34_11
-       4  ??DataTable34_2
-       4  ??DataTable34_3
-       4  ??DataTable34_4
-       4  ??DataTable34_5
-       4  ??DataTable34_6
-       4  ??DataTable34_7
-       4  ??DataTable34_8
-       4  ??DataTable34_9
+       4  ??DataTable35
+       4  ??DataTable35_1
+       4  ??DataTable35_10
+       4  ??DataTable35_11
+       4  ??DataTable35_2
+       4  ??DataTable35_3
+       4  ??DataTable35_4
+       4  ??DataTable35_5
+       4  ??DataTable35_6
+       4  ??DataTable35_7
+       4  ??DataTable35_8
+       4  ??DataTable35_9
        6  ?Subroutine0
       16  ?_0
       32  ?_1
@@ -1554,6 +1572,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
       36  ?_22
       28  ?_23
       52  ?_24
+      24  ?_25
       32  ?_3
       32  ?_4
       32  ?_5
@@ -1564,8 +1583,8 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
       30  clusterTickWrapper
       76  emAfAppEventContextLength
           emAfAppEventContext
-     100  emAfEventStrings
-     208  emAfEvents
+     104  emAfEventStrings
+     216  emAfEvents
       20  emAfGetMSFromTimerDurationAndUnit
       52  emAfGetTimerDurationAndUnitFromMS
       22  emAfInitEvents
@@ -1599,13 +1618,13 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
 
  
     49 bytes in section .bss
-   176 bytes in section .data
- 1 012 bytes in section .rodata
-   750 bytes in section .text
+   180 bytes in section .data
+ 1 036 bytes in section .rodata
+   758 bytes in section .text
  
-   750 bytes of CODE  memory
- 1 012 bytes of CONST memory
-   225 bytes of DATA  memory
+   758 bytes of CODE  memory
+ 1 036 bytes of CONST memory
+   229 bytes of DATA  memory
 
 Errors: none
 Warnings: none

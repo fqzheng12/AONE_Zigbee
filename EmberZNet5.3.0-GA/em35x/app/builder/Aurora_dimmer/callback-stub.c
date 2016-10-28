@@ -66,17 +66,6 @@ EmberAfAttributeWritePermission emberAfAllowNetworkWriteAttributeCallback(int8u 
   return EMBER_ZCL_ATTRIBUTE_WRITE_PERMISSION_ALLOW_WRITE_NORMAL; // Default
 }
 
-/** @brief Clear Report Table
- *
- * This function is called by the framework when the application should clear
- * the report table.
- *
- */
-EmberStatus emberAfClearReportTableCallback(void)
-{
-  return EMBER_LIBRARY_NOT_PRESENT;
-}
-
 /** @brief Key establishment Cluster Client Command Received
  *
  * This function is called by the application framework when a server-to-client
@@ -125,21 +114,6 @@ boolean emberAfClusterSecurityCustomCallback(EmberAfProfileId profileId,
                                              int8u commandId)
 {
   // By default, assume APS encryption is not required.
-  return FALSE;
-}
-
-/** @brief Configure Reporting Command
- *
- * This function is called by the application framework when a Configure
- * Reporting command is received from an external device.  The Configure
- * Reporting command contains a series of attribute reporting configuration
- * records.  The application should return TRUE if the message was processed or
- * FALSE if it was not.
- *
- * @param cmd   Ver.: always
- */
-boolean emberAfConfigureReportingCommandCallback(const EmberAfClusterCommand *cmd)
-{
   return FALSE;
 }
 
@@ -1137,6 +1111,24 @@ boolean emberAfPluginNetworkFindJoinCallback(EmberZigbeeNetwork *networkFound,
   return TRUE;
 }
 
+/** @brief Configured
+ *
+ * This callback is called by the Reporting plugin whenever a reporting entry is
+ * configured, including when entries are deleted or updated.  The application
+ * can use this callback for scheduling readings or measurements based on the
+ * minimum and maximum reporting interval for the entry.  The application should
+ * return EMBER_ZCL_STATUS_SUCCESS if it can support the configuration or an
+ * error status otherwise.  Note: attribute reporting is required for many
+ * clusters and attributes, so rejecting a reporting configuration may violate
+ * ZigBee specifications.
+ *
+ * @param entry   Ver.: always
+ */
+EmberAfStatus emberAfPluginReportingConfiguredCallback(const EmberAfPluginReportingEntry *entry)
+{
+  return EMBER_ZCL_STATUS_SUCCESS;
+}
+
 /** @brief Post Attribute Change
  *
  * This function is called by the application framework after it changes an
@@ -1308,19 +1300,6 @@ boolean emberAfReadAttributesResponseCallback(EmberAfClusterId clusterId,
   return FALSE;
 }
 
-/** @brief Read Reporting Configuration Command
- *
- * This function is called by the application framework when a Read Reporting
- * Configuration command is received from an external device.  The application
- * should return TRUE if the message was processed or FALSE if it was not.
- *
- * @param cmd   Ver.: always
- */
-boolean emberAfReadReportingConfigurationCommandCallback(const EmberAfClusterCommand *cmd)
-{
-  return FALSE;
-}
-
 /** @brief Read Reporting Configuration Response
  *
  * This function is called by the application framework when a Read Reporting
@@ -1435,31 +1414,6 @@ boolean emberAfReportAttributesCallback(EmberAfClusterId clusterId,
                                         int16u bufLen)
 {
   return FALSE;
-}
-
-/** @brief Reporting Attribute Change
- *
- * This function is called by the framework when an attribute managed by the
- * framework changes.  The application should call this function when an
- * externally-managed attribute changes.  The application should use the change
- * notification to inform its reporting decisions.
- *
- * @param endpoint   Ver.: always
- * @param clusterId   Ver.: always
- * @param attributeId   Ver.: always
- * @param mask   Ver.: always
- * @param manufacturerCode   Ver.: always
- * @param type   Ver.: always
- * @param data   Ver.: always
- */
-void emberAfReportingAttributeChangeCallback(int8u endpoint,
-                                             EmberAfClusterId clusterId,
-                                             EmberAfAttributeId attributeId,
-                                             int8u mask,
-                                             int16u manufacturerCode,
-                                             EmberAfAttributeType type,
-                                             int8u *data)
-{
 }
 
 /** @brief Schedule Poll Event

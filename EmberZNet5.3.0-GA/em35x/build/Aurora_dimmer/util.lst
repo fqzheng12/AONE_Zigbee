@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  13:33:14
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  19:52:12
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -619,11 +619,12 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   0000003C   0x.... 0x....      BL       emberAfPluginConcentratorInitCallback
    \   00000040   0x.... 0x....      BL       emberAfPluginCountersInitCallback
    \   00000044   0x.... 0x....      BL       emberAfPluginNetworkFindInitCallback
+   \   00000048   0x.... 0x....      BL       emberAfPluginReportingInitCallback
     284          #endif
     285          
     286            emAfCallInits();
-   \   00000048   0xE8BD 0x4001      POP      {R0,LR}
-   \   0000004C   0x.... 0x....      B.W      emAfCallInits
+   \   0000004C   0xE8BD 0x4001      POP      {R0,LR}
+   \   00000050   0x.... 0x....      B.W      emAfCallInits
     287          }
     288          
 
@@ -3368,6 +3369,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
          8   -> emberAfPluginConcentratorInitCallback
          8   -> emberAfPluginCountersInitCallback
          8   -> emberAfPluginNetworkFindInitCallback
+         8   -> emberAfPluginReportingInitCallback
          8   -> emberAfPopNetworkIndex
          8   -> emberAfPushNetworkIndex
          8   -> emberAfSetExternalBuffer
@@ -3551,7 +3553,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
           emberAfResponseType
           interpanResponseHeader
           emAfCurrentCommand
-      80  emberAfInit
+      84  emberAfInit
       26  emberAfIsDeviceEnabled
       36  emberAfIsDeviceIdentifying
       10  emberAfIsTypeSigned
@@ -3584,9 +3586,9 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
     11 bytes in section .bss
     33 bytes in section .data
    139 bytes in section .rodata
- 3 484 bytes in section .text
+ 3 488 bytes in section .text
  
- 3 484 bytes of CODE  memory
+ 3 488 bytes of CODE  memory
    139 bytes of CONST memory
     44 bytes of DATA  memory
 

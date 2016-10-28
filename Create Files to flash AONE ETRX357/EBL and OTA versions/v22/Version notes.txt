@@ -3,3 +3,4 @@ v22
 Changes:
 No debug printout for version
 Debug printout to indicate it is joining and joined for the purpose of adding the motherboard flashes later
+Reporting added in (it was removed somewhere...)

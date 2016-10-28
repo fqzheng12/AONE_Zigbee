@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  13:33:11
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  19:52:09
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -129,7 +129,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
    \                                 In section .rodata, align 2, keep-with-next
      32          const int16u ID_COUNT = TOKEN_COUNT;
    \                     ID_COUNT:
-   \   00000000   0x001E             DC16 30
+   \   00000000   0x001F             DC16 31
      33          
      34          #define DEFINETOKENS
      35          //Manufacturing tokens do not exist in the SimEEPROM -define to nothing
@@ -146,7 +146,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
    \                                 In section .rodata, align 2, keep-with-next
      45            const int16u PTR_CACHE_SIZE = 0
    \                     PTR_CACHE_SIZE:
-   \   00000000   0x003F             DC16 63
+   \   00000000   0x0045             DC16 69
      46              #include "stack/config/token-stack.h"
      47            ;
      48            //the ptrCache definition - used to provide efficient access, based upon
@@ -155,7 +155,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
    \                                 In section .bss, align 4
      50            int16u ptrCache[
    \                     ptrCache:
-   \   00000000                      DS8 128
+   \   00000000                      DS8 140
      51              #include "stack/config/token-stack.h"
      52            ];
      53          #undef TOKEN_DEF
@@ -179,11 +179,11 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
    \              0x04 0x05    
    \              0x1B 0x07    
    \              0x06         
-   \   00000015   0x0D 0x2E          DC8 13, 46, 8, 20, 22, 17, 1, 1, 17, 0, 0
+   \   00000015   0x0D 0x2E          DC8 13, 46, 8, 20, 22, 17, 1, 1, 17, 10, 0
    \              0x08 0x14    
    \              0x16 0x11    
    \              0x01 0x01    
-   \              0x11 0x00    
+   \              0x11 0x0A    
    \              0x00         
      60          #define TOKEN_DEF(name,creator,iscnt,isidx,type,arraysize,...) \
      61            (BYTES_TO_WORDS(sizeof(type))                                        \
@@ -215,13 +215,13 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
      82            //uninitialized entry.  Unitialized entries (i.e. missing tokens) will
      83            //trigger repairing.
      84            MEMSET(lookupCache, 0xFF, ID_COUNT);
-   \   00000006   0x221E             MOVS     R2,#+30
+   \   00000006   0x221F             MOVS     R2,#+31
    \   00000008   0x21FF             MOVS     R1,#+255
    \   0000000A   0xA800             ADD      R0,SP,#+0
    \   0000000C   0x.... 0x....      BL       halCommonMemSet
      85            MEMSET(ptrCache, 0xFF, PTR_CACHE_SIZE*sizeof(int16u));
    \   00000010   0x.... 0x....      LDR.W    R9,??DataTable12
-   \   00000014   0x227E             MOVS     R2,#+126
+   \   00000014   0x228A             MOVS     R2,#+138
    \   00000016   0x21FF             MOVS     R1,#+255
    \   00000018   0x4648             MOV      R0,R9
    \   0000001A   0x.... 0x....      BL       halCommonMemSet
@@ -246,9 +246,9 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
     104            {  
     105              int8u i;
     106              int32u totalTokenStorage = TOKEN_COUNT * 2;   // two words per creator
-   \   0000001E   0x253C             MOVS     R5,#+60
+   \   0000001E   0x253E             MOVS     R5,#+62
     107              int32u indexSkip = TOKEN_COUNT;
-   \   00000020   0xF04F 0x0A1E      MOV      R10,#+30
+   \   00000020   0xF04F 0x0A1F      MOV      R10,#+31
     108              for(i = 0; i < TOKEN_COUNT; i++) {
    \   00000024   0x2700             MOVS     R7,#+0
    \   00000026   0x.... 0x....      ADR.W    R8,?_0
@@ -308,7 +308,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
     132                }
     133              }
    \   00000066   0x1C7F             ADDS     R7,R7,#+1
-   \   00000068   0x2F1E             CMP      R7,#+30
+   \   00000068   0x2F1F             CMP      R7,#+31
    \   0000006A   0xFB00 0x5506      MLA      R5,R0,R6,R5
    \   0000006E   0xDBDC             BLT.N    ??halInternalSimEeStartup_0
     134          
@@ -466,19 +466,19 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
        2  RIGHT_BASE
        2  RIGHT_TOP
      166  halInternalSimEeStartup
-     128  ptrCache
+     140  ptrCache
     8192  simulatedEepromStorage
       32  sizeCache
 
  
-   128 bytes in section .bss
+   140 bytes in section .bss
     49 bytes in section .rodata
    286 bytes in section .text
  8 192 bytes in section SIMEE
  
    286 bytes of CODE  memory
     49 bytes of CONST memory
- 8 320 bytes of DATA  memory
+ 8 332 bytes of DATA  memory
 
 Errors: none
 Warnings: none

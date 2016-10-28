@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  13:32:39
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  22:26:03
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -408,83 +408,91 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   0000005C   0x.... 0x....      BL       emberAfPluginAuroraPwmInitializeTimer
     242          #endif
     243              
-    244              emberAfPluginAuroraColourControlInitColorSpaceConversion();      
+    244              emberAfPluginAuroraColourControlInitColorSpaceConversion();     
    \   00000060   0xE8BD 0x4010      POP      {R4,LR}
    \   00000064   0x.... 0x....      B.W      emberAfPluginAuroraColourControlInitColorSpaceConversion
-    245          }
+    245              
+    246              //if the device is not paired to a network, it will enter pairing mode MN
+    247              //checkIfPaired();
+    248              
+    249          }
 
    \                                 In section .text, align 2, keep-with-next
    \                     ?Subroutine2: (+1)
    \   00000000   0x2002             MOVS     R0,#+2
    \   00000002   0x.... 0x....      B.W      emberAfPrintln
-    246          
-    247          /** @brief Main Tick
-    248           *
-    249           * Whenever main application tick is called, this callback will be called at the
-    250           * end of the main tick execution.
-    251           *
-    252           */
+    250          
+    251          /** @brief Main Tick
+    252           *
+    253           * Whenever main application tick is called, this callback will be called at the
+    254           * end of the main tick execution.
+    255           *
+    256           */
 
    \                                 In section .text, align 2, keep-with-next
-    253          void emberAfMainTickCallback(void)
-    254          {
+    257          void emberAfMainTickCallback(void)
+    258          {
    \                     emberAfMainTickCallback: (+1)
    \   00000000   0xB580             PUSH     {R7,LR}
-    255              int8u mode;
-    256              
-    257          //emberAfDebugPrint("reached emberAfMainTickCallback line 253 Aurora_dimmer_callbacks \n"); //MN
-    258          
-    259              
-    260              emberAfPluginAuroraButtonJoiningUpdateStatusLed();
+    259              int8u mode;
+    260              
+    261          //emberAfDebugPrint("reached emberAfMainTickCallback line 253 Aurora_dimmer_callbacks \n"); //MN
+    262          
+    263              
+    264              emberAfPluginAuroraButtonJoiningUpdateStatusLed();
    \   00000002   0x.... 0x....      BL       emberAfPluginAuroraButtonJoiningUpdateStatusLed
-    261          
-    262              // Read any data from the host
-    263              mode = getAuroraDimmerMode();
-    264              switch(mode) 
-   \   00000006   0x.... 0x....      BL       getAuroraDimmerMode
-   \   0000000A   0x2803             CMP      R0,#+3
-   \   0000000C   0xBF04             ITT      EQ 
-    265              {
-    266          
-    267                  case AURORA_MODE_PLC:
-    268                      emberAfPluginAuroraHostHalPlcCheckHost();
-   \   0000000E   0xE8BD 0x4001      POPEQ    {R0,LR}
-   \   00000012   0x.... 0x....      BEQ.W    emberAfPluginAuroraHostHalPlcCheckHost
-    269                      break;
-    270                      
-    271                  case AURORA_MODE_RGBW:
-    272                  case AURORA_MODE_CX:
-    273                  case AURORA_MODE_DIM:
-    274                  default:
-    275                      break;
-    276              }
-    277          }
-   \   00000016   0xBD01             POP      {R0,PC}          ;; return
-    278          
-    279          /** @brief Stack Status
-    280           *
-    281           * This function is called by the application framework from the stack status
-    282           * handler.  This callbacks provides applications an opportunity to be notified
-    283           * of changes to the stack status and take appropriate action.  The return code
-    284           * from this callback is ignored by the framework.  The framework will always
-    285           * process the stack status after the callback returns.
-    286           *
-    287           * @param status   Ver.: always
-    288           */
+    265              
+    266              //if the device is not paired to a network, it will enter pairing mode MN
+    267              checkIfPaired();
+   \   00000006   0x.... 0x....      BL       checkIfPaired
+    268          
+    269              // Read any data from the host
+    270              mode = getAuroraDimmerMode();
+    271              switch(mode) 
+   \   0000000A   0x.... 0x....      BL       getAuroraDimmerMode
+   \   0000000E   0x2803             CMP      R0,#+3
+   \   00000010   0xBF04             ITT      EQ 
+    272              {
+    273          
+    274                  case AURORA_MODE_PLC:
+    275                      emberAfPluginAuroraHostHalPlcCheckHost();
+   \   00000012   0xE8BD 0x4001      POPEQ    {R0,LR}
+   \   00000016   0x.... 0x....      BEQ.W    emberAfPluginAuroraHostHalPlcCheckHost
+    276                      break;
+    277                      
+    278                  case AURORA_MODE_RGBW:
+    279                  case AURORA_MODE_CX:
+    280                  case AURORA_MODE_DIM:
+    281                  default:
+    282                      break;
+    283              }
+    284          }
+   \   0000001A   0xBD01             POP      {R0,PC}          ;; return
+    285          
+    286          /** @brief Stack Status
+    287           *
+    288           * This function is called by the application framework from the stack status
+    289           * handler.  This callbacks provides applications an opportunity to be notified
+    290           * of changes to the stack status and take appropriate action.  The return code
+    291           * from this callback is ignored by the framework.  The framework will always
+    292           * process the stack status after the callback returns.
+    293           *
+    294           * @param status   Ver.: always
+    295           */
 
    \                                 In section .text, align 2, keep-with-next
-    289          boolean emberAfStackStatusCallback(EmberStatus status)
-    290          {
+    296          boolean emberAfStackStatusCallback(EmberStatus status)
+    297          {
    \                     emberAfStackStatusCallback: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    291            //MN
-    292              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 285 Aurora_dimmer_callbacks");
+    298            //MN
+    299              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 285 Aurora_dimmer_callbacks");
    \   00000004   0x.... 0x....      ADR.W    R1,?_8
    \   00000008   0x.... 0x....      BL       ?Subroutine2
-    293          
-    294            
-    295              switch(status) 
+    300          
+    301            
+    302              switch(status) 
    \                     ??CrossCallReturnLabel_6: (+1)
    \   0000000C   0x2C90             CMP      R4,#+144
    \   0000000E   0xD004             BEQ.N    ??emberAfStackStatusCallback_0
@@ -493,199 +501,206 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000014   0x2C94             CMP      R4,#+148
    \   00000016   0xD018             BEQ.N    ??emberAfStackStatusCallback_2
    \   00000018   0xE01D             B.N      ??CrossCallReturnLabel_4
-    296              {
-    297                  case EMBER_NETWORK_UP:
-    298                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINED, DEVICE_STATE_FLAGS_SET);
+    303              {
+    304                  case EMBER_NETWORK_UP:
+    305                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINED, DEVICE_STATE_FLAGS_SET);
    \                     ??emberAfStackStatusCallback_0: (+1)
    \   0000001A   0x2101             MOVS     R1,#+1
    \   0000001C   0x2002             MOVS     R0,#+2
    \   0000001E   0x.... 0x....      BL       emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags
-    299                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_CLEAR);
+    306                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_CLEAR);
    \   00000022   0x2100             MOVS     R1,#+0
    \   00000024   0x2001             MOVS     R0,#+1
    \   00000026   0x.... 0x....      BL       emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags
-    300                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_NETWORK_UNAVAILABLE, DEVICE_STATE_FLAGS_CLEAR); 
+    307                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_NETWORK_UNAVAILABLE, DEVICE_STATE_FLAGS_CLEAR); 
    \   0000002A   0x2100             MOVS     R1,#+0
    \   0000002C   0x2010             MOVS     R0,#+16
    \   0000002E   0x.... 0x....      BL       emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags
-    301                      
-    302                        //MN
-    303              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 294 Aurora_dimmer_callbacks");
+    308                      
+    309                        //MN
+    310              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 294 Aurora_dimmer_callbacks");
    \   00000032   0x.... 0x....      ADR.W    R1,?_9
    \   00000036   0x.... 0x....      BL       ?Subroutine2
-    304                      
-    305                      
-    306                      emberAfOtaClientStartCallback(); 
+    311                      
+    312                      
+    313                      emberAfOtaClientStartCallback(); 
    \                     ??CrossCallReturnLabel_5: (+1)
    \   0000003A   0x.... 0x....      BL       emberAfOtaClientStartCallback
-    307                      //GB dont need this on linkup!   emberAfPluginAuroraPwmInitializeTimer();
-    308                      break;
+    314                      //GB dont need this on linkup!   emberAfPluginAuroraPwmInitializeTimer();
+    315                      break;
    \   0000003E   0xE00A             B.N      ??CrossCallReturnLabel_4
-    309          
-    310                  case EMBER_NETWORK_DOWN:
-    311                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR);
+    316          
+    317                  case EMBER_NETWORK_DOWN:
+    318                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR);
    \                     ??emberAfStackStatusCallback_1: (+1)
    \   00000040   0x.... 0x....      BL       ?Subroutine3
-    312                      
-    313                        //MN
-    314              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 310 Aurora_dimmer_callbacks");
+    319                      
+    320                        //MN
+    321              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 310 Aurora_dimmer_callbacks");
    \                     ??CrossCallReturnLabel_11: (+1)
    \   00000044   0x.... 0x....      ADR.W    R1,?_10
    \   00000048   0xE003             B.N      ??emberAfStackStatusCallback_3
-    315                      
-    316                      break;
-    317          
-    318                  case EMBER_JOIN_FAILED:
-    319                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR); 
+    322                      
+    323                      break;
+    324          
+    325                  case EMBER_JOIN_FAILED:
+    326                      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR); 
    \                     ??emberAfStackStatusCallback_2: (+1)
    \   0000004A   0x.... 0x....      BL       ?Subroutine3
-    320                      
-    321                        //MN
-    322              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 315 Aurora_dimmer_callbacks");
+    327                      
+    328                        //MN
+    329              emberAfDebugPrintln("Reached emberAfStackStatusCallback line 315 Aurora_dimmer_callbacks");
    \                     ??CrossCallReturnLabel_10: (+1)
    \   0000004E   0x.... 0x....      ADR.W    R1,?_11
    \                     ??emberAfStackStatusCallback_3: (+1)
    \   00000052   0x.... 0x....      BL       ?Subroutine2
-    323                      
-    324                      break;
-    325          
-    326                  default:
-    327                    break;
-    328              }
-    329          
-    330              return FALSE;
+    330                      
+    331                      break;
+    332          
+    333                  default:
+    334                    break;
+    335              }
+    336          
+    337              
+    338              
+    339              return FALSE;
    \                     ??CrossCallReturnLabel_4: (+1)
    \   00000056   0x2000             MOVS     R0,#+0
    \   00000058   0xBD10             POP      {R4,PC}          ;; return
-    331          }
+    340          }
 
    \                                 In section .text, align 2, keep-with-next
    \                     ?Subroutine3: (+1)
    \   00000000   0x2100             MOVS     R1,#+0
    \   00000002   0x200F             MOVS     R0,#+15
    \   00000004   0x.... 0x....      B.W      emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags
-    332          
-    333          /** @brief Finished
-    334           *
-    335           * This callback is fired when the network-find plugin is finished with the
-    336           * forming or joining process.  The result of the operation will be returned in
-    337           * the status parameter.
-    338           *
-    339           * @param status   Ver.: always
-    340           */
+    341          
+    342          /** @brief Finished
+    343           *
+    344           * This callback is fired when the network-find plugin is finished with the
+    345           * forming or joining process.  The result of the operation will be returned in
+    346           * the status parameter.
+    347           *
+    348           * @param status   Ver.: always
+    349           */
 
    \                                 In section .text, align 2, keep-with-next
-    341          void emberAfPluginNetworkFindFinishedCallback(EmberStatus status)
-    342          {
+    350          void emberAfPluginNetworkFindFinishedCallback(EmberStatus status)
+    351          {
    \                     emberAfPluginNetworkFindFinishedCallback: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    343            //MN
-    344            emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 321 Aurora_dimmer_callbacks");
+    352            //MN
+    353            emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 341 Aurora_dimmer_callbacks");
    \   00000004   0x.... 0x....      ADR.W    R1,?_12
    \   00000008   0x.... 0x....      BL       ?Subroutine2
-    345            
-    346              if (status != EMBER_SUCCESS) 
+    354          
+    355              if (status != EMBER_SUCCESS) 
    \                     ??CrossCallReturnLabel_3: (+1)
    \   0000000C   0xB12C             CBZ.N    R4,??CrossCallReturnLabel_2
-    347              {
-    348                  emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK , DEVICE_STATE_FLAGS_CLEAR);
+    356              {
+    357                  emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_CLEAR_MASK, DEVICE_STATE_FLAGS_CLEAR);
    \   0000000E   0x.... 0x....      BL       ?Subroutine3
-    349             
-    350            //MN
-    351            emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 332 Aurora_dimmer_callbacks");
+    358             
+    359            //MN
+    360            emberAfDebugPrintln("Reached emberAfPluginNetworkFindFinishedCallback line 351 Aurora_dimmer_callbacks");
    \                     ??CrossCallReturnLabel_9: (+1)
    \   00000012   0x.... 0x....      ADR.W    R1,?_13
    \   00000016   0x.... 0x....      BL       ?Subroutine2
-    352          
-    353            
-    354              }
-    355              
-    356              emberAfPluginAuroraButtonJoiningClearJoiningFlag();
+    361          
+    362            //delay(1000); //wait 1 second before trying again
+    363            
+    364            //emberAfPluginAuroraButtonJoiningJoinNetwork(); //this will put AONE back into pairing mdoe if pairing wasn't successful
+    365          
+    366            
+    367              }
+    368          
+    369              emberAfPluginAuroraButtonJoiningClearJoiningFlag();
    \                     ??CrossCallReturnLabel_2: (+1)
    \   0000001A   0xE8BD 0x4010      POP      {R4,LR}
    \   0000001E   0x.... 0x....      B.W      emberAfPluginAuroraButtonJoiningClearJoiningFlag
-    357          }
-    358          
-    359          
-    360          /** @brief Image Notify
-    361           *
-    362           * 
-    363           *
-    364           * @param payloadType   Ver.: always
-    365           * @param queryJitter   Ver.: always
-    366           * @param manufacturerId   Ver.: always
-    367           * @param imageType   Ver.: always
-    368           * @param newFileVersion   Ver.: always
-    369           */
-
-   \                                 In section .text, align 2, keep-with-next
-    370          boolean emberAfOtaBootloadClusterImageNotifyCallback(int8u payloadType,
-    371                                                               int8u queryJitter,
-    372                                                               int16u manufacturerId,
-    373                                                               int16u imageType,
-    374                                                               int32u newFileVersion)
-    375          {
-    376            return FALSE;
-   \                     emberAfOtaBootloadClusterImageNotifyCallback: (+1)
-   \   00000000   0x2000             MOVS     R0,#+0
-   \   00000002   0x4770             BX       LR               ;; return
-    377          }
-    378          
-    379          /** @brief callback for setting the level
-    380           *
-    381           * This controls the level of the light. Currently just recalculates the RGB values based 
-    382           * on the new level and moves to that colour.
+    370          
+    371          }
+    372          
+    373          
+    374          /** @brief Image Notify
+    375           *
+    376           * 
+    377           *
+    378           * @param payloadType   Ver.: always
+    379           * @param queryJitter   Ver.: always
+    380           * @param manufacturerId   Ver.: always
+    381           * @param imageType   Ver.: always
+    382           * @param newFileVersion   Ver.: always
     383           */
 
    \                                 In section .text, align 2, keep-with-next
-    384          void emberAfPluginAuroraLevelControlSetNewLevelCallback(int8u newLevel)
-    385          {
+    384          boolean emberAfOtaBootloadClusterImageNotifyCallback(int8u payloadType,
+    385                                                               int8u queryJitter,
+    386                                                               int16u manufacturerId,
+    387                                                               int16u imageType,
+    388                                                               int32u newFileVersion)
+    389          {
+    390            return FALSE;
+   \                     emberAfOtaBootloadClusterImageNotifyCallback: (+1)
+   \   00000000   0x2000             MOVS     R0,#+0
+   \   00000002   0x4770             BX       LR               ;; return
+    391          }
+    392          
+    393          /** @brief callback for setting the level
+    394           *
+    395           * This controls the level of the light. Currently just recalculates the RGB values based 
+    396           * on the new level and moves to that colour.
+    397           */
+
+   \                                 In section .text, align 2, keep-with-next
+    398          void emberAfPluginAuroraLevelControlSetNewLevelCallback(int8u newLevel)
+    399          {
    \                     emberAfPluginAuroraLevelControlSetNewLevelCallback: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    386              emberAfDebugPrintln("SetNewLevel %d", newLevel);
+    400              emberAfDebugPrintln("SetNewLevel %d", newLevel);
    \   00000004   0x4622             MOV      R2,R4
    \   00000006   0x.... 0x....      ADR.W    R1,?_14
    \   0000000A   0x2002             MOVS     R0,#+2
    \   0000000C   0x.... 0x....      BL       emberAfPrintln
-    387              
-    388              int8u mode = getAuroraDimmerMode();    
+    401              
+    402              int8u mode = getAuroraDimmerMode();    
    \   00000010   0x.... 0x....      BL       getAuroraDimmerMode
-    389              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
-    390              switch (mode) 
+    403              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
+    404              switch (mode) 
    \   00000014   0x2802             CMP      R0,#+2
    \   00000016   0xD904             BLS.N    ??emberAfPluginAuroraLevelControlSetNewLevelCal_0
    \   00000018   0x1EC1             SUBS     R1,R0,#+3
    \   0000001A   0xD106             BNE.N    ??emberAfPluginAuroraLevelControlSetNewLevelCal_1
-    391              {
-    392                  case AURORA_MODE_RGBW:
-    393                  case AURORA_MODE_CX:
-    394                  case AURORA_MODE_DIM:
-    395                  {
-    396                      emberAfPluginAuroraColourControlSetNewLevel();
-    397                      break;
-    398                  }    
-    399                  case AURORA_MODE_PLC:
-    400                  {
-    401                      plcSendSetPowerLevelCommand(newLevel);
+    405              {
+    406                  case AURORA_MODE_RGBW:
+    407                  case AURORA_MODE_CX:
+    408                  case AURORA_MODE_DIM:
+    409                  {
+    410                      emberAfPluginAuroraColourControlSetNewLevel();
+    411                      break;
+    412                  }    
+    413                  case AURORA_MODE_PLC:
+    414                  {
+    415                      plcSendSetPowerLevelCommand(newLevel);
    \   0000001C   0x4620             MOV      R0,R4
    \   0000001E   0x.... 0x....      BL       plcSendSetPowerLevelCommand
-    402                      emberAfPluginAuroraColourControlSetNewLevel();
+    416                      emberAfPluginAuroraColourControlSetNewLevel();
    \                     ??emberAfPluginAuroraLevelControlSetNewLevelCal_0: (+1)
    \   00000022   0xE8BD 0x4010      POP      {R4,LR}
    \   00000026   0x.... 0x....      B.W      emberAfPluginAuroraColourControlSetNewLevel
-    403                      break;
-    404                  }    
-    405                  default:
-    406                  {
-    407                      emberAfDebugPrint("inv mode (0x%x)\r\n", mode);
+    417                      break;
+    418                  }    
+    419                  default:
+    420                  {
+    421                      emberAfDebugPrint("inv mode (0x%x)\r\n", mode);
    \                     ??emberAfPluginAuroraLevelControlSetNewLevelCal_1: (+1)
    \   0000002A   0x....             B.N      ?Subroutine1
-    408                      break;
-    409                  }
-    410              }
-    411          }
+    422                      break;
+    423                  }
+    424              }
+    425          }
 
    \                                 In section .text, align 2, keep-with-next
    \                     ?Subroutine1: (+1)
@@ -694,414 +709,414 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000006   0x.... 0x....      ADR.W    R1,?_15
    \   0000000A   0x2002             MOVS     R0,#+2
    \   0000000C   0x.... 0x....      B.W      emberAfPrint
-    412          
-    413          /** @brief Set the colour on the LED
-    414           *
-    415           * Set the RGB colour on the led.
-    416           */
+    426          
+    427          /** @brief Set the colour on the LED
+    428           *
+    429           * Set the RGB colour on the led.
+    430           */
 
    \                                 In section .text, align 2, keep-with-next
-    417          void emberAfPluginAuroraColourControlSetRgbColorCallback(t_RGB* RGB)
-    418          {
+    431          void emberAfPluginAuroraColourControlSetRgbColorCallback(t_RGB* RGB)
+    432          {
    \                     emberAfPluginAuroraColourControlSetRgbColorCallback: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    419              emberAfDebugPrintln("Set Color");
+    433              emberAfDebugPrintln("Set Color");
    \   00000004   0x.... 0x....      ADR.W    R1,?_16
    \   00000008   0x.... 0x....      BL       ?Subroutine2
-    420              
-    421              int8u mode = getAuroraDimmerMode();  
+    434              
+    435              int8u mode = getAuroraDimmerMode();  
    \                     ??CrossCallReturnLabel_1: (+1)
    \   0000000C   0x.... 0x....      BL       getAuroraDimmerMode
-    422              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
-    423              switch (mode) 
+    436              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
+    437              switch (mode) 
    \   00000010   0x2802             CMP      R0,#+2
    \   00000012   0xD902             BLS.N    ??emberAfPluginAuroraColourControlSetRgbColorCa_0
    \   00000014   0x1EC1             SUBS     R1,R0,#+3
    \   00000016   0xD008             BEQ.N    ??emberAfPluginAuroraColourControlSetRgbColorCa_1
    \   00000018   0xE012             B.N      ??emberAfPluginAuroraColourControlSetRgbColorCa_2
-    424              {
-    425                  case AURORA_MODE_RGBW:
-    426                  case AURORA_MODE_CX:
-    427                  case AURORA_MODE_DIM:
-    428                  {
-    429                      emberAfPluginAuroraPwmSetDutyCycle(RGB);
+    438              {
+    439                  case AURORA_MODE_RGBW:
+    440                  case AURORA_MODE_CX:
+    441                  case AURORA_MODE_DIM:
+    442                  {
+    443                      emberAfPluginAuroraPwmSetDutyCycle(RGB);
    \                     ??emberAfPluginAuroraColourControlSetRgbColorCa_0: (+1)
    \   0000001A   0x4620             MOV      R0,R4
    \   0000001C   0x.... 0x....      BL       emberAfPluginAuroraPwmSetDutyCycle
-    430                      emberAfPluginAuroraHostProtocolSetRgbColor(RGB);            
+    444                      emberAfPluginAuroraHostProtocolSetRgbColor(RGB);            
    \   00000020   0x4620             MOV      R0,R4
    \   00000022   0xE8BD 0x4010      POP      {R4,LR}
    \   00000026   0x.... 0x....      B.W      emberAfPluginAuroraHostProtocolSetRgbColor
-    431                      break;
-    432                  }    
-    433                  case AURORA_MODE_PLC:
-    434                  {
-    435                      emberAfPluginAuroraPwmSetDutyCycle(RGB);
+    445                      break;
+    446                  }    
+    447                  case AURORA_MODE_PLC:
+    448                  {
+    449                      emberAfPluginAuroraPwmSetDutyCycle(RGB);
    \                     ??emberAfPluginAuroraColourControlSetRgbColorCa_1: (+1)
    \   0000002A   0x4620             MOV      R0,R4
    \   0000002C   0x.... 0x....      BL       emberAfPluginAuroraPwmSetDutyCycle
-    436                      plcSendSetColorCommand(RGB->R, RGB->G, RGB->B, RGB->W);            
+    450                      plcSendSetColorCommand(RGB->R, RGB->G, RGB->B, RGB->W);            
    \   00000030   0x78E3             LDRB     R3,[R4, #+3]
    \   00000032   0x78A2             LDRB     R2,[R4, #+2]
    \   00000034   0x7861             LDRB     R1,[R4, #+1]
    \   00000036   0x7820             LDRB     R0,[R4, #+0]
    \   00000038   0xE8BD 0x4010      POP      {R4,LR}
    \   0000003C   0x.... 0x....      B.W      plcSendSetColorCommand
-    437                      break;
-    438                  }   
-    439                  default:
-    440                  {
-    441                      emberAfDebugPrint("inv mode (0x%x)\r\n", mode);
+    451                      break;
+    452                  }   
+    453                  default:
+    454                  {
+    455                      emberAfDebugPrint("inv mode (0x%x)\r\n", mode);
    \                     ??emberAfPluginAuroraColourControlSetRgbColorCa_2: (+1)
    \   00000040                      REQUIRE ?Subroutine1
    \   00000040                      ;; // Fall through to label ?Subroutine1
-    442                      break;
-    443                  }
-    444              }
-    445          }
-    446          
+    456                      break;
+    457                  }
+    458              }
+    459          }
+    460          
 
    \                                 In section .text, align 2, keep-with-next
-    447          void emberAfOnOffClusterSetNewValueCallback(boolean newValue)
-    448          {
+    461          void emberAfOnOffClusterSetNewValueCallback(boolean newValue)
+    462          {
    \                     emberAfOnOffClusterSetNewValueCallback: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    449              emberAfDebugPrint("SET ON/OFF\r\n");
+    463              emberAfDebugPrint("SET ON/OFF\r\n");
    \   00000004   0x.... 0x....      ADR.W    R1,?_17
    \   00000008   0x2002             MOVS     R0,#+2
    \   0000000A   0x.... 0x....      BL       emberAfPrint
-    450              
-    451              int8u mode = getAuroraDimmerMode();        
+    464              
+    465              int8u mode = getAuroraDimmerMode();        
    \   0000000E   0x.... 0x....      BL       getAuroraDimmerMode
-    452              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
-    453              switch (mode) 
+    466              //emberAfDebugPrintln("AURORA_MODE=%d", mode);    
+    467              switch (mode) 
    \   00000012   0x2802             CMP      R0,#+2
    \   00000014   0xD902             BLS.N    ??emberAfOnOffClusterSetNewValueCallback_0
    \   00000016   0x1EC1             SUBS     R1,R0,#+3
    \   00000018   0xD005             BEQ.N    ??emberAfOnOffClusterSetNewValueCallback_1
    \   0000001A   0xE011             B.N      ??emberAfOnOffClusterSetNewValueCallback_2
-    454              {
-    455                  case AURORA_MODE_RGBW:
-    456                  case AURORA_MODE_CX:
-    457                  case AURORA_MODE_DIM:
-    458                  {
-    459                      emberAfPluginAuroraColourControlSetOnOff(newValue);            
+    468              {
+    469                  case AURORA_MODE_RGBW:
+    470                  case AURORA_MODE_CX:
+    471                  case AURORA_MODE_DIM:
+    472                  {
+    473                      emberAfPluginAuroraColourControlSetOnOff(newValue);            
    \                     ??emberAfOnOffClusterSetNewValueCallback_0: (+1)
    \   0000001C   0x4620             MOV      R0,R4
    \   0000001E   0xE8BD 0x4010      POP      {R4,LR}
    \   00000022   0x.... 0x....      B.W      emberAfPluginAuroraColourControlSetOnOff
-    460                      break;
-    461                  }    
-    462                  case AURORA_MODE_PLC:
-    463                  {
-    464                      emberAfPluginAuroraColourControlSetOnOff(newValue);
+    474                      break;
+    475                  }    
+    476                  case AURORA_MODE_PLC:
+    477                  {
+    478                      emberAfPluginAuroraColourControlSetOnOff(newValue);
    \                     ??emberAfOnOffClusterSetNewValueCallback_1: (+1)
    \   00000026   0x4620             MOV      R0,R4
    \   00000028   0x.... 0x....      BL       emberAfPluginAuroraColourControlSetOnOff
-    465                      if (newValue) 
+    479                      if (newValue) 
    \   0000002C   0x2C00             CMP      R4,#+0
    \   0000002E   0xBF1C             ITT      NE 
-    466                      {
-    467                          plcSendOnCommand();
+    480                      {
+    481                          plcSendOnCommand();
    \   00000030   0xE8BD 0x4010      POPNE    {R4,LR}
    \   00000034   0x.... 0x....      BNE.W    plcSendOnCommand
-    468                      } 
-    469                      else 
-    470                      {
-    471                          plcSendOffCommand();
+    482                      } 
+    483                      else 
+    484                      {
+    485                          plcSendOffCommand();
    \   00000038   0xE8BD 0x4010      POP      {R4,LR}
    \   0000003C   0x.... 0x....      B.W      plcSendOffCommand
-    472                      }
-    473                      
-    474                      break;
-    475                  }    
-    476                  default:
-    477                  {
-    478                      emberAfDebugPrintln("inv mode %d", mode);
+    486                      }
+    487                      
+    488                      break;
+    489                  }    
+    490                  default:
+    491                  {
+    492                      emberAfDebugPrintln("inv mode %d", mode);
    \                     ??emberAfOnOffClusterSetNewValueCallback_2: (+1)
    \   00000040   0xE8BD 0x4010      POP      {R4,LR}
    \   00000044   0x4602             MOV      R2,R0
    \   00000046   0x.... 0x....      ADR.W    R1,?_18
    \   0000004A   0x2002             MOVS     R0,#+2
    \   0000004C   0x.... 0x....      B.W      emberAfPrintln
-    479                      break;
-    480                  }
-    481              }
-    482          }
-    483          
-    484          #define EMBER_ZCL_TUNNELING_PROTOCOL_ID_AURORA_PLC               0xC8
-    485          
-    486          /** @brief Is Protocol Supported
-    487           *
-    488           * This function is called by the Tunneling server plugin whenever a Request
-    489           * Tunnel command is received.  The application should return TRUE if the
-    490           * protocol is supported and FALSE otherwise.
-    491           *
-    492           * @param protocolId The identifier of the metering communication protocol for
-    493           * which the tunnel is requested.  Ver.: always
-    494           * @param manufacturerCode The manufacturer code for manufacturer-defined
-    495           * protocols or 0xFFFF in unused.  Ver.: always
-    496           */
+    493                      break;
+    494                  }
+    495              }
+    496          }
+    497          
+    498          #define EMBER_ZCL_TUNNELING_PROTOCOL_ID_AURORA_PLC               0xC8
+    499          
+    500          /** @brief Is Protocol Supported
+    501           *
+    502           * This function is called by the Tunneling server plugin whenever a Request
+    503           * Tunnel command is received.  The application should return TRUE if the
+    504           * protocol is supported and FALSE otherwise.
+    505           *
+    506           * @param protocolId The identifier of the metering communication protocol for
+    507           * which the tunnel is requested.  Ver.: always
+    508           * @param manufacturerCode The manufacturer code for manufacturer-defined
+    509           * protocols or 0xFFFF in unused.  Ver.: always
+    510           */
 
    \                                 In section .text, align 2, keep-with-next
-    497          boolean emberAfPluginAuroraTunnelingServerIsProtocolSupportedCallback(int8u protocolId,
-    498                                                                                int16u manufacturerCode)
-    499          {
-    500              if ((protocolId == EMBER_ZCL_TUNNELING_PROTOCOL_ID_AURORA_PLC) && 
-    501                  (manufacturerCode == EMBER_AF_MANUFACTURER_CODE)) 
+    511          boolean emberAfPluginAuroraTunnelingServerIsProtocolSupportedCallback(int8u protocolId,
+    512                                                                                int16u manufacturerCode)
+    513          {
+    514              if ((protocolId == EMBER_ZCL_TUNNELING_PROTOCOL_ID_AURORA_PLC) && 
+    515                  (manufacturerCode == EMBER_AF_MANUFACTURER_CODE)) 
    \                     emberAfPluginAuroraTunnelingServerIsProtocolSupportedCallback: (+1)
    \   00000000   0x28C8             CMP      R0,#+200
    \   00000002   0xBF04             ITT      EQ 
    \   00000004   0xF241 0x0010      MOVWEQ   R0,#+4112
    \   00000008   0x4281             CMPEQ    R1,R0
    \   0000000A   0xD101             BNE.N    ??emberAfPluginAuroraTunnelingServerIsProtocolS_0
-    502              {
-    503                  return TRUE;
+    516              {
+    517                  return TRUE;
    \   0000000C   0x2001             MOVS     R0,#+1
    \   0000000E   0x4770             BX       LR
-    504              }
-    505          
-    506            return FALSE;
+    518              }
+    519          
+    520            return FALSE;
    \                     ??emberAfPluginAuroraTunnelingServerIsProtocolS_0: (+1)
    \   00000010   0x2000             MOVS     R0,#+0
    \   00000012   0x4770             BX       LR               ;; return
-    507          }
-    508          
-    509          /** @brief Data Received
-    510           *
-    511           * This function is called by the Tunneling server plugin whenever data is
-    512           * received from a client through a tunnel.
-    513           *
-    514           * @param tunnelId The identifier of the tunnel through which the data was
-    515           * received.  Ver.: always
-    516           * @param data Buffer containing the raw octets of the data.  Ver.: always
-    517           * @param dataLen The length in octets of the data.  Ver.: always
-    518           */
+    521          }
+    522          
+    523          /** @brief Data Received
+    524           *
+    525           * This function is called by the Tunneling server plugin whenever data is
+    526           * received from a client through a tunnel.
+    527           *
+    528           * @param tunnelId The identifier of the tunnel through which the data was
+    529           * received.  Ver.: always
+    530           * @param data Buffer containing the raw octets of the data.  Ver.: always
+    531           * @param dataLen The length in octets of the data.  Ver.: always
+    532           */
 
    \                                 In section .text, align 2, keep-with-next
-    519          void emberAfPluginAuroraTunnelingServerDataReceivedCallback(int16u tunnelId,
-    520                                                                      int8u* data,
-    521                                                                      int16u dataLen)
-    522          {
+    533          void emberAfPluginAuroraTunnelingServerDataReceivedCallback(int16u tunnelId,
+    534                                                                      int8u* data,
+    535                                                                      int16u dataLen)
+    536          {
    \                     emberAfPluginAuroraTunnelingServerDataReceivedCallback: (+1)
    \   00000000   0x4608             MOV      R0,R1
-    523              // Strip off the length byte[0] that is included by the CICIE firmware
-    524              dataLen--;
-    525              plcSendTunnelCommand(&data[1], (int8u)dataLen);
+    537              // Strip off the length byte[0] that is included by the CICIE firmware
+    538              dataLen--;
+    539              plcSendTunnelCommand(&data[1], (int8u)dataLen);
    \   00000002   0x1E51             SUBS     R1,R2,#+1
    \   00000004   0xB2C9             UXTB     R1,R1
    \   00000006   0x1C40             ADDS     R0,R0,#+1
    \   00000008   0x.... 0x....      B.W      plcSendTunnelCommand
-    526          }
-    527          
-    528          /** @brief Tunnel Closed
-    529           *
-    530           * This function is called by the Tunneling server plugin whenever a tunnel is
-    531           * closed.  Clients may close tunnels by sending a Close Tunnel command.  The
-    532           * server can preemptively close inactive tunnels after a timeout.
-    533           *
-    534           * @param tunnelId The identifier of the tunnel that has been closed.  Ver.:
-    535           * always
-    536           * @param clientInitiated TRUE if the client initiated the closing of the tunnel
-    537           * or FALSE if the server closed the tunnel due to inactivity.  Ver.: always
-    538           */
+    540          }
+    541          
+    542          /** @brief Tunnel Closed
+    543           *
+    544           * This function is called by the Tunneling server plugin whenever a tunnel is
+    545           * closed.  Clients may close tunnels by sending a Close Tunnel command.  The
+    546           * server can preemptively close inactive tunnels after a timeout.
+    547           *
+    548           * @param tunnelId The identifier of the tunnel that has been closed.  Ver.:
+    549           * always
+    550           * @param clientInitiated TRUE if the client initiated the closing of the tunnel
+    551           * or FALSE if the server closed the tunnel due to inactivity.  Ver.: always
+    552           */
 
    \                                 In section .text, align 2, keep-with-next
-    539          void emberAfPluginAuroraTunnelingServerTunnelClosedCallback(int16u tunnelId,
-    540                                                                      boolean clientInitiated)
-    541          {
-    542              memset((void*)&tunnelStatus, 0, sizeof(tTunnelStatus));
+    553          void emberAfPluginAuroraTunnelingServerTunnelClosedCallback(int16u tunnelId,
+    554                                                                      boolean clientInitiated)
+    555          {
+    556              memset((void*)&tunnelStatus, 0, sizeof(tTunnelStatus));
    \                     emberAfPluginAuroraTunnelingServerTunnelClosedCallback: (+1)
    \   00000000   0x....             LDR.N    R0,??DataTable23_3
    \   00000002   0x2100             MOVS     R1,#+0
    \   00000004   0x2200             MOVS     R2,#+0
    \   00000006   0x460B             MOV      R3,R1
    \   00000008   0xC00E             STM      R0!,{R1-R3}
-    543          }
+    557          }
    \   0000000A   0x4770             BX       LR               ;; return
-    544          
-    545          /** @brief Tunnel Opened
-    546           *
-    547           * This function is called by the Tunneling server plugin whenever a tunnel is
-    548           * opened.  Clients may open tunnels by sending a Request Tunnel command.
-    549           *
-    550           * @param tunnelId The identifier of the tunnel that has been opened.  Ver.:
-    551           * always
-    552           * @param protocolId The identifier of the metering communication protocol for
-    553           * the tunnel.  Ver.: always
-    554           * @param manufacturerCode The manufacturer code for manufacturer-defined
-    555           * protocols or 0xFFFF in unused.  Ver.: always
-    556           * @param flowControlSupport TRUE is flow control support is requested or FALSE
-    557           * if it is not.  Ver.: always
-    558           * @param maximumIncomingTransferSize The maximum incoming transfer size of the
-    559           * client.  Ver.: always
-    560           */
+    558          
+    559          /** @brief Tunnel Opened
+    560           *
+    561           * This function is called by the Tunneling server plugin whenever a tunnel is
+    562           * opened.  Clients may open tunnels by sending a Request Tunnel command.
+    563           *
+    564           * @param tunnelId The identifier of the tunnel that has been opened.  Ver.:
+    565           * always
+    566           * @param protocolId The identifier of the metering communication protocol for
+    567           * the tunnel.  Ver.: always
+    568           * @param manufacturerCode The manufacturer code for manufacturer-defined
+    569           * protocols or 0xFFFF in unused.  Ver.: always
+    570           * @param flowControlSupport TRUE is flow control support is requested or FALSE
+    571           * if it is not.  Ver.: always
+    572           * @param maximumIncomingTransferSize The maximum incoming transfer size of the
+    573           * client.  Ver.: always
+    574           */
 
    \                                 In section .text, align 2, keep-with-next
-    561          void emberAfPluginAuroraTunnelingServerTunnelOpenedCallback(int16u tunnelId,
-    562                                                                      int8u protocolId,
-    563                                                                      int16u manufacturerCode,
-    564                                                                      boolean flowControlSupport,
-    565                                                                      int16u maximumIncomingTransferSize)
-    566          {
+    575          void emberAfPluginAuroraTunnelingServerTunnelOpenedCallback(int16u tunnelId,
+    576                                                                      int8u protocolId,
+    577                                                                      int16u manufacturerCode,
+    578                                                                      boolean flowControlSupport,
+    579                                                                      int16u maximumIncomingTransferSize)
+    580          {
    \                     emberAfPluginAuroraTunnelingServerTunnelOpenedCallback: (+1)
    \   00000000   0xB530             PUSH     {R4,R5,LR}
-    567              // Indicate that the tunnel is open and save tunnel data locally
-    568              tunnelStatus.open = TRUE;
+    581              // Indicate that the tunnel is open and save tunnel data locally
+    582              tunnelStatus.open = TRUE;
    \   00000002   0x....             LDR.N    R4,??DataTable23_3
-    569              tunnelStatus.tunnelId = tunnelId;
+    583              tunnelStatus.tunnelId = tunnelId;
    \   00000004   0x8060             STRH     R0,[R4, #+2]
    \   00000006   0x2501             MOVS     R5,#+1
-    570              tunnelStatus.protocolId = protocolId;
-    571              tunnelStatus.manufacturerCode = manufacturerCode;
-    572              tunnelStatus.flowControlSupport = flowControlSupport;
-    573              tunnelStatus.maximumIncomingTransferSize = maximumIncomingTransferSize;
+    584              tunnelStatus.protocolId = protocolId;
+    585              tunnelStatus.manufacturerCode = manufacturerCode;
+    586              tunnelStatus.flowControlSupport = flowControlSupport;
+    587              tunnelStatus.maximumIncomingTransferSize = maximumIncomingTransferSize;
    \   00000008   0x9803             LDR      R0,[SP, #+12]
    \   0000000A   0x7025             STRB     R5,[R4, #+0]
    \   0000000C   0x7121             STRB     R1,[R4, #+4]
    \   0000000E   0x80E2             STRH     R2,[R4, #+6]
    \   00000010   0x7223             STRB     R3,[R4, #+8]
    \   00000012   0x8160             STRH     R0,[R4, #+10]
-    574          }
+    588          }
    \   00000014   0xBD30             POP      {R4,R5,PC}       ;; return
-    575          
-    576          /** @brief Tunnel Server to Client transfer
-    577           *
-    578           * If the tunnel is open, sends tunnel data to client
-    579           */
+    589          
+    590          /** @brief Tunnel Server to Client transfer
+    591           *
+    592           * If the tunnel is open, sends tunnel data to client
+    593           */
 
    \                                 In section .text, align 2, keep-with-next
-    580          void emberAfPluginAuroraHostProcessTunnelResponseCallback(int8u *data, int8u size)
-    581          {
-    582              // The data includes the length byte at the start.
-    583              if (tunnelStatus.open) 
+    594          void emberAfPluginAuroraHostProcessTunnelResponseCallback(int8u *data, int8u size)
+    595          {
+    596              // The data includes the length byte at the start.
+    597              if (tunnelStatus.open) 
    \                     emberAfPluginAuroraHostProcessTunnelResponseCallback: (+1)
    \   00000000   0x....             LDR.N    R3,??DataTable23_3
    \   00000002   0x781A             LDRB     R2,[R3, #+0]
    \   00000004   0xB122             CBZ.N    R2,??emberAfPluginAuroraHostProcessTunnelResponseC_0
-    584              {
-    585                  emberAfPluginTunnelingServerTransferData(tunnelStatus.tunnelId, data, size);
+    598              {
+    599                  emberAfPluginTunnelingServerTransferData(tunnelStatus.tunnelId, data, size);
    \   00000006   0x460A             MOV      R2,R1
    \   00000008   0x4601             MOV      R1,R0
    \   0000000A   0x8858             LDRH     R0,[R3, #+2]
    \   0000000C   0x.... 0x....      B.W      emberAfPluginTunnelingServerTransferData
-    586              }
-    587          }
+    600              }
+    601          }
    \                     ??emberAfPluginAuroraHostProcessTunnelResponseC_0: (+1)
    \   00000010   0x4770             BX       LR               ;; return
-    588          
+    602          
 
    \                                 In section .text, align 2, keep-with-next
-    589          void calculateEventDuration_and_stepSize(int16u transitionTimeMs, int16u amount, int32u* eventDurationMs, int16u* stepSize) 
-    590          {
+    603          void calculateEventDuration_and_stepSize(int16u transitionTimeMs, int16u amount, int32u* eventDurationMs, int16u* stepSize) 
+    604          {
    \                     calculateEventDuration_and_stepSize: (+1)
    \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
    \   00000004   0x000E             MOVS     R6,R1
    \   00000006   0x4680             MOV      R8,R0
    \   00000008   0x4614             MOV      R4,R2
    \   0000000A   0x461D             MOV      R5,R3
-    591              // Helper fn calculates event duration & step size for given transition time & amount.
-    592                 
-    593              #define MAX_EVENT_DURATION_MS    MILLISECOND_TICKS_PER_SECOND * 5     // Define a realistic maximum event duration.
-    594              
-    595              int16u noOfSteps;
-    596                 
-    597              if (amount == 0)
+    605              // Helper fn calculates event duration & step size for given transition time & amount.
+    606                 
+    607              #define MAX_EVENT_DURATION_MS    MILLISECOND_TICKS_PER_SECOND * 5     // Define a realistic maximum event duration.
+    608              
+    609              int16u noOfSteps;
+    610                 
+    611              if (amount == 0)
    \   0000000C   0xD106             BNE.N    ??calculateEventDuration_and_stepSize_0
-    598              {
-    599                  emberAfDebugPrintln("invalid amount");
+    612              {
+    613                  emberAfDebugPrintln("invalid amount");
    \   0000000E   0x.... 0x....      ADR.W    R1,?_19
    \   00000012   0x.... 0x....      BL       ?Subroutine2
-    600                  *eventDurationMs = 0; 
+    614                  *eventDurationMs = 0; 
    \                     ??CrossCallReturnLabel_0: (+1)
    \   00000016   0x2000             MOVS     R0,#+0
    \   00000018   0x6020             STR      R0,[R4, #+0]
-    601                  *stepSize = 0;        
+    615                  *stepSize = 0;        
    \   0000001A   0xE01D             B.N      ??calculateEventDuration_and_stepSize_1
-    602                  return;
-    603              }
-    604              
-    605              if (transitionTimeMs == 0)
+    616                  return;
+    617              }
+    618              
+    619              if (transitionTimeMs == 0)
    \                     ??calculateEventDuration_and_stepSize_0: (+1)
    \   0000001C   0xF1B8 0x0F00      CMP      R8,#+0
    \   00000020   0xD102             BNE.N    ??calculateEventDuration_and_stepSize_2
-    606              {
-    607                  *eventDurationMs = 0; // Will schedule a single event.
+    620              {
+    621                  *eventDurationMs = 0; // Will schedule a single event.
    \   00000022   0x6020             STR      R0,[R4, #+0]
-    608                  *stepSize = amount;
+    622                  *stepSize = amount;
    \   00000024   0x802E             STRH     R6,[R5, #+0]
-    609                  noOfSteps = 1;
+    623                  noOfSteps = 1;
    \   00000026   0xE018             B.N      ??calculateEventDuration_and_stepSize_3
-    610              }
-    611              else
-    612              {
-    613                  *eventDurationMs = transitionTimeMs / amount; 
+    624              }
+    625              else
+    626              {
+    627                  *eventDurationMs = transitionTimeMs / amount; 
    \                     ??calculateEventDuration_and_stepSize_2: (+1)
    \   00000028   0xFB98 0xF0F6      SDIV     R0,R8,R6
    \   0000002C   0x6020             STR      R0,[R4, #+0]
-    614                  
-    615                  int32u minEventDuration = MILLISECOND_TICKS_PER_DECISECOND;  //100mS
+    628                  
+    629                  int32u minEventDuration = MILLISECOND_TICKS_PER_DECISECOND;  //100mS
    \   0000002E   0x2766             MOVS     R7,#+102
-    616                  int32u maxEventDuration = MAX_EVENT_DURATION_MS;  // apply a realistic maximum event duration.        
-    617                  if (getAuroraDimmerMode() == AURORA_MODE_DIM)
+    630                  int32u maxEventDuration = MAX_EVENT_DURATION_MS;  // apply a realistic maximum event duration.        
+    631                  if (getAuroraDimmerMode() == AURORA_MODE_DIM)
    \   00000030   0x.... 0x....      BL       getAuroraDimmerMode
    \   00000034   0x2802             CMP      R0,#+2
-    618                  {
-    619                      minEventDuration = (MILLISECOND_TICKS_PER_DECISECOND * 3);  //300mS
-    620                  }
-    621                  
-    622                  if (*eventDurationMs < minEventDuration)
+    632                  {
+    633                      minEventDuration = (MILLISECOND_TICKS_PER_DECISECOND * 3);  //300mS
+    634                  }
+    635                  
+    636                  if (*eventDurationMs < minEventDuration)
    \   00000036   0x6820             LDR      R0,[R4, #+0]
    \   00000038   0xBF08             IT       EQ 
    \   0000003A   0xF44F 0x7799      MOVEQ    R7,#+306
    \   0000003E   0x42B8             CMP      R0,R7
    \   00000040   0xBF38             IT       CC 
    \   00000042   0x6027             STRCC    R7,[R4, #+0]
-    623                  {
-    624                      *eventDurationMs = minEventDuration;
+    637                  {
+    638                      *eventDurationMs = minEventDuration;
    \   00000044   0xD30F             BCC.N    ??calculateEventDuration_and_stepSize_4
-    625                  }
-    626                  else
-    627                  if (*eventDurationMs > maxEventDuration)
+    639                  }
+    640                  else
+    641                  if (*eventDurationMs > maxEventDuration)
    \   00000046   0xF5B0 0x5FA0      CMP      R0,#+5120
    \   0000004A   0xD908             BLS.N    ??calculateEventDuration_and_stepSize_5
-    628                  {
-    629                      *eventDurationMs = maxEventDuration;
+    642                  {
+    643                      *eventDurationMs = maxEventDuration;
    \   0000004C   0xF44F 0x50A0      MOV      R0,#+5120
    \   00000050   0x6020             STR      R0,[R4, #+0]
-    630                  }
-    631                  
-    632                  while (*eventDurationMs < maxEventDuration)
-    633                  {    
-    634                      noOfSteps = transitionTimeMs / *eventDurationMs;  
-    635                      if (noOfSteps < 1)
-    636                      {
-    637                          noOfSteps = 1;   // apply min no of steps.
-    638                      }   
-    639                      *stepSize = amount / noOfSteps;        
-    640                      if (*stepSize != 0)
-    641                      {
-    642                          break;      
-    643                      }        
-    644                      *eventDurationMs += 100;  // Add 100ms to event duration and recalculate steps.
-    645                  }  
-    646                  
-    647                  if (*stepSize == 0)
+    644                  }
+    645                  
+    646                  while (*eventDurationMs < maxEventDuration)
+    647                  {    
+    648                      noOfSteps = transitionTimeMs / *eventDurationMs;  
+    649                      if (noOfSteps < 1)
+    650                      {
+    651                          noOfSteps = 1;   // apply min no of steps.
+    652                      }   
+    653                      *stepSize = amount / noOfSteps;        
+    654                      if (*stepSize != 0)
+    655                      {
+    656                          break;      
+    657                      }        
+    658                      *eventDurationMs += 100;  // Add 100ms to event duration and recalculate steps.
+    659                  }  
+    660                  
+    661                  if (*stepSize == 0)
    \                     ??calculateEventDuration_and_stepSize_6: (+1)
    \   00000052   0x8828             LDRH     R0,[R5, #+0]
    \   00000054   0xB908             CBNZ.N   R0,??calculateEventDuration_and_stepSize_3
-    648                  {
-    649                      *stepSize = 1;  // Finally apply minimum limit to step size.
+    662                  {
+    663                      *stepSize = 1;  // Finally apply minimum limit to step size.
    \   00000056   0x2001             MOVS     R0,#+1
    \                     ??calculateEventDuration_and_stepSize_1: (+1)
    \   00000058   0x8028             STRH     R0,[R5, #+0]
-    650                  }    
-    651              }
-    652              
-    653              //emberAfDebugPrintln("move cfg: eventDurationMs=%d, noOfSteps=%d, stepSize=%d", *eventDurationMs, noOfSteps, *stepSize);
-    654          }
+    664                  }    
+    665              }
+    666              
+    667              //emberAfDebugPrintln("move cfg: eventDurationMs=%d, noOfSteps=%d, stepSize=%d", *eventDurationMs, noOfSteps, *stepSize);
+    668          }
    \                     ??calculateEventDuration_and_stepSize_3: (+1)
    \   0000005A   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
    \                     ??calculateEventDuration_and_stepSize_5: (+1)
@@ -1400,10 +1415,10 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \              0x6C 0x6C    
    \              0x62 0x61    
    \              0x63 0x6B    
-   \   00000030   0x20 0x6C          DC8 20H, 6CH, 69H, 6EH, 65H, 20H, 33H, 32H
+   \   00000030   0x20 0x6C          DC8 20H, 6CH, 69H, 6EH, 65H, 20H, 33H, 34H
    \              0x69 0x6E    
    \              0x65 0x20    
-   \              0x33 0x32    
+   \              0x33 0x34    
    \   00000038   0x31 0x20          DC8 31H, 20H, 41H, 75H, 72H, 6FH, 72H, 61H
    \              0x41 0x75    
    \              0x72 0x6F    
@@ -1445,11 +1460,11 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \              0x6C 0x6C    
    \              0x62 0x61    
    \              0x63 0x6B    
-   \   00000030   0x20 0x6C          DC8 20H, 6CH, 69H, 6EH, 65H, 20H, 33H, 33H
+   \   00000030   0x20 0x6C          DC8 20H, 6CH, 69H, 6EH, 65H, 20H, 33H, 35H
    \              0x69 0x6E    
    \              0x65 0x20    
-   \              0x33 0x33    
-   \   00000038   0x32 0x20          DC8 32H, 20H, 41H, 75H, 72H, 6FH, 72H, 61H
+   \              0x33 0x35    
+   \   00000038   0x31 0x20          DC8 31H, 20H, 41H, 75H, 72H, 6FH, 72H, 61H
    \              0x41 0x75    
    \              0x72 0x6F    
    \              0x72 0x61    
@@ -1562,6 +1577,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
          8   -> getAuroraDimmerMode
        0   emberAfMainStartCallback
        8   emberAfMainTickCallback
+         8   -> checkIfPaired
          8   -> emberAfPluginAuroraButtonJoiningUpdateStatusLed
          8   -> emberAfPluginAuroraHostHalPlcCheckHost
          8   -> getAuroraDimmerMode
@@ -1641,7 +1657,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
        4  emberAfGenericTunnelClusterMatchProtocolAddressCallback
      104  emberAfMainInitCallback
        4  emberAfMainStartCallback
-      24  emberAfMainTickCallback
+      28  emberAfMainTickCallback
       80  emberAfOnOffClusterSetNewValueCallback
        4  emberAfOtaBootloadClusterImageBlockResponseCallback
        4  emberAfOtaBootloadClusterImageNotifyCallback
@@ -1661,9 +1677,9 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
  
     12 bytes in section .bss
     12 bytes in section .rodata
- 1 392 bytes in section .text
+ 1 396 bytes in section .text
  
- 1 392 bytes of CODE  memory
+ 1 396 bytes of CODE  memory
     12 bytes of CONST memory
     12 bytes of DATA  memory
 

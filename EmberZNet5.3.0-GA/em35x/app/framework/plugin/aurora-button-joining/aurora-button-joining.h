@@ -81,3 +81,4 @@ void emberAfPluginAuroraButtonJoiningInitialiseLeds(void);
 void emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(int8u newState, boolean set);
 void emberAfPluginAuroraButtonJoiningUpdateStatusLed(void);
 void emberAfPluginAuroraButtonJoiningClearJoiningFlag(void);
+void checkIfPaired(void);

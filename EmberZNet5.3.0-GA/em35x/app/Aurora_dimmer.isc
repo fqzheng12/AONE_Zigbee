@@ -712,7 +712,7 @@ appPlugin:price-client,false
 
 appPlugin:price-server,false
 
-appPlugin:reporting,false
+appPlugin:reporting,true
 
 appPlugin:scenes,true
 

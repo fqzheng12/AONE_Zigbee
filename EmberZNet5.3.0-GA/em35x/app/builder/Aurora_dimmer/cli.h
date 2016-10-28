@@ -1032,6 +1032,45 @@
 
 /** @} */ // end group plugin-ota-storage-common
 
+/** @addtogroup plugin-reporting Plugin Commands: Reporting
+ * @ingroup cli
+ * The reporting plugin contributes several CLI commands to the application
+ * framework to be used in creating and managing reporting table entries
+ * directly on the device.
+ * 
+ * @{
+ */
+
+/** @brief <b>plugin reporting print </b>
+ *   - <i>Print the report table.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_REPORTING_PLUGIN_REPORTING_PRINT
+
+/** @brief <b>plugin reporting clear </b>
+ *   - <i>Clear all entries from the report table.</i>
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_REPORTING_PLUGIN_REPORTING_CLEAR
+
+/** @brief <b>plugin reporting remove [index:1] </b>
+ *   - <i>Remove an entry from the report table.</i>
+ *     - index - INT8U - The index of the report to be removed.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_REPORTING_PLUGIN_REPORTING_REMOVE
+
+/** @brief <b>plugin reporting add [endpoint:1] [clusterId:2] [attributeId:2] [mask:1] [minInterval:2] [maxInterval:2] [reportableChange:4] </b>
+ *   - <i>Add a new entry to the report table.</i>
+ *     - endpoint - INT8U - The local endpoint from which the attribute is reported.
+ *     - clusterId - INT16U - The cluster where the attribute is located.
+ *     - attributeId - INT16U - The id of the attribute being reported.
+ *     - mask - INT8U - 0 for client-side attributes or 1 for server-side attributes.
+ *     - minInterval - INT16U - The minimum reporting interval, measured in seconds.
+ *     - maxInterval - INT16U - The maximum reporting interval, measured in seconds.
+ *     - reportableChange - INT32U - The minimum change to the attribute that will result in a report being sent.
+ */
+#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_REPORTING_PLUGIN_REPORTING_ADD
+
+/** @} */ // end group plugin-reporting
+
 /** @addtogroup plugin-scenes Plugin Commands: Scenes Server
  * @ingroup cli
  * The Scenes server plugin contributes a CLI command to the application
@@ -1272,6 +1311,17 @@
  */
 
 /** @} */ // end group plugin-ota-storage-common
+
+/** @addtogroup plugin-reporting Plugin Commands: Reporting
+ * @ingroup cli
+ * The reporting plugin contributes several CLI commands to the application
+ * framework to be used in creating and managing reporting table entries
+ * directly on the device.
+ * 
+ * @{
+ */
+
+/** @} */ // end group plugin-reporting
 
 /** @addtogroup plugin-scenes Plugin Commands: Scenes Server
  * @ingroup cli

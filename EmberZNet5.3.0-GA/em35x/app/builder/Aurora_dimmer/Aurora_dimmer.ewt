@@ -1415,6 +1415,12 @@
     <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\random.c</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\reporting\reporting-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\reporting\reporting.c</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\..\..\framework\plugin\scenes\scenes-cli.c</name>
   </file>
   <file>
