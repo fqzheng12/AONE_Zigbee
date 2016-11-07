@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  19:51:29
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        03/Nov/2016  16:51:46
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -92,129 +92,273 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
      30              
      31              for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
      32              {
-     33                  emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
-     34              }
-     35          }
-     36          
+     33                    emberAfDebugPrint("command: %d: \n", command);
+     34          
+     35                  emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
+     36              }
+     37          }
+     38          
 
    \                                 In section .text, align 2, keep-with-next
-     37          void emberAfPluginAuroraHostProtocolSetRgbColor(t_RGB* RGB)
-     38          {
+     39          void emberAfPluginAuroraHostProtocolSetRgbColor(t_RGB* RGB)
+     40          {
    \                     emberAfPluginAuroraHostProtocolSetRgbColor: (+1)
    \   00000000   0xB53E             PUSH     {R1-R5,LR}
    \   00000002   0x4605             MOV      R5,R0
-     39              int8u command[10];
-     40              
-     41              memset(command, 0, 10);
-   \   00000004   0x210A             MOVS     R1,#+10
-   \   00000006   0xA800             ADD      R0,SP,#+0
-   \   00000008   0x.... 0x....      BL       __aeabi_memclr4
+     41              int8u command[10];
      42              
-     43              command[2] = RGB->R;
-   \   0000000C   0xAC00             ADD      R4,SP,#+0
-   \   0000000E   0x7828             LDRB     R0,[R5, #+0]
-   \   00000010   0x70A0             STRB     R0,[R4, #+2]
-     44              command[3] = RGB->G;
-   \   00000012   0x7868             LDRB     R0,[R5, #+1]
-   \   00000014   0x70E0             STRB     R0,[R4, #+3]
-     45              command[4] = RGB->B;
-   \   00000016   0x78A8             LDRB     R0,[R5, #+2]
-   \   00000018   0xF88D 0x0004      STRB     R0,[SP, #+4]
-     46              command[5] = RGB->W;
-   \   0000001C   0x78E8             LDRB     R0,[R5, #+3]
-   \   0000001E   0xF88D 0x0005      STRB     R0,[SP, #+5]
-     47                  
-     48              auroraSendCommand(command);
-   \   00000022   0x.... 0x....      BL       getAuroraDimmerMode
-   \   00000026   0x2800             CMP      R0,#+0
-   \   00000028   0xBF1C             ITT      NE 
-   \   0000002A   0x2801             CMPNE    R0,#+1
-   \   0000002C   0x2802             CMPNE    R0,#+2
-   \   0000002E   0xD117             BNE.N    ??emberAfPluginAuroraHostProtocolSetRgbColor_0
-   \   00000030   0x7060             STRB     R0,[R4, #+1]
-   \   00000032   0x21AA             MOVS     R1,#+170
-   \   00000034   0xF88D 0x1000      STRB     R1,[SP, #+0]
-   \   00000038   0x2000             MOVS     R0,#+0
-   \                     ??emberAfPluginAuroraHostProtocolSetRgbColor_1: (+1)
-   \   0000003A   0x7A21             LDRB     R1,[R4, #+8]
-   \   0000003C   0x5D02             LDRB     R2,[R0, R4]
-   \   0000003E   0x1C40             ADDS     R0,R0,#+1
-   \   00000040   0x4051             EORS     R1,R2,R1
-   \   00000042   0x2808             CMP      R0,#+8
-   \   00000044   0x7221             STRB     R1,[R4, #+8]
-   \   00000046   0xDBF8             BLT.N    ??emberAfPluginAuroraHostProtocolSetRgbColor_1
-   \   00000048   0x2055             MOVS     R0,#+85
-   \   0000004A   0xF88D 0x0009      STRB     R0,[SP, #+9]
-   \   0000004E   0x210A             MOVS     R1,#+10
-   \   00000050   0xA800             ADD      R0,SP,#+0
-   \   00000052   0x.... 0x....      BL       debugBuffer
-   \   00000056   0x220A             MOVS     R2,#+10
-   \   00000058   0xA900             ADD      R1,SP,#+0
-   \   0000005A   0x2001             MOVS     R0,#+1
-   \   0000005C   0x.... 0x....      BL       emberSerialWriteData
-     49          }
+     43              memset(command, 0, 10);
+   \   00000004   0x.... 0x....      BL       ?Subroutine1
+     44              
+     45              command[2] = RGB->R;
+   \                     ??CrossCallReturnLabel_0: (+1)
+   \   00000008   0xAC00             ADD      R4,SP,#+0
+   \   0000000A   0x7828             LDRB     R0,[R5, #+0]
+   \   0000000C   0x70A0             STRB     R0,[R4, #+2]
+     46              command[3] = RGB->G;
+   \   0000000E   0x7868             LDRB     R0,[R5, #+1]
+   \   00000010   0x70E0             STRB     R0,[R4, #+3]
+     47              command[4] = RGB->B;
+   \   00000012   0x78A8             LDRB     R0,[R5, #+2]
+   \   00000014   0xF88D 0x0004      STRB     R0,[SP, #+4]
+     48              command[5] = RGB->W;
+   \   00000018   0x78E8             LDRB     R0,[R5, #+3]
+   \   0000001A   0xF88D 0x0005      STRB     R0,[SP, #+5]
+     49                  
+     50              auroraSendCommand(command);
+   \   0000001E   0x.... 0x....      BL       getAuroraDimmerMode
+   \   00000022   0x2800             CMP      R0,#+0
+   \   00000024   0xBF1C             ITT      NE 
+   \   00000026   0x2801             CMPNE    R0,#+1
+   \   00000028   0x2802             CMPNE    R0,#+2
+   \   0000002A   0xD113             BNE.N    ??CrossCallReturnLabel_6
+   \   0000002C   0x7060             STRB     R0,[R4, #+1]
+   \   0000002E   0x21AA             MOVS     R1,#+170
+   \   00000030   0xF88D 0x1000      STRB     R1,[SP, #+0]
+   \   00000034   0x2000             MOVS     R0,#+0
    \                     ??emberAfPluginAuroraHostProtocolSetRgbColor_0: (+1)
-   \   00000060   0xBD37             POP      {R0-R2,R4,R5,PC}  ;; return
-     50          
-     51          /** @brief Printf buffer
-     52           * Prints the give number of bytes for debug
-     53           */
+   \   00000036   0x7A21             LDRB     R1,[R4, #+8]
+   \   00000038   0x5D02             LDRB     R2,[R0, R4]
+   \   0000003A   0x1C40             ADDS     R0,R0,#+1
+   \   0000003C   0x4051             EORS     R1,R2,R1
+   \   0000003E   0x2808             CMP      R0,#+8
+   \   00000040   0x7221             STRB     R1,[R4, #+8]
+   \   00000042   0xDBF8             BLT.N    ??emberAfPluginAuroraHostProtocolSetRgbColor_0
+   \   00000044   0x.... 0x....      BL       ?Subroutine4
+   \                     ??CrossCallReturnLabel_7: (+1)
+   \   00000048   0x.... 0x....      BL       debugBuffer
+   \   0000004C   0x.... 0x....      BL       ?Subroutine2
+   \                     ??CrossCallReturnLabel_4: (+1)
+   \   00000050   0x.... 0x....      BL       ?Subroutine3
+     51          }
+   \                     ??CrossCallReturnLabel_6: (+1)
+   \   00000054   0xBD37             POP      {R0-R2,R4,R5,PC}  ;; return
+     52          
+     53          /** @brief Printf buffer
+     54           * Prints the give number of bytes for debug
+     55           */
 
    \                                 In section .text, align 2, keep-with-next
-     54          void debugBuffer(int8u* buffer, int8u count)
-     55          {
+     56          void debugBuffer(int8u* buffer, int8u count)
+     57          {
    \                     debugBuffer: (+1)
    \   00000000   0xB5F8             PUSH     {R3-R7,LR}
    \   00000002   0x4604             MOV      R4,R0
    \   00000004   0x460D             MOV      R5,R1
-     56              int8u index;
-     57           
-     58              emberAfDebugPrint("Buffer: %d: ", count);
+     58              int8u index;
+     59           
+     60              emberAfDebugPrint("Buffer: %d: ", count);
    \   00000006   0x462A             MOV      R2,R5
-   \   00000008   0x.... 0x....      ADR.W    R1,?_0
+   \   00000008   0x.... 0x....      ADR.W    R1,?_1
    \   0000000C   0x2002             MOVS     R0,#+2
    \   0000000E   0x.... 0x....      BL       emberAfPrint
-     59              for (index = 0; index < count; index++) 
+     61              for (index = 0; index < count; index++) 
    \   00000012   0x2600             MOVS     R6,#+0
-   \   00000014   0x....             ADR.N    R7,??DataTable3  ;; " %x"
+   \   00000014   0x....             ADR.N    R7,??DataTable4  ;; " %x"
    \   00000016   0xE005             B.N      ??debugBuffer_0
-     60              {
-     61                  emberAfDebugPrint(" %x", buffer[index]);
+     62              {
+     63                  emberAfDebugPrint(" %x", buffer[index]);
    \                     ??debugBuffer_1: (+1)
    \   00000018   0x5D32             LDRB     R2,[R6, R4]
    \   0000001A   0x4639             MOV      R1,R7
    \   0000001C   0x2002             MOVS     R0,#+2
    \   0000001E   0x.... 0x....      BL       emberAfPrint
-     62              }
+     64              }
    \   00000022   0x1C76             ADDS     R6,R6,#+1
    \                     ??debugBuffer_0: (+1)
    \   00000024   0xB2F6             UXTB     R6,R6
    \   00000026   0x42AE             CMP      R6,R5
    \   00000028   0xD3F6             BCC.N    ??debugBuffer_1
-     63              emberAfDebugPrint("\r\n");
+     65              emberAfDebugPrint("\r\n");
    \   0000002A   0xE8BD 0x40F4      POP      {R2,R4-R7,LR}
-   \   0000002E   0x....             ADR.N    R1,??DataTable3_1  ;; 0x0D, 0x0A, 0x00, 0x00
+   \   0000002E   0x....             ADR.N    R1,??DataTable4_1  ;; 0x0D, 0x0A, 0x00, 0x00
    \   00000030   0x2002             MOVS     R0,#+2
    \   00000032   0x.... 0x....      B.W      emberAfPrint
-     64          }
+     66          }
+     67          
+     68          
+     69          //MN function to send a double flash to motherboard
+
+   \                                 In section .text, align 2, keep-with-next
+     70          void emberAfPluginAuroraHostProtocolFlashTwice(void)
+     71          {
+   \                     emberAfPluginAuroraHostProtocolFlashTwice: (+1)
+   \   00000000   0xB5E0             PUSH     {R5-R7,LR}
+     72              int8u command[10];
+     73              
+     74              memset(command, 0, 10);    
+   \   00000002   0x.... 0x....      BL       ?Subroutine1
+     75           
+     76              command[0] = AURORA_HOST_START_CODE;  
+   \                     ??CrossCallReturnLabel_1: (+1)
+   \   00000006   0x20AA             MOVS     R0,#+170
+   \   00000008   0xF88D 0x0000      STRB     R0,[SP, #+0]
+     77              
+     78              command[1] = 0x05;
+   \   0000000C   0x2105             MOVS     R1,#+5
+   \   0000000E   0x....             B.N      ?Subroutine0
+     79              
+     80              for (int8u i=0; i<8; i++) 
+     81              {
+     82                  command[8] ^= command[i];        
+     83              }
+     84              
+     85              command[9] = AURORA_HOST_END_CODE;
+     86          
+     87              debugBuffer(command, 10);    
+     88              
+     89              for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
+     90              {
+     91                    emberAfDebugPrint("command: %d: \n", command);
+     92          
+     93                  emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
+     94              }
+     95          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0: (+1)
+   \   00000000   0xA800             ADD      R0,SP,#+0
+   \   00000002   0x7041             STRB     R1,[R0, #+1]
+   \   00000004   0x2100             MOVS     R1,#+0
+   \                     ??Subroutine0_0: (+1)
+   \   00000006   0x7A02             LDRB     R2,[R0, #+8]
+   \   00000008   0x5C0B             LDRB     R3,[R1, R0]
+   \   0000000A   0x1C49             ADDS     R1,R1,#+1
+   \   0000000C   0x405A             EORS     R2,R3,R2
+   \   0000000E   0x2908             CMP      R1,#+8
+   \   00000010   0x7202             STRB     R2,[R0, #+8]
+   \   00000012   0xDBF8             BLT.N    ??Subroutine0_0
+   \   00000014   0x.... 0x....      BL       ?Subroutine4
+   \                     ??CrossCallReturnLabel_8: (+1)
+   \   00000018   0x.... 0x....      BL       debugBuffer
+   \   0000001C   0x.... 0x....      BL       ?Subroutine2
+   \                     ??CrossCallReturnLabel_3: (+1)
+   \   00000020   0x.... 0x....      BL       ?Subroutine3
+   \                     ??CrossCallReturnLabel_5: (+1)
+   \   00000024   0xBD07             POP      {R0-R2,PC}       ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine4: (+1)
+   \   00000000   0x2055             MOVS     R0,#+85
+   \   00000002   0xF88D 0x0009      STRB     R0,[SP, #+9]
+   \   00000006   0x210A             MOVS     R1,#+10
+   \   00000008   0xA800             ADD      R0,SP,#+0
+   \   0000000A   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine3: (+1)
+   \   00000000   0x220A             MOVS     R2,#+10
+   \   00000002   0xA900             ADD      R1,SP,#+0
+   \   00000004   0x2001             MOVS     R0,#+1
+   \   00000006   0x.... 0x....      B.W      emberSerialWriteData
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine2: (+1)
+   \   00000000   0xAA00             ADD      R2,SP,#+0
+   \   00000002   0x.... 0x....      ADR.W    R1,?_0
+   \   00000006   0x2002             MOVS     R0,#+2
+   \   00000008   0x.... 0x....      B.W      emberAfPrint
+     96          
+     97          //MN function to send a single flash to motherboard
+
+   \                                 In section .text, align 2, keep-with-next
+     98          void emberAfPluginAuroraHostProtocolFlashOnce(void)
+     99          {
+   \                     emberAfPluginAuroraHostProtocolFlashOnce: (+1)
+   \   00000000   0xB5E0             PUSH     {R5-R7,LR}
+    100              int8u command[10];
+    101              
+    102              memset(command, 0, 10);    
+   \   00000002   0x.... 0x....      BL       ?Subroutine1
+    103           
+    104              command[0] = AURORA_HOST_START_CODE;  
+   \                     ??CrossCallReturnLabel_2: (+1)
+   \   00000006   0x20AA             MOVS     R0,#+170
+   \   00000008   0xF88D 0x0000      STRB     R0,[SP, #+0]
+    105              
+    106              command[1] = 0x06;
+   \   0000000C   0x2106             MOVS     R1,#+6
+   \   0000000E                      REQUIRE ?Subroutine0
+   \   0000000E                      ;; // Fall through to label ?Subroutine0
+    107              
+    108              for (int8u i=0; i<8; i++) 
+    109              {
+    110                  command[8] ^= command[i];        
+    111              }
+    112              
+    113              command[9] = AURORA_HOST_END_CODE;
+    114          
+    115              debugBuffer(command, 10);    
+    116              
+    117              for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
+    118              {
+    119                    emberAfDebugPrint("command: %d: \n", command);
+    120          
+    121                  emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
+    122              }
+    123          }
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3:
+   \                     ??DataTable4:
    \   00000000   0x20 0x25          DC8      " %x"
    \              0x78 0x00    
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_1:
+   \                     ??DataTable4_1:
    \   00000000   0x0D 0x0A          DC8      0x0D, 0x0A, 0x00, 0x00
    \              0x00 0x00    
 
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1: (+1)
+   \   00000000   0x210A             MOVS     R1,#+10
+   \   00000002   0xA800             ADD      R0,SP,#+0
+   \   00000004   0x.... 0x....      B.W      __aeabi_memclr4
+
    \                                 In section .rodata, align 4, keep-with-next
-   \                     ?_1:
+   \                     ?_2:
    \   00000000   0x20 0x25          DC8 " %x"
    \              0x78 0x00    
 
+   \                                 In section .rodata, align 4, keep-with-next
+   \                     ?_3:
+   \   00000000   0x0D 0x0A          DC8 "\015\012"
+   \              0x00         
+   \   00000003   0x00               DC8 0
+
    \                                 In section .text, align 4, keep-with-next
    \                     ?_0:
+   \   00000000   0x63 0x6F          DC8 "command: %d: \012"
+   \              0x6D 0x6D    
+   \              0x61 0x6E    
+   \              0x64 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x3A    
+   \              0x20 0x0A    
+   \              0x00         
+   \   0000000F   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ?_1:
    \   00000000   0x42 0x75          DC8 "Buffer: %d: "
    \              0x66 0x66    
    \              0x65 0x72    
@@ -225,12 +369,6 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   0000000D   0x00 0x00          DC8 0, 0, 0
    \              0x00         
 
-   \                                 In section .rodata, align 4, keep-with-next
-   \                     ?_2:
-   \   00000000   0x0D 0x0A          DC8 "\015\012"
-   \              0x00         
-   \   00000003   0x00               DC8 0
-
    Maximum stack usage in bytes:
 
    .cstack Function
@@ -238,9 +376,20 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
       24   debugBuffer
          0   -> emberAfPrint
         24   -> emberAfPrint
+      16   emberAfPluginAuroraHostProtocolFlashOnce
+        16   -> __aeabi_memclr4
+        16   -> debugBuffer
+        16   -> emberAfPrint
+        16   -> emberSerialWriteData
+      16   emberAfPluginAuroraHostProtocolFlashTwice
+        16   -> __aeabi_memclr4
+        16   -> debugBuffer
+        16   -> emberAfPrint
+        16   -> emberSerialWriteData
       24   emberAfPluginAuroraHostProtocolSetRgbColor
         24   -> __aeabi_memclr4
         24   -> debugBuffer
+        24   -> emberAfPrint
         24   -> emberSerialWriteData
         24   -> getAuroraDimmerMode
 
@@ -249,19 +398,27 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
 
    Bytes  Function/Label
    -----  --------------
-       4  ??DataTable3
-       4  ??DataTable3_1
+       4  ??DataTable4
+       4  ??DataTable4_1
+      38  ?Subroutine0
+       8  ?Subroutine1
+      12  ?Subroutine2
+      10  ?Subroutine3
+      12  ?Subroutine4
       16  ?_0
-       4  ?_1
+      16  ?_1
        4  ?_2
+       4  ?_3
       54  debugBuffer
-      98  emberAfPluginAuroraHostProtocolSetRgbColor
+      14  emberAfPluginAuroraHostProtocolFlashOnce
+      16  emberAfPluginAuroraHostProtocolFlashTwice
+      86  emberAfPluginAuroraHostProtocolSetRgbColor
 
  
    8 bytes in section .rodata
- 176 bytes in section .text
+ 290 bytes in section .text
  
- 176 bytes of CODE  memory
+ 290 bytes of CODE  memory
    8 bytes of CONST memory
 
 Errors: none

@@ -30,6 +30,8 @@ static void auroraSendCommand(int8u* command)
     
     for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
     {
+          emberAfDebugPrint("command: %d: \n", command);
+
         emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
     }
 }
@@ -61,4 +63,61 @@ void debugBuffer(int8u* buffer, int8u count)
         emberAfDebugPrint(" %x", buffer[index]);
     }
     emberAfDebugPrint("\r\n");
+}
+
+
+//MN function to send a double flash to motherboard
+void emberAfPluginAuroraHostProtocolFlashTwice(void)
+{
+    int8u command[10];
+    
+    memset(command, 0, 10);    
+ 
+    command[0] = AURORA_HOST_START_CODE;  
+    
+    command[1] = 0x05;
+    
+    for (int8u i=0; i<8; i++) 
+    {
+        command[8] ^= command[i];        
+    }
+    
+    command[9] = AURORA_HOST_END_CODE;
+
+    debugBuffer(command, 10);    
+    
+    for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
+    {
+          emberAfDebugPrint("command: %d: \n", command);
+
+        emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
+    }
+}
+
+//MN function to send a single flash to motherboard
+void emberAfPluginAuroraHostProtocolFlashOnce(void)
+{
+    int8u command[10];
+    
+    memset(command, 0, 10);    
+ 
+    command[0] = AURORA_HOST_START_CODE;  
+    
+    command[1] = 0x06;
+    
+    for (int8u i=0; i<8; i++) 
+    {
+        command[8] ^= command[i];        
+    }
+    
+    command[9] = AURORA_HOST_END_CODE;
+
+    debugBuffer(command, 10);    
+    
+    for (int8u i=0; i<AURORA_HOST_SEND_TIMES; i++) 
+    {
+          emberAfDebugPrint("command: %d: \n", command);
+
+        emberSerialWriteData(HOST_SERIAL_PORT, command, 10); 
+    }
 }

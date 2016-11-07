@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        28/Oct/2016  22:26:03
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        03/Nov/2016  16:56:57
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -324,7 +324,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000006   0x.... 0x....      BL       ?Subroutine2
     197              emberAfDebugPrintln("Module fw version: 0x%2X", EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2);    
    \                     ??CrossCallReturnLabel_8: (+1)
-   \   0000000A   0x2216             MOVS     R2,#+22
+   \   0000000A   0x221A             MOVS     R2,#+26
    \   0000000C   0x.... 0x....      ADR.W    R1,?_1
    \   00000010   0x2002             MOVS     R0,#+2
    \   00000012   0x.... 0x....      BL       emberAfPrintln
@@ -445,7 +445,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
     266              //if the device is not paired to a network, it will enter pairing mode MN
     267              checkIfPaired();
    \   00000006   0x.... 0x....      BL       checkIfPaired
-    268          
+    268            
     269              // Read any data from the host
     270              mode = getAuroraDimmerMode();
     271              switch(mode) 

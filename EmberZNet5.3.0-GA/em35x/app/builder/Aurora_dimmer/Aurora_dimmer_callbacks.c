@@ -265,7 +265,7 @@ void emberAfMainTickCallback(void)
     
     //if the device is not paired to a network, it will enter pairing mode MN
     checkIfPaired();
-
+  
     // Read any data from the host
     mode = getAuroraDimmerMode();
     switch(mode) 

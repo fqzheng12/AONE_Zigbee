@@ -9,6 +9,8 @@
 #define AURORA_HOST_SEND_TIMES          1
 
 void emberAfPluginAuroraHostProtocolSetRgbColor(t_RGB *RGB);
+void emberAfPluginAuroraHostProtocolFlashTwice(void); //MN
+void emberAfPluginAuroraHostProtocolFlashOnce(void); //MN
 void debugBuffer(int8u *buffer, int8u count);
 
 #endif // _AURORA_HOST_PROTOCOL_H_

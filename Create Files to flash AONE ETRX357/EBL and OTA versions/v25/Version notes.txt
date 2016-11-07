@@ -1,0 +1,4 @@
+v25
+
+Changes:
+Improved reset function. Pressing for 3 seconds now leaves and then reboots

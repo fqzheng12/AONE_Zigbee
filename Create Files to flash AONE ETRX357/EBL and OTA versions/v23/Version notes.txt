@@ -1,0 +1,4 @@
+v23
+
+Changes:
+Added feature to detect if AONE was already paired in power up and to initiate pairing sequence if not

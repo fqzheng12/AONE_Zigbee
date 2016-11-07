@@ -1,0 +1,5 @@
+v24
+
+Changes:
+Added reset function which is called when the button is pressed for 3 seconds. 
+Removed the ability to initiate joining or pairing with button presses
