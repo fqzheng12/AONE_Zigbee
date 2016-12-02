@@ -202,6 +202,9 @@ EmberStatus emberAfStartSearchForJoinableNetworkCallback(void)
     return EMBER_INVALID_CALL;
   }
 
+  emberAfDebugPrint("FLASH TWICE TO INDICATE GOING INTO PAIRING MODE\n"); //MN
+  emberAfPluginAuroraHostProtocolFlashTwice(); //MN
+  
   emberAfAppPrint("Search for %p\nChannels: ", "joinable network");
   emberAfAppDebugExec(emberAfPrintChannelListFromMask(CHANNEL_MASK));
   emberAfAppPrintln("");
@@ -216,6 +219,9 @@ EmberStatus emberAfStartSearchForJoinableNetworkCallback(void)
 
 void emberAfPluginNetworkFindStackStatusCallback(EmberStatus status)
 {
+        emberAfDebugPrint("emberAfPluginNetworkFindStackStatusCallback status: %d\n", status); //MN                
+  
+
   int8u delayMinutes = MAX_INT8U_VALUE;
   if (status == EMBER_NETWORK_UP) {
     // If we had been searching for an unused network so that we could form,
@@ -234,16 +240,29 @@ void emberAfPluginNetworkFindStackStatusCallback(EmberStatus status)
     // If we get something other than EMBER_NETWORK_UP while trying to join or
     // while waiting for the application to determine if this is the right
     // network, we need to continue searching for a joinable network.
+    
+                emberAfDebugPrintln("emberAfPluginNetworkFindStackStatusCallback ln243");//MN
+    
     state = NETWORK_FIND_JOIN;
     delayMinutes = 0;
   }
 
   if (delayMinutes == 0) {
+    
+                    emberAfDebugPrintln("emberAfPluginNetworkFindStackStatusCallback ln251");//MN
+
     emberAfPluginNetworkFindTickEventHandler();
   } else if (delayMinutes != MAX_INT8U_VALUE) {
+    
+                    emberAfDebugPrintln("emberAfPluginNetworkFindStackStatusCallback ln256");//MN
+
+    
     emberEventControlSetDelayMinutes(emberAfPluginNetworkFindTickEventControl,
                                      delayMinutes);
   }
+  
+
+  
 }
 
 void emberAfGetFormAndJoinExtendedPanIdCallback(int8u *resultLocation)

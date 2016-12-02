@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        03/Nov/2016  16:08:10
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        01/Dec/2016  11:42:27
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -471,29 +471,36 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
     244          {
    \                     emberScanForNextJoinableNetwork: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
-    245            if (formAndJoinScanType != FORM_AND_JOIN_NEXT_NETWORK) {
+    245            
+    246                SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 246"); //MN
+    247          
+    248            if (formAndJoinScanType != FORM_AND_JOIN_NEXT_NETWORK) {
    \   00000002   0x....             LDR.N    R4,??DataTable10
    \   00000004   0x7820             LDRB     R0,[R4, #+0]
    \   00000006   0x2801             CMP      R0,#+1
    \   00000008   0xD007             BEQ.N    ??emberScanForNextJoinableNetwork_0
-    246              emberScanErrorHandler(EMBER_INVALID_CALL);
+    249              emberScanErrorHandler(EMBER_INVALID_CALL);
    \   0000000A   0x2070             MOVS     R0,#+112
    \   0000000C   0x.... 0x....      BL       emberScanErrorHandler
-    247              return EMBER_INVALID_CALL;
+    250                    SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 250"); //MN
+    251          
+    252              return EMBER_INVALID_CALL;
    \   00000010   0x2070             MOVS     R0,#+112
    \   00000012   0xBD10             POP      {R4,PC}
-    248            }
-    249          
-    250            // Check for cached networks first.
-    251            while (networkCount) {
-    252              NetworkInfo *finger = formAndJoinGetNetworkPointer(--networkCount);
-    253              if (finger->network.panId != 0xFFFF) {
-    254                emberJoinableNetworkFoundHandler(&(finger->network), finger->lqi, finger->rssi);
-    255                formAndJoinSetBufferLength(networkCount);
-    256                formAndJoinSetCleanupTimeout();
-    257                return EMBER_SUCCESS;
-    258              }
-    259              formAndJoinSetBufferLength(networkCount);
+    253            }
+    254          
+    255            // Check for cached networks first.
+    256            while (networkCount) {
+    257              NetworkInfo *finger = formAndJoinGetNetworkPointer(--networkCount);
+    258              if (finger->network.panId != 0xFFFF) {
+    259                emberJoinableNetworkFoundHandler(&(finger->network), finger->lqi, finger->rssi);
+    260                formAndJoinSetBufferLength(networkCount);
+    261                formAndJoinSetCleanupTimeout();
+    262                      SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 262"); //MN
+    263          
+    264                return EMBER_SUCCESS;
+    265              }
+    266              formAndJoinSetBufferLength(networkCount);
    \                     ??emberScanForNextJoinableNetwork_1: (+1)
    \   00000014   0x78E0             LDRB     R0,[R4, #+3]
    \   00000016   0x.... 0x....      BL       formAndJoinSetBufferLength
@@ -515,87 +522,91 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   0000003E   0x.... 0x....      BL       formAndJoinSetBufferLength
    \   00000042   0x.... 0x....      BL       formAndJoinSetCleanupTimeout
    \   00000046   0xE014             B.N      ??emberScanForNextJoinableNetwork_3
-    260            }
-    261          
-    262            // Find the next channel in the mask and start scanning.
-    263            channelCache += 1;
+    267            }
+    268          
+    269            // Find the next channel in the mask and start scanning.
+    270            channelCache += 1;
    \                     ??emberScanForNextJoinableNetwork_2: (+1)
    \   00000048   0x7860             LDRB     R0,[R4, #+1]
-    264            for (; channelCache <= EMBER_MAX_802_15_4_CHANNEL_NUMBER; channelCache++) {
+    271            for (; channelCache <= EMBER_MAX_802_15_4_CHANNEL_NUMBER; channelCache++) {
    \                     ??emberScanForNextJoinableNetwork_4: (+1)
    \   0000004A   0x1C40             ADDS     R0,R0,#+1
    \   0000004C   0x7060             STRB     R0,[R4, #+1]
    \   0000004E   0x7860             LDRB     R0,[R4, #+1]
    \   00000050   0x281B             CMP      R0,#+27
    \   00000052   0xDA0B             BGE.N    ??emberScanForNextJoinableNetwork_5
-    265              int32u bitMask = BIT32(channelCache);
+    272              int32u bitMask = BIT32(channelCache);
    \   00000054   0x2101             MOVS     R1,#+1
-    266              if (bitMask & channelMaskCache) {
+    273              if (bitMask & channelMaskCache) {
    \   00000056   0x68A2             LDR      R2,[R4, #+8]
    \   00000058   0x4081             LSLS     R1,R1,R0
    \   0000005A   0x4211             TST      R1,R2
    \   0000005C   0xD0F5             BEQ.N    ??emberScanForNextJoinableNetwork_4
-    267                formAndJoinScanType = FORM_AND_JOIN_JOINABLE_SCAN;
+    274                formAndJoinScanType = FORM_AND_JOIN_JOINABLE_SCAN;
    \   0000005E   0x2004             MOVS     R0,#+4
    \   00000060   0x7020             STRB     R0,[R4, #+0]
-    268                return startScan(EMBER_ACTIVE_SCAN, bitMask, ACTIVE_SCAN_DURATION);
+    275                      SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 275"); //MN
+    276          
+    277                return startScan(EMBER_ACTIVE_SCAN, bitMask, ACTIVE_SCAN_DURATION);
    \   00000062   0x2203             MOVS     R2,#+3
    \   00000064   0xE8BD 0x4010      POP      {R4,LR}
    \   00000068   0x2001             MOVS     R0,#+1
    \   0000006A   0x....             B.N      startScan
-    269              }
-    270            }
-    271          
-    272            // Notify the app we're completely out of networks.
-    273            emberFormAndJoinCleanup(EMBER_NO_BEACONS);
+    278              }
+    279            }
+    280          
+    281            // Notify the app we're completely out of networks.
+    282            emberFormAndJoinCleanup(EMBER_NO_BEACONS);
    \                     ??emberScanForNextJoinableNetwork_5: (+1)
    \   0000006C   0x20AB             MOVS     R0,#+171
    \   0000006E   0x.... 0x....      BL       emberFormAndJoinCleanup
-    274            return EMBER_SUCCESS;
+    283                  SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 283"); //MN
+    284          
+    285            return EMBER_SUCCESS;
    \                     ??emberScanForNextJoinableNetwork_3: (+1)
    \   00000072   0x2000             MOVS     R0,#+0
    \   00000074   0xBD10             POP      {R4,PC}          ;; return
-    275          }
-    276          
-    277          //------------------------------------------------------------------------------
-    278          // Callbacks
-    279          
+    286          }
+    287          
+    288          //------------------------------------------------------------------------------
+    289          // Callbacks
+    290          
 
    \                                 In section .text, align 2, keep-with-next
-    280          boolean emberFormAndJoinScanCompleteHandler(int8u channel, EmberStatus status)
-    281          {
+    291          boolean emberFormAndJoinScanCompleteHandler(int8u channel, EmberStatus status)
+    292          {
    \                     emberFormAndJoinScanCompleteHandler: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x460C             MOV      R4,R1
-    282            if (! emberFormAndJoinIsScanning()) {
+    293            if (! emberFormAndJoinIsScanning()) {
    \   00000004   0x.... 0x....      BL       emberFormAndJoinIsScanning
    \   00000008   0xB128             CBZ.N    R0,??emberFormAndJoinScanCompleteHandler_0
-    283              return FALSE;
-    284            }
-    285          
-    286            if (FORM_AND_JOIN_ENERGY_SCAN != formAndJoinScanType) {
+    294              return FALSE;
+    295            }
+    296          
+    297            if (FORM_AND_JOIN_ENERGY_SCAN != formAndJoinScanType) {
    \   0000000A   0x....             LDR.N    R1,??DataTable10
    \   0000000C   0x7808             LDRB     R0,[R1, #+0]
    \   0000000E   0x2802             CMP      R0,#+2
    \   00000010   0xBF18             IT       NE 
    \   00000012   0x2C00             CMPNE    R4,#+0
-    287              // This scan is an Active Scan.
-    288              // Active Scans potentially report transmit failures through this callback.
-    289              if (EMBER_SUCCESS != status) {
+    298              // This scan is an Active Scan.
+    299              // Active Scans potentially report transmit failures through this callback.
+    300              if (EMBER_SUCCESS != status) {
    \   00000014   0xD001             BEQ.N    ??emberFormAndJoinScanCompleteHandler_1
-    290                // The Active Scan is still in progress.  This callback is informing us
-    291                // about a failure to transmit the beacon request on this channel.
-    292                // If necessary we could save this failing channel number and start
-    293                // another Active Scan on this channel later (after this current scan is
-    294                // complete).
-    295                return FALSE;
+    301                // The Active Scan is still in progress.  This callback is informing us
+    302                // about a failure to transmit the beacon request on this channel.
+    303                // If necessary we could save this failing channel number and start
+    304                // another Active Scan on this channel later (after this current scan is
+    305                // complete).
+    306                return FALSE;
    \                     ??emberFormAndJoinScanCompleteHandler_0: (+1)
    \   00000016   0x2000             MOVS     R0,#+0
    \   00000018   0xBD10             POP      {R4,PC}
-    296              }
-    297            }
-    298          
-    299            switch (formAndJoinScanType) {
+    307              }
+    308            }
+    309          
+    310            switch (formAndJoinScanType) {
    \                     ??emberFormAndJoinScanCompleteHandler_1: (+1)
    \   0000001A   0x2802             CMP      R0,#+2
    \   0000001C   0xD006             BEQ.N    ??emberFormAndJoinScanCompleteHandler_2
@@ -606,16 +617,16 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000026   0x2805             CMP      R0,#+5
    \   00000028   0xD019             BEQ.N    ??emberFormAndJoinScanCompleteHandler_4
    \   0000002A   0xE01C             B.N      ??emberFormAndJoinScanCompleteHandler_3
-    300          
-    301            case FORM_AND_JOIN_ENERGY_SCAN:    
-    302              energyScanComplete();    
+    311          
+    312            case FORM_AND_JOIN_ENERGY_SCAN:    
+    313              energyScanComplete();    
    \                     ??emberFormAndJoinScanCompleteHandler_2: (+1)
    \   0000002C   0x.... 0x....      BL       energyScanComplete
-    303              break;
+    314              break;
    \   00000030   0xE019             B.N      ??emberFormAndJoinScanCompleteHandler_3
-    304          
-    305            case FORM_AND_JOIN_PAN_ID_SCAN:
-    306              panIdScanComplete();
+    315          
+    316            case FORM_AND_JOIN_PAN_ID_SCAN:
+    317              panIdScanComplete();
    \                     ??emberFormAndJoinScanCompleteHandler_5: (+1)
    \   00000032   0x2200             MOVS     R2,#+0
    \   00000034   0xF64F 0x73FF      MOVW     R3,#+65535
@@ -636,58 +647,58 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000056   0x2000             MOVS     R0,#+0
    \   00000058   0x.... 0x....      BL       emberFormAndJoinCleanup
    \   0000005C   0xE003             B.N      ??emberFormAndJoinScanCompleteHandler_3
-    307              break;
-    308          
-    309            case FORM_AND_JOIN_JOINABLE_SCAN: 
-    310              #if defined(XAP2B) || defined(EZSP_HOST) || defined(EMBER_TEST)
-    311              if (emberEnableDualChannelScan 
-    312                  && (channelCache < 15 || channelCache > 22)
-    313                  && networkCount) {
-    314                int8u dualChannel = (channelCache + (channelCache < 15 ? 12 : -12));
-    315                formAndJoinScanType = FORM_AND_JOIN_DUAL_CHANNEL_SCAN;
-    316                startScan(EMBER_ACTIVE_SCAN, BIT32(dualChannel), ACTIVE_SCAN_DURATION);
-    317                break;
-    318              }
-    319              #endif
-    320              // If no dual scan, fall through to save a little flash.
-    321          
-    322            case FORM_AND_JOIN_DUAL_CHANNEL_SCAN:   
-    323              formAndJoinScanType = FORM_AND_JOIN_NEXT_NETWORK;
+    318              break;
+    319          
+    320            case FORM_AND_JOIN_JOINABLE_SCAN: 
+    321              #if defined(XAP2B) || defined(EZSP_HOST) || defined(EMBER_TEST)
+    322              if (emberEnableDualChannelScan 
+    323                  && (channelCache < 15 || channelCache > 22)
+    324                  && networkCount) {
+    325                int8u dualChannel = (channelCache + (channelCache < 15 ? 12 : -12));
+    326                formAndJoinScanType = FORM_AND_JOIN_DUAL_CHANNEL_SCAN;
+    327                startScan(EMBER_ACTIVE_SCAN, BIT32(dualChannel), ACTIVE_SCAN_DURATION);
+    328                break;
+    329              }
+    330              #endif
+    331              // If no dual scan, fall through to save a little flash.
+    332          
+    333            case FORM_AND_JOIN_DUAL_CHANNEL_SCAN:   
+    334              formAndJoinScanType = FORM_AND_JOIN_NEXT_NETWORK;
    \                     ??emberFormAndJoinScanCompleteHandler_4: (+1)
    \   0000005E   0x2001             MOVS     R0,#+1
    \   00000060   0x7008             STRB     R0,[R1, #+0]
-    324              emberScanForNextJoinableNetwork(); 
+    335              emberScanForNextJoinableNetwork(); 
    \   00000062   0x.... 0x....      BL       emberScanForNextJoinableNetwork
-    325              break;
-    326            }
-    327            return TRUE;
+    336              break;
+    337            }
+    338            return TRUE;
    \                     ??emberFormAndJoinScanCompleteHandler_3: (+1)
    \   00000066   0x2001             MOVS     R0,#+1
    \   00000068   0xBD10             POP      {R4,PC}          ;; return
-    328          }
-    329          
-    330          // We are either looking for PAN IDs or for joinable networks.  In the first
-    331          // case we just check the found PAN ID against our list of candidates. 
-    332          
+    339          }
+    340          
+    341          // We are either looking for PAN IDs or for joinable networks.  In the first
+    342          // case we just check the found PAN ID against our list of candidates. 
+    343          
 
    \                                 In section .text, align 2, keep-with-next
-    333          boolean emberFormAndJoinNetworkFoundHandler(EmberZigbeeNetwork *networkFound,
-    334                                                      int8u lqi,
-    335                                                      int8s rssi)
-    336          {
+    344          boolean emberFormAndJoinNetworkFoundHandler(EmberZigbeeNetwork *networkFound,
+    345                                                      int8u lqi,
+    346                                                      int8s rssi)
+    347          {
    \                     emberFormAndJoinNetworkFoundHandler: (+1)
    \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
-    337            int8u i;
-    338          
-    339            SCAN_DEBUG_MSG("SCAN: nwk found ch %d, ", networkFound->channel);
-    340            SCAN_DEBUG_MSG("panID 0x%2x, xpan: ", networkFound->panId);
-    341            SCAN_DEBUG_XPAN_PRINT(networkFound->extendedPanId);
-    342            SCAN_DEBUG_MSG(", lqi %d", lqi);
-    343            SCAN_DEBUG_MSG(", profile: %d", networkFound->stackProfile);
-    344            SCAN_DEBUG_MSG(", pjoin: %d", networkFound->allowingJoin);
-    345            SCAN_DEBUG("\n");
-    346            
-    347            switch (formAndJoinScanType) {
+    348            int8u i;
+    349          
+    350            SCAN_DEBUG_MSG("SCAN: nwk found ch %d, ", networkFound->channel);
+    351            SCAN_DEBUG_MSG("panID 0x%2x, xpan: ", networkFound->panId);
+    352            SCAN_DEBUG_XPAN_PRINT(networkFound->extendedPanId);
+    353            SCAN_DEBUG_MSG(", lqi %d", lqi);
+    354            SCAN_DEBUG_MSG(", profile: %d", networkFound->stackProfile);
+    355            SCAN_DEBUG_MSG(", pjoin: %d", networkFound->allowingJoin);
+    356            SCAN_DEBUG("\n");
+    357            
+    358            switch (formAndJoinScanType) {
    \   00000004   0x....             LDR.N    R5,??DataTable10
    \   00000006   0x4604             MOV      R4,R0
    \   00000008   0x7828             LDRB     R0,[R5, #+0]
@@ -698,12 +709,12 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000012   0x2804             CMP      R0,#+4
    \   00000014   0xD00F             BEQ.N    ??emberFormAndJoinNetworkFoundHandler_1
    \   00000016   0xE042             B.N      ??emberFormAndJoinNetworkFoundHandler_2
-    348          
-    349            case FORM_AND_JOIN_PAN_ID_SCAN:
-    350              for (i = 0; i < NUM_PAN_ID_CANDIDATES; i++)
+    359          
+    360            case FORM_AND_JOIN_PAN_ID_SCAN:
+    361              for (i = 0; i < NUM_PAN_ID_CANDIDATES; i++)
    \                     ??emberFormAndJoinNetworkFoundHandler_0: (+1)
    \   00000018   0x2000             MOVS     R0,#+0
-    351                if (panIdCandidates[i] == networkFound->panId)
+    362                if (panIdCandidates[i] == networkFound->panId)
    \                     ??emberFormAndJoinNetworkFoundHandler_3: (+1)
    \   0000001A   0x6869             LDR      R1,[R5, #+4]
    \   0000001C   0x8823             LDRH     R3,[R4, #+0]
@@ -712,25 +723,25 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000024   0xBF04             ITT      EQ 
    \   00000026   0xF64F 0x72FF      MOVWEQ   R2,#+65535
    \   0000002A   0xF821 0x2010      STRHEQ   R2,[R1, R0, LSL #+1]
-    352                  panIdCandidates[i] = 0xFFFF;
+    363                  panIdCandidates[i] = 0xFFFF;
    \   0000002E   0x1C40             ADDS     R0,R0,#+1
    \   00000030   0x2810             CMP      R0,#+16
    \   00000032   0xDBF2             BLT.N    ??emberFormAndJoinNetworkFoundHandler_3
    \   00000034   0xE033             B.N      ??emberFormAndJoinNetworkFoundHandler_2
-    353              break;
-    354              
-    355            case FORM_AND_JOIN_JOINABLE_SCAN:
-    356          
-    357              // check for a beacon with permit join on...
-    358              if (networkFound->allowingJoin
-    359                  // ...the same stack profile as this application...
-    360                  && networkFound->stackProfile == formAndJoinStackProfile()
-    361                  && (// ...and ignore the Extended PAN ID, or...
-    362                      ignoreExtendedPanId
-    363                      // ...a matching Extended PAN ID
-    364                      || (MEMCOMPARE(extendedPanIdCache,
-    365                                     networkFound->extendedPanId,
-    366                                     EXTENDED_PAN_ID_SIZE) == 0))) {
+    364              break;
+    365              
+    366            case FORM_AND_JOIN_JOINABLE_SCAN:
+    367          
+    368              // check for a beacon with permit join on...
+    369              if (networkFound->allowingJoin
+    370                  // ...the same stack profile as this application...
+    371                  && networkFound->stackProfile == formAndJoinStackProfile()
+    372                  && (// ...and ignore the Extended PAN ID, or...
+    373                      ignoreExtendedPanId
+    374                      // ...a matching Extended PAN ID
+    375                      || (MEMCOMPARE(extendedPanIdCache,
+    376                                     networkFound->extendedPanId,
+    377                                     EXTENDED_PAN_ID_SIZE) == 0))) {
    \                     ??emberFormAndJoinNetworkFoundHandler_1: (+1)
    \   00000036   0x78E0             LDRB     R0,[R4, #+3]
    \   00000038   0xB388             CBZ.N    R0,??emberFormAndJoinNetworkFoundHandler_2
@@ -745,7 +756,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   0000004C   0xF105 0x000C      ADD      R0,R5,#+12
    \   00000050   0x.... 0x....      BL       halCommonMemCompare
    \   00000054   0xBB18             CBNZ.N   R0,??emberFormAndJoinNetworkFoundHandler_2
-    367                saveNetwork(networkFound, lqi, rssi);
+    378                saveNetwork(networkFound, lqi, rssi);
    \                     ??emberFormAndJoinNetworkFoundHandler_4: (+1)
    \   00000056   0x2700             MOVS     R7,#+0
    \   00000058   0xE009             B.N      ??emberFormAndJoinNetworkFoundHandler_5
@@ -779,96 +790,96 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000094   0x.... 0x....      BL       halCommonMemCopy
    \   00000098   0x73BE             STRB     R6,[R7, #+14]
    \   0000009A   0xF887 0x800F      STRB     R8,[R7, #+15]
-    368                SCAN_DEBUG(": MATCH\r\n"); 
-    369              } else {
-    370                SCAN_DEBUG(": NO match\r\n"); 
-    371              }
-    372              break;
-    373          
-    374          #if defined(XAP2B) || defined(EZSP_HOST) || defined(EMBER_TEST)
-    375            case FORM_AND_JOIN_DUAL_CHANNEL_SCAN: {
-    376              NetworkInfo *finger;
-    377              for (i = 0; i < networkCount; i++) {
-    378                finger = formAndJoinGetNetworkPointer(i);
-    379                if (MEMCOMPARE(finger->network.extendedPanId,
-    380                               networkFound->extendedPanId,
-    381                               EXTENDED_PAN_ID_SIZE) == 0) {
-    382                  if (lqi > finger->lqi) {
-    383                    finger->network.panId = 0xFFFF;  // Invalid network;
-    384                  }
-    385                }
-    386              }
-    387              break;
-    388            }
-    389          #endif
-    390            }
-    391            return emberFormAndJoinIsScanning();
+    379                SCAN_DEBUG(": MATCH\r\n"); 
+    380              } else {
+    381                SCAN_DEBUG(": NO match\r\n"); 
+    382              }
+    383              break;
+    384          
+    385          #if defined(XAP2B) || defined(EZSP_HOST) || defined(EMBER_TEST)
+    386            case FORM_AND_JOIN_DUAL_CHANNEL_SCAN: {
+    387              NetworkInfo *finger;
+    388              for (i = 0; i < networkCount; i++) {
+    389                finger = formAndJoinGetNetworkPointer(i);
+    390                if (MEMCOMPARE(finger->network.extendedPanId,
+    391                               networkFound->extendedPanId,
+    392                               EXTENDED_PAN_ID_SIZE) == 0) {
+    393                  if (lqi > finger->lqi) {
+    394                    finger->network.panId = 0xFFFF;  // Invalid network;
+    395                  }
+    396                }
+    397              }
+    398              break;
+    399            }
+    400          #endif
+    401            }
+    402            return emberFormAndJoinIsScanning();
    \                     ??emberFormAndJoinNetworkFoundHandler_2: (+1)
    \   0000009E   0xE8BD 0x41F0      POP      {R4-R8,LR}
    \   000000A2   0x....             B.N      emberFormAndJoinIsScanning
-    392          }
-    393          
-    394          // Just remember the result.
-    395          
+    403          }
+    404          
+    405          // Just remember the result.
+    406          
 
    \                                 In section .text, align 2, keep-with-next
-    396          boolean emberFormAndJoinEnergyScanResultHandler(int8u channel, int8s maxRssiValue)
-    397          {
+    407          boolean emberFormAndJoinEnergyScanResultHandler(int8u channel, int8s maxRssiValue)
+    408          {
    \                     emberFormAndJoinEnergyScanResultHandler: (+1)
    \   00000000   0xB538             PUSH     {R3-R5,LR}
    \   00000002   0x4604             MOV      R4,R0
    \   00000004   0x460D             MOV      R5,R1
-    398            if (emberFormAndJoinIsScanning()) {
+    409            if (emberFormAndJoinIsScanning()) {
    \   00000006   0x.... 0x....      BL       emberFormAndJoinIsScanning
    \   0000000A   0xB128             CBZ.N    R0,??emberFormAndJoinEnergyScanResultHandler_0
-    399              SCAN_DEBUG_MSG("SCAN: found energy %d dBm on ", maxRssiValue);
-    400              SCAN_DEBUG_MSG("channel 0x%x\r\n", channel);
-    401              channelEnergies[channel - EMBER_MIN_802_15_4_CHANNEL_NUMBER] = maxRssiValue;
+    410              SCAN_DEBUG_MSG("SCAN: found energy %d dBm on ", maxRssiValue);
+    411              SCAN_DEBUG_MSG("channel 0x%x\r\n", channel);
+    412              channelEnergies[channel - EMBER_MIN_802_15_4_CHANNEL_NUMBER] = maxRssiValue;
    \   0000000C   0x....             LDR.N    R0,??DataTable10
    \   0000000E   0x6840             LDR      R0,[R0, #+4]
    \   00000010   0x1820             ADDS     R0,R4,R0
    \   00000012   0xF800 0x5C0B      STRB     R5,[R0, #-11]
-    402              return TRUE;
+    413              return TRUE;
    \   00000016   0x2001             MOVS     R0,#+1
-    403            }
-    404            return FALSE;
+    414            }
+    415            return FALSE;
    \                     ??emberFormAndJoinEnergyScanResultHandler_0: (+1)
    \   00000018   0xBD32             POP      {R1,R4,R5,PC}    ;; return
-    405          }
-    406          
-    407          //------------------------------------------------------------------------------
-    408          // Helper functions
-    409          
-    410          static void saveNetwork(EmberZigbeeNetwork *network, int8u lqi, int8s rssi)
-    411          {
-    412            int8u i;
-    413            NetworkInfo *finger;
-    414          
-    415            // See if we already have that network.
-    416            for (i = 0; i < networkCount; i++) {
-    417              finger = formAndJoinGetNetworkPointer(i);
-    418              if (MEMCOMPARE(finger->network.extendedPanId,
-    419                             network->extendedPanId,
-    420                             EXTENDED_PAN_ID_SIZE) == 0) {
-    421                return;
-    422              }
-    423            }
-    424          
-    425            if (formAndJoinSetBufferLength(networkCount + 1) != EMBER_SUCCESS) {
-    426              return;
-    427            }
-    428            finger = formAndJoinGetNetworkPointer(networkCount);
-    429            networkCount += 1;
-    430            MEMCOPY(finger, network, sizeof(EmberZigbeeNetwork));
-    431            finger->lqi = lqi;
-    432            finger->rssi = rssi;
-    433          }
-    434          
+    416          }
+    417          
+    418          //------------------------------------------------------------------------------
+    419          // Helper functions
+    420          
+    421          static void saveNetwork(EmberZigbeeNetwork *network, int8u lqi, int8s rssi)
+    422          {
+    423            int8u i;
+    424            NetworkInfo *finger;
+    425          
+    426            // See if we already have that network.
+    427            for (i = 0; i < networkCount; i++) {
+    428              finger = formAndJoinGetNetworkPointer(i);
+    429              if (MEMCOMPARE(finger->network.extendedPanId,
+    430                             network->extendedPanId,
+    431                             EXTENDED_PAN_ID_SIZE) == 0) {
+    432                return;
+    433              }
+    434            }
+    435          
+    436            if (formAndJoinSetBufferLength(networkCount + 1) != EMBER_SUCCESS) {
+    437              return;
+    438            }
+    439            finger = formAndJoinGetNetworkPointer(networkCount);
+    440            networkCount += 1;
+    441            MEMCOPY(finger, network, sizeof(EmberZigbeeNetwork));
+    442            finger->lqi = lqi;
+    443            finger->rssi = rssi;
+    444          }
+    445          
 
    \                                 In section .text, align 2, keep-with-next
-    435          boolean emberFormAndJoinIsScanning(void)
-    436          {
-    437            return (formAndJoinScanType > FORM_AND_JOIN_NEXT_NETWORK);
+    446          boolean emberFormAndJoinIsScanning(void)
+    447          {
+    448            return (formAndJoinScanType > FORM_AND_JOIN_NEXT_NETWORK);
    \                     emberFormAndJoinIsScanning: (+1)
    \   00000000   0x....             LDR.N    R0,??DataTable10
    \   00000002   0x7800             LDRB     R0,[R0, #+0]
@@ -879,13 +890,13 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \                     ??emberFormAndJoinIsScanning_0: (+1)
    \   0000000C   0x2000             MOVS     R0,#+0
    \   0000000E   0x4770             BX       LR               ;; return
-    438          }
-    439          
+    449          }
+    450          
 
    \                                 In section .text, align 2, keep-with-next
-    440          boolean emberFormAndJoinCanContinueJoinableNetworkScan(void)
-    441          {
-    442            return (formAndJoinScanType == FORM_AND_JOIN_NEXT_NETWORK);
+    451          boolean emberFormAndJoinCanContinueJoinableNetworkScan(void)
+    452          {
+    453            return (formAndJoinScanType == FORM_AND_JOIN_NEXT_NETWORK);
    \                     emberFormAndJoinCanContinueJoinableNetworkScan: (+1)
    \   00000000   0x....             LDR.N    R0,??DataTable10
    \   00000002   0x7800             LDRB     R0,[R0, #+0]
@@ -893,124 +904,124 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000006   0xBF18             IT       NE 
    \   00000008   0x2000             MOVNE    R0,#+0
    \   0000000A   0x4770             BX       LR               ;; return
-    443          }
-    444          
+    454          }
+    455          
 
    \                                 In section .text, align 2, keep-with-next
-    445          static boolean setup(int8u scanType)
-    446          {
+    456          static boolean setup(int8u scanType)
+    457          {
    \                     setup: (+1)
    \   00000000   0xB538             PUSH     {R3-R5,LR}
    \   00000002   0x4604             MOV      R4,R0
-    447            if (emberFormAndJoinIsScanning()) {
+    458            if (emberFormAndJoinIsScanning()) {
    \   00000004   0x.... 0x....      BL       emberFormAndJoinIsScanning
    \   00000008   0xB118             CBZ.N    R0,??setup_0
-    448              emberScanErrorHandler(EMBER_MAC_SCANNING);
+    459              emberScanErrorHandler(EMBER_MAC_SCANNING);
    \   0000000A   0x203D             MOVS     R0,#+61
    \   0000000C   0x.... 0x....      BL       emberScanErrorHandler
-    449              return FALSE;
+    460              return FALSE;
    \   00000010   0xE00F             B.N      ??setup_1
-    450            }
-    451            
-    452            // Case 12903: Need to reset the cleanup timeout when initiating a new scan
-    453            // since a previous scan process may have concluded before the cleanup event
-    454            // timer ran out, and we don't want it triggering in the middle of our new
-    455            // scan and cleaning out legitimate data.  
-    456            // This is a special cause because emberFormAndJoinCleanup is occurring 
-    457            // directly rather than as a result of the cleanup event firing, so the 
-    458            // cleanup event timer isn't being deactivated like it would from the event
-    459            // handler.  Since our only interface to manipulate the cleanup event 
-    460            // timer is to restart it (rather than deactivate it), we do that here.
-    461            formAndJoinSetCleanupTimeout();
+    461            }
+    462            
+    463            // Case 12903: Need to reset the cleanup timeout when initiating a new scan
+    464            // since a previous scan process may have concluded before the cleanup event
+    465            // timer ran out, and we don't want it triggering in the middle of our new
+    466            // scan and cleaning out legitimate data.  
+    467            // This is a special cause because emberFormAndJoinCleanup is occurring 
+    468            // directly rather than as a result of the cleanup event firing, so the 
+    469            // cleanup event timer isn't being deactivated like it would from the event
+    470            // handler.  Since our only interface to manipulate the cleanup event 
+    471            // timer is to restart it (rather than deactivate it), we do that here.
+    472            formAndJoinSetCleanupTimeout();
    \                     ??setup_0: (+1)
    \   00000012   0x.... 0x....      BL       formAndJoinSetCleanupTimeout
-    462            emberFormAndJoinCleanup(EMBER_SUCCESS);  // In case we were in NEXT_NETWORK mode.
+    473            emberFormAndJoinCleanup(EMBER_SUCCESS);  // In case we were in NEXT_NETWORK mode.
    \   00000016   0x2000             MOVS     R0,#+0
    \   00000018   0x.... 0x....      BL       emberFormAndJoinCleanup
-    463            networkCount = 0;
+    474            networkCount = 0;
    \   0000001C   0x....             LDR.N    R5,??DataTable10
    \   0000001E   0x2000             MOVS     R0,#+0
    \   00000020   0x70E8             STRB     R0,[R5, #+3]
-    464            formAndJoinScanType = scanType;
+    475            formAndJoinScanType = scanType;
    \   00000022   0x702C             STRB     R4,[R5, #+0]
-    465            dataContents = formAndJoinAllocateBuffer();
+    476            dataContents = formAndJoinAllocateBuffer();
    \   00000024   0x.... 0x....      BL       formAndJoinAllocateBuffer
    \   00000028   0x6068             STR      R0,[R5, #+4]
-    466            if (dataContents == NULL) {
+    477            if (dataContents == NULL) {
    \   0000002A   0xB920             CBNZ.N   R0,??setup_2
-    467              emberFormAndJoinCleanup(EMBER_NO_BUFFERS);
+    478              emberFormAndJoinCleanup(EMBER_NO_BUFFERS);
    \   0000002C   0x2018             MOVS     R0,#+24
    \   0000002E   0x.... 0x....      BL       emberFormAndJoinCleanup
-    468              return FALSE;
+    479              return FALSE;
    \                     ??setup_1: (+1)
    \   00000032   0x2000             MOVS     R0,#+0
    \   00000034   0xBD32             POP      {R1,R4,R5,PC}
-    469            }
-    470            return TRUE;
+    480            }
+    481            return TRUE;
    \                     ??setup_2: (+1)
    \   00000036   0x2001             MOVS     R0,#+1
    \   00000038   0xBD32             POP      {R1,R4,R5,PC}    ;; return
-    471          }
-    472          
+    482          }
+    483          
 
    \                                 In section .text, align 2, keep-with-next
-    473          void emberFormAndJoinCleanup(EmberStatus status)
-    474          {
+    484          void emberFormAndJoinCleanup(EmberStatus status)
+    485          {
    \                     emberFormAndJoinCleanup: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
    \   00000002   0x4604             MOV      R4,R0
-    475            formAndJoinScanType = FORM_AND_JOIN_NOT_SCANNING;
+    486            formAndJoinScanType = FORM_AND_JOIN_NOT_SCANNING;
    \   00000004   0x....             LDR.N    R1,??DataTable10
    \   00000006   0x2000             MOVS     R0,#+0
    \   00000008   0x7008             STRB     R0,[R1, #+0]
-    476            SCAN_DEBUG("formAndJoinReleaseBuffer()\n");
-    477            formAndJoinReleaseBuffer();
+    487            SCAN_DEBUG("formAndJoinReleaseBuffer()\n");
+    488            formAndJoinReleaseBuffer();
    \   0000000A   0x.... 0x....      BL       formAndJoinReleaseBuffer
-    478            if (status != EMBER_SUCCESS) {
+    489            if (status != EMBER_SUCCESS) {
    \   0000000E   0xB124             CBZ.N    R4,??emberFormAndJoinCleanup_0
-    479              emberScanErrorHandler(status);
+    490              emberScanErrorHandler(status);
    \   00000010   0x4620             MOV      R0,R4
    \   00000012   0xE8BD 0x4010      POP      {R4,LR}
    \   00000016   0x.... 0x....      B.W      emberScanErrorHandler
-    480            }
-    481          }
+    491            }
+    492          }
    \                     ??emberFormAndJoinCleanup_0: (+1)
    \   0000001A   0xBD10             POP      {R4,PC}          ;; return
-    482          
+    493          
 
    \                                 In section .text, align 2, keep-with-next
-    483          static EmberStatus startScan(EmberNetworkScanType type, int32u mask, int8u duration)
-    484          {
+    494          static EmberStatus startScan(EmberNetworkScanType type, int32u mask, int8u duration)
+    495          {
    \                     startScan: (+1)
    \   00000000   0xB510             PUSH     {R4,LR}
-    485            EmberStatus status = emberStartScan(type, mask, duration);
+    496            EmberStatus status = emberStartScan(type, mask, duration);
    \   00000002   0x.... 0x....      BL       emberStartScan
    \   00000006   0x0004             MOVS     R4,R0
-    486            SCAN_DEBUG_MSG("SCAN: start scan, status 0x%x\r\n", status);
-    487            if (status != EMBER_SUCCESS) {
+    497            SCAN_DEBUG_MSG("SCAN: start scan, status 0x%x\r\n", status);
+    498            if (status != EMBER_SUCCESS) {
    \   00000008   0xBF18             IT       NE 
-    488              emberFormAndJoinCleanup(status);
+    499              emberFormAndJoinCleanup(status);
    \   0000000A   0x.... 0x....      BLNE     emberFormAndJoinCleanup
-    489            }
-    490            return status;
+    500            }
+    501            return status;
    \   0000000E   0x4620             MOV      R0,R4
    \   00000010   0xBD10             POP      {R4,PC}          ;; return
-    491          }
+    502          }
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable10:
    \   00000000   0x........         DC32     formAndJoinScanType
-    492          
-    493          boolean isArrayZero(int8u* array, int8u size)
-    494          {
-    495            int8u i;
-    496            for (i=0; i<size; i++) {
-    497              if (array[i] != 0) {
-    498                return FALSE;
-    499              }
-    500            }
-    501            return TRUE;
-    502          }
+    503          
+    504          boolean isArrayZero(int8u* array, int8u size)
+    505          {
+    506            int8u i;
+    507            for (i=0; i<size; i++) {
+    508              if (array[i] != 0) {
+    509                return FALSE;
+    510              }
+    511            }
+    512            return TRUE;
+    513          }
 
    Maximum stack usage in bytes:
 

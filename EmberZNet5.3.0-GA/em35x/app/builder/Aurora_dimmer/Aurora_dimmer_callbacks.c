@@ -19,6 +19,7 @@
 #include "app/framework/plugin/aurora-colour-control/aurora-colour-conversion.h"
 #include "app/framework/plugin/tunneling-server/tunneling-server.h"
 
+
 typedef struct {
     boolean open;
     int16u tunnelId;
@@ -297,6 +298,7 @@ boolean emberAfStackStatusCallback(EmberStatus status)
 {
   //MN
     emberAfDebugPrintln("Reached emberAfStackStatusCallback line 285 Aurora_dimmer_callbacks");
+  emberAfScanErrorCallback(EMBER_SUCCESS);  //MN  Always ensure form and join scan is stopped.             
 
   
     switch(status) 
@@ -312,6 +314,14 @@ boolean emberAfStackStatusCallback(EmberStatus status)
             
             emberAfOtaClientStartCallback(); 
             //GB dont need this on linkup!   emberAfPluginAuroraPwmInitializeTimer();
+               
+            //MN sample code from gary
+            emberAfDebugPrintln("Nwk Status=JOINED, NodeId=0x%2x", emberGetNodeId());
+            
+            emberTick();  // Stack tick here ensures "Device Announce" is always sent on Join.
+                        
+            nwkNewJoinPending = FALSE;  // Safety reset. 
+            
             break;
 
         case EMBER_NETWORK_DOWN:
@@ -319,6 +329,41 @@ boolean emberAfStackStatusCallback(EmberStatus status)
             
               //MN
     emberAfDebugPrintln("Reached emberAfStackStatusCallback line 310 Aurora_dimmer_callbacks");
+
+            //MN sample code from gary   
+                if (emberNetworkState() != EMBER_JOINED_NETWORK_NO_PARENT)
+            {
+                emberAfDebugPrintln("Nwk Status=LEFT_PAN");
+                
+                emberTick();  // Stack tick here ensures "Leave Announce" is always sent.
+                
+                if (nwkNewJoinPending)    // CHECK GLOBAL VARIABLE
+                {
+                    // We have LEFT the existing nwk, start Joining again.
+                    nwkNewJoinPending = FALSE;     // CLEAR GLOBAL VARIABLE        
+					
+                  //  emberAfPluginAuroraButtonJoiningJoinNetwork();  // NOW START THE JOINING SCAN
+                    
+                    
+                        emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningJoinNetwork line 319 aurora-button-joining\n");//MN
+  
+                        emberAfDebugPrint("Find joinable networks (%x)\r\n", emberNetworkState());//MN
+
+                        //emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_SET);//MN
+
+                        //emberAfDebugPrint("@line 333, device state is: %x\n", deviceStateFlags);//MN
+
+                       
+                             
+                        emberAfDebugPrint("Reached line 327 aurora-button-joining\n");//MN
+                      
+                        // Searches for and joins network
+                        emberAfStartSearchForJoinableNetwork();//MN
+                          
+                        emberAfCorePrintln("%p: join", "BUTTON\r\n");//MN
+                    
+                }
+            }
             
             break;
 

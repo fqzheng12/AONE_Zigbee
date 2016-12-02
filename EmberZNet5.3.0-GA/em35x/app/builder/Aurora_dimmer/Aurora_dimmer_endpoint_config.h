@@ -45,7 +45,7 @@
     { 0x0002, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (0x00), { (int8u*)0x0000 } }, /* 9 / Scenes / current group*/\
     { 0x0003, ZCL_BOOLEAN_ATTRIBUTE_TYPE, 1, (0x00), { (int8u*)0x00 } }, /* 10 / Scenes / scene valid*/\
     { 0x0004, ZCL_BITMAP8_ATTRIBUTE_TYPE, 1, (0x00), { (int8u*)0x00 } }, /* 11 / Scenes / name support*/\
-    { 0x0000, ZCL_BOOLEAN_ATTRIBUTE_TYPE, 1, (0x00), { (int8u*)0x00 } }, /* 12 / On/off / on/off*/\
+    { 0x0000, ZCL_BOOLEAN_ATTRIBUTE_TYPE, 1, (0x00), { (int8u*)0x01 } }, /* 12 / On/off / on/off*/\
     { 0x0000, ZCL_INT8U_ATTRIBUTE_TYPE, 1, (0x00), { (int8u*)0xFF } }, /* 13 / Level Control / current level*/\
     { 0x0010, ZCL_INT16U_ATTRIBUTE_TYPE, 2, (ATTRIBUTE_MASK_WRITABLE), { (int8u*)0x0000 } }, /* 14 / Level Control / on off transition time*/\
     { 0x0000, ZCL_IEEE_ADDRESS_ATTRIBUTE_TYPE, 8, (ATTRIBUTE_MASK_CLIENT), { (int8u*)&(generatedDefaults[66]) } }, /* 15 / Over the Air Bootloading / OTA Upgrade Server ID*/\

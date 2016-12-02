@@ -340,7 +340,7 @@ ZigbeeProNetwork:*Primary,ZA_COORDINATOR,HA
 OptionalAttributes:768,7,server,0:0,4,server,0:0,5,server,0:768,0,server,0:768,1,server,0:0,1,server,0:8,16,server,0
 
 #  User defined default values for attributes.
-AttributeDefaults:0,4,server,0,Aurora:0,5,server,0,Dimmer:8,0,server,0,0xFF:0,1,server,0,0x0e
+AttributeDefaults:0,4,server,0,Aurora:0,5,server,0,Dimmer:8,0,server,0,0xFF:0,1,server,0,0x0e:6,0,server,0,0x01
 
 #  Lists the channels that this application will be configured to use.
 Channels:11
@@ -807,5 +807,5 @@ AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_INCLUDE_HARDWARE
 
 AppPluginOption(em357):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END,524288
 
-AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2,26
+AppPluginOption(em357):EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2,29
 

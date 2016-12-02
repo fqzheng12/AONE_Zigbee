@@ -1,0 +1,47 @@
+v17
++-1000 pairing tolerance
+524288 memory offset in OTA Storage End Offset in OTA Simple Storage EEPROM Driver
+onoff Transition time enabled
+reporting enabled
+transTimeMS typo
+
+v18
+When you press the button it tells you that it is version 18
+Commented out from Line 814 in aurora-ota-client per Gary's instruction
+Added line 839 in aurora-ota-client to delete eeprom
+Added line 183 in aurora-ota-client to reduce upgrade delay to 1 second
+
+v19
+When you press the button it tells you that it is version 19
+
+v20
+When you press the button it tells you that it is version 20
+
+v21
+When you press the button it tells you that it is version 21
+Joining requries a 5s button press
+
+v22
+No debug printout for version
+Debug printout to indicate it is joining and joined for the purpose of adding the motherboard flashes later
+Reporting added in (it was removed somewhere...)
+
+v23
+Added feature to detect if AONE was already paired in power up and to initiate pairing sequence if not
+
+v24
+Added reset function which is called when the button is pressed for 3 seconds. 
+Removed the ability to initiate joining or pairing with button presses
+
+v25
+Improved reset function. Pressing for 3 seconds now leaves and then reboots
+
+v26
+Added feature that sends UART signals to motherboard to flash twice upon searching for a network and once when a network has been joined
+Increased the button pressing tolerances to +-1.5 seconds
+This version used for EVT Testing 9/11
+
+v27
+Reduced the waiting time for another button press 10 200ms to reduce restart delay
+Created a secret button press sequence of 3x 60ms +-20ms for the MB/DB to activate to reduce the delay in power cycling reboots.
+Added Gary's sample code to handle the reboots. It now sends a leave message on leaving ntwk

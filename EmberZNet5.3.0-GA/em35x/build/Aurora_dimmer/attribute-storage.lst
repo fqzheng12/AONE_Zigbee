@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        03/Nov/2016  16:07:43
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        01/Dec/2016  11:41:58
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -394,7 +394,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000092   0x10 0x01          DC8 16, 1, 0, 0, 0, 0
    \              0x00 0x00    
    \              0x00 0x00    
-   \   00000098   0x00000000         DC32 0H
+   \   00000098   0x00000001         DC32 1H
    \   0000009C   0x0000             DC16 0
    \   0000009E   0x20 0x01          DC8 32, 1, 0, 0, 0, 0
    \              0x00 0x00    

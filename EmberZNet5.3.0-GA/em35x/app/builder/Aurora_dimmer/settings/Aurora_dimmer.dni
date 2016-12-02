@@ -99,7 +99,8 @@ ShowTiming=1
 mode=0
 [Breakpoints2]
 Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\framework\plugin\aurora-colour-control\aurora-colour-control.c}.354.1" 0 0 1 "" 0 "" 0
-Count=1
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\framework\plugin\aurora-button-joining\aurora-button-joining.c}.781.1" 0 0 1 "" 0 "" 0
+Count=2
 [Aliases]
 Count=0
 SuppressDialog=0

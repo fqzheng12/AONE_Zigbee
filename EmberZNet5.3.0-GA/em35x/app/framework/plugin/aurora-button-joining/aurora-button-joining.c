@@ -47,7 +47,7 @@ void emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(int8u newState, bool
 
 
 static void emberAfPluginAuroraButtonJoiningReset(void);  //MN
-static void emberAfPluginAuroraButtonJoiningJoinNetwork(void); 
+//static void emberAfPluginAuroraButtonJoiningJoinNetwork(void);//MN 
 static void emberAfPluginAuroraButtonJoiningPermitJoiningNetwork(void);
 static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void);
 static void emberAfPluginAuroraButtonJoiningCheckButtonSequence(void);
@@ -77,8 +77,8 @@ const t_ledSettings ledSettings[] = {
 #define MAX_LED_STATES          sizeof(ledSettings) / sizeof(t_ledSettings)
 
 static t_buttonSeqence buttonSequence[] = {
-  {1, {3000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningReset}//,                         // Join MATCH 0 MN CHANGED TO RESET on a 3 second button press
- // {5, {1000, 1000, 1000, 1000, 1000}, emberAfPluginAuroraButtonJoiningLeaveNetwork},            // Leave MATCH 1
+  {1, {3000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningReset},                         // Join MATCH 0 MN CHANGED TO RESET on a 3 second button press
+  {3, {100, 100, 100, 0, 0}, emberAfPluginAuroraButtonJoiningReset}//,            // Leave MATCH 1 MN CHANGED to RESET on 3x 100ms button presses
  // {2, {1000, 1000, 0, 0, 0}, emberAfPluginAuroraButtonJoiningPermitJoiningNetwork}              // Identify / Permit Joining MATCH 2
 };
 
@@ -100,6 +100,8 @@ char deviceStateText[][20] = {
      "Permit Joining",
      "Network Unavailable"
      };
+
+boolean nwkNewJoinPending = FALSE; //= FALSE; //MN declare global variable
 
 void emRadioSetEdCcaThreshold(int8s threshold);     // ember provided
 
@@ -278,26 +280,54 @@ static void emberAfPluginAuroraButtonJoiningCheckButtonSequence(void)
   // Iterate over the defined sequences
   for (sequenceIndex = 0; sequenceIndex < MAX_BUTTON_SEQUENCES; sequenceIndex++) 
   {
-    sequenceMatch = TRUE;
-
-    // Iterate over the button press times
-    for (index = 0; index < buttonSequence[sequenceIndex].presses; index++) 
-    { 
-      // If the time is outside the defined time go to the next sequence
-      if ((buttonDownTimes[index] == 0) || 
-          (!((buttonDownTimes[index] >= buttonSequence[sequenceIndex].downTime[index] - BUTTON_PRESS_MINUS_TOLERANCE) && 
-          (buttonDownTimes[index] < buttonSequence[sequenceIndex].downTime[index] + BUTTON_PRESS_PLUS_TOLERANCE)))) 
-      { 
-        sequenceMatch = FALSE;
-        break;
-      } 
-    }
-
-    // If we have found a match exit the loop
-    if (sequenceMatch) 
+    sequenceMatch = TRUE;   
+        
+    if (sequenceIndex != 1) //MN check all sequences except the special power cycling sequence against normal tolerances
     {
-      break;
+      // Iterate over the button press times
+      for (index = 0; index < buttonSequence[sequenceIndex].presses; index++) 
+      { 
+        // If the time is outside the defined time go to the next sequence
+        if ((buttonDownTimes[index] == 0) || 
+            (!((buttonDownTimes[index] >= buttonSequence[sequenceIndex].downTime[index] - BUTTON_PRESS_MINUS_TOLERANCE) && 
+            (buttonDownTimes[index] < buttonSequence[sequenceIndex].downTime[index] + BUTTON_PRESS_PLUS_TOLERANCE)))) 
+        { 
+          sequenceMatch = FALSE;
+          break;
+        } 
+      }
+
+      // If we have found a match exit the loop
+      if (sequenceMatch) 
+      {
+        break;
+      }
+    }  
+    
+    
+    if (sequenceIndex == 1) //MN if this is the special power cyling sequence, use super tight tolerances
+    {
+      // Iterate over the button press times
+      for (index = 0; index < buttonSequence[sequenceIndex].presses; index++) 
+      { 
+        // If the time is outside the defined time go to the next sequence
+        if ((buttonDownTimes[index] == 0) || 
+            (!((buttonDownTimes[index] >= buttonSequence[sequenceIndex].downTime[index] - BUTTON_PRESS_MINUS_TOLERANCE_TIGHT) && 
+            (buttonDownTimes[index] < buttonSequence[sequenceIndex].downTime[index] + BUTTON_PRESS_PLUS_TOLERANCE_TIGHT)))) 
+        { 
+          sequenceMatch = FALSE;
+          break;
+        } 
+      }
+
+      // If we have found a match exit the loop
+      if (sequenceMatch) 
+      {
+        break;
+      }
     }
+    
+    
   }
 
   // If we have a match, call the appropriate function
@@ -323,7 +353,7 @@ void checkIfPaired(void) //MN
     
     if (emberNetworkState() == EMBER_NO_NETWORK)
     {
-       emberAfPluginAuroraButtonJoiningJoinNetwork();
+       emberAfPluginAuroraButtonJoiningReset(); //MN changed from Join to Reset
     }
     
     checkedIfPaired=TRUE;
@@ -335,9 +365,10 @@ void checkIfPaired(void) //MN
 //Reset function to leave and then join a network
 static void emberAfPluginAuroraButtonJoiningReset(void)
 {
+
     emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningReset line 338 aurora-button-joining\n"); //MN
     
-    emberAfPluginAuroraButtonJoiningLeaveNetwork();
+    //emberAfPluginAuroraButtonJoiningLeaveNetwork();
     
 /*    emberAfPluginAuroraButtonJoiningJoinNetwork();
 
@@ -349,7 +380,63 @@ static void emberAfPluginAuroraButtonJoiningReset(void)
     
    */
     
-    halReboot();
+    //halReboot();
+    
+    //MN sample code from Gary
+    EmberNetworkStatus nwkState = emberAfNetworkState();  // Get present network state.    
+    switch (nwkState) 
+    {
+        case EMBER_NO_NETWORK:
+        {
+            emberAfDebugPrintln("Find joinable networks");
+                        
+            emberAfStartSearchForJoinableNetwork();  // Start Joining scan.
+            
+            break; 
+        }            
+        case EMBER_JOINED_NETWORK_NO_PARENT:
+        {
+            // Join request behaviour (if Network:Lost) - do a leave nwk then then do a new Join.
+            if (!nwkNewJoinPending)
+            {   
+                  emberLeaveNetwork(); //emberAfPluginAuroraButtonJoiningLeaveNetwork();
+              
+              nwkNewJoinPending = TRUE;  // SET GLOBAL FLAG, a new Join will be triggered when device has LEFT nwk.                				
+            }
+            break;
+        }
+        case EMBER_JOINED_NETWORK:
+        {          
+              // Join request behaviour (if Network:Joined) - do a leave nwk then then do a new Join.
+              if (!nwkNewJoinPending)
+              {
+                      emberLeaveNetwork();//emberAfPluginAuroraButtonJoiningLeaveNetwork(); // Leave network straight away.                
+            emberAfDebugPrintln("REBOOT NOW EMBER_JOINED_NETWORK");
+                      nwkNewJoinPending = TRUE;  // Set global flag, a new Join will be triggered when device has LEFT nwk.                				
+              }				
+            break;
+        }
+        case EMBER_JOINING_NETWORK:
+        {
+            emberAfDebugPrintln("Joining network");
+            
+            break;
+        }
+        case EMBER_LEAVING_NETWORK:
+        {
+            emberAfDebugPrintln("Leaving network");
+            
+            break;
+        }
+        default :
+        {
+            emberAfDebugPrintln("Join request, nwk state=%x", nwkState);
+            break; 
+        }    
+    }
+    
+    
+    
 
 }
 
@@ -364,6 +451,7 @@ static void emberAfPluginAuroraButtonJoiningReset(void)
  *
  * @param none
  */
+
 static void emberAfPluginAuroraButtonJoiningJoinNetwork(void)
 {
    
@@ -372,45 +460,22 @@ static void emberAfPluginAuroraButtonJoiningJoinNetwork(void)
   
   emberAfDebugPrint("Find joinable networks (%x)\r\n", emberNetworkState());
 
-  if ((emberNetworkState() == EMBER_NO_NETWORK) && !joiningFLag) 
-  {
-    joiningFLag = TRUE;
-    
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_SET);
 
     emberAfDebugPrint("@line 333, device state is: %x\n", deviceStateFlags);
 
-        emberAfDebugPrint("FLASH TWICE TO INDICATE GOING INTO PAIRING MODE\n", deviceStateFlags);
-        emberAfPluginAuroraHostProtocolFlashTwice();
-
-    
+   
         //MN  
     emberAfDebugPrint("Reached line 327 aurora-button-joining\n");
   
     // Searches for and joins network
     emberAfStartSearchForJoinableNetwork();
-    
-
-    
+      
     emberAfCorePrintln("%p: join", "BUTTON\r\n");
     
-    emberAfDebugPrint("Network state when I want to do the flash: (%x)\r\n", emberNetworkState()); //MN
-
-                            
-  if (emberNetworkState() == EMBER_JOINED_NETWORK)
-    {
-       emberAfPluginAuroraHostProtocolFlashOnce(); //MN if the device has just joined a network, flash once
-    }
-  } 
-  else 
-  {
-    emberAfPluginAuroraButtonJoiningPermitJoiningNetwork();
-    
-     //MN 
-    emberAfDebugPrint("Reached line 345 aurora-button-joining\n");
-    
-  }
 }
+
+
 
 /** @brief Clear the joining flag
  *  
@@ -476,6 +541,8 @@ void emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler(void)
 
 }
 
+
+
 /** @brief Leave network
  *  
  *  Sends a leave network request and flashes the led with 
@@ -483,6 +550,7 @@ void emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler(void)
  *
  * @param none
  */
+
 static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
 {
   
@@ -493,8 +561,6 @@ static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
 
   emberAfDebugPrint("Leaving network\r\n");
 
-  if (emberNetworkState() == EMBER_JOINED_NETWORK) 
-  {
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINED, DEVICE_STATE_FLAGS_CLEAR);
 
               emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningLeaveNetwork line 438 aurora-button-joining\n"); //MN
@@ -517,9 +583,8 @@ static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
         emberAfDebugPrint("Error (%02X)\r\n", status);
         break;
     }
-
-  }
 }
+
 
 // ISR context functions!!!
 
@@ -652,7 +717,7 @@ static t_ledSettings *getLedSettings(t_networkState networkState)
  */
 void cliJoin(void)
 {
-  emberAfPluginAuroraButtonJoiningJoinNetwork();
+  emberAfPluginAuroraButtonJoiningReset();
 }
 
 void stackStatusEventHandler(void)
