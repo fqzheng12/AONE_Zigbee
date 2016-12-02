@@ -1,34 +1,34 @@
-"C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\framework\plugin\address-table\address-table-management.c"
+"C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\address-table\address-table-management.c"
 -std=c99
 -ferror-limit=100
 -I
 
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\app\framework\include
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\stack
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\stack
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.2\arm\inc\c
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\framework\plugin\address-table
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\plugin\address-table
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\builder\Aurora_dimmer
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x
 -I
-C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\wip\EmberZNet5.3.0-GA\em35x\app\framework\include
+C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Zigbee\EmberZNet5.3.0-GA\em35x\app\framework\include
 -I
 C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x
 -I
@@ -40,7 +40,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\16.09.
 -DGENERATED_TOKEN_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h"
 -DZA_GENERATED_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer.h"
 -DAPP_BTL=1
--DBOARD_HEADER="../../../wip/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"
+-DBOARD_HEADER="../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"
 -DPLATFORM_HEADER="hal/micro/cortexm3/compiler/iar.h"
 -DCORTEXM3=1
 -DCORTEXM3_EMBER_MICRO=1

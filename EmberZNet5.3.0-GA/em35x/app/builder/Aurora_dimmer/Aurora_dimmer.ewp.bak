@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- THIS IS A GENERATED FILE: PLEASE DO NOT EDIT -->
 
 <project>
   <fileVersion>2</fileVersion>
@@ -13,7 +12,7 @@
       <name>General</name>
       <archiveVersion>3</archiveVersion>
       <data>
-        <version>16</version>
+        <version>24</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -33,18 +32,13 @@
           <state>..\..\..\build\Aurora_dimmer</state>
         </option>
         <option>
-          <name>Variant</name>
-          <version>8</version>
-          <state>32</state>
-        </option>
-        <option>
           <name>GEndianMode</name>
           <state>0</state>
         </option>
         <option>
           <name>Input variant</name>
-          <version>1</version>
-          <state>0</state>
+          <version>3</version>
+          <state>1</state>
         </option>
         <option>
           <name>Input description</name>
@@ -52,8 +46,8 @@
         </option>
         <option>
           <name>Output variant</name>
-          <version>0</version>
-          <state>0</state>
+          <version>2</version>
+          <state>1</state>
         </option>
         <option>
           <name>Output description</name>
@@ -61,11 +55,6 @@
         </option>
         <option>
           <name>GOutputBinary</name>
-          <state>0</state>
-        </option>
-        <option>
-          <name>FPU</name>
-          <version>0</version>
           <state>0</state>
         </option>
         <option>
@@ -87,12 +76,8 @@
           <state>Use the normal configuration of the C/C++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
         </option>
         <option>
-          <name>RTConfigPath</name>
-          <state>$TOOLKIT_DIR$\INC\DLib_Config_Normal.h</state>
-        </option>
-        <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>5.20.0.50986</state>
+          <state>7.40.3.8937</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -127,22 +112,79 @@
           <version>0</version>
           <state>1000111110110101101110011100111111101110011011000101110111101101100111111111111100110011111001110111001111111111111111111111111</state>
         </option>
+        <option>
+          <name>GeneralMisraVer</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>GeneralMisraRules04</name>
+          <version>0</version>
+          <state>111101110010111111111000110111111111111111111111111110010111101111010101111111111111111111111111101111111011111001111011111011111111111111111</state>
+        </option>
+        <option>
+          <name>RTConfigPath2</name>
+          <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
+        </option>
+        <option>
+          <name>GBECoreSlave</name>
+          <version>22</version>
+          <state>0</state>
+        </option>
+        <option>
+          <name>OGUseCmsis</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>OGUseCmsisDspLib</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>GRuntimeLibThreads</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CoreVariant</name>
+          <version>22</version>
+          <state>38</state>
+        </option>
+        <option>
+          <name>GFPUDeviceSlave</name>
+          <state>default	None</state>
+        </option>
+        <option>
+          <name>FPU2</name>
+          <version>0</version>
+          <state>0</state>
+        </option>
+        <option>
+          <name>NrRegs</name>
+          <version>0</version>
+          <state>0</state>
+        </option>
+        <option>
+          <name>NEON</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>GFPUCoreSlave2</name>
+          <version>22</version>
+          <state>38</state>
+        </option>
       </data>
     </settings>
     <settings>
       <name>ICCARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>20</version>
+        <version>31</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
           <name>CCDefines</name>
-          
           <state>GENERATED_TOKEN_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h"</state>
           <state>ZA_GENERATED_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer.h"</state>
           <state>APP_BTL</state>
-          <state>BOARD_HEADER="../../../wip/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"</state>
+          <state>BOARD_HEADER="../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"</state>
           <state>PLATFORM_HEADER="hal/micro/cortexm3/compiler/iar.h"</state>
           <state>CORTEXM3</state>
           <state>CORTEXM3_EMBER_MICRO</state>
@@ -150,7 +192,6 @@
           <state>PHY_EM3XX</state>
           <state>APPLICATION_TOKEN_HEADER="app/framework/util/tokens.h"</state>
           <state>CONFIGURATION_HEADER="app/framework/util/config.h"</state>
-          
           <state>ATTRIBUTE_STORAGE_CONFIGURATION="app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h"</state>
           <state>__SOURCEFILE__="$FILE_FNAME$"</state>
         </option>
@@ -213,7 +254,7 @@
         <option>
           <name>CCAllowList</name>
           <version>1</version>
-          <state>1111111</state>
+          <state>11111110</state>
         </option>
         <option>
           <name>CCDebugInfo</name>
@@ -268,10 +309,6 @@
           <state>$FILE_BNAME$.o</state>
         </option>
         <option>
-          <name>CCLangSelect</name>
-          <state>0</state>
-        </option>
-        <option>
           <name>CCLibConfigHeader</name>
           <state>1</state>
         </option>
@@ -293,15 +330,10 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\</state>
-          
         </option>
         <option>
           <name>CCStdIncCheck</name>
           <state>0</state>
-        </option>
-        <option>
-          <name>CCStdIncludePath</name>
-          <state>$TOOLKIT_DIR$\INC\</state>
         </option>
         <option>
           <name>CCCodeSection</name>
@@ -333,13 +365,87 @@
           <version>0</version>
           <state>1000111110110101101110011100111111101110011011000101110111101101100111111111111100110011111001110111001111111111111111111111111</state>
         </option>
+        <option>
+          <name>CompilerMisraRules04</name>
+          <version>0</version>
+          <state>111101110010111111111000110111111111111111111111111110010111101111010101111111111111111111111111101111111011111001111011111011111111111111111</state>
+        </option>
+        <option>
+          <name>CCPosIndRopi</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCPosIndRwpi</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCPosIndNoDynInit</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IccLang</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IccCDialect</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccAllowVLA</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IccCppDialect</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccExceptions</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccRTTI</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccStaticDestr</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccCppInlineSemantics</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccCmsis</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IccFloatSemantics</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCOptimizationNoSizeConstraints</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCNoLiteralPool</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>CCOptStrategySlave</name>
+          <version>0</version>
+          <state>1</state>
+        </option>
+        <option>
+          <name>CCGuardCalls</name>
+          <state>1</state>
+        </option>
       </data>
     </settings>
     <settings>
       <name>AARM</name>
       <archiveVersion>2</archiveVersion>
       <data>
-        <version>7</version>
+        <version>9</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -389,11 +495,10 @@
         </option>
         <option>
           <name>ADefines</name>
-          
           <state>GENERATED_TOKEN_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer_tokens.h"</state>
           <state>ZA_GENERATED_HEADER="app/builder/Aurora_dimmer/Aurora_dimmer.h"</state>
           <state>APP_BTL</state>
-          <state>BOARD_HEADER="../../../wip/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"</state>
+          <state>BOARD_HEADER="../../../AONE_Zigbee/EmberZNet5.3.0-GA/em35x/app/builder/Aurora_dimmer/Aurora_dimmer_board.h"</state>
           <state>PLATFORM_HEADER="hal/micro/cortexm3/compiler/iar.h"</state>
           <state>CORTEXM3</state>
           <state>CORTEXM3_EMBER_MICRO</state>
@@ -401,7 +506,6 @@
           <state>PHY_EM3XX</state>
           <state>APPLICATION_TOKEN_HEADER="app/framework/util/tokens.h"</state>
           <state>CONFIGURATION_HEADER="app/framework/util/config.h"</state>
-          
           <state>ATTRIBUTE_STORAGE_CONFIGURATION="app/builder/Aurora_dimmer/Aurora_dimmer_endpoint_config.h"</state>
         </option>
         <option>
@@ -497,10 +601,6 @@
           <state>0</state>
         </option>
         <option>
-          <name>AStdIncludes</name>
-          <state>$TOOLKIT_DIR$\INC\</state>
-        </option>
-        <option>
           <name>AUserIncludes</name>
           <state>$FILE_DIR$\</state>
           <state>$PROJ_DIR$\</state>
@@ -509,7 +609,6 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\stack\</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\..\</state>
-          
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -518,6 +617,10 @@
         <option>
           <name>AExtraOptionsV2</name>
           <state></state>
+        </option>
+        <option>
+          <name>AsmNoLiteralPool</name>
+          <state>0</state>
         </option>
       </data>
     </settings>
@@ -530,7 +633,7 @@
         <debug>1</debug>
         <option>
           <name>OOCOutputFormat</name>
-          <version>2</version>
+          <version>3</version>
           <state>0</state>
         </option>
         <option>
@@ -557,6 +660,7 @@
       <data>
         <extensions></extensions>
         <cmdline></cmdline>
+        <hasPrio>0</hasPrio>
       </data>
     </settings>
     <settings>
@@ -576,7 +680,7 @@
       <name>ILINK</name>
       <archiveVersion>0</archiveVersion>
       <data>
-        <version>6</version>
+        <version>16</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -626,8 +730,6 @@
         <option>
           <name>IlinkConfigDefines</name>
           <state>APP_BTL=1</state>
-          <state></state>
-          
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -722,10 +824,6 @@
           <state>halEntryPoint</state>
         </option>
         <option>
-          <name>IlinkNXPLPCChecksum</name>
-          <state>0</state>
-        </option>
-        <option>
           <name>DoFill</name>
           <state>0</state>
         </option>
@@ -748,10 +846,6 @@
         </option>
         <option>
           <name>CrcAlign</name>
-          <state>1</state>
-        </option>
-        <option>
-          <name>CrcAlgo</name>
           <state>1</state>
         </option>
         <option>
@@ -788,6 +882,88 @@
           <name>IlinkStdoutInterfaceSlave</name>
           <state>1</state>
         </option>
+        <option>
+          <name>CrcFullSize</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkIElfToolPostProcess</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkLogAutoLibSelect</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkLogRedirSymbols</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkLogUnusedFragments</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkCrcReverseByteOrder</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkCrcUseAsInput</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IlinkOptInline</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkOptExceptionsAllow</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IlinkOptExceptionsForce</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkCmsis</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IlinkOptMergeDuplSections</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkOptUseVfe</name>
+          <state>1</state>
+        </option>
+        <option>
+          <name>IlinkOptForceVfe</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkStackAnalysisEnable</name>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkStackControlFile</name>
+          <state></state>
+        </option>
+        <option>
+          <name>IlinkStackCallGraphFile</name>
+          <state></state>
+        </option>
+        <option>
+          <name>CrcAlgorithm</name>
+          <version>0</version>
+          <state>1</state>
+        </option>
+        <option>
+          <name>CrcUnitSize</name>
+          <version>0</version>
+          <state>0</state>
+        </option>
+        <option>
+          <name>IlinkThreadsSlave</name>
+          <state>1</state>
+        </option>
       </data>
     </settings>
     <settings>
@@ -818,290 +994,437 @@
     </settings>
   </configuration>
   <group>
-    <!-- # TODO-LIB: Remove library replacements for libraries-are-plugins feature. -->
     <name>Libraries</name>
-    
-    
-    <file><name>$PROJ_DIR$/../../../build/alarm-stub-library-cortexm3-iar-em357-em3xx/alarm-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/binding-table-library-cortexm3-iar-em357-em3xx/binding-table-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/cbke-library-dsa-sign-stub-cortexm3-iar-em357-em3xx/cbke-library-dsa-sign-stub.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/cbke-library-dsa-verify-stub-cortexm3-iar-em357-em3xx/cbke-library-dsa-verify-stub.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/cbke-stub-library-cortexm3-iar-em357-em3xx/cbke-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/cbke-163k1-stub-library-cortexm3-iar-em357-em3xx/cbke-163k1-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/cbke-283k1-stub-library-cortexm3-iar-em357-em3xx/cbke-283k1-stub-library.a</name></file>
-    
-    
-    <file><name>$PROJ_DIR$/../../../build/end-device-bind-stub-library-cortexm3-iar-em357-em3xx/end-device-bind-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/install-code-library-stub-cortexm3-iar-em357-em3xx/install-code-library-stub.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/multi-network-stub-library-cortexm3-iar-em357-em3xx/multi-network-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/packet-validate-library-cortexm3-iar-em357-em3xx/packet-validate-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/rf4ce-stack-stub-library-cortexm3-iar-em357-em3xx/rf4ce-stack-stub-library.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/security-library-link-keys-stub-cortexm3-iar-em357-em3xx/security-library-link-keys-stub.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/security-library-core-cortexm3-iar-em357-em3xx/security-library-core.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/zigbee-pro-stack-cortexm3-iar-em357-em3xx/zigbee-pro-stack.a</name></file>
-    <file><name>$PROJ_DIR$/../../../build/zll-stub-library-cortexm3-iar-em357-em3xx/zll-stub-library.a</name></file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\alarm-stub-library-cortexm3-iar-em357-em3xx\alarm-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\binding-table-library-cortexm3-iar-em357-em3xx\binding-table-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\cbke-163k1-stub-library-cortexm3-iar-em357-em3xx\cbke-163k1-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\cbke-283k1-stub-library-cortexm3-iar-em357-em3xx\cbke-283k1-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\cbke-library-dsa-sign-stub-cortexm3-iar-em357-em3xx\cbke-library-dsa-sign-stub.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\cbke-library-dsa-verify-stub-cortexm3-iar-em357-em3xx\cbke-library-dsa-verify-stub.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\cbke-stub-library-cortexm3-iar-em357-em3xx\cbke-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\end-device-bind-stub-library-cortexm3-iar-em357-em3xx\end-device-bind-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\install-code-library-stub-cortexm3-iar-em357-em3xx\install-code-library-stub.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\multi-network-stub-library-cortexm3-iar-em357-em3xx\multi-network-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\packet-validate-library-cortexm3-iar-em357-em3xx\packet-validate-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\rf4ce-stack-stub-library-cortexm3-iar-em357-em3xx\rf4ce-stack-stub-library.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\security-library-core-cortexm3-iar-em357-em3xx\security-library-core.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\security-library-link-keys-stub-cortexm3-iar-em357-em3xx\security-library-link-keys-stub.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\zigbee-pro-stack-cortexm3-iar-em357-em3xx\zigbee-pro-stack.a</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\build\zll-stub-library-cortexm3-iar-em357-em3xx\zll-stub-library.a</name>
+    </file>
   </group>
-  <file><name>$PROJ_DIR$/../../../app/builder/Aurora_dimmer/Aurora_dimmer_callbacks.c</name></file>
-  <file><name>$PROJ_DIR$/../../../hal\micro\cortexm3\bootloader-interface-app.c</name></file>
-<file><name>$PROJ_DIR$/../../../hal\micro\cortexm3\bootloader-interface.c</name></file>
-
-  <file><name>$PROJ_DIR$/../../../app\framework\plugin\address-table\address-table-management.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\address-table\address-table-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\address-table\address-table-soc.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-button-joining\aurora-button-joining.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-button-joining\aurora-button-joining-hal.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-colour-control\aurora-colour-control.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-colour-control\aurora-colour-conversion.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-host-protocol\aurora-host-protocol.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-host-protocol\aurora-host-bootload.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-host-protocol\aurora-host-hal.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-host-protocol\aurora-host-plc-protocol.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-level-control\aurora-level-control.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-level-control\aurora-level-control-hal.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-on-off\aurora-on-off.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client\aurora-ota-client.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client\aurora-ota-client-signature-verify.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client\aurora-ota-client-page-request.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client\aurora-ota-client-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client-policy\aurora-ota-client-policy.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-ota-client-policy\maxOtaImageTypes.name</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-pwm\aurora-pwm.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-pwm\aurora-pwm-hal.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-tunneling-server\aurora-tunneling-server.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\aurora-tunneling-server\aurora-tunneling-server-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\concentrator\concentrator-support.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\concentrator\concentrator-support-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\util\source-route-common.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\util\source-route.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\counters\counters-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\counters\counters-ota.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\counters\counters-soc.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\eeprom\eeprom.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\eeprom\eeprom-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ezmode-commissioning\ez-mode.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\groups-server\groups-server.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\groups-server\groups-server-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\identify\identify.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\identify\identify-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\idle-sleep\idle-sleep.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\idle-sleep\idle-sleep-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\idle-sleep\idle-sleep-soc.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\network-find\network-find.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-bootload\ota-bootload-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-bootload\ota-bootload-soc.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-common\ota-common.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-common\ota-storage-common.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-common\ota-storage-common-cli.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-simple\ota-storage-simple.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-simple\ota-storage-simple-simulation.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-page-erase.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-read-modify-write.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\scenes\scenes.c</name></file>
-<file><name>$PROJ_DIR$/../../../app\framework\plugin\scenes\scenes-cli.c</name></file>
-
   <file>
-    <name>$PROJ_DIR$/call-command-handler.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\adc.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/callback-stub.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\address-table\address-table-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/stack-handler-stub.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\address-table\address-table-management.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/adc.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\address-table\address-table-soc.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/af-event.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\af-event.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/af-main-common.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\af-main-common.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/af-main-soc.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\af-main-soc.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/security/af-node.c</name>
+    <name>$PROJ_DIR$\..\..\framework\security\af-node.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/security/af-security-common.c</name>
+    <name>$PROJ_DIR$\..\..\framework\security\af-security-common.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/security/af-trust-center.c</name>
+    <name>$PROJ_DIR$\..\..\framework\security\af-trust-center.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/attribute-size.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\attribute-size.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/attribute-storage.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\attribute-storage.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/attribute-table.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\attribute-table.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/button.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-button-joining\aurora-button-joining-hal.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/buzzer.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-button-joining\aurora-button-joining.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/client-api.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-colour-control\aurora-colour-control.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/serial/command-interpreter2.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-colour-control\aurora-colour-conversion.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/generic/crc.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-host-protocol\aurora-host-bootload.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/security/crypto-state.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-host-protocol\aurora-host-hal.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/cstartup-iar-common.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-host-protocol\aurora-host-plc-protocol.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/diagnostic.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-host-protocol\aurora-host-protocol.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/ember-configuration.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-level-control\aurora-level-control-hal.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/generic/endian.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-level-control\aurora-level-control.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/faults.s79</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-on-off\aurora-on-off.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/common/form-and-join-node-adapter.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client\aurora-ota-client-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/common/form-and-join.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client\aurora-ota-client-page-request.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../build/hal-library-cortexm3-iar-em357-em3xx/hal-library.a</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client-policy\aurora-ota-client-policy.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/isr-stubs.s79</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client\aurora-ota-client-signature-verify.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/led.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client\aurora-ota-client.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/common/library.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-pwm\aurora-pwm-hal.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/generic/mem-util.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-pwm\aurora-pwm.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/mfg-token.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-tunneling-server\aurora-tunneling-server-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/micro-common.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-tunneling-server\aurora-tunneling-server.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/micro.c</name>
+    <name>$PROJ_DIR$\Aurora_dimmer_callbacks.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/mpu.c</name>
+    <name>$PROJ_DIR$\..\..\..\hal\micro\cortexm3\bootloader-interface-app.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/cli.c</name>
+    <name>$PROJ_DIR$\..\..\..\hal\micro\cortexm3\bootloader-interface.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/core-cli.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\button.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/network-cli.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\buzzer.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/option-cli.c</name>
+    <name>$PROJ_DIR$\call-command-handler.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/plugin-cli.c</name>
+    <name>$PROJ_DIR$\callback-stub.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/print.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\cdc\callbacks.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/print-formatter.c</name>
+    <name>$PROJ_DIR$\cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/process-cluster-message.c</name>
+    <name>$PROJ_DIR$\..\..\framework\util\client-api.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/process-global-message.c</name>
+    <name>$PROJ_DIR$\..\..\util\serial\command-interpreter2.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/generic/random.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\concentrator\concentrator-support-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/security/security-address-cache.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\concentrator\concentrator-support.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/security-cli.c</name>
+    <name>$PROJ_DIR$\..\..\framework\cli\core-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/serial/serial.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\counters\counters-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/service-discovery-common.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\counters\counters-ota.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/service-discovery-soc.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\counters\counters-soc.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/generic/sim-eeprom.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\crc.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/sleep.c</name>
+    <name>$PROJ_DIR$\..\..\framework\security\crypto-state.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/token-def.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\cstartup-iar-common.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/token.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\diagnostic.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/uart.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\eeprom\eeprom-cli.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/em_usbd.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\eeprom\eeprom.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/em_usbdch9.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\em_usbd.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/em_usbdep.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\em_usbdch9.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/em_usbhal.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\em_usbdep.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/em_usbint.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\em_usbhal.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../../../../16.09.23 Fixedonoff/EmberZNet5.3.0-GA/em35x/hal/micro/cortexm3/usb/cdc/callbacks.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\usb\em_usbint.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/message.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\ember-configuration.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/multi-network.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\endian.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/util/util.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ezmode-commissioning\ez-mode.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/zcl-cli.c</name>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\faults.s79</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/framework/cli/zdo-cli.c</name>
+    <name>$PROJ_DIR$\..\..\util\common\form-and-join-node-adapter.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/zigbee-framework/zigbee-device-common.c</name>
+    <name>$PROJ_DIR$\..\..\util\common\form-and-join.c</name>
   </file>
   <file>
-    <name>$PROJ_DIR$/../../../app/util/zigbee-framework/zigbee-device-library.c</name>
+    <name>$PROJ_DIR$\..\..\framework\plugin\groups-server\groups-server-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\groups-server\groups-server.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\build\hal-library-cortexm3-iar-em357-em3xx\hal-library.a</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\identify\identify-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\identify\identify.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\idle-sleep\idle-sleep-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\idle-sleep\idle-sleep-soc.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\idle-sleep\idle-sleep.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\isr-stubs.s79</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\led.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\common\library.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\aurora-ota-client-policy\maxOtaImageTypes.name</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\mem-util.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\message.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\mfg-token.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\micro-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\micro.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\mpu.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\multi-network.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\network-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\network-find\network-find.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\option-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-bootload\ota-bootload-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-bootload\ota-bootload-soc.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-common\ota-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-common\ota-storage-common-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-common\ota-storage-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-page-erase.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom-read-modify-write.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-simple-eeprom\ota-storage-eeprom.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-simple\ota-storage-simple-simulation.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\ota-storage-simple\ota-storage-simple.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\plugin-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\print-formatter.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\print.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\process-cluster-message.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\process-global-message.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\random.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\reporting\reporting-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\reporting\reporting.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\scenes\scenes-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\plugin\scenes\scenes.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\security\security-address-cache.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\security-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\serial\serial.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\service-discovery-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\service-discovery-soc.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\generic\sim-eeprom.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\sleep.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\source-route-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\source-route.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\stack-handler-stub.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\token-def.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\token.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\..\..\..\16.09.23 Fixedonoff\EmberZNet5.3.0-GA\em35x\hal\micro\cortexm3\uart.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\util\util.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\zcl-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\framework\cli\zdo-cli.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\zigbee-framework\zigbee-device-common.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\util\zigbee-framework\zigbee-device-library.c</name>
   </file>
 </project>
+
+

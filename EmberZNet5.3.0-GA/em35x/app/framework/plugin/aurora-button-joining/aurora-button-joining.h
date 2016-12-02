@@ -2,8 +2,8 @@
 #define MAX_BUTTON_SEQUENCES                           4
 #define BUTTON_UP_END_OF_SEQUENCE_TIMEOUT              2000
 #define BUTTON_DEBOUNCE_TIME                           50
-#define BUTTON_PRESS_MINUS_TOLERANCE                   1000
-#define BUTTON_PRESS_PLUS_TOLERANCE                    1000
+#define BUTTON_PRESS_MINUS_TOLERANCE                   1500 //MN made the button pressing tolerance much more forgiving 
+#define BUTTON_PRESS_PLUS_TOLERANCE                    1500
 #define PERMIT_JOIN_TIMEOUT 						   60
 
 #define LED_OFF         0
@@ -81,3 +81,5 @@ void emberAfPluginAuroraButtonJoiningInitialiseLeds(void);
 void emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(int8u newState, boolean set);
 void emberAfPluginAuroraButtonJoiningUpdateStatusLed(void);
 void emberAfPluginAuroraButtonJoiningClearJoiningFlag(void);
+void checkIfPaired(void);
+

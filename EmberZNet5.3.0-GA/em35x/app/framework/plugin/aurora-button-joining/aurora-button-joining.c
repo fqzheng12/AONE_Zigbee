@@ -45,7 +45,9 @@ void emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler(void);
 
 void emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(int8u newState, boolean set);
 
-static void emberAfPluginAuroraButtonJoiningJoinNetwork(void);
+
+static void emberAfPluginAuroraButtonJoiningReset(void);  //MN
+static void emberAfPluginAuroraButtonJoiningJoinNetwork(void); 
 static void emberAfPluginAuroraButtonJoiningPermitJoiningNetwork(void);
 static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void);
 static void emberAfPluginAuroraButtonJoiningCheckButtonSequence(void);
@@ -75,9 +77,9 @@ const t_ledSettings ledSettings[] = {
 #define MAX_LED_STATES          sizeof(ledSettings) / sizeof(t_ledSettings)
 
 static t_buttonSeqence buttonSequence[] = {
-  {1, {2000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningJoinNetwork},                         // Join ADDED FOR TEST and ADDED THIS TOO
-  {5, {1000, 1000, 1000, 1000, 1000}, emberAfPluginAuroraButtonJoiningLeaveNetwork},            // Leave
-  {2, {1000, 1000, 0, 0, 0}, emberAfPluginAuroraButtonJoiningPermitJoiningNetwork}              // Identify / Permit Joining
+  {1, {3000, 0, 0, 0, 0}, emberAfPluginAuroraButtonJoiningReset}//,                         // Join MATCH 0 MN CHANGED TO RESET on a 3 second button press
+ // {5, {1000, 1000, 1000, 1000, 1000}, emberAfPluginAuroraButtonJoiningLeaveNetwork},            // Leave MATCH 1
+ // {2, {1000, 1000, 0, 0, 0}, emberAfPluginAuroraButtonJoiningPermitJoiningNetwork}              // Identify / Permit Joining MATCH 2
 };
 
 static int16u buttonDownTimes[BUTTON_MAX_PRESSES];
@@ -88,6 +90,8 @@ static int32u buttonDownTime = 0;
 static boolean buttonSequenceStarted = FALSE;
 static boolean joiningFLag = FALSE;
 static int8u deviceStateFlags = DEVICE_STATE_CLEAR | DEVICE_STATE_NETWORK_UNAVAILABLE;  
+static boolean checkedIfPaired = FALSE;
+//static int32u lastCheckNwkTime =0;  //MN new static global
 
 char deviceStateText[][20] = {
      "Joining",
@@ -201,7 +205,6 @@ void emberAfPluginAuroraButtonJoiningButtonUpDebounceEventHandler(void)
     buttonDownTime = halCommonGetInt32uMillisecondTick() - buttonDownTime;
     
     emberAfDebugPrint("Button release (%d)\r\n", buttonDownTime);
-    emberAfDebugPrint("Version 20\n");
    
     // Record the button press
     emberAfPluginAuroraButtonJoiningHandleButtonPress(buttonDownTime);    
@@ -309,6 +312,50 @@ static void emberAfPluginAuroraButtonJoiningCheckButtonSequence(void)
   }
 }
 
+    //if the device is not paired to a network, it will enter pairing mode
+
+void checkIfPaired(void) //MN
+{
+  if (!checkedIfPaired)
+    {
+    emberAfDebugPrint("Reached checkIfPaired\n"); //MN
+    emberAfDebugPrint("@line 316, device state is: %x\n", deviceStateFlags); //MN
+    
+    if (emberNetworkState() == EMBER_NO_NETWORK)
+    {
+       emberAfPluginAuroraButtonJoiningJoinNetwork();
+    }
+    
+    checkedIfPaired=TRUE;
+
+  }
+    
+}  
+
+//Reset function to leave and then join a network
+static void emberAfPluginAuroraButtonJoiningReset(void)
+{
+    emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningReset line 338 aurora-button-joining\n"); //MN
+    
+    emberAfPluginAuroraButtonJoiningLeaveNetwork();
+    
+/*    emberAfPluginAuroraButtonJoiningJoinNetwork();
+
+        if (emberNetworkState() == EMBER_NETWORK_DOWN) //try again
+        {
+              emberAfDebugPrint("trying to join again\n"); //MN
+                emberAfPluginAuroraButtonJoiningJoinNetwork();
+        }
+    
+   */
+    
+    halReboot();
+
+}
+
+
+
+
 /** @brief Join a network
  *  
  *  Start the joining process. Flashes the led to indicate this and 
@@ -319,6 +366,10 @@ static void emberAfPluginAuroraButtonJoiningCheckButtonSequence(void)
  */
 static void emberAfPluginAuroraButtonJoiningJoinNetwork(void)
 {
+   
+        //MN 
+    emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningJoinNetwork line 319 aurora-button-joining\n");
+  
   emberAfDebugPrint("Find joinable networks (%x)\r\n", emberNetworkState());
 
   if ((emberNetworkState() == EMBER_NO_NETWORK) && !joiningFLag) 
@@ -327,14 +378,37 @@ static void emberAfPluginAuroraButtonJoiningJoinNetwork(void)
     
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINING, DEVICE_STATE_FLAGS_SET);
 
+    emberAfDebugPrint("@line 333, device state is: %x\n", deviceStateFlags);
+
+        emberAfDebugPrint("FLASH TWICE TO INDICATE GOING INTO PAIRING MODE\n", deviceStateFlags);
+        emberAfPluginAuroraHostProtocolFlashTwice();
+
+    
+        //MN  
+    emberAfDebugPrint("Reached line 327 aurora-button-joining\n");
+  
     // Searches for and joins network
     emberAfStartSearchForJoinableNetwork();
     
+
+    
     emberAfCorePrintln("%p: join", "BUTTON\r\n");
+    
+    emberAfDebugPrint("Network state when I want to do the flash: (%x)\r\n", emberNetworkState()); //MN
+
+                            
+  if (emberNetworkState() == EMBER_JOINED_NETWORK)
+    {
+       emberAfPluginAuroraHostProtocolFlashOnce(); //MN if the device has just joined a network, flash once
+    }
   } 
   else 
   {
     emberAfPluginAuroraButtonJoiningPermitJoiningNetwork();
+    
+     //MN 
+    emberAfDebugPrint("Reached line 345 aurora-button-joining\n");
+    
   }
 }
 
@@ -361,6 +435,9 @@ void emberAfPluginAuroraButtonJoiningClearJoiningFlag(void)
  */
 static void emberAfPluginAuroraButtonJoiningPermitJoiningNetwork(void)
 {
+  
+      emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningPermitJoiningNetwork line 374 aurora-button-joining\n");//MN
+
   int8u permitJoinDuration;
   
   emberAfDebugPrint("Setting permit join flag\r\n");
@@ -368,6 +445,9 @@ static void emberAfPluginAuroraButtonJoiningPermitJoiningNetwork(void)
   if (emberNetworkState() == EMBER_JOINED_NETWORK) 
   {
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_PERMIT_JOINING | DEVICE_STATE_IDENTIFYING, DEVICE_STATE_FLAGS_SET);
+    
+          emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningPermitJoiningNetwork line 385 aurora-button-joining\n"); //MN
+
     
     permitJoinDuration = EMBER_AF_PLUGIN_EZMODE_COMMISSIONING_IDENTIFY_TIMEOUT;
     emAfPermitJoin(permitJoinDuration, TRUE);  // broadcast permit join
@@ -391,6 +471,9 @@ void emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler(void)
   emberEventControlSetInactive(emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventControl);
 
   emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_PERMIT_JOINING | DEVICE_STATE_IDENTIFYING, DEVICE_STATE_FLAGS_CLEAR);
+  
+        emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler line 409 aurora-button-joining\n"); //MN
+
 }
 
 /** @brief Leave network
@@ -402,6 +485,10 @@ void emberAfPluginAuroraButtonJoiningPermitJoiningExpiryEventHandler(void)
  */
 static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
 {
+  
+          emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningLeaveNetwork line 424 aurora-button-joining\n"); //MN
+
+  
   int8u status;
 
   emberAfDebugPrint("Leaving network\r\n");
@@ -410,6 +497,9 @@ static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
   {
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_JOINED, DEVICE_STATE_FLAGS_CLEAR);
 
+              emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningLeaveNetwork line 438 aurora-button-joining\n"); //MN
+
+    
     status = emberLeaveNetwork();
     
     switch (status)
@@ -420,6 +510,7 @@ static void emberAfPluginAuroraButtonJoiningLeaveNetwork(void)
 
       case EMBER_SUCCESS:             // if everything is OK
         emberAfDebugPrint("Success\r\n");
+          
         break;
 
       default:                        // in case of a misc error
@@ -477,6 +568,10 @@ void emberAfPluginAuroraButtonJoiningInitialiseLeds(void)
  */
 static void emberAfPluginAuroraButtonJoiningFlashLed(t_networkState newState)
 {
+  
+      emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningFlashLed line 506 aurora-button-joining\n"); //MN
+      emberAfDebugPrint("currentNetworkState set as: %d\n", newState); //MN
+
   currentNetworkState = newState;
   
   emberAfPluginAuroraButtonJoiningLedEventEventHandler();
@@ -539,8 +634,8 @@ static t_ledSettings *getLedSettings(t_networkState networkState)
     {
         if (ledSettings[index].state == networkState) 
         {
-//            emberAfDebugPrint("Index: (%d) Setting : (%d) Network State: (%d)\r\n", index, settings->config[index].setting, currentNetworkState);
-//            emberAfDebugPrint("State: (%d) Network State: (%d) Index: (%d)\r\n", ledSettings[index].state, currentNetworkState, index);
+            //emberAfDebugPrint("Index: (%d) Setting : (%d) Network State: (%d)\r\n", index, settings->config[index].setting, currentNetworkState);//MN
+            //emberAfDebugPrint("State: (%d) Network State: (%d) Index: (%d)\r\n", ledSettings[index].state, currentNetworkState, index);//MN
             settings = (t_ledSettings *)&ledSettings[index];
             break;
         }
@@ -562,6 +657,10 @@ void cliJoin(void)
 
 void stackStatusEventHandler(void)
 {
+  
+  emberAfDebugPrint("Reached stackStatusEventHandler line 591 aurora-button-joining\n"); //MN
+
+  
   emberEventControlSetInactive(stackStatusEventControl);
   
   // Send permit join, if necessary
@@ -569,6 +668,10 @@ void stackStatusEventHandler(void)
   {
     emAfPermitJoin(EMBER_AF_PLUGIN_EZMODE_COMMISSIONING_IDENTIFY_TIMEOUT, TRUE);  // broadcast permit join
     emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(DEVICE_STATE_PERMIT_JOINING, DEVICE_STATE_FLAGS_SET);
+    
+      emberAfDebugPrint("Reached stackStatusEventHandler line 602 aurora-button-joining\n"); //MN
+
+    
   }
   
 }
@@ -640,42 +743,77 @@ void setRadioPowerAndMode(void)
 
 void emberAfPluginAuroraButtonJoiningUpdateStatusLed(void)
 {
-  static int8u lastDeviceStateFlags = DEVICE_STATE_CLEAR;
   
-  if (deviceStateFlags != lastDeviceStateFlags) 
+    //emberAfDebugPrint("Reached emberAfPluginAuroraButtonJoiningUpdateStatusLed line 677 aurora-button-joining\n"); //MN
+
+    static int8u lastDeviceStateFlags = DEVICE_STATE_CLEAR;
+  
+  //if the DEVICE_STATE_NETWORK_UNAVAILABLE, don't say that the lastDeviceStateFlags is clear MN
+  
+
+//  if (deviceStateFlags == DEVICE_STATE_NETWORK_UNAVAILABLE)
+  //{
+    //lastDeviceStateFlags = deviceStateFlags;
+   // emberAfDebugPrintln("keep DEVICE_STATE_NETWORK_UNAVAILABLE (%x)\r\n", deviceStateFlags); MN
+
+  //}
+      //  emberAfDebugPrintln("deviceStateFlags b4 if update status led: (%x)\r\n", deviceStateFlags);
+        //emberAfDebugPrintln("lastDeviceStateFlags: (%x)\r\n", lastDeviceStateFlags);
+
+  
+  if (deviceStateFlags != lastDeviceStateFlags) //if the device state flags have changed... MN
   {
-    emberAfDebugPrint("update status led: (%x)\r\n", deviceStateFlags);
+    emberAfDebugPrintln("update status led: (%x)\r\n", deviceStateFlags);
     
     switch(deviceStateFlags) 
     {
       case DEVICE_STATE_NETWORK_UNAVAILABLE:
+            emberAfDebugPrintln("Device State is DEVICE_STATE_NETWORK_UNAVAILABLE\n"); //MN
+
         emberAfPluginAuroraButtonJoiningFlashLed(LED_NWK_UNAVAILABLE);
+        
+   //  emberAfDebugPrintln("lamps flash twice to show entering pairing mode"); //MN
+
+        
+//emberAfPluginAuroraButtonJoiningJoinNetwork(); //this will put AONE into pairing mode if it is not already joined at power on MN
+        
+
         break;      
       
       case DEVICE_STATE_NETWORK_UNAVAILABLE | DEVICE_STATE_JOINING:
       case DEVICE_STATE_JOINING:
+        emberAfDebugPrintln("Device State is DEVICE_STATE_JOINING\n"); //MN
         emberAfPluginAuroraButtonJoiningFlashLed(LED_JOINING);
         break;
   
       case DEVICE_STATE_CLEAR:
+                emberAfDebugPrintln("Device State is DEVICE_STATE_CLEAR\n"); //MN
+
         emberAfPluginAuroraButtonJoiningFlashLed(LED_NOT_JOINED);
         break;
         
       case DEVICE_STATE_JOINED:
+                        emberAfDebugPrintln("Device State is DEVICE_STATE_JOINED\n"); //MN
+
+
         emberAfPluginAuroraButtonJoiningFlashLed(LED_JOINED);
         break;
       
       case DEVICE_STATE_JOINED | DEVICE_STATE_IDENTIFYING:
       case DEVICE_STATE_JOINED | DEVICE_STATE_IDENTIFYING | DEVICE_STATE_PERMIT_JOINING:
+                                emberAfDebugPrintln("Device State is       case DEVICE_STATE_JOINED | DEVICE_STATE_IDENTIFYING | DEVICE_STATE_PERMIT_JOINING:\n"); //MN
+
         emberAfPluginAuroraButtonJoiningFlashLed(LED_IDENTIFY);
         break;
 
       case DEVICE_STATE_JOINED | DEVICE_STATE_PERMIT_JOINING:
+                                        emberAfDebugPrintln("Device State is        case DEVICE_STATE_JOINED | DEVICE_STATE_PERMIT_JOINING:\n"); //MN
+
         emberAfPluginAuroraButtonJoiningFlashLed(LED_PERMIT_JOINING);
         break;
 
       default:
-        emberAfDebugPrint("update status led (default): (%x)\r\n", deviceStateFlags);
+        emberAfDebugPrintln("update status led (default): (%x)\r\n", deviceStateFlags);
         break;
     }
 
@@ -686,14 +824,32 @@ void emberAfPluginAuroraButtonJoiningUpdateStatusLed(void)
 
 void emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags(int8u newState, boolean set)
 {
+  
+    emberAfDebugPrintln("Reached emberAfPluginAuroraButtonJoiningUpdateDeviceStateFlags line 756 aurora-button-joining\n"); //MN
+
+    emberAfDebugPrintln("@line 769 deviceStateFlags are: (%x)\r\n", deviceStateFlags); //MN
+    emberAfDebugPrintln("new state: (%x) set is: (%x)\r\n", newState, set); //MN
+
+    
   if (set) 
   {
     deviceStateFlags |= newState;
+    
+        emberAfDebugPrintln("in deviceStateFlags |= newState;"); //MN
+
+    
   } 
   else 
   {
     deviceStateFlags &= ~(newState);
+    
+            emberAfDebugPrintln("in deviceStateFlags &= ~(newState);"); //MN
+
+    
   }
+  
+  emberAfDebugPrintln("@line 779 deviceStateFlags are: (%x)\r\n", deviceStateFlags); //MN
+
 }
 
 void sendMatchDescriptor(void)

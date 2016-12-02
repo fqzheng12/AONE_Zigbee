@@ -117,6 +117,14 @@ void emberAfJoinableNetworkFoundCallback(EmberZigbeeNetwork *networkFound,
                       networkFound->panId);
 
     status = emberAfJoinNetwork(&networkParams);
+    
+
+        
+  if (status == EMBER_SUCCESS) {
+            emberAfAppPrintln("FLASH ONCE TO INDICATE SUCCESSFUL PAIRING"); 
+emberAfPluginAuroraHostProtocolFlashOnce(); //MN if it finds and successfully joins a new network, flash the motherboard once
+  }
+    
   }
 
   // Note that if the application wants to skip this network or if the join
