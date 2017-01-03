@@ -203,6 +203,8 @@ const EmberAfGenericClusterFunction emberAfFuncArrayOtaBootloadClusterClient[] =
   extern void emberAfPluginNetworkFindTickEventHandler(void); \
   extern EmberEventControl emberAfPluginOtaStorageSimpleEepromPageEraseEventControl; \
   extern void emberAfPluginOtaStorageSimpleEepromPageEraseEventHandler(void); \
+  extern EmberEventControl emberAfPluginReportingTickEventControl; \
+  extern void emberAfPluginReportingTickEventHandler(void); \
   static void clusterTickWrapper(EmberEventControl *control, EmberAfTickFunction callback, int8u endpoint) \
   { \
     emberAfPushEndpointNetworkIndex(endpoint); \
@@ -244,6 +246,7 @@ const EmberAfGenericClusterFunction emberAfFuncArrayOtaBootloadClusterClient[] =
   { &emberAfPluginEzmodeCommissioningStateEventControl, emberAfPluginEzmodeCommissioningStateEventHandler }, \
   { &emberAfPluginNetworkFindTickEventControl, emberAfPluginNetworkFindTickEventHandler }, \
   { &emberAfPluginOtaStorageSimpleEepromPageEraseEventControl, emberAfPluginOtaStorageSimpleEepromPageEraseEventHandler }, \
+  { &emberAfPluginReportingTickEventControl, emberAfPluginReportingTickEventHandler }, \
 
 
 #define EMBER_AF_GENERATED_EVENT_STRINGS   \
@@ -271,6 +274,7 @@ const EmberAfGenericClusterFunction emberAfFuncArrayOtaBootloadClusterClient[] =
   "EZ-Mode Commissioning Plugin State",  \
   "Network Find Plugin Tick",  \
   "OTA Simple Storage EEPROM Driver Plugin PageErase",  \
+  "Reporting Plugin Tick",  \
 
 
 // The length of the event context table used to track and retrieve cluster events
@@ -290,6 +294,7 @@ const EmberAfGenericClusterFunction emberAfFuncArrayOtaBootloadClusterClient[] =
   void emberAfPluginConcentratorInitCallback(void); \
   void emberAfPluginCountersInitCallback(void); \
   void emberAfPluginNetworkFindInitCallback(void); \
+  void emberAfPluginReportingInitCallback(void); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_INIT_FUNCTION_CALLS \
@@ -297,6 +302,7 @@ const EmberAfGenericClusterFunction emberAfFuncArrayOtaBootloadClusterClient[] =
   emberAfPluginConcentratorInitCallback(); \
   emberAfPluginCountersInitCallback(); \
   emberAfPluginNetworkFindInitCallback(); \
+  emberAfPluginReportingInitCallback(); \
 
 
 #define EMBER_AF_GENERATED_PLUGIN_NCP_INIT_FUNCTION_DECLARATIONS \

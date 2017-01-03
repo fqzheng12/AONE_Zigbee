@@ -574,6 +574,194 @@ EmberAfStatus emberAfScenesClusterStoreCurrentSceneCallback(int8u endpoint,
   return EMBER_ZCL_STATUS_SUCCESS;
 }
 
+//MN Added from Gary's sample code
+EmberAfStatus emberAfScenesClusterRecallSavedSceneCallback(int8u endpoint,
+                                                           int16u groupId,
+                                                           int8u sceneId)
+{ 
+  if (groupId != ZCL_SCENES_GLOBAL_SCENE_GROUP_ID
+      && !emberAfGroupsClusterEndpointInGroupCallback(endpoint, groupId)) 
+  {
+    return EMBER_ZCL_STATUS_INVALID_FIELD;
+  }     
+  else 
+  {
+    int8u i;
+    for (i = 0; i < EMBER_AF_PLUGIN_SCENES_TABLE_SIZE; i++) 
+    {
+      EmberAfSceneTableEntry entry;
+      emberAfPluginScenesServerRetrieveSceneEntry(entry, i);
+      if (entry.endpoint == endpoint
+          && entry.groupId == groupId
+          && entry.sceneId == sceneId) 
+      {
+        if (entry.hasCurrentLevelValue) 
+        {           
+          #ifdef ZCL_USING_LEVEL_CONTROL_CLUSTER_SERVER
+
+          //GB Change Lamp level by simulating an incoming MoveToLevelWithOnOff command.
+          emAfPluginLevelControlClusterOnOffEffectHandler(
+                                ZCL_MOVE_TO_LEVEL_WITH_ON_OFF_COMMAND_ID,
+                                entry.currentLevelValue, 
+                                FALSE,
+                                entry.transitionTime);            //MN changed from emAfPluginLevelControlClusterOnOffEffect to emAfPluginLevelControlClusterOnOffEffectHandler
+          #endif
+
+        }
+        else 
+        if (entry.hasOnOffValue) 
+        {
+          #ifdef ZCL_USING_ON_OFF_CLUSTER_SERVER          
+          boolean currentOnOffState = FALSE;    
+          //MN emberAfOnOffClusterReadOnOffState(endpoint, &currentOnOffState); // Read current on/off state.
+          //MN added:
+            // read current on/off value
+emberAfReadAttribute(endpoint,
+                                ZCL_ON_OFF_CLUSTER_ID,
+                                ZCL_ON_OFF_ATTRIBUTE_ID,
+                                CLUSTER_MASK_SERVER,
+                                (int8u *)&currentOnOffState,
+                                sizeof(currentOnOffState),
+                                NULL); // data type
+          
+          if (entry.onOffValue != currentOnOffState)
+          {
+            //GB Set Lamp on/off state as required by simulating an incoming On/Off command.      
+            emberAfOnOffClusterSetValueCallback(
+                                endpoint,
+                                (entry.onOffValue ? ZCL_ON_COMMAND_ID : ZCL_OFF_COMMAND_ID),
+                                FALSE); 
+          }
+          #endif          
+        }
+
+#ifdef ZCL_USING_COLOR_CONTROL_CLUSTER_SERVER        
+        if ((entry.hasCurrentXValue) 
+          && (entry.hasCurrentYValue)
+          && (entry.currentXValue != 0)
+          && (entry.currentYValue != 0))  {          
+          
+            //GB Change Lamp color by simulating an incoming MoveToColor (X/Y) command.
+            emberAfColorControlClusterMoveToColorCallback(entry.currentXValue, 
+                                               entry.currentYValue, 
+                                               entry.transitionTime); //MN changed to emberAfColorControlClusterMoveToColorCallback from emAfColorControlClusterMoveToColor
+        }
+        
+        // Per ZLL CCB, value of 0 for X and Y means enhanced scene attributes
+        // will be used
+        if (emberIsZllNetwork()
+            && entry.hasCurrentXValue
+            && entry.hasCurrentYValue
+            && (entry.currentXValue == 0)
+            && (entry.currentYValue == 0)){
+            if (entry.hasEnhancedCurrentHueValue) {
+              writeServerAttribute(endpoint,
+                  ZCL_COLOR_CONTROL_CLUSTER_ID,
+                  ZCL_COLOR_CONTROL_ENHANCED_CURRENT_HUE_ATTRIBUTE_ID,
+                  "enhanced current hue",
+                  (int8u*)&entry.enhancedCurrentHueValue,
+                  ZCL_INT16U_ATTRIBUTE_TYPE);
+            }
+            if (entry.hasCurrentSaturationValue) {
+              writeServerAttribute(endpoint,
+                  ZCL_COLOR_CONTROL_CLUSTER_ID,
+                  ZCL_COLOR_CONTROL_CURRENT_SATURATION_ATTRIBUTE_ID,
+                  "current saturation",
+                  (int8u*)&entry.currentSaturationValue,
+                  ZCL_INT8U_ATTRIBUTE_TYPE);
+            }
+            if (entry.hasColorLoopActiveValue) {
+              writeServerAttribute(endpoint,
+                  ZCL_COLOR_CONTROL_CLUSTER_ID,
+                  ZCL_COLOR_CONTROL_COLOR_LOOP_ACTIVE_ATTRIBUTE_ID,
+                  "color loop active",
+                  (int8u *)&entry.colorLoopActiveValue,
+                  ZCL_INT8U_ATTRIBUTE_TYPE);
+            }
+            if (entry.hasColorLoopDirectionValue) {
+              writeServerAttribute(endpoint,
+                  ZCL_COLOR_CONTROL_CLUSTER_ID,
+                  ZCL_COLOR_CONTROL_COLOR_LOOP_DIRECTION_ATTRIBUTE_ID,
+                  "color loop direction",
+                  (int8u *)&entry.colorLoopDirectionValue,
+                  ZCL_INT8U_ATTRIBUTE_TYPE);
+            }
+            if (entry.hasColorLoopTimeValue) {
+              writeServerAttribute(endpoint,
+                  ZCL_COLOR_CONTROL_CLUSTER_ID,
+                  ZCL_COLOR_CONTROL_COLOR_LOOP_TIME_ATTRIBUTE_ID,
+                  "color loop time",
+                  (int8u *)&entry.colorLoopTimeValue,
+                  ZCL_INT16U_ATTRIBUTE_TYPE);
+            }
+          }                  
+#endif //ZCL_USING_COLOR_CONTROL_CLUSTER_SERVER
+#ifdef ZCL_USING_THERMOSTAT_CLUSTER_SERVER
+        if (entry.hasOccupiedCoolingSetpointValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_THERMOSTAT_CLUSTER_ID,
+                               ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID,
+                               "occupied cooling setpoint",
+                               (int8u *)&entry.occupiedCoolingSetpointValue,
+                               ZCL_INT16S_ATTRIBUTE_TYPE);
+        }
+        if (entry.hasOccupiedHeatingSetpointValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_THERMOSTAT_CLUSTER_ID,
+                               ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID,
+                               "occupied heating setpoint",
+                               (int8u *)&entry.occupiedHeatingSetpointValue,
+                               ZCL_INT16S_ATTRIBUTE_TYPE);
+        }
+        if (entry.hasSystemModeValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_THERMOSTAT_CLUSTER_ID,
+                               ZCL_SYSTEM_MODE_ATTRIBUTE_ID,
+                               "system mode",
+                               (int8u *)&entry.systemModeValue,
+                               ZCL_INT8U_ATTRIBUTE_TYPE);
+        }
+#endif
+#ifdef ZCL_USING_DOOR_LOCK_CLUSTER_SERVER
+        if (entry.hasLockStateValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_DOOR_LOCK_CLUSTER_ID,
+                               ZCL_LOCK_STATE_ATTRIBUTE_ID,
+                               "lock state",
+                               (int8u *)&entry.lockStateValue,
+                               ZCL_INT8U_ATTRIBUTE_TYPE);
+        }
+#endif
+#ifdef ZCL_USING_WINDOW_COVERING_CLUSTER_SERVER
+        if (entry.hasCurrentPositionLiftPercentageValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_WINDOW_COVERING_CLUSTER_ID,
+                               ZCL_CURRENT_LIFT_PERCENTAGE_ATTRIBUTE_ID,
+                               "current position lift percentage",
+                               (int8u *)&entry.currentPositionLiftPercentageValue,
+                               ZCL_INT8U_ATTRIBUTE_TYPE);
+        }
+        if (entry.hasCurrentPositionTiltPercentageValue) {
+          writeServerAttribute(endpoint,
+                               ZCL_WINDOW_COVERING_CLUSTER_ID,
+                               ZCL_CURRENT_TILT_PERCENTAGE_ATTRIBUTE_ID,
+                               "current position tilt percentage",
+                               (int8u *)&entry.currentPositionTiltPercentageValue,
+                               ZCL_INT8U_ATTRIBUTE_TYPE);
+        }
+#endif
+        emberAfScenesMakeValid(endpoint, sceneId, groupId);
+        return EMBER_ZCL_STATUS_SUCCESS;
+      }
+    }
+  }
+
+  return EMBER_ZCL_STATUS_NOT_FOUND;
+}
+
+// Original emberAfScenesClusterRecallSavedSceneCallback function
+/*
+
 EmberAfStatus emberAfScenesClusterRecallSavedSceneCallback(int8u endpoint,
                                                            int16u groupId,
                                                            int8u sceneId)
@@ -738,6 +926,8 @@ EmberAfStatus emberAfScenesClusterRecallSavedSceneCallback(int8u endpoint,
 
   return EMBER_ZCL_STATUS_NOT_FOUND;
 }
+
+*/
 
 void emberAfScenesClusterClearSceneTableCallback(int8u endpoint)
 {

@@ -242,8 +242,13 @@ EmberStatus emberScanForJoinableNetwork(int32u channelMask, int8u* extendedPanId
 
 EmberStatus emberScanForNextJoinableNetwork(void)
 {
+  
+      SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 246"); //MN
+
   if (formAndJoinScanType != FORM_AND_JOIN_NEXT_NETWORK) {
     emberScanErrorHandler(EMBER_INVALID_CALL);
+          SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 250"); //MN
+
     return EMBER_INVALID_CALL;
   }
 
@@ -254,6 +259,8 @@ EmberStatus emberScanForNextJoinableNetwork(void)
       emberJoinableNetworkFoundHandler(&(finger->network), finger->lqi, finger->rssi);
       formAndJoinSetBufferLength(networkCount);
       formAndJoinSetCleanupTimeout();
+            SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 262"); //MN
+
       return EMBER_SUCCESS;
     }
     formAndJoinSetBufferLength(networkCount);
@@ -265,12 +272,16 @@ EmberStatus emberScanForNextJoinableNetwork(void)
     int32u bitMask = BIT32(channelCache);
     if (bitMask & channelMaskCache) {
       formAndJoinScanType = FORM_AND_JOIN_JOINABLE_SCAN;
+            SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 275"); //MN
+
       return startScan(EMBER_ACTIVE_SCAN, bitMask, ACTIVE_SCAN_DURATION);
     }
   }
 
   // Notify the app we're completely out of networks.
   emberFormAndJoinCleanup(EMBER_NO_BEACONS);
+        SCAN_DEBUG_MSG("emberScanForNextJoinableNetwork ln 283"); //MN
+
   return EMBER_SUCCESS;
 }
 

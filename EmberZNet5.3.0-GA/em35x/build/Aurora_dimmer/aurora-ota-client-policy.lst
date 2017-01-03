@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        03/Nov/2016  16:07:52
+# IAR ANSI C/C++ Compiler V7.40.3.8902/W32 for ARM        08/Dec/2016  20:07:49
 # Copyright 1999-2015 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
@@ -131,7 +131,7 @@ C:\Users\matthew.shing\Documents\Projects\AONE ZigBee Dimmer\AUCH ETRX357\AONE_Z
    \   00000014   0xF245 0x6078      MOVW     R0,#+22136
    \   00000018   0x8060             STRH     R0,[R4, #+2]
      58            currentImageInfo->firmwareVersion = EMBER_AF_PLUGIN_AURORA_OTA_CLIENT_POLICY_FIRMWARE_VERSION2;
-   \   0000001A   0x201A             MOVS     R0,#+26
+   \   0000001A   0x201D             MOVS     R0,#+29
    \   0000001C   0x6060             STR      R0,[R4, #+4]
      59          
      60            if (hardwareVersion != NULL) {

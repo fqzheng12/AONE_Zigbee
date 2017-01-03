@@ -108,11 +108,18 @@ void emberAfLevelControlClusterServerInitCallback(int8u endpoint)
 
 void emberAfLevelControlClusterServerTickCallback(int8u endpoint)
 {
+  
+  emberAfLevelControlClusterPrint("GOT TO start of emberAfLevelControlClusterServerTickCallback ln112\n"); //MN
+  
   EmberAfLevelControlState *state = emAfGetLevelControlState(endpoint);
   EmberAfStatus status;
   int8u currentLevel, setNewLevel;
   int16u newLevel;
 
+  emberAfLevelControlClusterPrint("ln119 state is: %d\n", state); //MN
+  
+  emberAfLevelControlClusterPrint("ln121 Current level is: %d state->moveToLevel is: %d\n", currentLevel, state->moveToLevel); //MN
+  
   if (state == NULL) 
   {
     return;
@@ -159,6 +166,8 @@ void emberAfLevelControlClusterServerTickCallback(int8u endpoint)
   // If something goes wrong, we will set the newLevel to the currentLevel
   newLevel = currentLevel;
 
+    emberAfLevelControlClusterPrint("ln169 Current level is: %d state->moveToLevel is: %d\n", currentLevel, state->moveToLevel); //MN
+  
   // Handle actions: move-to-level, move, or step
   switch (state->commandId) {
 
@@ -214,14 +223,20 @@ void emberAfLevelControlClusterServerTickCallback(int8u endpoint)
         return;
       }
       
+          emberAfLevelControlClusterPrint("ln226 Current level is: %d state->moveToLevel is: %d\n", currentLevel, state->moveToLevel); //MN
+    emberAfLevelControlClusterPrint("ln227 moveToLevelUp is: %d\n", state->moveToLevelUp); //MN
+
+      
       // adjust by the proper amount, either up or down
       if (state->moveToLevelUp) 
       {
+              emberAfLevelControlClusterPrint("GOT TO state->moveToLevelUp\n"); //MN
         // Changing level up... 
         if (state->commandId == ZCL_MOVE_TO_LEVEL_WITH_ON_OFF_COMMAND_ID
             || state->commandId == ZCL_STEP_WITH_ON_OFF_COMMAND_ID) 
         {
           setOnOffValue(endpoint, TRUE);
+                       emberAfLevelControlClusterPrint("GOT TO setOnOffValue\n"); //MN
         }
         if ((state->moveToLevel - currentLevel) < state->stepSize)
         {
@@ -234,7 +249,9 @@ void emberAfLevelControlClusterServerTickCallback(int8u endpoint)
       } 
       else 
       {
-        // Changing level down...                
+        // Changing level down...        
+              emberAfLevelControlClusterPrint("GOT TO Changing level down"); //MN
+        
         if ((currentLevel - state->moveToLevel) < state->stepSize)
         {
             newLevel = state->moveToLevel;  // prevent -ve overflow.
@@ -253,7 +270,7 @@ void emberAfLevelControlClusterServerTickCallback(int8u endpoint)
         }
       }
       
-      //emberAfLevelControlClusterPrint("Event: move Level %x->%x ", currentLevel, newLevel);
+      emberAfLevelControlClusterPrint("Event: move Level %x->%x ", currentLevel, newLevel);
       //emberAfLevelControlClusterPrintln("(diff %p%x)", state->moveToLevelUp ? "+" : "-",  amountToMove);
       
 #ifdef ZCL_USING_LEVEL_CONTROL_CLUSTER_LEVEL_CONTROL_REMAINING_TIME_ATTRIBUTE
@@ -353,6 +370,9 @@ boolean emberAfLevelControlClusterMoveToLevelCallback(int8u level, int16u transi
 {
     emberAfLevelControlClusterPrintln("%pMOVE_TO_LEVEL %x %2x", "RX level-control:", level, transitionTime);    
     EmberAfStatus status = emAfLevelControlClusterMoveToLevelHandler(ZCL_MOVE_TO_LEVEL_COMMAND_ID, level, transitionTime);    
+    
+    emberAfLevelControlClusterPrintln("GOT TO ln361. Status is: %d", status);   
+    //MN
     emberAfSendImmediateDefaultResponse(status);  // Send ZCl cmd default response.        
     return TRUE;  
 }
@@ -360,7 +380,11 @@ boolean emberAfLevelControlClusterMoveToLevelCallback(int8u level, int16u transi
 boolean emberAfLevelControlClusterMoveToLevelWithOnOffCallback(int8u level, int16u transitionTime)
 {
     emberAfLevelControlClusterPrintln("%pMOVE_TO_LEVEL_WITH_ON_OFF %x %2x", "RX level-control:", level, transitionTime);  
-    EmberAfStatus status = emAfLevelControlClusterMoveToLevelHandler(ZCL_MOVE_TO_LEVEL_WITH_ON_OFF_COMMAND_ID, level, transitionTime);    
+    EmberAfStatus status = emAfLevelControlClusterMoveToLevelHandler(ZCL_MOVE_TO_LEVEL_WITH_ON_OFF_COMMAND_ID, level, transitionTime);  
+    
+            emberAfLevelControlClusterPrintln("GOT TO ln372. Status is: %d", status);   
+    //MN
+    
     emberAfSendImmediateDefaultResponse(status);  // Send ZCl cmd default response.        
     return TRUE;  
 }
@@ -443,6 +467,8 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
     // Don't want to use the on level here
     state->useOnLevel = FALSE;
 
+
+    
     // Keep the new level within range.
     if (level >= maxLevel) 
     {
@@ -456,9 +482,22 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
     {
         state->moveToLevel = level;
     }
+    
+        if (state->moveToLevel == currentLevel) //MN to avoid them being the same, reduce the currentLevel
+    {
+                    emberAfLevelControlClusterPrintln("GOT TO THE HODGE PODGE\n");
+              
+      emberAfLevelControlClusterPrintln("state->moveToLevel before %x\n", state->moveToLevel);
 
-    // Figure out if we're moving up or down.
-    if (state->moveToLevel > currentLevel) 
+      state->moveToLevel++;
+              emberAfLevelControlClusterPrintln("state->moveToLevel after %x\n", state->moveToLevel);
+
+    }
+
+      emberAfLevelControlClusterPrint("ln495 Current level is: %d state->moveToLevel is: %d\n", currentLevel, state->moveToLevel); //MN
+
+        // Figure out if we're moving up or down.
+    if (state->moveToLevel > currentLevel)
     {
         state->moveToLevelUp = TRUE;
     } 
@@ -468,6 +507,7 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
     } 
     else 
     {
+        emberAfLevelControlClusterPrintln("RETURNING SUCCESS BECAUSE NO CHANGE IN LEVEL\n");//MN
         // No change in level, so just send default response.
         return EMBER_ZCL_STATUS_SUCCESS;        
     }
@@ -509,6 +549,8 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
         transTimeMs = transitionTime * MILLISECOND_TICKS_PER_SECOND / 10;
     }
     
+        emberAfLevelControlClusterPrint("ln537 moveToLevelUp is: %d\n", state->moveToLevelUp); //MN
+    
     int8u amount;
     if (state->moveToLevel > currentLevel)
     {      
@@ -520,6 +562,15 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
         amount = currentLevel - state->moveToLevel;    
         state->moveToLevelUp = FALSE;
     }
+    
+    /*if (amount == 0) //MN if you are wanting to dim to the current level, it will instead increase it by 1%
+    {
+      amount = 1;
+    }
+    */
+    
+        emberAfLevelControlClusterPrint("ln556 moveToLevelUp is: %d\n", state->moveToLevelUp); //MN
+
     state->transitionTime = transTimeMs;
     calculateEventDuration_and_stepSize(state->transitionTime, amount, &state->eventDuration, &state->stepSize);     
     
@@ -535,7 +586,8 @@ static EmberAfStatus emAfLevelControlClusterMoveToLevelHandler(int8u commandId, 
         emberAfPluginZllLevelControlServerMoveToLevelWithOnOffZllExtensions(emberAfCurrentCommand());
     }
 #endif
-
+  emberAfLevelControlClusterPrintln("GOT TO END OF emAfLevelControlClusterMoveToLevelHandler\n"); 
+                                    //MN
     return EMBER_ZCL_STATUS_SUCCESS;    
 }
 
@@ -787,6 +839,18 @@ void emAfPluginLevelControlClusterOnOffEffectHandler(int8u commandId,
   {
     state->moveToLevel = level;
   }
+  
+        if (state->moveToLevel == currentLevel) //MN to avoid them being the same, reduce the currentLevel
+    {
+                    emberAfLevelControlClusterPrintln("GOT TO THE HODGE PODGE\n");
+              
+      emberAfLevelControlClusterPrintln("state->moveToLevel before %x\n", state->moveToLevel);
+
+      state->moveToLevel++;
+              emberAfLevelControlClusterPrintln("state->moveToLevel after %x\n", state->moveToLevel);
+
+    }
+
 
   // Figure out if we're moving up or down and by how much.
   if (state->moveToLevel > currentLevel) 
@@ -797,10 +861,10 @@ void emAfPluginLevelControlClusterOnOffEffectHandler(int8u commandId,
   {
     state->moveToLevelUp = FALSE;
   } 
-  else 
+ /* else 
   {
     return;
-  }
+  }*/
   
   // If the Transition time field takes the value 0xFFFF, then the time taken to
   // move to the new level shall instead be determined by the On/Off Transition

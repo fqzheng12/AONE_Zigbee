@@ -3,3 +3,4 @@ v26
 Changes:
 Added feature that sends UART signals to motherboard to flash twice upon searching for a network and once when a network has been joined
 Increased the button pressing tolerances to +-1.5 seconds
+This version used for EVT Testing 9/11
